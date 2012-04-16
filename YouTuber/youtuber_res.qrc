@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/youtuber">
+        <file>data/youtube.png</file>
+        <file>locale/cs_CZ.qm</file>
+        <file>locale/sr_BA.qm</file>
+        <file>locale/sr_RS.qm</file>
+    </qresource>
+</RCC>
