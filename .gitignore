@@ -1,0 +1,17 @@
+build
+DEBIAN
+*.deb
+*.pro.user
+*.autosave
+*~
+*.a
+*.orig
+*.qm
+Makefile*
+lib*.so*
+*.exe
+*.dll
+*.lib
+*.exp
+*.zip
+Thumbs.db

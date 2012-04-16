@@ -5,7 +5,7 @@
     <name>YouTuber_Handler</name>
     <message>
         <source>View via YouTuber</source>
-        <translation>Pohled přes YouTuber</translation>
+        <translation>Zobrazit pomocí YouTuberu</translation>
     </message>
     <message>
         <source>Executable: </source>
@@ -17,11 +17,11 @@
     </message>
     <message>
         <source>Cannot start external viewer</source>
-        <translation>Nepodařilo se spustit externí prohlížeč</translation>
+        <translation>Nepodařilo se spustit externí přehrávač</translation>
     </message>
     <message>
         <source>Cannot start external viewer! %1</source>
-        <translation>Nepodařilo se spustit externí prohlížeč! %1</translation>
+        <translation>Nepodařilo se spustit externí přehrávač! %1</translation>
     </message>
 </context>
 <context>
@@ -40,11 +40,11 @@
     </message>
     <message>
         <source>&lt;h2&gt;External YouTube video viewer&lt;/h2&gt;</source>
-        <translation>&lt;h2&gt;Externí YouTube video prohlížeč&lt;/h2&gt;</translation>
+        <translation>&lt;h2&gt;Externí přehrávač YouTube videí&lt;/h2&gt;</translation>
     </message>
     <message>
         <source>YouTuber Settings</source>
-        <translation>YouTuber nastavení</translation>
+        <translation>Nastavení YouTuberu</translation>
     </message>
 </context>
 </TS>
