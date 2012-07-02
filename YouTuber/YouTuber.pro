@@ -18,6 +18,8 @@ RESOURCES = youtuber_res.qrc
 
 TRANSLATIONS = \
     translations/cs_CZ.ts \
+    translations/de_DE.ts \
+    translations/it_IT.ts \
     translations/sr_BA.ts \
     translations/sr_RS.ts \
 
