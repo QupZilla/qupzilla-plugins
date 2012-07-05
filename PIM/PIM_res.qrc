@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/PIM">
+        <file>data/PIM.png</file>
+        <file>locale/sr_BA.qm</file>
+        <file>locale/sr_RS.qm</file>
+    </qresource>
+</RCC>
