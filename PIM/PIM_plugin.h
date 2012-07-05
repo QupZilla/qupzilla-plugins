@@ -40,7 +40,6 @@ public:
     void showSettings(QWidget* parent = 0);
 
     void populateWebViewMenu(QMenu* menu, WebView* view, const QWebHitTestResult &r);
-    bool mousePress(const Qz::ObjectName &type, QObject* obj, QMouseEvent* event);
 
 private:
     PIM_Handler* m_handler;

@@ -25,6 +25,7 @@
 #include <QWebHitTestResult>
 #include <QMenu>
 #include <QWeakPointer>
+#include <QHash>
 
 class QMouseEvent;
 class QWebElement;
@@ -36,10 +37,9 @@ class PIM_Handler : public QObject
 public:
     explicit PIM_Handler(const QString &sPath, QObject* parent = 0);
 
-    bool handleMousePress(QObject* obj, QMouseEvent* event);
-
-    QString settingsFile();
+    QString settingsFile() const;
     void loadSettings();
+
     void populateWebViewMenu(QMenu* menu, WebView* view, const QWebHitTestResult &hitTest);
 
 signals:
@@ -50,22 +50,30 @@ private slots:
     void pimInsert();
 
 private:
-    QWeakPointer<WebView> m_view;
+    enum PI_Type {
+        PI_FirstName = 0,
+        PI_LastName = 1,
+        PI_Email = 2,
+        PI_Phone = 3,
+        PI_Mobile = 4,
+        PI_Address = 5,
+        PI_City = 6,
+        PI_Zip = 7,
+        PI_State = 8,
+        PI_Country = 9,
+        PI_HomePage = 10,
+        PI_Special1 = 11,
+        PI_Special2 = 12,
+        PI_Special3 = 13,
+        PI_Max = 14
+    };
 
-    QString m_pim_firstname;
-    QString m_pim_lastname;
-    QString m_pim_email;
-    QString m_pim_phone;
-    QString m_pim_mobile;
-    QString m_pim_address;
-    QString m_pim_city;
-    QString m_pim_zip;
-    QString m_pim_state;
-    QString m_pim_country;
-    QString m_pim_homepage;
-    QString m_pim_special1;
-    QString m_pim_special2;
-    QString m_pim_special3;
+    QHash<PI_Type, QString> m_allInfo;
+    QHash<PI_Type, QString> m_translations;
+
+    QWeakPointer<WebView> m_view;
+    QWebElement m_element;
+
     QString m_settingsFile;
 };
 

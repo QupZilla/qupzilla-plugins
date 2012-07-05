@@ -33,7 +33,7 @@ PIM_Handler::PIM_Handler(const QString &sPath, QObject* parent)
     loadSettings();
 }
 
-QString PIM_Handler::settingsFile()
+QString PIM_Handler::settingsFile() const
 {
     return m_settingsFile;
 }
@@ -43,93 +43,77 @@ void PIM_Handler::loadSettings()
     QSettings settings(m_settingsFile, QSettings::IniFormat);
 
     settings.beginGroup("PIM");
-    m_pim_firstname = settings.value("FirstName", "").toString();
-    m_pim_lastname = settings.value("LastName", "").toString();
-    m_pim_email = settings.value("Email", "").toString();
-    m_pim_phone = settings.value("Phone", "").toString();
-    m_pim_mobile = settings.value("Mobile", "").toString();
-    m_pim_address = settings.value("Address", "").toString();
-    m_pim_city = settings.value("City", "").toString();
-    m_pim_zip = settings.value("Zip", "").toString();
-    m_pim_state = settings.value("State", "").toString();
-    m_pim_country = settings.value("Country", "").toString();
-    m_pim_homepage = settings.value("HomePage", "").toString();
-    m_pim_special1 = settings.value("Special1", "").toString();
-    m_pim_special2 = settings.value("Special2", "").toString();
-    m_pim_special3 = settings.value("Special3", "").toString();
+    m_allInfo[PI_FirstName] = settings.value("FirstName", "").toString();
+    m_allInfo[PI_LastName] = settings.value("LastName", "").toString();
+    m_allInfo[PI_Email] = settings.value("Email", "").toString();
+    m_allInfo[PI_Phone] = settings.value("Phone", "").toString();
+    m_allInfo[PI_Mobile] = settings.value("Mobile", "").toString();
+    m_allInfo[PI_Address] = settings.value("Address", "").toString();
+    m_allInfo[PI_City] = settings.value("City", "").toString();
+    m_allInfo[PI_Zip] = settings.value("Zip", "").toString();
+    m_allInfo[PI_State] = settings.value("State", "").toString();
+    m_allInfo[PI_Country] = settings.value("Country", "").toString();
+    m_allInfo[PI_HomePage] = settings.value("HomePage", "").toString();
+    m_allInfo[PI_Special1] = settings.value("Special1", "").toString();
+    m_allInfo[PI_Special2] = settings.value("Special2", "").toString();
+    m_allInfo[PI_Special3] = settings.value("Special3", "").toString();
     settings.endGroup();
-}
 
-bool PIM_Handler::handleMousePress(QObject* obj, QMouseEvent* event)
-{
-    WebView* view = qobject_cast<WebView*>(obj);
-    if (!view) {
-        return false;
-    }
-
-    m_view = view;
-
-    return false;
+    m_translations[PI_FirstName] = tr("First Name");
+    m_translations[PI_LastName] = tr("Last Name");
+    m_translations[PI_Email] = tr("E-mail");
+    m_translations[PI_Phone] = tr("Phone");
+    m_translations[PI_Mobile] = tr("Mobile");
+    m_translations[PI_Address] = tr("Address");
+    m_translations[PI_City] = tr("City");
+    m_translations[PI_Zip] = tr("Zip");
+    m_translations[PI_State] = tr("State/Region");
+    m_translations[PI_Country] = tr("Country");
+    m_translations[PI_HomePage] = tr("Home Page");
+    m_translations[PI_Special1] = tr("Special 1");
+    m_translations[PI_Special2] = tr("Special 2");
+    m_translations[PI_Special3] = tr("Special 3");
 }
 
 void PIM_Handler::populateWebViewMenu(QMenu* menu, WebView* view, const QWebHitTestResult &hitTest)
 {
     m_view = view;
-    
-    if (hitTest.isContentEditable()) {
+    m_element = hitTest.element();
+
+    if (!hitTest.isContentEditable()) {
+        return;
+    }
 
 //     TODO Add icon: QIcon(":/PIM/data/PIM.png")
     QMenu* pimMenu = new QMenu(tr("Insert"));
 
-    if (!m_pim_firstname.isEmpty()) {
-        pimMenu->addAction(tr("First Name"), this, SLOT(pimInsert()))->setData(m_pim_firstname);
+    for (int i = 0; i < PI_Max - 1; ++i) {
+        const QString &info = m_allInfo[PI_Type(i)];
+        if (info.isEmpty()) {
+            continue;
+        }
+
+        QAction* action = pimMenu->addAction(m_translations[PI_Type(i)], this, SLOT(pimInsert()));
+        action->setData(info);
     }
-    if (!m_pim_lastname.isEmpty()) {
-        pimMenu->addAction(tr("Last Name"), this, SLOT(pimInsert()))->setData(m_pim_lastname);
-    }
-    if (!m_pim_email.isEmpty()) {
-        pimMenu->addAction(tr("E-mail"), this, SLOT(pimInsert()))->setData(m_pim_email);
-    }
-    if (!m_pim_phone.isEmpty()) {
-        pimMenu->addAction(tr("Phone"), this, SLOT(pimInsert()))->setData(m_pim_phone);
-    }
-    if (!m_pim_mobile.isEmpty()) {
-        pimMenu->addAction(tr("Mobile"), this, SLOT(pimInsert()))->setData(m_pim_mobile);
-    }
-    if (!m_pim_address.isEmpty()) {
-        pimMenu->addAction(tr("Address"), this, SLOT(pimInsert()))->setData(m_pim_address);
-    }
-    if (!m_pim_city.isEmpty()) {
-        pimMenu->addAction(tr("City"), this, SLOT(pimInsert()))->setData(m_pim_city);
-    }
-    if (!m_pim_zip.isEmpty()) {
-        pimMenu->addAction(tr("Zip"), this, SLOT(pimInsert()))->setData(m_pim_zip);
-    }
-    if (!m_pim_state.isEmpty()) {
-        pimMenu->addAction(tr("State/Region"), this, SLOT(pimInsert()))->setData(m_pim_state);
-    }
-    if (!m_pim_country.isEmpty()) {
-        pimMenu->addAction(tr("Country"), this, SLOT(pimInsert()))->setData(m_pim_country);
-    }
-    if (!m_pim_homepage.isEmpty()) {
-        pimMenu->addAction(tr("Home Page"), this, SLOT(pimInsert()))->setData(m_pim_homepage);
-    }
-    if (!m_pim_special1.isEmpty()) {
-        pimMenu->addAction(tr("Special1"), this, SLOT(pimInsert()))->setData(m_pim_special1);
-    }
-    if (!m_pim_special2.isEmpty()) {
-        pimMenu->addAction(tr("Special2"), this, SLOT(pimInsert()))->setData(m_pim_special2);
-    }
-    if (!m_pim_special3.isEmpty()) {
-        pimMenu->addAction(tr("Special3"), this, SLOT(pimInsert()))->setData(m_pim_special3);
+
+    if (pimMenu->isEmpty()) {
+        delete pimMenu;
+        return;
     }
 
     menu->addMenu(pimMenu);
     menu->addSeparator();
-    }
 }
 
 void PIM_Handler::pimInsert()
 {
+    QAction* action = qobject_cast<QAction*>(sender());
+    if (m_element.isNull() || !action) {
+        return;
+    }
 
+    QString info = action->data().toString();
+    info.replace('"', "\\\"");
+    m_element.evaluateJavaScript(QString("this.value = \"%1\"").arg(info));
 }

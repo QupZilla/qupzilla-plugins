@@ -48,8 +48,6 @@ PluginSpec PIM_Plugin::pluginSpec()
 void PIM_Plugin::init(const QString &sPath)
 {
     m_handler = new PIM_Handler(sPath, this);
-
-    QZ_REGISTER_EVENT_HANDLER(PluginProxy::MousePressHandler);
 }
 
 void PIM_Plugin::unload()
@@ -82,15 +80,6 @@ void PIM_Plugin::showSettings(QWidget* parent)
 void PIM_Plugin::populateWebViewMenu(QMenu* menu, WebView* view, const QWebHitTestResult &r)
 {
     m_handler->populateWebViewMenu(menu, view, r);
-}
-
-bool PIM_Plugin::mousePress(const Qz::ObjectName &type, QObject* obj, QMouseEvent* event)
-{
-    if (type == Qz::ON_WebView) {
-        m_handler->handleMousePress(obj, event);
-    }
-
-    return false;
 }
 
 Q_EXPORT_PLUGIN2(PIM, PIM_Plugin)
