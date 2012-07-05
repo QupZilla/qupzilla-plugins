@@ -85,9 +85,9 @@ void PIM_Handler::populateWebViewMenu(QMenu* menu, WebView* view, const QWebHitT
     }
 
 //     TODO Add icon: QIcon(":/PIM/data/PIM.png")
-    QMenu* pimMenu = new QMenu(tr("Insert"));
+    QMenu* pimMenu = new QMenu(tr("Insert Personal"));
 
-    for (int i = 0; i < PI_Max - 1; ++i) {
+    for (int i = 0; i < PI_Max; ++i) {
         const QString &info = m_allInfo[PI_Type(i)];
         if (info.isEmpty()) {
             continue;
@@ -97,10 +97,8 @@ void PIM_Handler::populateWebViewMenu(QMenu* menu, WebView* view, const QWebHitT
         action->setData(info);
     }
 
-    if (pimMenu->isEmpty()) {
-        delete pimMenu;
-        return;
-    }
+    pimMenu->addSeparator();
+    pimMenu->addAction(tr("Edit"), this, SLOT(PIM_Plugin::showSettings()));
 
     menu->addMenu(pimMenu);
     menu->addSeparator();

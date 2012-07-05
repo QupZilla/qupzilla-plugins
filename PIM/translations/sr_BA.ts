@@ -4,10 +4,6 @@
 <context>
     <name>PIM_Handler</name>
     <message>
-        <source>Insert</source>
-        <translation>Уметни</translation>
-    </message>
-    <message>
         <source>First Name</source>
         <translation>име</translation>
     </message>
@@ -52,16 +48,24 @@
         <translation>државу</translation>
     </message>
     <message>
-        <source>Special1</source>
-        <translation>посебно 1</translation>
+        <source>Special 1</source>
+        <translation>Посебно 1</translation>
     </message>
     <message>
-        <source>Special2</source>
-        <translation>посебно 2</translation>
+        <source>Special 2</source>
+        <translation>Посебно 2</translation>
     </message>
     <message>
-        <source>Special3</source>
-        <translation>посебно 3</translation>
+        <source>Special 3</source>
+        <translation>Посебно 3</translation>
+    </message>
+    <message>
+        <source>Insert Personal</source>
+        <translation>Уметни лични податак</translation>
+    </message>
+    <message>
+        <source>Edit</source>
+        <translation>Уреди</translation>
     </message>
 </context>
 <context>
