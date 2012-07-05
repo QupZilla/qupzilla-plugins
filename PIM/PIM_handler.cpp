@@ -17,6 +17,7 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 * ============================================================ */
 #include "PIM_handler.h"
+#include "PIM_settings.h"
 #include "webview.h"
 
 #include <QApplication>
@@ -31,11 +32,6 @@ PIM_Handler::PIM_Handler(const QString &sPath, QObject* parent)
     , m_settingsFile(sPath + "extensions.ini")
 {
     loadSettings();
-}
-
-QString PIM_Handler::settingsFile() const
-{
-    return m_settingsFile;
 }
 
 void PIM_Handler::loadSettings()
@@ -75,6 +71,14 @@ void PIM_Handler::loadSettings()
     m_translations[PI_Special3] = tr("Special 3");
 }
 
+void PIM_Handler::showSettings(QWidget* parent)
+{
+    PIM_Settings* settings = new PIM_Settings(m_settingsFile, parent);
+    settings->show();
+
+    connect(settings, SIGNAL(accepted()), this, SLOT(loadSettings()));
+}
+
 void PIM_Handler::populateWebViewMenu(QMenu* menu, WebView* view, const QWebHitTestResult &hitTest)
 {
     m_view = view;
@@ -98,7 +102,7 @@ void PIM_Handler::populateWebViewMenu(QMenu* menu, WebView* view, const QWebHitT
     }
 
     pimMenu->addSeparator();
-    pimMenu->addAction(tr("Edit"), this, SLOT(PIM_Plugin::showSettings()));
+    pimMenu->addAction(tr("Edit"), this, SLOT(showSettings()));
 
     menu->addMenu(pimMenu);
     menu->addSeparator();
@@ -113,5 +117,5 @@ void PIM_Handler::pimInsert()
 
     QString info = action->data().toString();
     info.replace('"', "\\\"");
-    m_element.evaluateJavaScript(QString("this.value = \"%1\"").arg(info));
+    m_element.evaluateJavaScript(QString("this.value += \"%1\"").arg(info));
 }

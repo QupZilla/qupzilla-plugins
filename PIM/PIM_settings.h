@@ -33,7 +33,7 @@ class PIM_Settings : public QDialog
     Q_OBJECT
 
 public:
-    explicit PIM_Settings(PIM_Handler* handler, QWidget* parent = 0);
+    explicit PIM_Settings(const QString &settingsFile, QWidget* parent = 0);
     ~PIM_Settings();
 
 private slots:
@@ -42,7 +42,6 @@ private slots:
 private:
     Ui::PIM_Settings* ui;
 
-    PIM_Handler* m_handler;
     QString m_settingsFile;
 };
 

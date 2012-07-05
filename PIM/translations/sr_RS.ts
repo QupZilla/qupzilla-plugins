@@ -1,69 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="sr_RS">
+<TS version="2.0" language="sr_RS" sourcelanguage="en_US">
 <context>
     <name>PIM_Handler</name>
     <message>
+        <location filename="../PIM_handler.cpp" line="58"/>
         <source>First Name</source>
-        <translation>име</translation>
+        <translation>Име</translation>
     </message>
     <message>
+        <location filename="../PIM_handler.cpp" line="59"/>
         <source>Last Name</source>
-        <translation>презиме</translation>
+        <translation>Презиме</translation>
     </message>
     <message>
+        <location filename="../PIM_handler.cpp" line="60"/>
         <source>E-mail</source>
-        <translation>е-адресу</translation>
+        <translation>Е-адресу</translation>
     </message>
     <message>
+        <location filename="../PIM_handler.cpp" line="61"/>
         <source>Phone</source>
-        <translation>бр. телефона</translation>
+        <translation>Бр. телефона</translation>
     </message>
     <message>
+        <location filename="../PIM_handler.cpp" line="62"/>
         <source>Mobile</source>
-        <translation>бр. мобилног</translation>
+        <translation>Бр. мобилног</translation>
     </message>
     <message>
-        <source>Home Page</source>
-        <translation>домаћу страницу</translation>
-    </message>
-    <message>
+        <location filename="../PIM_handler.cpp" line="63"/>
         <source>Address</source>
-        <translation>адресу</translation>
+        <translation>Адресу</translation>
     </message>
     <message>
+        <location filename="../PIM_handler.cpp" line="64"/>
         <source>City</source>
-        <translation>град</translation>
+        <translation>Град</translation>
     </message>
     <message>
+        <location filename="../PIM_handler.cpp" line="65"/>
         <source>Zip</source>
-        <translation>пошт. број</translation>
+        <translation>Пошт. број</translation>
     </message>
     <message>
+        <location filename="../PIM_handler.cpp" line="66"/>
         <source>State/Region</source>
-        <translation>сав. држ./регију</translation>
+        <translation>Сав. држ./регију</translation>
     </message>
     <message>
+        <location filename="../PIM_handler.cpp" line="67"/>
         <source>Country</source>
-        <translation>државу</translation>
+        <translation>Државу</translation>
     </message>
     <message>
+        <location filename="../PIM_handler.cpp" line="68"/>
+        <source>Home Page</source>
+        <translation>Домаћу страницу</translation>
+    </message>
+    <message>
+        <location filename="../PIM_handler.cpp" line="69"/>
         <source>Special 1</source>
         <translation>Посебно 1</translation>
     </message>
     <message>
+        <location filename="../PIM_handler.cpp" line="70"/>
         <source>Special 2</source>
         <translation>Посебно 2</translation>
     </message>
     <message>
+        <location filename="../PIM_handler.cpp" line="71"/>
         <source>Special 3</source>
         <translation>Посебно 3</translation>
     </message>
     <message>
+        <location filename="../PIM_handler.cpp" line="92"/>
         <source>Insert Personal</source>
-        <translation>Уметни лични податак</translation>
+        <translation>Уметну лични податак</translation>
     </message>
     <message>
+        <location filename="../PIM_handler.cpp" line="105"/>
         <source>Edit</source>
         <translation>Уреди</translation>
     </message>
@@ -71,68 +87,100 @@
 <context>
     <name>PIM_Settings</name>
     <message>
+        <location filename="../PIM_settings.ui" line="14"/>
+        <location filename="../build/ui_PIM_settings.h" line="287"/>
         <source>PIM Settings</source>
         <translation>ПИМ подешавања</translation>
     </message>
     <message>
+        <location filename="../PIM_settings.ui" line="58"/>
+        <location filename="../build/ui_PIM_settings.h" line="288"/>
         <source>First Name:</source>
         <translation>Име:</translation>
     </message>
     <message>
+        <location filename="../PIM_settings.ui" line="68"/>
+        <location filename="../build/ui_PIM_settings.h" line="289"/>
         <source>Last Name:</source>
         <translation>Презиме:</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:x-large; font-weight:600;&quot;&gt;Personal Information Manager&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:x-large; font-weight:600;&quot;&gt;Менаџер личних података&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
+        <location filename="../PIM_settings.ui" line="78"/>
+        <location filename="../build/ui_PIM_settings.h" line="290"/>
         <source>E-Mail:</source>
         <translation>Е-адреса:</translation>
     </message>
     <message>
+        <location filename="../PIM_settings.ui" line="88"/>
+        <location filename="../build/ui_PIM_settings.h" line="291"/>
         <source>Phone:</source>
         <translation>Број телефона:</translation>
     </message>
     <message>
+        <location filename="../PIM_settings.ui" line="98"/>
+        <location filename="../build/ui_PIM_settings.h" line="292"/>
         <source>Mobile Phone:</source>
-        <translation>Број мобилног:</translation>
+        <translation>Број мобилног тел:</translation>
     </message>
     <message>
-        <source>Home Page:</source>
-        <translation>Домаћа страница:</translation>
-    </message>
-    <message>
+        <location filename="../PIM_settings.ui" line="108"/>
+        <location filename="../build/ui_PIM_settings.h" line="293"/>
         <source>Address:</source>
         <translation>Адреса:</translation>
     </message>
     <message>
+        <location filename="../PIM_settings.ui" line="118"/>
+        <location filename="../build/ui_PIM_settings.h" line="294"/>
         <source>City:</source>
         <translation>Град:</translation>
     </message>
     <message>
+        <location filename="../PIM_settings.ui" line="128"/>
+        <location filename="../build/ui_PIM_settings.h" line="295"/>
         <source>ZIP Code:</source>
-        <translation>Поштански број:</translation>
+        <translation>Пошт. број:</translation>
     </message>
     <message>
+        <location filename="../PIM_settings.ui" line="138"/>
+        <location filename="../build/ui_PIM_settings.h" line="296"/>
         <source>State/Region:</source>
         <translation>Савезна држ./регија:</translation>
     </message>
     <message>
+        <location filename="../PIM_settings.ui" line="148"/>
+        <location filename="../build/ui_PIM_settings.h" line="297"/>
         <source>Country:</source>
         <translation>Држава:</translation>
     </message>
     <message>
+        <location filename="../PIM_settings.ui" line="158"/>
+        <location filename="../build/ui_PIM_settings.h" line="298"/>
+        <source>Home Page:</source>
+        <translation>Домаћа страница:</translation>
+    </message>
+    <message>
+        <location filename="../PIM_settings.ui" line="168"/>
+        <location filename="../build/ui_PIM_settings.h" line="299"/>
         <source>Custom 1:</source>
         <translation>Посебно 1:</translation>
     </message>
     <message>
+        <location filename="../PIM_settings.ui" line="178"/>
+        <location filename="../build/ui_PIM_settings.h" line="300"/>
         <source>Custom 2:</source>
         <translation>Посебно 2:</translation>
     </message>
     <message>
+        <location filename="../PIM_settings.ui" line="188"/>
+        <location filename="../build/ui_PIM_settings.h" line="301"/>
         <source>Custom 3:</source>
         <translation>Посебно 3:</translation>
+    </message>
+    <message>
+        <location filename="../PIM_settings.ui" line="226"/>
+        <location filename="../build/ui_PIM_settings.h" line="302"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:x-large; font-weight:600;&quot;&gt;Personal Information Manager&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:x-large; font-weight:600;&quot;&gt;Менаџер личних података Manager&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
 </context>
 </TS>

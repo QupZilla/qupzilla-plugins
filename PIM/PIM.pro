@@ -18,6 +18,6 @@ RESOURCES = PIM_res.qrc
 
 TRANSLATIONS = \
     translations/sr_BA.ts \
-    translations/sr_RS.ts \
+    translations/sr_RS.ts
 
 include(../../plugins.pri)

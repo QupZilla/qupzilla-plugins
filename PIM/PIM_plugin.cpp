@@ -38,7 +38,7 @@ PluginSpec PIM_Plugin::pluginSpec()
     spec.info = "Personal Information Manager";
     spec.description = "Adds ability for Qupzilla to store some personal data";
     spec.version = "0.0.1";
-    spec.author = QString::fromUtf8("Mladen Pejaković") + " <pejakm@gmail.com>";
+    spec.author = QString::fromUtf8("Mladen Pejaković <pejakm@gmail.com>");
     spec.icon = QPixmap(":/PIM/data/PIM.png");
     spec.hasSettings = true;
 
@@ -71,10 +71,7 @@ QTranslator* PIM_Plugin::getTranslator(const QString &locale)
 
 void PIM_Plugin::showSettings(QWidget* parent)
 {
-    PIM_Settings* settings = new PIM_Settings(m_handler, parent);
-    settings->setAttribute(Qt::WA_DeleteOnClose);
-
-    settings->show();
+    m_handler->showSettings(parent);
 }
 
 void PIM_Plugin::populateWebViewMenu(QMenu* menu, WebView* view, const QWebHitTestResult &r)

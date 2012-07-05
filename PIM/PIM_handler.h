@@ -37,16 +37,17 @@ class PIM_Handler : public QObject
 public:
     explicit PIM_Handler(const QString &sPath, QObject* parent = 0);
 
-    QString settingsFile() const;
-    void loadSettings();
-
     void populateWebViewMenu(QMenu* menu, WebView* view, const QWebHitTestResult &hitTest);
 
 signals:
 
 public slots:
 
+    void showSettings(QWidget* parent = 0);
+
 private slots:
+    void loadSettings();
+
     void pimInsert();
 
 private:

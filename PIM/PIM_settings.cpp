@@ -23,12 +23,12 @@
 
 #include <QSettings>
 
-PIM_Settings::PIM_Settings(PIM_Handler* handler, QWidget* parent)
+PIM_Settings::PIM_Settings(const QString &settingsFile, QWidget* parent)
     : QDialog(parent)
     , ui(new Ui::PIM_Settings)
-    , m_handler(handler)
-    , m_settingsFile(handler->settingsFile())
+    , m_settingsFile(settingsFile)
 {
+    setAttribute(Qt::WA_DeleteOnClose);
     ui->setupUi(this);
 
     QSettings settings(m_settingsFile, QSettings::IniFormat);
@@ -71,8 +71,6 @@ void PIM_Settings::dialogAccepted()
     settings.setValue("Special2", ui->pim_special2->text());
     settings.setValue("Special3", ui->pim_special3->text());
     settings.endGroup();
-
-    m_handler->loadSettings();
 }
 
 PIM_Settings::~PIM_Settings()
