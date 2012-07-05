@@ -54,21 +54,6 @@ void PIM_Handler::loadSettings()
     m_allInfo[PI_Special2] = settings.value("Special2", "").toString();
     m_allInfo[PI_Special3] = settings.value("Special3", "").toString();
     settings.endGroup();
-
-    m_translations[PI_FirstName] = tr("First Name");
-    m_translations[PI_LastName] = tr("Last Name");
-    m_translations[PI_Email] = tr("E-mail");
-    m_translations[PI_Phone] = tr("Phone");
-    m_translations[PI_Mobile] = tr("Mobile");
-    m_translations[PI_Address] = tr("Address");
-    m_translations[PI_City] = tr("City");
-    m_translations[PI_Zip] = tr("Zip");
-    m_translations[PI_State] = tr("State/Region");
-    m_translations[PI_Country] = tr("Country");
-    m_translations[PI_HomePage] = tr("Home Page");
-    m_translations[PI_Special1] = tr("Special 1");
-    m_translations[PI_Special2] = tr("Special 2");
-    m_translations[PI_Special3] = tr("Special 3");
 }
 
 void PIM_Handler::showSettings(QWidget* parent)
@@ -87,6 +72,21 @@ void PIM_Handler::populateWebViewMenu(QMenu* menu, WebView* view, const QWebHitT
     if (!hitTest.isContentEditable()) {
         return;
     }
+
+    m_translations[PI_FirstName] = tr("First Name");
+    m_translations[PI_LastName] = tr("Last Name");
+    m_translations[PI_Email] = tr("E-mail");
+    m_translations[PI_Phone] = tr("Phone");
+    m_translations[PI_Mobile] = tr("Mobile");
+    m_translations[PI_Address] = tr("Address");
+    m_translations[PI_City] = tr("City");
+    m_translations[PI_Zip] = tr("Zip");
+    m_translations[PI_State] = tr("State/Region");
+    m_translations[PI_Country] = tr("Country");
+    m_translations[PI_HomePage] = tr("Home Page");
+    m_translations[PI_Special1] = tr("Special 1");
+    m_translations[PI_Special2] = tr("Special 2");
+    m_translations[PI_Special3] = tr("Special 3");
 
     QMenu* pimMenu = new QMenu(tr("Insert Personal"));
     pimMenu->setIcon(QIcon(":/PIM/data/PIM.png"));
