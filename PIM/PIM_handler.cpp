@@ -88,8 +88,8 @@ void PIM_Handler::populateWebViewMenu(QMenu* menu, WebView* view, const QWebHitT
         return;
     }
 
-//     TODO Add icon: QIcon(":/PIM/data/PIM.png")
     QMenu* pimMenu = new QMenu(tr("Insert Personal"));
+    pimMenu->setIcon(QIcon(":/PIM/data/PIM.png"));
 
     for (int i = 0; i < PI_Max; ++i) {
         const QString &info = m_allInfo[PI_Type(i)];
