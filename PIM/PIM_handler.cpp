@@ -31,8 +31,8 @@
 PIM_Handler::PIM_Handler(const QString &sPath, QObject* parent)
     : QObject(parent)
     , m_settingsFile(sPath + "extensions.ini")
+    , m_loaded(false)
 {
-    loadSettings();
 }
 
 void PIM_Handler::loadSettings()
@@ -55,6 +55,35 @@ void PIM_Handler::loadSettings()
     m_allInfo[PI_Special2] = settings.value("Special2", "").toString();
     m_allInfo[PI_Special3] = settings.value("Special3", "").toString();
     settings.endGroup();
+
+    m_translations[PI_FirstName] = tr("First Name");
+    m_translations[PI_LastName] = tr("Last Name");
+    m_translations[PI_Email] = tr("E-mail");
+    m_translations[PI_Phone] = tr("Phone");
+    m_translations[PI_Mobile] = tr("Mobile");
+    m_translations[PI_Address] = tr("Address");
+    m_translations[PI_City] = tr("City");
+    m_translations[PI_Zip] = tr("Zip");
+    m_translations[PI_State] = tr("State/Region");
+    m_translations[PI_Country] = tr("Country");
+    m_translations[PI_HomePage] = tr("Home Page");
+    m_translations[PI_Special1] = tr("Special 1");
+    m_translations[PI_Special2] = tr("Special 2");
+    m_translations[PI_Special3] = tr("Special 3");
+
+    m_infoMatches[PI_FirstName] << "firstname" << "name";
+    m_infoMatches[PI_LastName] << "lastname";
+    m_infoMatches[PI_Email] << "email" << "e-mail" << "mail";
+    m_infoMatches[PI_Phone] << "phone" << "telephone";
+    m_infoMatches[PI_Mobile] << "mobile";
+    m_infoMatches[PI_Address] << "address";
+    m_infoMatches[PI_City] << "city";
+    m_infoMatches[PI_Zip] << "zip";
+    m_infoMatches[PI_State] << "state";
+    m_infoMatches[PI_Country] << "country";
+    m_infoMatches[PI_HomePage] << "homepage" << "www";
+
+    m_loaded = true;
 }
 
 void PIM_Handler::showSettings(QWidget* parent)
@@ -74,20 +103,9 @@ void PIM_Handler::populateWebViewMenu(QMenu* menu, WebView* view, const QWebHitT
         return;
     }
 
-    m_translations[PI_FirstName] = tr("First Name");
-    m_translations[PI_LastName] = tr("Last Name");
-    m_translations[PI_Email] = tr("E-mail");
-    m_translations[PI_Phone] = tr("Phone");
-    m_translations[PI_Mobile] = tr("Mobile");
-    m_translations[PI_Address] = tr("Address");
-    m_translations[PI_City] = tr("City");
-    m_translations[PI_Zip] = tr("Zip");
-    m_translations[PI_State] = tr("State/Region");
-    m_translations[PI_Country] = tr("Country");
-    m_translations[PI_HomePage] = tr("Home Page");
-    m_translations[PI_Special1] = tr("Special 1");
-    m_translations[PI_Special2] = tr("Special 2");
-    m_translations[PI_Special3] = tr("Special 3");
+    if (!m_loaded) {
+        loadSettings();
+    }
 
     QMenu* pimMenu = new QMenu(tr("Insert Personal"));
     pimMenu->setIcon(QIcon(":/PIM/data/PIM.png"));
@@ -109,7 +127,37 @@ void PIM_Handler::populateWebViewMenu(QMenu* menu, WebView* view, const QWebHitT
     menu->addSeparator();
 }
 
-void PIM_Handler::webPageCreated(WebPage *page)
+bool PIM_Handler::keyPress(WebView* view, QKeyEvent* event)
+{
+    if (!view) {
+        return false;
+    }
+
+    bool isEnter = event->key() == Qt::Key_Return || event->key() == Qt::Key_Enter;
+
+    if (!isEnter || event->modifiers() != Qt::ControlModifier) {
+        return false;
+    }
+
+    const QWebElement &document = view->page()->mainFrame()->documentElement();
+    const QWebElementCollection elements = document.findAll("input[type=\"text\"]");
+
+    foreach(QWebElement element, elements) {
+        const QString &name = element.attribute("name");
+        if (name.isEmpty()) {
+            continue;
+        }
+
+        PI_Type match = nameMatch(name);
+        if (match != PI_Invalid) {
+            element.evaluateJavaScript(QString("this.value = \"%1\"").arg(m_allInfo[match]));
+        }
+    }
+
+    return true;
+}
+
+void PIM_Handler::webPageCreated(WebPage* page)
 {
     connect(page, SIGNAL(loadFinished(bool)), this, SLOT(pageLoadFinished()));
 }
@@ -133,5 +181,34 @@ void PIM_Handler::pageLoadFinished()
         return;
     }
 
+    if (!m_loaded) {
+        loadSettings();
+    }
+
     const QWebElement &document = page->mainFrame()->documentElement();
+    const QWebElementCollection elements = document.findAll("input[type=\"text\"]");
+
+    foreach(QWebElement element, elements) {
+        const QString &name = element.attribute("name");
+        if (name.isEmpty()) {
+            continue;
+        }
+
+        PI_Type match = nameMatch(name);
+        if (match != PI_Invalid) {
+            element.setStyleProperty("background-color", "inherit");
+            element.setStyleProperty("-webkit-box-shadow", "inset 0 0 2px 1px #EEE000");
+        }
+    }
+}
+
+PIM_Handler::PI_Type PIM_Handler::nameMatch(const QString &name)
+{
+    for (int i = 0; i < PI_Max; ++i) {
+        if (!m_allInfo[PI_Type(i)].isEmpty() && m_infoMatches[PI_Type(i)].contains(name)) {
+            return PI_Type(i);
+        }
+    }
+
+    return PI_Invalid;
 }

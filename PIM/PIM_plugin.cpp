@@ -22,6 +22,7 @@
 #include "mainapplication.h"
 #include "pluginproxy.h"
 #include "qupzilla.h"
+#include "webview.h"
 
 #include <QTranslator>
 
@@ -48,6 +49,8 @@ PluginSpec PIM_Plugin::pluginSpec()
 void PIM_Plugin::init(const QString &sPath)
 {
     m_handler = new PIM_Handler(sPath, this);
+
+    QZ_REGISTER_EVENT_HANDLER(PluginProxy::KeyPressHandler);
 
     connect(mApp->plugins(), SIGNAL(webPageCreated(WebPage*)), m_handler, SLOT(webPageCreated(WebPage*)));
 }
@@ -79,6 +82,16 @@ void PIM_Plugin::showSettings(QWidget* parent)
 void PIM_Plugin::populateWebViewMenu(QMenu* menu, WebView* view, const QWebHitTestResult &r)
 {
     m_handler->populateWebViewMenu(menu, view, r);
+}
+
+bool PIM_Plugin::keyPress(const Qz::ObjectName &type, QObject* obj, QKeyEvent* event)
+{
+    if (type == Qz::ON_WebView) {
+        WebView* view = qobject_cast<WebView*>(obj);
+        return m_handler->keyPress(view, event);
+    }
+
+    return false;
 }
 
 Q_EXPORT_PLUGIN2(PIM, PIM_Plugin)

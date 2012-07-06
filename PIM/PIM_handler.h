@@ -37,6 +37,7 @@ public:
     explicit PIM_Handler(const QString &sPath, QObject* parent = 0);
 
     void populateWebViewMenu(QMenu* menu, WebView* view, const QWebHitTestResult &hitTest);
+    bool keyPress(WebView* view, QKeyEvent* event);
 
 signals:
 
@@ -66,16 +67,21 @@ private:
         PI_Special1 = 11,
         PI_Special2 = 12,
         PI_Special3 = 13,
-        PI_Max = 14
+        PI_Max = 14,
+        PI_Invalid = 128
     };
 
+    PI_Type nameMatch(const QString &name);
+
     QHash<PI_Type, QString> m_allInfo;
+    QHash<PI_Type, QStringList> m_infoMatches;
     QHash<PI_Type, QString> m_translations;
 
     QWeakPointer<WebView> m_view;
     QWebElement m_element;
 
     QString m_settingsFile;
+    bool m_loaded;
 };
 
 #endif // PIM_HANDLER_H
