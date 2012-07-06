@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>348</width>
-    <height>459</height>
+    <height>481</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -221,22 +221,9 @@
         </spacer>
        </item>
        <item row="0" column="2" alignment="Qt::AlignHCenter|Qt::AlignVCenter">
-        <widget class="QLabel" name="label">
+        <widget class="QLabel" name="title">
          <property name="text">
           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:x-large; font-weight:600;&quot;&gt;Personal Information Manager&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1" alignment="Qt::AlignHCenter|Qt::AlignVCenter">
-        <widget class="QLabel" name="label_2">
-         <property name="text">
-          <string/>
-         </property>
-         <property name="pixmap">
-          <pixmap resource="PIM_res.qrc">:/PIM/data/PIM.png</pixmap>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -255,6 +242,29 @@
           </size>
          </property>
         </spacer>
+       </item>
+       <item row="0" column="1" alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+        <widget class="QLabel" name="pluginicon">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap resource="PIM_res.qrc">:/PIM/data/PIM.png</pixmap>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="0" colspan="3">
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>&lt;b&gt;Note:&lt;/b&gt; Press Ctrl+ENTER to autofill form fields for which QupZilla finds personal entries.</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>

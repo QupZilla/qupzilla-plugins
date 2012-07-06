@@ -4,7 +4,7 @@
 <context>
     <name>PIM_Handler</name>
     <message>
-        <location filename="../PIM_handler.cpp" line="58"/>
+        <location filename="../PIM_handler.cpp" line="60"/>
         <source>First Name</source>
         <translation>Име</translation>
     </message>
@@ -14,12 +14,12 @@
         <translation>Презиме</translation>
     </message>
     <message>
-        <location filename="../PIM_handler.cpp" line="60"/>
+        <location filename="../PIM_handler.cpp" line="61"/>
         <source>E-mail</source>
         <translation>Е-адресу</translation>
     </message>
     <message>
-        <location filename="../PIM_handler.cpp" line="61"/>
+        <location filename="../PIM_handler.cpp" line="63"/>
         <source>Phone</source>
         <translation>Бр. телефона</translation>
     </message>
@@ -29,57 +29,57 @@
         <translation>Бр. мобилног</translation>
     </message>
     <message>
-        <location filename="../PIM_handler.cpp" line="63"/>
+        <location filename="../PIM_handler.cpp" line="64"/>
         <source>Address</source>
         <translation>Адресу</translation>
     </message>
     <message>
-        <location filename="../PIM_handler.cpp" line="64"/>
+        <location filename="../PIM_handler.cpp" line="65"/>
         <source>City</source>
         <translation>Град</translation>
     </message>
     <message>
-        <location filename="../PIM_handler.cpp" line="65"/>
+        <location filename="../PIM_handler.cpp" line="66"/>
         <source>Zip</source>
         <translation>Пошт. број</translation>
     </message>
     <message>
-        <location filename="../PIM_handler.cpp" line="66"/>
+        <location filename="../PIM_handler.cpp" line="67"/>
         <source>State/Region</source>
         <translation>Сав. држ./регију</translation>
     </message>
     <message>
-        <location filename="../PIM_handler.cpp" line="67"/>
+        <location filename="../PIM_handler.cpp" line="68"/>
         <source>Country</source>
         <translation>Државу</translation>
     </message>
     <message>
-        <location filename="../PIM_handler.cpp" line="68"/>
+        <location filename="../PIM_handler.cpp" line="69"/>
         <source>Home Page</source>
         <translation>Домаћу страницу</translation>
     </message>
     <message>
-        <location filename="../PIM_handler.cpp" line="69"/>
+        <location filename="../PIM_handler.cpp" line="70"/>
         <source>Special 1</source>
         <translation>Посебно 1</translation>
     </message>
     <message>
-        <location filename="../PIM_handler.cpp" line="70"/>
+        <location filename="../PIM_handler.cpp" line="71"/>
         <source>Special 2</source>
         <translation>Посебно 2</translation>
     </message>
     <message>
-        <location filename="../PIM_handler.cpp" line="71"/>
+        <location filename="../PIM_handler.cpp" line="72"/>
         <source>Special 3</source>
         <translation>Посебно 3</translation>
     </message>
     <message>
-        <location filename="../PIM_handler.cpp" line="92"/>
+        <location filename="../PIM_handler.cpp" line="110"/>
         <source>Insert Personal</source>
         <translation>Уметни лични податак</translation>
     </message>
     <message>
-        <location filename="../PIM_handler.cpp" line="105"/>
+        <location filename="../PIM_handler.cpp" line="124"/>
         <source>Edit</source>
         <translation>Уреди</translation>
     </message>
@@ -165,6 +165,11 @@
         <location filename="../PIM_settings.ui" line="226"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:x-large; font-weight:600;&quot;&gt;Personal Information Manager&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:x-large; font-weight:600;&quot;&gt;Менаџер личних података&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../PIM_settings.ui" line="262"/>
+        <source>&lt;b&gt;Note:&lt;/b&gt; Press Ctrl+ENTER to autofill form fields for which QupZilla finds personal entries.</source>
+        <translation>&lt;b&gt;Напомена:&lt;/b&gt; Притисните Ctrl+ENTER да бисте аутоматски попунили поља за која Капзила пронађе личне податке.</translation>
     </message>
 </context>
 </TS>
