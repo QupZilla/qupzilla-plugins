@@ -40,8 +40,8 @@ void PIM_Handler::loadSettings()
     QSettings settings(m_settingsFile, QSettings::IniFormat);
 
     settings.beginGroup("PIM");
-    m_allInfo[PI_FirstName] = settings.value("FirstName", "").toString();
     m_allInfo[PI_LastName] = settings.value("LastName", "").toString();
+    m_allInfo[PI_FirstName] = settings.value("FirstName", "").toString();
     m_allInfo[PI_Email] = settings.value("Email", "").toString();
     m_allInfo[PI_Phone] = settings.value("Phone", "").toString();
     m_allInfo[PI_Mobile] = settings.value("Mobile", "").toString();
@@ -56,8 +56,8 @@ void PIM_Handler::loadSettings()
     m_allInfo[PI_Special3] = settings.value("Special3", "").toString();
     settings.endGroup();
 
-    m_translations[PI_FirstName] = tr("First Name");
     m_translations[PI_LastName] = tr("Last Name");
+    m_translations[PI_FirstName] = tr("First Name");
     m_translations[PI_Email] = tr("E-mail");
     m_translations[PI_Phone] = tr("Phone");
     m_translations[PI_Mobile] = tr("Mobile");
@@ -71,8 +71,8 @@ void PIM_Handler::loadSettings()
     m_translations[PI_Special2] = tr("Special 2");
     m_translations[PI_Special3] = tr("Special 3");
 
+    m_infoMatches[PI_LastName] << "lastname" << "surname";
     m_infoMatches[PI_FirstName] << "firstname" << "name";
-    m_infoMatches[PI_LastName] << "lastname";
     m_infoMatches[PI_Email] << "email" << "e-mail" << "mail";
     m_infoMatches[PI_Phone] << "phone" << "telephone";
     m_infoMatches[PI_Mobile] << "mobile" << "mobilephone";
@@ -205,8 +205,15 @@ void PIM_Handler::pageLoadFinished()
 PIM_Handler::PI_Type PIM_Handler::nameMatch(const QString &name)
 {
     for (int i = 0; i < PI_Max; ++i) {
-        if (!m_allInfo[PI_Type(i)].isEmpty() && m_infoMatches[PI_Type(i)].contains(name)) {
-            return PI_Type(i);
+        if (!m_allInfo[PI_Type(i)].isEmpty()) {
+            foreach (const QString &n, m_infoMatches[PI_Type(i)]) {
+                if (name == n) {
+                    return PI_Type(i);
+                }
+                if (name.contains(n)) {
+                    return PI_Type(i);
+                }
+            }
         }
     }
 

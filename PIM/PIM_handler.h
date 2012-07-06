@@ -53,8 +53,8 @@ private slots:
 
 private:
     enum PI_Type {
-        PI_FirstName = 0,
-        PI_LastName = 1,
+        PI_LastName = 0,
+        PI_FirstName = 1,
         PI_Email = 2,
         PI_Phone = 3,
         PI_Mobile = 4,
