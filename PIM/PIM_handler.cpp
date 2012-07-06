@@ -196,7 +196,7 @@ void PIM_Handler::pageLoadFinished()
 
         PI_Type match = nameMatch(name);
         if (match != PI_Invalid) {
-            element.setStyleProperty("background-color", "inherit");
+            element.setStyleProperty("-webkit-appearance", "none");
             element.setStyleProperty("-webkit-box-shadow", "inset 0 0 2px 1px #EEE000");
         }
     }
