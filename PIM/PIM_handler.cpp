@@ -43,8 +43,8 @@ void PIM_Handler::loadSettings()
     m_allInfo[PI_LastName] = settings.value("LastName", "").toString();
     m_allInfo[PI_FirstName] = settings.value("FirstName", "").toString();
     m_allInfo[PI_Email] = settings.value("Email", "").toString();
-    m_allInfo[PI_Phone] = settings.value("Phone", "").toString();
     m_allInfo[PI_Mobile] = settings.value("Mobile", "").toString();
+    m_allInfo[PI_Phone] = settings.value("Phone", "").toString();
     m_allInfo[PI_Address] = settings.value("Address", "").toString();
     m_allInfo[PI_City] = settings.value("City", "").toString();
     m_allInfo[PI_Zip] = settings.value("Zip", "").toString();
@@ -59,8 +59,8 @@ void PIM_Handler::loadSettings()
     m_translations[PI_LastName] = tr("Last Name");
     m_translations[PI_FirstName] = tr("First Name");
     m_translations[PI_Email] = tr("E-mail");
-    m_translations[PI_Phone] = tr("Phone");
     m_translations[PI_Mobile] = tr("Mobile");
+    m_translations[PI_Phone] = tr("Phone");
     m_translations[PI_Address] = tr("Address");
     m_translations[PI_City] = tr("City");
     m_translations[PI_Zip] = tr("Zip");
@@ -74,8 +74,8 @@ void PIM_Handler::loadSettings()
     m_infoMatches[PI_LastName] << "lastname" << "surname";
     m_infoMatches[PI_FirstName] << "firstname" << "name";
     m_infoMatches[PI_Email] << "email" << "e-mail" << "mail";
-    m_infoMatches[PI_Phone] << "phone" << "telephone";
     m_infoMatches[PI_Mobile] << "mobile" << "mobilephone";
+    m_infoMatches[PI_Phone] << "phone" << "telephone";
     m_infoMatches[PI_Address] << "address";
     m_infoMatches[PI_City] << "city";
     m_infoMatches[PI_Zip] << "zip";
