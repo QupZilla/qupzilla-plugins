@@ -27,10 +27,9 @@
 #include <QWeakPointer>
 #include <QHash>
 
-class QMouseEvent;
-class QWebElement;
-class QLabel;
 class WebView;
+class WebPage;
+
 class PIM_Handler : public QObject
 {
     Q_OBJECT
@@ -42,13 +41,14 @@ public:
 signals:
 
 public slots:
-
+    void webPageCreated(WebPage* page);
     void showSettings(QWidget* parent = 0);
 
 private slots:
     void loadSettings();
-
     void pimInsert();
+
+    void pageLoadFinished();
 
 private:
     enum PI_Type {

@@ -19,6 +19,7 @@
 #include "PIM_handler.h"
 #include "PIM_settings.h"
 #include "webview.h"
+#include "webpage.h"
 
 #include <QApplication>
 #include <QSettings>
@@ -108,6 +109,11 @@ void PIM_Handler::populateWebViewMenu(QMenu* menu, WebView* view, const QWebHitT
     menu->addSeparator();
 }
 
+void PIM_Handler::webPageCreated(WebPage *page)
+{
+    connect(page, SIGNAL(loadFinished(bool)), this, SLOT(pageLoadFinished()));
+}
+
 void PIM_Handler::pimInsert()
 {
     QAction* action = qobject_cast<QAction*>(sender());
@@ -118,4 +124,14 @@ void PIM_Handler::pimInsert()
     QString info = action->data().toString();
     info.replace('"', "\\\"");
     m_element.evaluateJavaScript(QString("this.value += \"%1\"").arg(info));
+}
+
+void PIM_Handler::pageLoadFinished()
+{
+    WebPage* page = qobject_cast<WebPage*>(sender());
+    if (!page) {
+        return;
+    }
+
+    const QWebElement &document = page->mainFrame()->documentElement();
 }

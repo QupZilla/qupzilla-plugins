@@ -21,6 +21,8 @@
 
 #include "plugininterface.h"
 
+class WebPage;
+class QupZilla;
 class PIM_Handler;
 
 class PIM_Plugin : public QObject, public PluginInterface
@@ -40,6 +42,9 @@ public:
     void showSettings(QWidget* parent = 0);
 
     void populateWebViewMenu(QMenu* menu, WebView* view, const QWebHitTestResult &r);
+
+private slots:
+    void webPageCreated(WebPage* page);
 
 private:
     PIM_Handler* m_handler;

@@ -48,6 +48,8 @@ PluginSpec PIM_Plugin::pluginSpec()
 void PIM_Plugin::init(const QString &sPath)
 {
     m_handler = new PIM_Handler(sPath, this);
+
+    connect(mApp->plugins(), SIGNAL(webPageCreated(WebPage*)), m_handler, SLOT(webPageCreated(WebPage*)));
 }
 
 void PIM_Plugin::unload()
