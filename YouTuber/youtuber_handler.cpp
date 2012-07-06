@@ -87,7 +87,7 @@ void YouTuber_Handler::startExternalHandler()
     bool success = QProcess::startDetached(m_extExe, arguments);
 
     if (!success) {
-        QString info = "<ul><li><b>" + tr("Executable: ") + "</b>" + m_extExe + "</li><li><b>" + tr("Arguments: ") + "</b>" + arguments.join(' ') + "</li></ul>";
+        QString info = "<ul><li><b>" + tr("Executable: ") + "</b>" + m_extExe + "</li><li><b>" + tr("Arguments: ") + "</b>" + arguments.join(" ") + "</li></ul>";
         QMessageBox::critical(0, tr("Cannot start external viewer"), tr("Cannot start external viewer! %1").arg(info));
     }
 }
