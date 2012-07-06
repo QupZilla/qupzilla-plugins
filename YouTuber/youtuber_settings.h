@@ -37,6 +37,7 @@ public:
     ~YouTuber_Settings();
 
 private slots:
+    void chooseExternalApp();
     void dialogAccepted();
 
 private:

@@ -48,18 +48,6 @@ void YouTuber_Handler::loadSettings()
     settings.endGroup();
 }
 
-bool YouTuber_Handler::handleMousePress(QObject* obj, QMouseEvent* event)
-{
-    WebView* view = qobject_cast<WebView*>(obj);
-    if (!view) {
-        return false;
-    }
-
-    m_view = view;
-
-    return false;
-}
-
 void YouTuber_Handler::populateWebViewMenu(QMenu* menu, WebView* view, const QWebHitTestResult &r)
 {
     m_view = view;
@@ -69,20 +57,20 @@ void YouTuber_Handler::populateWebViewMenu(QMenu* menu, WebView* view, const QWe
 
     QString videoId;
     for (int i = 1; i < 4; ++i) {
-      if (!rx.cap(i).isEmpty()) {
-        videoId = rx.cap(i);
-        break;
-      }
+        if (!rx.cap(i).isEmpty()) {
+            videoId = rx.cap(i);
+            break;
+        }
     }
 
-    if(videoId.isEmpty()) {
-       rx.indexIn(view->url().toString());
-          for (int i = 1; i < 4; ++i) {
+    if (videoId.isEmpty()) {
+        rx.indexIn(view->url().toString());
+        for (int i = 1; i < 4; ++i) {
             if (!rx.cap(i).isEmpty()) {
-              videoId = rx.cap(i);
-              break;
+                videoId = rx.cap(i);
+                break;
             }
-          }
+        }
     }
 
     if (!videoId.isEmpty()) {

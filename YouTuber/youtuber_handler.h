@@ -38,8 +38,6 @@ class YouTuber_Handler : public QObject
 public:
     explicit YouTuber_Handler(const QString &sPath, QObject* parent = 0);
 
-    bool handleMousePress(QObject* obj, QMouseEvent* event);
-
     QString settingsFile();
     void loadSettings();
     void populateWebViewMenu(QMenu* menu, WebView* view, const QWebHitTestResult &r);

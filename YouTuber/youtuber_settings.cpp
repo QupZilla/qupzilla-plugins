@@ -22,6 +22,7 @@
 #include "youtuber_handler.h"
 
 #include <QSettings>
+#include <QFileDialog>
 
 YouTuber_Settings::YouTuber_Settings(YouTuber_Handler* handler, QWidget* parent)
     : QDialog(parent)
@@ -37,6 +38,7 @@ YouTuber_Settings::YouTuber_Settings(YouTuber_Handler* handler, QWidget* parent)
     ui->extArgs->setText(settings.value("Arguments", "").toString());
     settings.endGroup();
 
+    connect(ui->chooseExtView, SIGNAL(clicked()), this, SLOT(chooseExternalApp()));
     connect(this, SIGNAL(accepted()), this, SLOT(dialogAccepted()));
 }
 
@@ -49,6 +51,16 @@ void YouTuber_Settings::dialogAccepted()
     settings.endGroup();
 
     m_handler->loadSettings();
+}
+
+void YouTuber_Settings::chooseExternalApp()
+{
+    QString path = QFileDialog::getOpenFileName(this, tr("Choose executable location..."), QDir::homePath());
+    if (path.isEmpty()) {
+        return;
+    }
+
+    ui->extExe->setText(path);
 }
 
 YouTuber_Settings::~YouTuber_Settings()

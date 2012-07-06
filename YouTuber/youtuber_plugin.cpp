@@ -48,8 +48,6 @@ PluginSpec YouTuber_Plugin::pluginSpec()
 void YouTuber_Plugin::init(const QString &sPath)
 {
     m_handler = new YouTuber_Handler(sPath, this);
-
-    QZ_REGISTER_EVENT_HANDLER(PluginProxy::MousePressHandler);
 }
 
 void YouTuber_Plugin::unload()
@@ -82,15 +80,6 @@ void YouTuber_Plugin::showSettings(QWidget* parent)
 void YouTuber_Plugin::populateWebViewMenu(QMenu* menu, WebView* view, const QWebHitTestResult &r)
 {
     m_handler->populateWebViewMenu(menu, view, r);
-}
-
-bool YouTuber_Plugin::mousePress(const Qz::ObjectName &type, QObject* obj, QMouseEvent* event)
-{
-    if (type == Qz::ON_WebView) {
-        m_handler->handleMousePress(obj, event);
-    }
-
-    return false;
 }
 
 Q_EXPORT_PLUGIN2(YouTuber, YouTuber_Plugin)
