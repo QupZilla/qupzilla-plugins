@@ -75,11 +75,11 @@ void PIM_Handler::loadSettings()
     m_infoMatches[PI_LastName] << "lastname";
     m_infoMatches[PI_Email] << "email" << "e-mail" << "mail";
     m_infoMatches[PI_Phone] << "phone" << "telephone";
-    m_infoMatches[PI_Mobile] << "mobile";
+    m_infoMatches[PI_Mobile] << "mobile" << "mobilephone";
     m_infoMatches[PI_Address] << "address";
     m_infoMatches[PI_City] << "city";
     m_infoMatches[PI_Zip] << "zip";
-    m_infoMatches[PI_State] << "state";
+    m_infoMatches[PI_State] << "state" << "region";
     m_infoMatches[PI_Country] << "country";
     m_infoMatches[PI_HomePage] << "homepage" << "www";
 
