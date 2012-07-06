@@ -38,7 +38,7 @@ PluginSpec YouTuber_Plugin::pluginSpec()
     spec.info = "YouTube video link handler";
     spec.description = "Open YouTube videos in external program";
     spec.version = "0.3.1";
-    spec.author = QString::fromUtf8("Mladen Pejaković") + " <pejakm@gmail.com>";
+    spec.author = QString::fromUtf8("Mladen Pejaković <pejakm@gmail.com>");
     spec.icon = QPixmap(":/youtuber/data/youtube.png");
     spec.hasSettings = true;
 

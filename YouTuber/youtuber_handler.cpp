@@ -81,13 +81,13 @@ void YouTuber_Handler::populateWebViewMenu(QMenu* menu, WebView* view, const QWe
 void YouTuber_Handler::startExternalHandler()
 {
     const QUrl &url = qobject_cast<QAction*>(sender())->data().toUrl();
-    QStringList arguments = m_extArgs.split(" ");
-    arguments << url.toString().prepend("www.youtube.com/watch?v=");
+    QStringList arguments = m_extArgs.split(' ', QString::SkipEmptyParts);
+    arguments << url.toString().prepend("http://www.youtube.com/watch?v=");
 
     bool success = QProcess::startDetached(m_extExe, arguments);
 
     if (!success) {
-        QString info = "<ul><li><b>" + tr("Executable: ") + "</b>" + m_extExe + "</li><li><b>" + tr("Arguments: ") + "</b>" + arguments.join(" ") + "</li></ul>";
+        QString info = "<ul><li><b>" + tr("Executable: ") + "</b>" + m_extExe + "</li><li><b>" + tr("Arguments: ") + "</b>" + arguments.join(' ') + "</li></ul>";
         QMessageBox::critical(0, tr("Cannot start external viewer"), tr("Cannot start external viewer! %1").arg(info));
     }
 }
