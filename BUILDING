@@ -19,5 +19,8 @@ General
         (eg. where YouTuber/ or PIM/ ... directories are located)
 
   
-  If you are using Qt Creator for building, you need to specify these variables
-  in Projects/Build Environment section
+  Note: If you are using Qt Creator for building, you need to specify these
+  variables in Projects/Build Environment section
+
+*********************************************************************************
+  All you need to do now is run qmake && make from QupZilla source directory.
