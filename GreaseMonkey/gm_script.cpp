@@ -141,7 +141,7 @@ void GM_Script::parseScript(const QString &filePath)
         return;
     }
 
-    QString fileData = file.readAll();
+    QString fileData = QString::fromUtf8(file.readAll());
 
     QRegExp rx("// ==UserScript==(.*)// ==/UserScript==");
     rx.indexIn(fileData);
@@ -213,6 +213,10 @@ void GM_Script::parseScript(const QString &filePath)
         else if (key == "@downloadURL" && m_downloadUrl.isEmpty()) {
             m_downloadUrl = QUrl(value);
         }
+    }
+
+    if (m_include.isEmpty()) {
+        m_include.append(GM_UrlMatcher("*"));
     }
 
     int index = fileData.indexOf("// ==/UserScript==") + 18;
