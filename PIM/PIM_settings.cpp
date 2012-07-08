@@ -50,6 +50,10 @@ PIM_Settings::PIM_Settings(const QString &settingsFile, QWidget* parent)
     settings.endGroup();
 
     connect(this, SIGNAL(accepted()), this, SLOT(dialogAccepted()));
+
+    int szHeight = sizeHint().height();
+    resize(QSize(width(), szHeight));
+    setMinimumHeight(szHeight);
 }
 
 void PIM_Settings::dialogAccepted()
