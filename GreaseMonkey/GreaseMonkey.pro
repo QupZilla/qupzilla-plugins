@@ -33,7 +33,9 @@ FORMS += \
 
 RESOURCES += greasemonkey.qrc
 
-#TRANSLATIONS += translations/cs_CZ.ts\
+TRANSLATIONS = \
+    translations/sr_BA.ts \
+    translations/sr_RS.ts \
 
 srcdir = $$(QUPZILLA_SRCDIR)
 equals(srcdir, "") {
