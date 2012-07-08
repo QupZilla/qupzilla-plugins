@@ -18,13 +18,43 @@
 #include "gm_urlmatcher.h"
 
 #include <QDebug>
+#include <QStringList>
+
+bool wildcardMatch(const QString &string, const QString &pattern)
+{
+    int stringSize = string.size();
+    int patternSize = pattern.size();
+
+    bool startsWithWildcard = pattern[0] == '*';
+    bool endsWithWildcard = pattern[patternSize - 1] == '*';
+
+    const QStringList &parts = pattern.split('*');
+    int pos = 0;
+
+    if (startsWithWildcard) {
+        pos = string.indexOf(parts.at(1));
+        if (pos == -1) {
+            return false;
+        }
+    }
+
+    foreach(const QString & part, parts) {
+        pos = string.indexOf(part, pos);
+        if (pos == -1) {
+            return false;
+        }
+    }
+
+    if (!endsWithWildcard && stringSize - pos != parts.last().size()) {
+        return false;
+    }
+
+    return true;
+}
 
 GM_UrlMatcher::GM_UrlMatcher(const QString &pattern)
     : m_pattern(pattern)
     , m_useRegExp(false)
-    , m_useContains(false)
-    , m_useStartsWith(false)
-    , m_useEndsWith(false)
 {
     parsePattern(m_pattern);
 }
@@ -36,17 +66,11 @@ QString GM_UrlMatcher::pattern() const
 
 bool GM_UrlMatcher::match(const QString &urlString) const
 {
-    if (m_useContains) {
-        return urlString.contains(m_matchString);
-    }
-    else if (m_useStartsWith) {
-        return urlString.startsWith(m_matchString);
-    }
-    else if (m_useEndsWith) {
-        return urlString.endsWith(m_matchString);
+    if (m_useRegExp) {
+        return m_regExp.indexIn(urlString) != -1;
     }
     else {
-        return m_regExp.indexIn(urlString) != -1;
+        return wildcardMatch(urlString, m_matchString);
     }
 }
 
@@ -61,39 +85,19 @@ void GM_UrlMatcher::parsePattern(QString pattern)
         return;
     }
 
-    bool containTld = pattern.contains(".tld");
-    bool wildcardEnd = pattern.endsWith('*');
-    bool wildcardStart = pattern.startsWith('*');
-    int wildcardCount = pattern.count('*');
+    if (pattern.contains(".tld")) {
 
-    if (!containTld && wildcardEnd && wildcardCount == 1) {
-        m_useStartsWith = true;
-        m_matchString = pattern.left(pattern.size() - 1);
-        return;
+        pattern.replace(QRegExp("(\\W)"), "\\\\1")
+        .replace(QRegExp("\\*+"), "*")
+        .replace(QRegExp("^\\\\\\|"), "^")
+        .replace(QRegExp("\\\\\\|$"), "$")
+        .replace(QRegExp("\\\\\\*"), ".*")
+        .replace("\\.tld", "\\.[a-z.]{2,6}");
+
+        m_useRegExp = true;
+        m_regExp = QRegExp(pattern, Qt::CaseInsensitive);
     }
-
-    if (!containTld && wildcardStart && wildcardCount == 1) {
-        m_useEndsWith = true;
-        m_matchString = pattern.mid(1);
-        return;
-    }
-
-    if (!containTld && wildcardStart && wildcardEnd && wildcardCount == 2) {
-        pattern = pattern.mid(1);
-        pattern = pattern.left(pattern.size() - 1);
-
-        m_useContains = true;
+    else {
         m_matchString = pattern;
-        return;
     }
-
-    pattern.replace(QRegExp("(\\W)"), "\\\\1")
-    .replace(QRegExp("\\*+"), "*")
-    .replace(QRegExp("^\\\\\\|"), "^")
-    .replace(QRegExp("\\\\\\|$"), "$")
-    .replace(QRegExp("\\\\\\*"), ".*")
-    .replace("\\.tld", "\\.[a-z.]{2,6}");
-
-    m_useRegExp = true;
-    m_regExp = QRegExp(pattern, Qt::CaseInsensitive);
 }

@@ -17,6 +17,7 @@ FORMS += \
 RESOURCES = PIM_res.qrc
 
 TRANSLATIONS = \
+    translations/de_DE.ts \
     translations/sr_BA.ts \
     translations/sr_RS.ts \
 

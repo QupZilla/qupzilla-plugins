@@ -27,6 +27,7 @@ public:
     GM_UrlMatcher(const QString &pattern);
 
     QString pattern() const;
+
     bool match(const QString &urlString) const;
 
 private:
@@ -38,9 +39,6 @@ private:
     QRegExp m_regExp;
 
     bool m_useRegExp;
-    bool m_useContains;
-    bool m_useStartsWith;
-    bool m_useEndsWith;
 };
 
 #endif // GM_URLMATCHER_H
