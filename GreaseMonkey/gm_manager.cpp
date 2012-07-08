@@ -153,6 +153,7 @@ bool GM_Manager::removeScript(GM_Script* script)
     }
 
     m_disabledScripts.removeOne(script->fullName());
+    QFile::remove(script->fileName());
     delete script;
 
     emit scriptsChanged();
