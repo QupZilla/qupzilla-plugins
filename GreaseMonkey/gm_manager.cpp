@@ -179,9 +179,12 @@ void GM_Manager::showErrorInstallNotification() const
 
     qWarning() << "GreaseMonkey: Cannot install script";
 }
-
+#include <QElapsedTimer>
 void GM_Manager::pageLoadStart()
 {
+    QElapsedTimer timer;
+    timer.start();
+
     QWebFrame* frame = qobject_cast<QWebFrame*>(sender());
     if (!frame) {
         return;
@@ -207,6 +210,8 @@ void GM_Manager::pageLoadStart()
             frame->evaluateJavaScript(jscript);
         }
     }
+
+    qDebug() << frame->url() << "elapsed" << timer.elapsed();
 }
 
 void GM_Manager::load()

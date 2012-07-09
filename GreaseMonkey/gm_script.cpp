@@ -126,6 +126,7 @@ bool GM_Script::match(const QString &urlString)
 
     foreach(const GM_UrlMatcher & matcher, m_include) {
         if (matcher.match(urlString)) {
+            qDebug() << "Matched" << name();
             return true;
         }
     }

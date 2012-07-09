@@ -1,47 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="sr_BA">
+<TS version="2.0" language="de_DE">
 <context>
     <name>GM_AddScriptDialog</name>
     <message>
         <location filename="../gm_addscriptdialog.ui" line="14"/>
         <source>GreaseMonkey Installation</source>
-        <translation>Инсталација Greasemonkey скрипте</translation>
+        <translation>GreaseMonkey Installation</translation>
     </message>
     <message>
         <location filename="../gm_addscriptdialog.ui" line="51"/>
         <source>&lt;h3&gt;GreaseMonkey Installation&lt;/h3&gt;</source>
-        <translation>&lt;h3&gt;Инсталација Greasemonkey скрипте&lt;/h3&gt;</translation>
+        <translation>&lt;h3&gt;GreaseMonkey Installation&lt;/h3&gt;</translation>
     </message>
     <message>
         <location filename="../gm_addscriptdialog.ui" line="73"/>
         <source>You are about to install this userscript into GreaseMonkey:</source>
-        <translation>Инсталираћете ову скрипту у GreaseMonkey:</translation>
+        <translation>Sie sind im Begriff, dieses Skript in GreaseMonkey zu installieren:</translation>
     </message>
     <message>
         <location filename="../gm_addscriptdialog.ui" line="86"/>
         <source>&lt;b&gt;You should only install scripts from sources you trust!&lt;/b&gt;</source>
-        <translation>&lt;b&gt;Инсталирајте само скрипте од извора којима вјерујете!&lt;/b&gt;</translation>
+        <translation>&lt;b&gt;Installieren Sie nur Skripte aus vertrauenswürdigen Quellen!&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../gm_addscriptdialog.ui" line="96"/>
         <source>Are you sure you want to install it?</source>
-        <translation>Желите ли заиста да је инсталирате?</translation>
+        <translation>Möchten Sie es wirklich installieren?</translation>
     </message>
     <message>
         <location filename="../gm_addscriptdialog.ui" line="114"/>
         <source>Show source code of script</source>
-        <translation>Прикажи изворни кôд скрипте</translation>
+        <translation>Quelltext anzeigen</translation>
     </message>
     <message>
         <location filename="../gm_addscriptdialog.cpp" line="48"/>
         <source>&lt;p&gt;runs at&lt;br/&gt;&lt;i&gt;%1&lt;/i&gt;&lt;/p&gt;</source>
-        <translation>&lt;p&gt;покреће се на&lt;br/&gt;&lt;i&gt;%1&lt;/i&gt;&lt;/p&gt;</translation>
+        <translation>&lt;p&gt;startet bei&lt;br/&gt;&lt;i&gt;%1&lt;/i&gt;&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../gm_addscriptdialog.cpp" line="52"/>
         <source>&lt;p&gt;do not runs at&lt;br/&gt;&lt;i&gt;%1&lt;/i&gt;&lt;/p&gt;</source>
-        <translation>&lt;p&gt;не покреће се на&lt;br/&gt;&lt;i&gt;%1&lt;/i&gt;&lt;/p&gt;</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -54,17 +54,17 @@
     <message>
         <location filename="../gm_manager.cpp" line="167"/>
         <source>&apos;%1&apos; installed successfully</source>
-        <translation>„%1“ је успјешно инсталирана</translation>
+        <translation>&apos;%1&apos; erfolgreich installiert</translation>
     </message>
     <message>
         <location filename="../gm_manager.cpp" line="175"/>
         <source>GreaseMonkey Error</source>
-        <translation>GreaseMonkey грешка</translation>
+        <translation>GreaseMonkey Fehler</translation>
     </message>
     <message>
         <location filename="../gm_manager.cpp" line="176"/>
         <source>Cannot install script</source>
-        <translation>Не могу да инсталирам скрипту</translation>
+        <translation>Skript kann nicht installiert werden</translation>
     </message>
 </context>
 <context>
@@ -72,12 +72,12 @@
     <message>
         <location filename="../gm_notification.ui" line="45"/>
         <source>This script can be installed with GreaseMonkey extension.</source>
-        <translation>Ова скрипта може бити инсталирана помоћу GreaseMonkey проширења.</translation>
+        <translation>Dieses Skript kann mit der GreaseMonkey Extension installiert werden.</translation>
     </message>
     <message>
         <location filename="../gm_notification.ui" line="65"/>
         <source>Install</source>
-        <translation>Инсталирај</translation>
+        <translation>Installieren</translation>
     </message>
 </context>
 <context>
@@ -85,32 +85,32 @@
     <message>
         <location filename="../settings/gm_settings.ui" line="14"/>
         <source>GreaseMonkey Scripts</source>
-        <translation>GreaseMonkey скрипте</translation>
+        <translation>GreaseMonkey Skripte</translation>
     </message>
     <message>
         <location filename="../settings/gm_settings.ui" line="54"/>
         <source>&lt;h3&gt;GreaseMonkey Scripts&lt;/h3&gt;</source>
-        <translation>&lt;h3&gt;GreaseMonkey скрипте&lt;/h3&gt;</translation>
+        <translation>&lt;h3&gt;GreaseMonkey Skripte&lt;/h3&gt;</translation>
     </message>
     <message>
         <location filename="../settings/gm_settings.ui" line="76"/>
         <source>Double clicking script will show additional information</source>
-        <translation>Двоклик ће вам приказати додатне податке</translation>
+        <translation>Für weitere Informationen bitte doppelklicken</translation>
     </message>
     <message>
         <location filename="../settings/gm_settings.ui" line="156"/>
         <source>More scripts can be downloaded from</source>
-        <translation>Скрипте можете преузети са</translation>
+        <translation>Weitere Skripte herunterladen von</translation>
     </message>
     <message>
         <location filename="../settings/gm_settings.cpp" line="66"/>
         <source>Remove script</source>
-        <translation>Уклони скрипту</translation>
+        <translation>Skript entfernen</translation>
     </message>
     <message>
         <location filename="../settings/gm_settings.cpp" line="67"/>
         <source>Are you sure you want to remove &apos;%1&apos;?</source>
-        <translation>Желите ли заиста да уклоните „%1“?</translation>
+        <translation>Möchten Sie &apos;%1&apos; wirklich entfernen?</translation>
     </message>
 </context>
 <context>
@@ -118,42 +118,42 @@
     <message>
         <location filename="../settings/gm_settingsscriptinfo.ui" line="19"/>
         <source>Name:</source>
-        <translation>Име:</translation>
+        <translation>Name:</translation>
     </message>
     <message>
         <location filename="../settings/gm_settingsscriptinfo.ui" line="29"/>
         <source>Version:</source>
-        <translation>Издање:</translation>
+        <translation>Version:</translation>
     </message>
     <message>
         <location filename="../settings/gm_settingsscriptinfo.ui" line="39"/>
         <source>URL:</source>
-        <translation>УРЛ:</translation>
+        <translation>URL:</translation>
     </message>
     <message>
         <location filename="../settings/gm_settingsscriptinfo.ui" line="49"/>
         <source>Start at:</source>
-        <translation>Покреће се при:</translation>
+        <translation>Beginnen bei:</translation>
     </message>
     <message>
         <location filename="../settings/gm_settingsscriptinfo.ui" line="59"/>
         <source>Description:</source>
-        <translation>Опис:</translation>
+        <translation>Beschreibung:</translation>
     </message>
     <message>
         <location filename="../settings/gm_settingsscriptinfo.ui" line="69"/>
         <source>Runst at:</source>
-        <translation>Покреће се на:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settings/gm_settingsscriptinfo.ui" line="79"/>
         <source>Do not runs at:</source>
-        <translation>Не покреће се на:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settings/gm_settingsscriptinfo.cpp" line="27"/>
         <source>Script Details of %1</source>
-        <translation>Детаљи скрипте %1</translation>
+        <translation>Skript Details von %1</translation>
     </message>
 </context>
 </TS>

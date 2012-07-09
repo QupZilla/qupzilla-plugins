@@ -48,7 +48,7 @@
     </message>
     <message>
         <source>Choose executable location...</source>
-        <translation type="unfinished"></translation>
+        <translation>Изаберите извршни фајл...</translation>
     </message>
 </context>
 </TS>
