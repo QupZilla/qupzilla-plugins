@@ -1,47 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0">
+<TS version="2.0" language="sr_RS">
 <context>
     <name>GM_AddScriptDialog</name>
     <message>
         <location filename="../gm_addscriptdialog.ui" line="14"/>
         <source>GreaseMonkey Installation</source>
-        <translation type="unfinished"></translation>
+        <translation>Инсталација Greasemonkey скрипте</translation>
     </message>
     <message>
         <location filename="../gm_addscriptdialog.ui" line="51"/>
         <source>&lt;h3&gt;GreaseMonkey Installation&lt;/h3&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;h3&gt;Инсталација Greasemonkey скрипте&lt;/h3&gt;</translation>
     </message>
     <message>
         <location filename="../gm_addscriptdialog.ui" line="73"/>
         <source>You are about to install this userscript into GreaseMonkey:</source>
-        <translation type="unfinished"></translation>
+        <translation>Инсталираћете ову скрипту у GreaseMonkey:</translation>
     </message>
     <message>
         <location filename="../gm_addscriptdialog.ui" line="86"/>
         <source>&lt;b&gt;You should only install scripts from sources you trust!&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Инсталирајте само скрипте од извора којима верујете!&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../gm_addscriptdialog.ui" line="96"/>
         <source>Are you sure you want to install it?</source>
-        <translation type="unfinished"></translation>
+        <translation>Желите ли заиста да је инсталирате?</translation>
     </message>
     <message>
         <location filename="../gm_addscriptdialog.ui" line="114"/>
         <source>Show source code of script</source>
-        <translation type="unfinished"></translation>
+        <translation>Прикажи изворни кôд скрипте</translation>
     </message>
     <message>
         <location filename="../gm_addscriptdialog.cpp" line="48"/>
         <source>&lt;p&gt;runs at&lt;br/&gt;&lt;i&gt;%1&lt;/i&gt;&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;покреће се на&lt;br/&gt;&lt;i&gt;%1&lt;/i&gt;&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../gm_addscriptdialog.cpp" line="52"/>
         <source>&lt;p&gt;do not runs at&lt;br/&gt;&lt;i&gt;%1&lt;/i&gt;&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;не покреће се на&lt;br/&gt;&lt;i&gt;%1&lt;/i&gt;&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
@@ -49,22 +49,22 @@
     <message>
         <location filename="../gm_manager.cpp" line="166"/>
         <source>GreaseMonkey</source>
-        <translation type="unfinished"></translation>
+        <translation>GreaseMonkey</translation>
     </message>
     <message>
         <location filename="../gm_manager.cpp" line="167"/>
         <source>&apos;%1&apos; installed successfully</source>
-        <translation type="unfinished"></translation>
+        <translation>„%1“ је успешно инсталирана</translation>
     </message>
     <message>
         <location filename="../gm_manager.cpp" line="175"/>
         <source>GreaseMonkey Error</source>
-        <translation type="unfinished"></translation>
+        <translation>GreaseMonkey грешка</translation>
     </message>
     <message>
         <location filename="../gm_manager.cpp" line="176"/>
         <source>Cannot install script</source>
-        <translation type="unfinished"></translation>
+        <translation>Не могу да инсталирам скрипту</translation>
     </message>
 </context>
 <context>
@@ -72,12 +72,12 @@
     <message>
         <location filename="../gm_notification.ui" line="45"/>
         <source>This script can be installed with GreaseMonkey extension.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ова скрипта може бити инсталирана помоћу GreaseMonkey проширења.</translation>
     </message>
     <message>
         <location filename="../gm_notification.ui" line="65"/>
         <source>Install</source>
-        <translation type="unfinished"></translation>
+        <translation>Инсталирај</translation>
     </message>
 </context>
 <context>
@@ -85,32 +85,32 @@
     <message>
         <location filename="../settings/gm_settings.ui" line="14"/>
         <source>GreaseMonkey Scripts</source>
-        <translation type="unfinished"></translation>
+        <translation>GreaseMonkey скрипте</translation>
     </message>
     <message>
         <location filename="../settings/gm_settings.ui" line="54"/>
         <source>&lt;h3&gt;GreaseMonkey Scripts&lt;/h3&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;h3&gt;GreaseMonkey скрипте&lt;/h3&gt;</translation>
     </message>
     <message>
         <location filename="../settings/gm_settings.ui" line="76"/>
         <source>Double clicking script will show additional information</source>
-        <translation type="unfinished"></translation>
+        <translation>Двоклик ће вам приказати додатне податке</translation>
     </message>
     <message>
         <location filename="../settings/gm_settings.ui" line="156"/>
         <source>More scripts can be downloaded from</source>
-        <translation type="unfinished"></translation>
+        <translation>Скрипте можете преузети са</translation>
     </message>
     <message>
         <location filename="../settings/gm_settings.cpp" line="66"/>
         <source>Remove script</source>
-        <translation type="unfinished"></translation>
+        <translation>Уклони скрипту</translation>
     </message>
     <message>
         <location filename="../settings/gm_settings.cpp" line="67"/>
         <source>Are you sure you want to remove &apos;%1&apos;?</source>
-        <translation type="unfinished"></translation>
+        <translation>Желите ли заиста да уклоните „%1“?</translation>
     </message>
 </context>
 <context>
@@ -118,42 +118,42 @@
     <message>
         <location filename="../settings/gm_settingsscriptinfo.ui" line="19"/>
         <source>Name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Име:</translation>
     </message>
     <message>
         <location filename="../settings/gm_settingsscriptinfo.ui" line="29"/>
         <source>Version:</source>
-        <translation type="unfinished"></translation>
+        <translation>Издање:</translation>
     </message>
     <message>
         <location filename="../settings/gm_settingsscriptinfo.ui" line="39"/>
         <source>URL:</source>
-        <translation type="unfinished"></translation>
+        <translation>УРЛ:</translation>
     </message>
     <message>
         <location filename="../settings/gm_settingsscriptinfo.ui" line="49"/>
         <source>Start at:</source>
-        <translation type="unfinished"></translation>
+        <translation>Покреће се при:</translation>
     </message>
     <message>
         <location filename="../settings/gm_settingsscriptinfo.ui" line="59"/>
         <source>Description:</source>
-        <translation type="unfinished"></translation>
+        <translation>Опис:</translation>
     </message>
     <message>
         <location filename="../settings/gm_settingsscriptinfo.ui" line="69"/>
         <source>Runst at:</source>
-        <translation type="unfinished"></translation>
+        <translation>Покреће се на:</translation>
     </message>
     <message>
         <location filename="../settings/gm_settingsscriptinfo.ui" line="79"/>
         <source>Do not runs at:</source>
-        <translation type="unfinished"></translation>
+        <translation>Не покреће се на:</translation>
     </message>
     <message>
         <location filename="../settings/gm_settingsscriptinfo.cpp" line="27"/>
         <source>Script Details of %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Детаљи скрипте %1</translation>
     </message>
 </context>
 </TS>
