@@ -142,7 +142,7 @@
     </message>
     <message>
         <location filename="../settings/gm_settingsscriptinfo.ui" line="69"/>
-        <source>Runst at:</source>
+        <source>Runs at:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
