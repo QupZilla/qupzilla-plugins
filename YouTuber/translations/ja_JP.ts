@@ -49,5 +49,9 @@
         <source>YouTuber Settings</source>
         <translation>YouTuberの設定</translation>
     </message>
+    <message>
+        <source>Choose executable location...</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

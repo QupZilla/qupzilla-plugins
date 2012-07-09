@@ -45,14 +45,14 @@ GM_AddScriptDialog::GM_AddScriptDialog(GM_Manager* manager, GM_Script* script, Q
     const QStringList &exclude = script->exclude();
 
     if (!include.isEmpty()) {
-        runsAt = tr("<p>runs at<br/><i>%4</i></p>").arg(include.join("<br/>"));
+        runsAt = tr("<p>runs at<br/><i>%1</i></p>").arg(include.join("<br/>"));
     }
 
     if (!exclude.isEmpty()) {
-        dontRunsAt = tr("<p>do not runs at<br/><i>%5</i></p>").arg(exclude.join("<br/>"));
+        dontRunsAt = tr("<p>do not runs at<br/><i>%1</i></p>").arg(exclude.join("<br/>"));
     }
 
-    QString scriptInfo = tr("<b>%1</b> %2<br/>%3 %4 %5").arg(script->name(), script->version(), script->description(), runsAt, dontRunsAt);
+    QString scriptInfo = QString("<b>%1</b> %2<br/>%3 %4 %5").arg(script->name(), script->version(), script->description(), runsAt, dontRunsAt);
     ui->textBrowser->setText(scriptInfo);
 
     connect(ui->showSource, SIGNAL(clicked()), this, SLOT(showSource()));

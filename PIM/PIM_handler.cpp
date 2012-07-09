@@ -63,13 +63,13 @@ void PIM_Handler::loadSettings()
     m_translations[PI_Phone] = tr("Phone");
     m_translations[PI_Address] = tr("Address");
     m_translations[PI_City] = tr("City");
-    m_translations[PI_Zip] = tr("Zip");
+    m_translations[PI_Zip] = tr("ZIP Code");
     m_translations[PI_State] = tr("State/Region");
     m_translations[PI_Country] = tr("Country");
     m_translations[PI_HomePage] = tr("Home Page");
-    m_translations[PI_Special1] = tr("Special 1");
-    m_translations[PI_Special2] = tr("Special 2");
-    m_translations[PI_Special3] = tr("Special 3");
+    m_translations[PI_Special1] = tr("Custom 1");
+    m_translations[PI_Special2] = tr("Custom 2");
+    m_translations[PI_Special3] = tr("Custom 3");
 
     m_infoMatches[PI_LastName] << "lastname" << "surname";
     m_infoMatches[PI_FirstName] << "firstname" << "name";
@@ -107,7 +107,7 @@ void PIM_Handler::populateWebViewMenu(QMenu* menu, WebView* view, const QWebHitT
         loadSettings();
     }
 
-    QMenu* pimMenu = new QMenu(tr("Insert Personal"));
+    QMenu* pimMenu = new QMenu(tr("Insert Personal Information"));
     pimMenu->setIcon(QIcon(":/PIM/data/PIM.png"));
 
     for (int i = 0; i < PI_Max; ++i) {
@@ -206,7 +206,7 @@ PIM_Handler::PI_Type PIM_Handler::nameMatch(const QString &name)
 {
     for (int i = 0; i < PI_Max; ++i) {
         if (!m_allInfo[PI_Type(i)].isEmpty()) {
-            foreach (const QString &n, m_infoMatches[PI_Type(i)]) {
+            foreach(const QString & n, m_infoMatches[PI_Type(i)]) {
                 if (name == n) {
                     return PI_Type(i);
                 }

@@ -46,5 +46,9 @@
         <source>YouTuber Settings</source>
         <translation>Impostazioni di YouTuber</translation>
     </message>
+    <message>
+        <source>Choose executable location...</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

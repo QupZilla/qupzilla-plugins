@@ -6,27 +6,62 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>576</height>
+    <width>539</width>
+    <height>346</height>
    </rect>
-  </property>
-  <property name="minimumSize">
-   <size>
-    <width>400</width>
-    <height>0</height>
-   </size>
   </property>
   <property name="windowTitle">
    <string>PIM Settings</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QLabel" name="pluginicon">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_2">
+       <property name="pixmap">
+        <pixmap resource="PIM_res.qrc">:/PIM/data/PIM.png</pixmap>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>&lt;h2&gt;Personal Information Manager&lt;/h2&gt;</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QLabel" name="label_14">
      <property name="text">
-      <string/>
-     </property>
-     <property name="pixmap">
-      <pixmap resource="PIM_res.qrc">:/PIM/data/PIM.png</pixmap>
+      <string>Your personal information that will be used on webpages.</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -34,25 +69,52 @@
     </widget>
    </item>
    <item>
-    <widget class="QLabel" name="title">
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:x-large; font-weight:600;&quot;&gt;Personal Information Manager&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <layout class="QFormLayout" name="formLayout_1">
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_5">
+       <property name="text">
+        <string>Phone:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="QLineEdit" name="pim_address"/>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="label_7">
+       <property name="text">
+        <string>Address:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>Last Name:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
      <item row="0" column="1">
       <widget class="QLineEdit" name="pim_firstname"/>
      </item>
-     <item row="1" column="1">
-      <widget class="QLineEdit" name="pim_lastname"/>
-     </item>
-     <item row="2" column="1">
-      <widget class="QLineEdit" name="pim_email"/>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>First Name:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
      </item>
      <item row="3" column="1">
       <widget class="QLineEdit" name="pim_phone"/>
@@ -60,140 +122,142 @@
      <item row="4" column="1">
       <widget class="QLineEdit" name="pim_mobile"/>
      </item>
-     <item row="5" column="1">
-      <widget class="QLineEdit" name="pim_address"/>
-     </item>
-     <item row="6" column="1">
-      <widget class="QLineEdit" name="pim_city"/>
-     </item>
-     <item row="7" column="1">
-      <widget class="QLineEdit" name="pim_zip"/>
-     </item>
-     <item row="8" column="0">
-      <widget class="QLabel" name="labelState">
+     <item row="4" column="0">
+      <widget class="QLabel" name="label_6">
        <property name="text">
-        <string>State/Region:</string>
+        <string>Mobile Phone:</string>
        </property>
-      </widget>
-     </item>
-     <item row="8" column="1">
-      <widget class="QLineEdit" name="pim_state"/>
-     </item>
-     <item row="9" column="0">
-      <widget class="QLabel" name="labelCountry">
-       <property name="text">
-        <string>Country:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="9" column="1">
-      <widget class="QLineEdit" name="pim_country"/>
-     </item>
-     <item row="10" column="0">
-      <widget class="QLabel" name="labelHomePage">
-       <property name="text">
-        <string>Home Page:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="10" column="1">
-      <widget class="QLineEdit" name="pim_homepage"/>
-     </item>
-     <item row="11" column="0">
-      <widget class="QLabel" name="labelSpecial1">
-       <property name="text">
-        <string>Custom 1:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="11" column="1">
-      <widget class="QLineEdit" name="pim_special1"/>
-     </item>
-     <item row="12" column="0">
-      <widget class="QLabel" name="labelSpecial2">
-       <property name="text">
-        <string>Custom 2:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="12" column="1">
-      <widget class="QLineEdit" name="pim_special2"/>
-     </item>
-     <item row="13" column="0">
-      <widget class="QLabel" name="labelSpecial3">
-       <property name="text">
-        <string>Custom 3:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="13" column="1">
-      <widget class="QLineEdit" name="pim_special3"/>
-     </item>
-     <item row="7" column="0">
-      <widget class="QLabel" name="labelZip">
-       <property name="text">
-        <string>ZIP Code:</string>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
        </property>
       </widget>
      </item>
      <item row="6" column="0">
-      <widget class="QLabel" name="labelCity">
+      <widget class="QLabel" name="label_8">
        <property name="text">
         <string>City:</string>
        </property>
-      </widget>
-     </item>
-     <item row="5" column="0">
-      <widget class="QLabel" name="labelAddress">
-       <property name="text">
-        <string>Address:</string>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
        </property>
       </widget>
      </item>
-     <item row="4" column="0">
-      <widget class="QLabel" name="labeMobile">
-       <property name="text">
-        <string>Mobile Phone:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="0">
-      <widget class="QLabel" name="labelPhone">
-       <property name="text">
-        <string>Phone:</string>
-       </property>
-      </widget>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="pim_lastname"/>
      </item>
      <item row="2" column="0">
-      <widget class="QLabel" name="labelEmail">
+      <widget class="QLabel" name="label_15">
        <property name="text">
-        <string>E-Mail:</string>
+        <string>E-mail:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
        </property>
       </widget>
      </item>
-     <item row="1" column="0">
-      <widget class="QLabel" name="labelLastName">
+     <item row="6" column="1">
+      <widget class="QLineEdit" name="pim_city"/>
+     </item>
+     <item row="2" column="1">
+      <widget class="QLineEdit" name="pim_email"/>
+     </item>
+     <item row="0" column="2">
+      <widget class="QLabel" name="label_9">
        <property name="text">
-        <string>Last Name:</string>
+        <string>ZIP Code:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
        </property>
       </widget>
      </item>
-     <item row="0" column="0">
-      <widget class="QLabel" name="labelFirstName">
+     <item row="0" column="3">
+      <widget class="QLineEdit" name="pim_zip"/>
+     </item>
+     <item row="1" column="2">
+      <widget class="QLabel" name="label_10">
        <property name="text">
-        <string>First Name:</string>
+        <string>State/Region:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
        </property>
       </widget>
+     </item>
+     <item row="1" column="3">
+      <widget class="QLineEdit" name="pim_state"/>
+     </item>
+     <item row="2" column="2">
+      <widget class="QLabel" name="label_11">
+       <property name="text">
+        <string>Country:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="3">
+      <widget class="QLineEdit" name="pim_country"/>
+     </item>
+     <item row="3" column="2">
+      <widget class="QLabel" name="label_12">
+       <property name="text">
+        <string>Home Page:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="3">
+      <widget class="QLineEdit" name="pim_homepage"/>
+     </item>
+     <item row="4" column="2">
+      <widget class="QLabel" name="label_16">
+       <property name="text">
+        <string>Custom 1:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="3">
+      <widget class="QLineEdit" name="pim_special1"/>
+     </item>
+     <item row="5" column="2">
+      <widget class="QLabel" name="label_17">
+       <property name="text">
+        <string>Custom 2:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="3">
+      <widget class="QLineEdit" name="pim_special2"/>
+     </item>
+     <item row="6" column="2">
+      <widget class="QLabel" name="label_18">
+       <property name="text">
+        <string>Custom 3:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="3">
+      <widget class="QLineEdit" name="pim_special3"/>
      </item>
     </layout>
    </item>
    <item>
-    <widget class="QLabel" name="label">
+    <widget class="QLabel" name="label_13">
      <property name="text">
       <string>&lt;b&gt;Note:&lt;/b&gt; Press Ctrl+ENTER to autofill form fields for which QupZilla finds personal entries.</string>
-     </property>
-     <property name="wordWrap">
-      <bool>true</bool>
      </property>
     </widget>
    </item>
@@ -212,5 +276,38 @@
  <resources>
   <include location="PIM_res.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>PIM_Settings</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>248</x>
+     <y>254</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>PIM_Settings</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

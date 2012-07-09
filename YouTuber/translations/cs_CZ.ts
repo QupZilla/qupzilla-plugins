@@ -46,5 +46,9 @@
         <source>YouTuber Settings</source>
         <translation>Nastavení YouTuberu</translation>
     </message>
+    <message>
+        <source>Choose executable location...</source>
+        <translation>Zvolte cestu k programu...</translation>
+    </message>
 </context>
 </TS>
