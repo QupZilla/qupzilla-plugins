@@ -49,7 +49,7 @@ GM_AddScriptDialog::GM_AddScriptDialog(GM_Manager* manager, GM_Script* script, Q
     }
 
     if (!exclude.isEmpty()) {
-        dontRunsAt = tr("<p>do not runs at<br/><i>%1</i></p>").arg(exclude.join("<br/>"));
+        dontRunsAt = tr("<p>does not run at<br/><i>%1</i></p>").arg(exclude.join("<br/>"));
     }
 
     QString scriptInfo = QString("<b>%1</b> %2<br/>%3 %4 %5").arg(script->name(), script->version(), script->description(), runsAt, dontRunsAt);
