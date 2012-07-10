@@ -48,7 +48,7 @@
     </message>
     <message>
         <source>Choose executable location...</source>
-        <translation>Изаберите извршни фајл...</translation>
+        <translation>Локација извршног фајла...</translation>
     </message>
 </context>
 </TS>
