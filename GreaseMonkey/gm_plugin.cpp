@@ -68,7 +68,7 @@ bool GM_Plugin::testPlugin()
 QTranslator* GM_Plugin::getTranslator(const QString &locale)
 {
     QTranslator* translator = new QTranslator(this);
-    translator->load(locale, ":/testplugin/locale/");
+    translator->load(locale, ":/gm/locale/");
     return translator;
 }
 
