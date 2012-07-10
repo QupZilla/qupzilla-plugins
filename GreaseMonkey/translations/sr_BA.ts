@@ -6,12 +6,12 @@
     <message>
         <location filename="../gm_addscriptdialog.ui" line="14"/>
         <source>GreaseMonkey Installation</source>
-        <translation>Инсталација Greasemonkey скрипте</translation>
+        <translation>Инсталација GreaseMonkey скрипте</translation>
     </message>
     <message>
         <location filename="../gm_addscriptdialog.ui" line="51"/>
         <source>&lt;h3&gt;GreaseMonkey Installation&lt;/h3&gt;</source>
-        <translation>&lt;h3&gt;Инсталација Greasemonkey скрипте&lt;/h3&gt;</translation>
+        <translation>&lt;h3&gt;Инсталација GreaseMonkey скрипте&lt;/h3&gt;</translation>
     </message>
     <message>
         <location filename="../gm_addscriptdialog.ui" line="73"/>
@@ -40,7 +40,7 @@
     </message>
     <message>
         <location filename="../gm_addscriptdialog.cpp" line="52"/>
-        <source>&lt;p&gt;do not runs at&lt;br/&gt;&lt;i&gt;%1&lt;/i&gt;&lt;/p&gt;</source>
+        <source>&lt;p&gt;does not run at&lt;br/&gt;&lt;i&gt;%1&lt;/i&gt;&lt;/p&gt;</source>
         <translation>&lt;p&gt;не покреће се на&lt;br/&gt;&lt;i&gt;%1&lt;/i&gt;&lt;/p&gt;</translation>
     </message>
 </context>
@@ -71,7 +71,7 @@
     <name>GM_Notification</name>
     <message>
         <location filename="../gm_notification.ui" line="45"/>
-        <source>This script can be installed with GreaseMonkey extension.</source>
+        <source>This script can be installed with the GreaseMonkey plugin.</source>
         <translation>Ова скрипта може бити инсталирана помоћу GreaseMonkey проширења.</translation>
     </message>
     <message>
@@ -142,12 +142,12 @@
     </message>
     <message>
         <location filename="../settings/gm_settingsscriptinfo.ui" line="69"/>
-        <source>Runst at:</source>
+        <source>Runs at:</source>
         <translation>Покреће се на:</translation>
     </message>
     <message>
         <location filename="../settings/gm_settingsscriptinfo.ui" line="79"/>
-        <source>Do not runs at:</source>
+        <source>Does not run at:</source>
         <translation>Не покреће се на:</translation>
     </message>
     <message>
