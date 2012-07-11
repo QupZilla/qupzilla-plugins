@@ -23,6 +23,7 @@
 
 #include "mainapplication.h"
 
+#include <QDesktopServices>
 #include <QMessageBox>
 
 GM_Settings::GM_Settings(GM_Manager* manager, QWidget* parent)
@@ -34,6 +35,7 @@ GM_Settings::GM_Settings(GM_Manager* manager, QWidget* parent)
 
     connect(ui->listWidget, SIGNAL(itemDoubleClicked(QListWidgetItem*)), this, SLOT(showItemInfo(QListWidgetItem*)));
     connect(ui->listWidget, SIGNAL(removeItemRequested(QListWidgetItem*)), this, SLOT(removeItem(QListWidgetItem*)));
+    connect(ui->openDirectory, SIGNAL(clicked()), this, SLOT(openScriptsDirectory()));
     connect(ui->link, SIGNAL(clicked(QPoint)), this, SLOT(openUserscripts()));
 
     loadScripts();
@@ -85,6 +87,11 @@ void GM_Settings::itemChanged(QListWidgetItem* item)
     else {
         m_manager->disableScript(script);
     }
+}
+
+void GM_Settings::openScriptsDirectory()
+{
+    QDesktopServices::openUrl(QUrl::fromLocalFile(m_manager->scriptsDirectory()));
 }
 
 void GM_Settings::loadScripts()

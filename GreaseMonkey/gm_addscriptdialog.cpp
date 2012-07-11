@@ -79,12 +79,13 @@ void GM_AddScriptDialog::showSource()
 
 void GM_AddScriptDialog::accepted()
 {
+    QString message = tr("Cannot install script");
+
     if (m_manager->addScript(m_script)) {
-        m_manager->showAddScriptNotification(m_script);
+        message = tr("'%1' installed successfully").arg(m_script->name());
     }
-    else {
-        m_manager->showErrorInstallNotification();
-    }
+
+    m_manager->showNotification(message);
 }
 
 GM_AddScriptDialog::~GM_AddScriptDialog()

@@ -54,6 +54,11 @@ QString GM_Manager::settinsPath() const
     return m_settingsPath;
 }
 
+QString GM_Manager::scriptsDirectory() const
+{
+    return m_settingsPath + "/greasemonkey/";
+}
+
 QString GM_Manager::requireScripts(const QStringList &urlList) const
 {
     QDir requiresDir(m_settingsPath + "greasemonkey/requires");
@@ -160,26 +165,13 @@ bool GM_Manager::removeScript(GM_Script* script)
     return true;
 }
 
-void GM_Manager::showAddScriptNotification(GM_Script* script) const
+void GM_Manager::showNotification(const QString &message, const QString &title)
 {
     QPixmap icon(":gm/data/icon.png");
-    QString heading = tr("GreaseMonkey");
-    QString text = tr("'%1' installed successfully").arg(script->name());
 
-    mApp->desktopNotifications()->showNotification(icon, heading, text);
+    mApp->desktopNotifications()->showNotification(icon, title.isEmpty() ? tr("GreaseMonkey") : title, message);
 }
 
-void GM_Manager::showErrorInstallNotification() const
-{
-    QPixmap icon(":gm/data/icon.png");
-    QString heading = tr("GreaseMonkey Error");
-    QString text = tr("Cannot install script");
-
-    mApp->desktopNotifications()->showNotification(icon, heading, text);
-
-    qWarning() << "GreaseMonkey: Cannot install script";
-}
-#include <QElapsedTimer>
 void GM_Manager::pageLoadStart()
 {
     QElapsedTimer timer;
@@ -210,8 +202,6 @@ void GM_Manager::pageLoadStart()
             frame->evaluateJavaScript(jscript);
         }
     }
-
-    qDebug() << frame->url() << "elapsed" << timer.elapsed();
 }
 
 void GM_Manager::load()

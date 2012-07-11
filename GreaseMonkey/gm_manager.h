@@ -36,6 +36,7 @@ public:
     void downloadScript(const QNetworkRequest &request);
 
     QString settinsPath() const;
+    QString scriptsDirectory() const;
     QString requireScripts(const QStringList &urlList) const;
 
     void saveSettings();
@@ -49,8 +50,7 @@ public:
     bool addScript(GM_Script* script);
     bool removeScript(GM_Script* script);
 
-    void showAddScriptNotification(GM_Script* script) const;
-    void showErrorInstallNotification() const;
+    void showNotification(const QString &message, const QString &title = QString());
 
     static bool canRunOnScheme(const QString &scheme);
 

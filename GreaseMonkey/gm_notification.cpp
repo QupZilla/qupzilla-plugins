@@ -46,6 +46,7 @@ void GM_Notification::installScript()
     bool success = false;
 
     GM_Script* script = 0;
+    QString message = tr("Cannot install script");
 
     if (QFile::copy(m_tmpFileName, m_fileName)) {
         script = new GM_Script(m_manager, m_fileName);
@@ -53,11 +54,10 @@ void GM_Notification::installScript()
     }
 
     if (success) {
-        m_manager->showAddScriptNotification(script);
+        message = tr("'%1' installed successfully").arg(script->name());
     }
-    else {
-        m_manager->showErrorInstallNotification();
-    }
+
+    m_manager->showNotification(message);
 
     hide();
 }

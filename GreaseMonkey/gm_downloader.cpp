@@ -141,9 +141,7 @@ void GM_Downloader::downloadRequires()
                 deleteScript = dialog.exec() != QDialog::Accepted;
             }
             else {
-                // FF's Greasemonkey shows "success" notification even if script
-                // was not actually installed because it is already installed
-                m_manager->showAddScriptNotification(script);
+                m_manager->showNotification(tr("'%1' is already installed").arg(script->name()));
             }
         }
 
