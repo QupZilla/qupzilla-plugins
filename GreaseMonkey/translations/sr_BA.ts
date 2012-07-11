@@ -6,12 +6,12 @@
     <message>
         <location filename="../gm_addscriptdialog.ui" line="14"/>
         <source>GreaseMonkey Installation</source>
-        <translation>Инсталација Greasemonkey скрипте</translation>
+        <translation>Инсталација GreaseMonkey скрипте</translation>
     </message>
     <message>
         <location filename="../gm_addscriptdialog.ui" line="51"/>
         <source>&lt;h3&gt;GreaseMonkey Installation&lt;/h3&gt;</source>
-        <translation>&lt;h3&gt;Инсталација Greasemonkey скрипте&lt;/h3&gt;</translation>
+        <translation>&lt;h3&gt;Инсталација GreaseMonkey скрипте&lt;/h3&gt;</translation>
     </message>
     <message>
         <location filename="../gm_addscriptdialog.ui" line="73"/>
@@ -41,7 +41,7 @@
     <message>
         <location filename="../gm_addscriptdialog.cpp" line="52"/>
         <source>&lt;p&gt;does not run at&lt;br/&gt;&lt;i&gt;%1&lt;/i&gt;&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;не покреће се на&lt;br/&gt;&lt;i&gt;%1&lt;/i&gt;&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
@@ -72,7 +72,7 @@
     <message>
         <location filename="../gm_notification.ui" line="45"/>
         <source>This script can be installed with the GreaseMonkey plugin.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ова скрипта може бити инсталирана помоћу GreaseMonkey проширења.</translation>
     </message>
     <message>
         <location filename="../gm_notification.ui" line="65"/>
@@ -143,12 +143,12 @@
     <message>
         <location filename="../settings/gm_settingsscriptinfo.ui" line="69"/>
         <source>Runs at:</source>
-        <translation type="unfinished"></translation>
+        <translation>Покреће се на:</translation>
     </message>
     <message>
         <location filename="../settings/gm_settingsscriptinfo.ui" line="79"/>
         <source>Does not run at:</source>
-        <translation type="unfinished"></translation>
+        <translation>Не покреће се на:</translation>
     </message>
     <message>
         <location filename="../settings/gm_settingsscriptinfo.cpp" line="27"/>
