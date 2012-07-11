@@ -7,22 +7,7 @@ if(typeof GM_xmlhttpRequest === "undefined") {
         }
 
         // build XMLHttpRequest object
-        var oXhr, aAjaxes = [];
-        if(typeof ActiveXObject !== "undefined") {
-            var oCls = ActiveXObject;
-            aAjaxes[aAjaxes.length] = {cls:oCls, arg:"Microsoft.XMLHTTP"};
-            aAjaxes[aAjaxes.length] = {cls:oCls, arg:"Msxml2.XMLHTTP"};
-            aAjaxes[aAjaxes.length] = {cls:oCls, arg:"Msxml2.XMLHTTP.3.0"};
-        }
-        if(typeof XMLHttpRequest !== "undefined")
-             aAjaxes[aAjaxes.length] = {cls:XMLHttpRequest, arg:undefined};
-
-        for(var i=aAjaxes.length; i--; )
-            try{
-                oXhr = new aAjaxes[i].cls(aAjaxes[i].arg);
-                if(oXhr) break;
-            } catch(e) {}
-
+        var oXhr = new XMLHttpRequest;
         // run it
         if(oXhr) {
             if("onreadystatechange" in details)
@@ -49,10 +34,23 @@ if(typeof GM_xmlhttpRequest === "undefined") {
 
 if(typeof GM_addStyle === "undefined") {
     function GM_addStyle(/* String */ styles) {
-        var oStyle = document.createElement("style");
-        oStyle.setAttribute("type", "text\/css");
-        oStyle.appendChild(document.createTextNode(styles));
-        document.getElementsByTagName("head")[0].appendChild(oStyle);
+        var head = document.getElementsByTagName("head")[0];
+        if (head === undefined) {
+            document.onreadystatechange = function() {
+                if (document.readyState == "interactive") {
+                    var oStyle = document.createElement("style");
+                    oStyle.setAttribute("type", "text\/css");
+                    oStyle.appendChild(document.createTextNode(styles));
+                    document.getElementsByTagName("head")[0].appendChild(oStyle);
+                }
+            }
+        }
+        else {
+            var oStyle = document.createElement("style");
+            oStyle.setAttribute("type", "text\/css");
+            oStyle.appendChild(document.createTextNode(styles));
+            head.appendChild(oStyle);
+        }
     }
 }
 
