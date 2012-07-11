@@ -36,6 +36,7 @@ RESOURCES += greasemonkey.qrc
 TRANSLATIONS = \
     translations/cs_CZ.ts \
     translations/de_DE.ts \
+    translations/fr_FR.ts \
     translations/sr_BA.ts \
     translations/sr_RS.ts \
 
