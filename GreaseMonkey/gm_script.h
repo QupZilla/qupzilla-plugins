@@ -36,6 +36,7 @@ public:
 
     enum StartAt { DocumentStart, DocumentEnd };
 
+    bool isValid() const;
     QString name() const;
     QString nameSpace() const;
     QString fullName() const;
@@ -76,6 +77,7 @@ private:
     QString m_script;
     QString m_fileName;
     bool m_enabled;
+    bool m_valid;
 };
 
 #endif // GM_SCRIPT_H

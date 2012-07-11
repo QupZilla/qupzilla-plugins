@@ -31,8 +31,14 @@ GM_Script::GM_Script(GM_Manager* manager, const QString &filePath)
     , m_startAt(DocumentEnd)
     , m_fileName(filePath)
     , m_enabled(true)
+    , m_valid(false)
 {
     parseScript(filePath);
+}
+
+bool GM_Script::isValid() const
+{
+    return m_valid;
 }
 
 QString GM_Script::name() const
@@ -227,4 +233,5 @@ void GM_Script::parseScript(const QString &filePath)
     script = QString("(function(){%1})();").arg(script);
 
     m_script = script;
+    m_valid = !script.isEmpty();
 }

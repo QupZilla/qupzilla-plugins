@@ -40,8 +40,8 @@
     </message>
     <message>
         <location filename="../gm_addscriptdialog.cpp" line="52"/>
-        <source>&lt;p&gt;do not runs at&lt;br/&gt;&lt;i&gt;%1&lt;/i&gt;&lt;/p&gt;</source>
-        <translation>&lt;p&gt;не покреће се на&lt;br/&gt;&lt;i&gt;%1&lt;/i&gt;&lt;/p&gt;</translation>
+        <source>&lt;p&gt;does not run at&lt;br/&gt;&lt;i&gt;%1&lt;/i&gt;&lt;/p&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -71,8 +71,8 @@
     <name>GM_Notification</name>
     <message>
         <location filename="../gm_notification.ui" line="45"/>
-        <source>This script can be installed with GreaseMonkey extension.</source>
-        <translation>Ова скрипта може бити инсталирана помоћу GreaseMonkey проширења.</translation>
+        <source>This script can be installed with the GreaseMonkey plugin.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../gm_notification.ui" line="65"/>
@@ -142,13 +142,13 @@
     </message>
     <message>
         <location filename="../settings/gm_settingsscriptinfo.ui" line="69"/>
-        <source>Runst at:</source>
-        <translation>Покреће се на:</translation>
+        <source>Runs at:</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settings/gm_settingsscriptinfo.ui" line="79"/>
-        <source>Do not runs at:</source>
-        <translation>Не покреће се на:</translation>
+        <source>Does not run at:</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settings/gm_settingsscriptinfo.cpp" line="27"/>

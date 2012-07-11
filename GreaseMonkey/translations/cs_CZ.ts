@@ -40,7 +40,7 @@
     </message>
     <message>
         <location filename="../gm_addscriptdialog.cpp" line="52"/>
-        <source>&lt;p&gt;do not runs at&lt;br/&gt;&lt;i&gt;%1&lt;/i&gt;&lt;/p&gt;</source>
+        <source>&lt;p&gt;does not run at&lt;br/&gt;&lt;i&gt;%1&lt;/i&gt;&lt;/p&gt;</source>
         <translation>&lt;p&gt;nespouští se na&lt;br/&gt;&lt;i&gt;%1&lt;/i&gt;&lt;/p&gt;</translation>
     </message>
 </context>
@@ -71,8 +71,8 @@
     <name>GM_Notification</name>
     <message>
         <location filename="../gm_notification.ui" line="45"/>
-        <source>This script can be installed with GreaseMonkey extension.</source>
-        <translation>Tento skript lze nainstalovat do rozšíření GreaseMonkey.</translation>
+        <source>This script can be installed with the GreaseMonkey plugin.</source>
+        <translation>Tento skript může být nainstalován do GreaseMonkey rozšíření.</translation>
     </message>
     <message>
         <location filename="../gm_notification.ui" line="65"/>
@@ -147,7 +147,7 @@
     </message>
     <message>
         <location filename="../settings/gm_settingsscriptinfo.ui" line="79"/>
-        <source>Do not runs at:</source>
+        <source>Does not run at:</source>
         <translation>Nespouští se na:</translation>
     </message>
     <message>

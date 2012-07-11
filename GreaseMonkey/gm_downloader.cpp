@@ -101,12 +101,12 @@ void GM_Downloader::requireDownloaded()
 
     if (m_reply->error() == QNetworkReply::NoError && !response.isEmpty()) {
         const QString &filePath = m_manager->settinsPath() + "/greasemonkey/requires/require.js";
-        m_fileName = qz_ensureUniqueFilename(filePath, "%1");
+        const QString &fileName = qz_ensureUniqueFilename(filePath, "%1");
 
-        QFile file(m_fileName);
+        QFile file(fileName);
 
         if (!file.open(QFile::WriteOnly)) {
-            qWarning() << "GreaseMonkey: Cannot open file for writing" << m_fileName;
+            qWarning() << "GreaseMonkey: Cannot open file for writing" << fileName;
             deleteLater();
             return;
         }
@@ -116,7 +116,7 @@ void GM_Downloader::requireDownloaded()
 
         QSettings settings(m_manager->settinsPath() + "greasemonkey/requires/requires.ini", QSettings::IniFormat);
         settings.beginGroup("Files");
-        settings.setValue(m_reply->originalUrl().toString(), m_fileName);
+        settings.setValue(m_reply->originalUrl().toString(), fileName);
     }
 
     m_reply->deleteLater();
@@ -135,14 +135,16 @@ void GM_Downloader::downloadRequires()
         bool deleteScript = true;
         GM_Script* script = new GM_Script(m_manager, m_fileName);
 
-        if (!m_manager->containsScript(script->fullName())) {
-            GM_AddScriptDialog dialog(m_manager, script, m_widget);
-            deleteScript = dialog.exec() != QDialog::Accepted;
-        }
-        else {
-            // FF's Greasemonkey shows "success" notification even if script
-            // was not actually installed because it is already installed
-            m_manager->showAddScriptNotification(script);
+        if (script->isValid()) {
+            if (!m_manager->containsScript(script->fullName())) {
+                GM_AddScriptDialog dialog(m_manager, script, m_widget);
+                deleteScript = dialog.exec() != QDialog::Accepted;
+            }
+            else {
+                // FF's Greasemonkey shows "success" notification even if script
+                // was not actually installed because it is already installed
+                m_manager->showAddScriptNotification(script);
+            }
         }
 
         if (deleteScript) {
