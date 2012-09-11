@@ -43,8 +43,8 @@ void YouTuber_Handler::loadSettings()
     QSettings settings(m_settingsFile, QSettings::IniFormat);
 
     settings.beginGroup("YouTuber");
-    m_extExe = settings.value("Application", "").toString();
-    m_extArgs = settings.value("Arguments", "").toString();
+    m_extExe = settings.value("Application", QString()).toString();
+    m_extArgs = settings.value("Arguments", QString()).toString();
     settings.endGroup();
 }
 
@@ -81,8 +81,8 @@ void YouTuber_Handler::populateWebViewMenu(QMenu* menu, WebView* view, const QWe
 void YouTuber_Handler::startExternalHandler()
 {
     const QUrl &url = qobject_cast<QAction*>(sender())->data().toUrl();
-    QStringList arguments = m_extArgs.split(' ', QString::SkipEmptyParts);
-    arguments << url.toString().prepend("http://www.youtube.com/watch?v=");
+    QStringList arguments = m_extArgs.split(QLatin1Char(' '), QString::SkipEmptyParts);
+    arguments << url.toString().prepend(QLatin1String("http://www.youtube.com/watch?v="));
 
     bool success = QProcess::startDetached(m_extExe, arguments);
 

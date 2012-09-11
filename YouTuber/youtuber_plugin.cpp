@@ -37,7 +37,7 @@ PluginSpec YouTuber_Plugin::pluginSpec()
     spec.name = "YouTuber";
     spec.info = "YouTube video link handler";
     spec.description = "Open YouTube videos in external program";
-    spec.version = "0.3.1";
+    spec.version = "0.3.2";
     spec.author = QString::fromUtf8("Mladen Pejaković <pejakm@gmail.com>");
     spec.icon = QPixmap(":/youtuber/data/youtube.png");
     spec.hasSettings = true;
@@ -52,6 +52,7 @@ void YouTuber_Plugin::init(const QString &sPath)
 
 void YouTuber_Plugin::unload()
 {
+    delete m_settings.data();
     m_handler->deleteLater();
 }
 
@@ -59,7 +60,7 @@ bool YouTuber_Plugin::testPlugin()
 {
     // Let's be sure, require latest version of QupZilla
 
-    return (QupZilla::VERSION == "1.3.1");
+    return (QupZilla::VERSION == QLatin1String("1.3.1"));
 }
 
 QTranslator* YouTuber_Plugin::getTranslator(const QString &locale)
@@ -71,10 +72,12 @@ QTranslator* YouTuber_Plugin::getTranslator(const QString &locale)
 
 void YouTuber_Plugin::showSettings(QWidget* parent)
 {
-    YouTuber_Settings* settings = new YouTuber_Settings(m_handler, parent);
-    settings->setAttribute(Qt::WA_DeleteOnClose);
+    if (!m_settings) {
+        m_settings = new YouTuber_Settings(m_handler, parent);
+    }
 
-    settings->show();
+    m_settings.data()->show();
+    m_settings.data()->raise();
 }
 
 void YouTuber_Plugin::populateWebViewMenu(QMenu* menu, WebView* view, const QWebHitTestResult &r)

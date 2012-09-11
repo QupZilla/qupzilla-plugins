@@ -19,9 +19,12 @@
 #ifndef YOUTUBER_PLUGIN_H
 #define YOUTUBER_PLUGIN_H
 
+#include <QWeakPointer>
+
 #include "plugininterface.h"
 
 class YouTuber_Handler;
+class YouTuber_Settings;
 
 class YouTuber_Plugin : public QObject, public PluginInterface
 {
@@ -42,6 +45,7 @@ public:
     void populateWebViewMenu(QMenu* menu, WebView* view, const QWebHitTestResult &r);
 
 private:
+    QWeakPointer<YouTuber_Settings> m_settings;
     YouTuber_Handler* m_handler;
 };
 

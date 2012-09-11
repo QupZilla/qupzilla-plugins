@@ -30,12 +30,13 @@ YouTuber_Settings::YouTuber_Settings(YouTuber_Handler* handler, QWidget* parent)
     , m_handler(handler)
     , m_settingsFile(handler->settingsFile())
 {
+    setAttribute(Qt::WA_DeleteOnClose);
     ui->setupUi(this);
 
     QSettings settings(m_settingsFile, QSettings::IniFormat);
     settings.beginGroup("YouTuber");
-    ui->extExe->setText(settings.value("Application", "").toString());
-    ui->extArgs->setText(settings.value("Arguments", "").toString());
+    ui->extExe->setText(settings.value("Application", QString()).toString());
+    ui->extArgs->setText(settings.value("Arguments", QString()).toString());
     settings.endGroup();
 
     connect(ui->chooseExtView, SIGNAL(clicked()), this, SLOT(chooseExternalApp()));
