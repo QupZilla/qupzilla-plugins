@@ -60,7 +60,7 @@ bool YouTuber_Plugin::testPlugin()
 {
     // Let's be sure, require latest version of QupZilla
 
-    return (QupZilla::VERSION == QLatin1String("1.3.1"));
+    return (QupZilla::VERSION == QLatin1String("1.3.5"));
 }
 
 QTranslator* YouTuber_Plugin::getTranslator(const QString &locale)
@@ -85,4 +85,6 @@ void YouTuber_Plugin::populateWebViewMenu(QMenu* menu, WebView* view, const QWeb
     m_handler->populateWebViewMenu(menu, view, r);
 }
 
+#if QT_VERSION < 0x050000
 Q_EXPORT_PLUGIN2(YouTuber, YouTuber_Plugin)
+#endif
