@@ -1,20 +1,20 @@
-TARGET = YouTuber
-os2: TARGET  = YouTuber
+TARGET = Videoner
+os2: TARGET  = Videoner
 
 SOURCES = \
-    youtuber_plugin.cpp \
-    youtuber_handler.cpp \
-    youtuber_settings.cpp
+    videoner_plugin.cpp \
+    videoner_handler.cpp \
+    videoner_settings.cpp
 
 HEADERS = \
-    youtuber_plugin.h \
-    youtuber_handler.h \
-    youtuber_settings.h
+    videoner_plugin.h \
+    videoner_handler.h \
+    videoner_settings.h
 
 FORMS += \
-    youtuber_settings.ui
+    videoner_settings.ui
 
-RESOURCES = youtuber_res.qrc
+RESOURCES = videoner_res.qrc
 
 TRANSLATIONS = \
     translations/cs_CZ.ts \
@@ -22,7 +22,9 @@ TRANSLATIONS = \
     translations/it_IT.ts \
     translations/ja_JP.ts \
     translations/sr_BA.ts \
+    translations/sr_BA@latin.ts \
     translations/sr_RS.ts \
+    translations/sr_RS@latin.ts \
     translations/zh_TW.ts
 
 srcdir = $$(QUPZILLA_SRCDIR)
