@@ -22,7 +22,9 @@ TRANSLATIONS = \
     translations/it_IT.ts \
     translations/ja_JP.ts \
     translations/sr_BA.ts \
+    translations/sr_BA@latin.ts \
     translations/sr_RS.ts \
+    translations/sr_RS@latin.ts \
     translations/zh_TW.ts
 
 srcdir = $$(QUPZILLA_SRCDIR)
