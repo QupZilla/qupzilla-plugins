@@ -21,6 +21,7 @@ TRANSLATIONS = \
     translations/de_DE.ts \
     translations/it_IT.ts \
     translations/ja_JP.ts \
+    translations/pt_PT.ts \
     translations/sr_BA.ts \
     translations/sr_BA@latin.ts \
     translations/sr_RS.ts \
