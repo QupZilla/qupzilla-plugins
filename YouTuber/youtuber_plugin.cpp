@@ -60,7 +60,7 @@ bool YouTuber_Plugin::testPlugin()
 {
     // Let's be sure, require latest version of QupZilla
 
-    return (QupZilla::VERSION == QLatin1String("1.3.5"));
+    return (QupZilla::VERSION == QLatin1String("1.4.1"));
 }
 
 QTranslator* YouTuber_Plugin::getTranslator(const QString &locale)
