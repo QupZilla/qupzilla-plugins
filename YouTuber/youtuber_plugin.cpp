@@ -65,7 +65,7 @@ bool YouTuber_Plugin::testPlugin()
 
 QTranslator* YouTuber_Plugin::getTranslator(const QString &locale)
 {
-    QTranslator* translator = new QTranslator();
+    QTranslator* translator = new QTranslator(this);
     translator->load(locale, ":/youtuber/locale/");
     return translator;
 }

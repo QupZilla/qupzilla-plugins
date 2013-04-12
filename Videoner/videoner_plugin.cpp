@@ -65,7 +65,7 @@ bool Videoner_Plugin::testPlugin()
 
 QTranslator* Videoner_Plugin::getTranslator(const QString &locale)
 {
-    QTranslator* translator = new QTranslator();
+    QTranslator* translator = new QTranslator(this);
     translator->load(locale, ":/videoner/locale/");
     return translator;
 }
