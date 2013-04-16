@@ -1,4 +1,4 @@
-TARGET = Videoner
+TARGET = $$qtLibraryTarget(Videoner)
 os2: TARGET  = Videoner
 
 SOURCES = \
