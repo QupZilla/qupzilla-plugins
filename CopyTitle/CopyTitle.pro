@@ -13,5 +13,11 @@ TRANSLATIONS = \
     translations/sr_RS@latin.ts \
     translations/zh_CN.ts \
     translations/zh_TW.ts
-    
-include(../../plugins.pri)
+
+srcdir = $$(QUPZILLA_SRCDIR)
+equals(srcdir, "") {
+    include(../../plugins.pri)
+}
+else {
+    include($$srcdir/src/plugins.pri)
+}
