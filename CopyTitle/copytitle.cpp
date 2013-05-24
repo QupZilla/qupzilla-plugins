@@ -58,7 +58,7 @@ void CopyTitle::unload()
 
 bool CopyTitle::testPlugin()
 {
-    return (QupZilla::VERSION == QLatin1String("1.4.0"));
+    return (QupZilla::VERSION == QLatin1String("1.4.3"));
 }
 
 QTranslator* CopyTitle::getTranslator(const QString &locale)
@@ -86,7 +86,7 @@ void CopyTitle::populateWebViewMenu(QMenu* menu, WebView* view, const QWebHitTes
             title += "image";
         }
     }
-    
+
     else {
         title = view->title();
     }
