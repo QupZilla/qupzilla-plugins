@@ -45,9 +45,11 @@ PluginSpec Videoner_Plugin::pluginSpec()
     return spec;
 }
 
-void Videoner_Plugin::init(const QString &sPath)
+void Videoner_Plugin::init(InitState state, const QString &settingsPath)
 {
-    m_handler = new Videoner_Handler(sPath, this);
+    Q_UNUSED(state)
+
+    m_handler = new Videoner_Handler(settingsPath, this);
 }
 
 void Videoner_Plugin::unload()

@@ -47,8 +47,11 @@ PluginSpec CopyTitle::pluginSpec()
     return spec;
 }
 
-void CopyTitle::init(const QString &sPath)
+void CopyTitle::init(InitState state, const QString &settingsPath)
 {
+    Q_UNUSED(state)
+    Q_UNUSED(settingsPath)
+
     QZ_REGISTER_EVENT_HANDLER(PluginProxy::MousePressHandler);
 }
 
@@ -86,7 +89,7 @@ void CopyTitle::populateWebViewMenu(QMenu* menu, WebView* view, const QWebHitTes
             title += "image";
         }
     }
-    
+
     else {
         title = view->title();
     }
@@ -96,6 +99,10 @@ void CopyTitle::populateWebViewMenu(QMenu* menu, WebView* view, const QWebHitTes
 
 bool CopyTitle::mousePress(const Qz::ObjectName &type, QObject* obj, QMouseEvent* event)
 {
+    Q_UNUSED(type)
+    Q_UNUSED(obj)
+    Q_UNUSED(event)
+
     return false;
 }
 

@@ -37,7 +37,7 @@ public:
     explicit CopyTitle();
     PluginSpec pluginSpec();
 
-    void init(const QString &sPath);
+    void init(InitState state, const QString &settingsPath);
     void unload();
     bool testPlugin();
 
