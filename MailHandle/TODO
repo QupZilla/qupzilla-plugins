@@ -1,4 +1,5 @@
 MailHandle TODO
  * make settings actualy work
+ * fix not loading link correctly when using QupZilla's internal "Send via mail" menu actions
  * fix Mail.ru
  * add support for Yahoo, Hotmail, etc.
