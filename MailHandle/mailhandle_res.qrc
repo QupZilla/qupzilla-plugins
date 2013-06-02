@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/mailhandle">
+        <file>data/mailhandle.png</file>
+        <file>data/gmail.png</file>
+        <file>data/mailru.png</file>
+        <file>data/yandex.png</file>
+        <file>locale/sr_BA.qm</file>
+        <file>locale/sr_BA@latin.qm</file>
+        <file>locale/sr_RS.qm</file>
+        <file>locale/sr_RS@latin.qm</file>
+    </qresource>
+</RCC>

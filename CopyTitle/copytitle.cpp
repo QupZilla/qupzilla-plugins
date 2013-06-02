@@ -75,7 +75,9 @@ void CopyTitle::populateWebViewMenu(QMenu* menu, WebView* view, const QWebHitTes
 {
     m_view = view;
 
-    if (!r.linkUrl().isEmpty() || r.isContentEditable()) return;
+    if (!r.linkUrl().isEmpty() || r.isContentEditable()) {
+        return;
+    }
 
     QString title;
     if (!r.imageUrl().isEmpty()) {
