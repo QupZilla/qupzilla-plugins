@@ -17,7 +17,6 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 * ============================================================ */
 #include "mailhandle_plugin.h"
-#include "mailhandle_handler.h"
 #include "mailhandle_settings.h"
 #include "mailhandle_schemehandler.h"
 #include "mainapplication.h"
@@ -29,7 +28,6 @@
 
 MailHandle_Plugin::MailHandle_Plugin()
     : QObject()
-    , m_handler(0)
     , m_schemehandler(0)
 {
 }
@@ -51,8 +49,7 @@ PluginSpec MailHandle_Plugin::pluginSpec()
 void MailHandle_Plugin::init(InitState state, const QString &settingsPath)
 {
     Q_UNUSED(state);
-    m_handler = new MailHandle_Handler(settingsPath, this);
-    m_schemehandler = new MailHandle_SchemeHandler;
+    m_schemehandler = new MailHandle_SchemeHandler(settingsPath, this);
 
     QZ_REGISTER_SCHEME_HANDLER("mailto", m_schemehandler);
 }
@@ -60,8 +57,7 @@ void MailHandle_Plugin::init(InitState state, const QString &settingsPath)
 void MailHandle_Plugin::unload()
 {
     delete m_settings.data();
-    delete m_handler;
-//     delete m_schemehandler;
+    delete m_schemehandler;
 
     QZ_UNREGISTER_SCHEME_HANDLER("mailto", m_schemehandler);
 }
@@ -83,7 +79,7 @@ QTranslator* MailHandle_Plugin::getTranslator(const QString &locale)
 void MailHandle_Plugin::showSettings(QWidget* parent)
 {
     if (!m_settings) {
-        m_settings = new MailHandle_Settings(m_handler, parent);
+        m_settings = new MailHandle_Settings(m_schemehandler, parent);
     }
 
     m_settings.data()->show();

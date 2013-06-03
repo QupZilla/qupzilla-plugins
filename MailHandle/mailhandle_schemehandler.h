@@ -21,15 +21,24 @@
 #define MAILHANDLE_SCHEMEHANDLER_H
 
 #include <QNetworkReply>
+#include <QObject>
 
 #include "schemehandlers/schemehandler.h"
 
 class MailHandle_SchemeHandler : public SchemeHandler
 {
 public:
-    MailHandle_SchemeHandler();
+    MailHandle_SchemeHandler(const QString &settingsPath, QObject* parent = 0);
+
+    QString settingsFile();
+    void loadSettings();
 
     QNetworkReply* createRequest(QNetworkAccessManager::Operation op, const QNetworkRequest &request, QIODevice* outgoingData);
+
+private:
+    bool m_enabled;
+    int m_wservice;
+    QString m_settingsFile;
 };
 
 class MailHandle_Reply : public QNetworkReply

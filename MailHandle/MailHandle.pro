@@ -3,13 +3,11 @@ os2: TARGET  = MailHandle
 
 SOURCES = \
     mailhandle_plugin.cpp \
-    mailhandle_handler.cpp \
     mailhandle_settings.cpp \
     mailhandle_schemehandler.cpp
 
 HEADERS = \
     mailhandle_plugin.h \
-    mailhandle_handler.h \
     mailhandle_settings.h \
     mailhandle_schemehandler.h
 

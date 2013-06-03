@@ -23,11 +23,27 @@
 
 #include <QNetworkRequest>
 #include <QTimer>
+#include <QSettings>
 
-MailHandle_SchemeHandler::MailHandle_SchemeHandler()
+MailHandle_SchemeHandler::MailHandle_SchemeHandler(const QString &settingsPath, QObject* parent)
+    : m_settingsFile(settingsPath + "extensions.ini")
 {
+    loadSettings();
 }
 
+QString MailHandle_SchemeHandler::settingsFile()
+{
+    return m_settingsFile;
+}
+
+void MailHandle_SchemeHandler::loadSettings()
+{
+    QSettings settings(m_settingsFile, QSettings::IniFormat);
+
+    settings.beginGroup("MailHandle");
+    m_wservice = settings.value("webservice", 0).toInt();
+    settings.endGroup();
+}
 
 QNetworkReply* MailHandle_SchemeHandler::createRequest(QNetworkAccessManager::Operation op, const QNetworkRequest &request, QIODevice* outgoingData)
 {
@@ -35,38 +51,107 @@ QNetworkReply* MailHandle_SchemeHandler::createRequest(QNetworkAccessManager::Op
     Q_UNUSED(outgoingData)
 
     QUrl mailto = request.url();
-//   if (m_wservice = 0) {
-    QUrl mlink("https://mail.google.com/mail/?view=cm&fs=1&tf=1&source=mailto");
+//     Someone please fix this ugliness :D
+    switch (m_wservice) {
+    case 0: {
+        QUrl mlink("https://mail.google.com/mail/?view=cm&fs=1&tf=1&source=mailto");
 
-    mlink.addQueryItem("to", mailto.toEncoded(QUrl::RemoveQuery | QUrl::RemoveScheme));
+        mlink.addQueryItem("to", mailto.toEncoded(QUrl::RemoveQuery | QUrl::RemoveScheme));
 
-    typedef QPair<QString, QString> QueryItem;
-    foreach(QueryItem item, mailto.queryItems()) {
-        if (item.first == "subject") {
-            mlink.addQueryItem("su", item.second);
+        typedef QPair<QString, QString> QueryItem;
+        foreach(QueryItem item, mailto.queryItems()) {
+            if (item.first == "subject") {
+                mlink.addQueryItem("su", item.second);
+            }
+            else {
+                mlink.addQueryItem(item.first, item.second);
+            }
         }
-        else {
+        MailHandle_Reply* reply = new MailHandle_Reply(request);
+        reply->setUrl(mlink);
+        return reply;
+        break;
+    }
+    case 1: {
+        QUrl mlink("http://win.mail.ru/cgi-bin/sentmsg?mailto=");
+
+        mlink.addQueryItem("To", mailto.toEncoded(QUrl::RemoveQuery | QUrl::RemoveScheme));
+
+        typedef QPair<QString, QString> QueryItem;
+        foreach(QueryItem item, mailto.queryItems()) {
+            if (item.first == "subject") {
+                mlink.addQueryItem("Subject", item.second);
+            }
+            if (item.first == "cc") {
+                mlink.addQueryItem("CC", item.second);
+            }
+            if (item.first == "bcc") {
+                mlink.addQueryItem("BCC", item.second);
+            }
+            if (item.first == "body") {
+                mlink.addQueryItem("Body", item.second);
+            }
+            else {
+                mlink.addQueryItem(item.first, item.second);
+            }
+        }
+        MailHandle_Reply* reply = new MailHandle_Reply(request);
+        reply->setUrl(mlink);
+        return reply;
+        break;
+    }
+    case 2: {
+        QString stringy = "http://mail.yandex.ru/compose?mailto=";
+        stringy.append(mailto.toEncoded(QUrl::RemoveScheme));
+        QUrl mlink(stringy);
+        MailHandle_Reply* reply = new MailHandle_Reply(request);
+        reply->setUrl(mlink);
+        return reply;
+        break;
+    }
+    case 3: {
+        QUrl mlink("https://mail.live.com/default.aspx?rru=compose");
+
+        mlink.addQueryItem("to", mailto.toEncoded(QUrl::RemoveQuery | QUrl::RemoveScheme));
+
+        typedef QPair<QString, QString> QueryItem;
+        foreach(QueryItem item, mailto.queryItems()) {
             mlink.addQueryItem(item.first, item.second);
         }
+        MailHandle_Reply* reply = new MailHandle_Reply(request);
+        reply->setUrl(mlink);
+        return reply;
+        break;
     }
-//   }
+    case 4: {
+        QUrl mlink("http://compose.mail.yahoo.com/?");
 
-//   if (m_wservice = 1) {
-//     QUrl mlink("http://win.mail.ru/cgi-bin/sentmsg?mailto=");
-//
-//     mlink.addQueryItem(mailto.toEncoded(QUrl::RemoveQuery | QUrl::RemoveScheme));
-//   }
-//
-//   if (m_wservice = 2) {
-//     QUrl mlink("http://mail.yandex.ru/compose?mailto=");
-//
-//     mlink.addQueryItem(mailto.toEncoded(QUrl::RemoveQuery | QUrl::RemoveScheme));
-//   }
+        mlink.addQueryItem("To", mailto.toEncoded(QUrl::RemoveQuery | QUrl::RemoveScheme));
 
-    // Redirect
-    MailHandle_Reply* reply = new MailHandle_Reply(request);
-    reply->setUrl(mlink);
-    return reply;
+        typedef QPair<QString, QString> QueryItem;
+        foreach(QueryItem item, mailto.queryItems()) {
+            if (item.first == "subject") {
+                mlink.addQueryItem("Subj", item.second);
+            }
+            if (item.first == "cc") {
+                mlink.addQueryItem("Cc", item.second);
+            }
+            if (item.first == "bcc") {
+                mlink.addQueryItem("Bcc", item.second);
+            }
+            if (item.first == "body") {
+                mlink.addQueryItem("Body", item.second);
+            }
+            else {
+                mlink.addQueryItem(item.first, item.second);
+            }
+        }
+        MailHandle_Reply* reply = new MailHandle_Reply(request);
+        reply->setUrl(mlink);
+        return reply;
+        break;
+    }
+    }
 }
 
 MailHandle_Reply::MailHandle_Reply(const QNetworkRequest &req, QObject* parent)

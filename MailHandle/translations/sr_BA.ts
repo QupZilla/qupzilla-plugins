@@ -1,13 +1,11 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="sr_BA" version="2.0">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.0" language="sr_BA">
 <context>
     <name>MailHandle_Settings</name>
     <message>
         <source>MailHandle Settings</source>
         <translation>Поставке Руковаоца поште</translation>
-    </message>
-    <message>
-        <source>Enable mailto links handling</source>
-        <translation type="obsolete">Омогући руковање везама е-поште</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:x-large; font-weight:600;&quot;&gt;Mailto links handler&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
@@ -23,11 +21,19 @@
     </message>
     <message>
         <source>Mail.ru</source>
-        <translation type="unfinished"></translation>
+        <translation>Мејл.ру</translation>
     </message>
     <message utf8="true">
         <source>Яandex</source>
-        <translation type="unfinished"></translation>
+        <translation>Јандекс</translation>
+    </message>
+    <message>
+        <source>Outlook</source>
+        <translation>Аутлук</translation>
+    </message>
+    <message>
+        <source>Yahoo!</source>
+        <translation>Јаху!</translation>
     </message>
 </context>
 </TS>

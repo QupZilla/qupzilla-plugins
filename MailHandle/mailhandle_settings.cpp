@@ -19,15 +19,15 @@
 
 #include "mailhandle_settings.h"
 #include "ui_mailhandle_settings.h"
-#include "mailhandle_handler.h"
+#include "mailhandle_schemehandler.h"
 
 #include <QSettings>
 
-MailHandle_Settings::MailHandle_Settings(MailHandle_Handler* handler, QWidget* parent)
+MailHandle_Settings::MailHandle_Settings(MailHandle_SchemeHandler* schemehandler, QWidget* parent)
     : QDialog(parent)
     , ui(new Ui::MailHandle_Settings)
-    , m_handler(handler)
-    , m_settingsFile(handler->settingsFile())
+    , m_schemehandler(schemehandler)
+    , m_settingsFile(schemehandler->settingsFile())
 {
     setAttribute(Qt::WA_DeleteOnClose);
     ui->setupUi(this);
@@ -47,7 +47,7 @@ void MailHandle_Settings::dialogAccepted()
     settings.setValue("webservice", ui->mhservice->currentIndex());
     settings.endGroup();
 
-    m_handler->loadSettings();
+    m_schemehandler->loadSettings();
 }
 
 MailHandle_Settings::~MailHandle_Settings()

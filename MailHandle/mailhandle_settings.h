@@ -26,14 +26,14 @@ namespace Ui
 class MailHandle_Settings;
 }
 
-class MailHandle_Handler;
+class MailHandle_SchemeHandler;
 
 class MailHandle_Settings : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit MailHandle_Settings(MailHandle_Handler* handler, QWidget* parent = 0);
+    explicit MailHandle_Settings(MailHandle_SchemeHandler* schemehandler, QWidget* parent = 0);
     ~MailHandle_Settings();
 
 private slots:
@@ -42,7 +42,7 @@ private slots:
 private:
     Ui::MailHandle_Settings* ui;
 
-    MailHandle_Handler* m_handler;
+    MailHandle_SchemeHandler* m_schemehandler;
     QString m_settingsFile;
 };
 

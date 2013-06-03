@@ -23,7 +23,6 @@
 
 #include "plugininterface.h"
 
-class MailHandle_Handler;
 class MailHandle_Settings;
 class MailHandle_SchemeHandler;
 
@@ -49,7 +48,6 @@ public:
 
 private:
     QPointer<MailHandle_Settings> m_settings;
-    MailHandle_Handler* m_handler;
 
     MailHandle_SchemeHandler* m_schemehandler;
 };
