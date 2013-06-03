@@ -137,6 +137,15 @@
             <normaloff>:/mailhandle/data/yahoo.png</normaloff>:/mailhandle/data/yahoo.png</iconset>
           </property>
          </item>
+         <item>
+          <property name="text">
+           <string>My Opera</string>
+          </property>
+          <property name="icon">
+           <iconset resource="mailhandle_res.qrc">
+            <normaloff>:/mailhandle/data/myopera.png</normaloff>:/mailhandle/data/myopera.png</iconset>
+          </property>
+         </item>
         </widget>
        </item>
       </layout>

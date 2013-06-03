@@ -151,6 +151,20 @@ QNetworkReply* MailHandle_SchemeHandler::createRequest(QNetworkAccessManager::Op
         return reply;
         break;
     }
+    case 5: {
+        QUrl mlink("http://mymail.operamail.com/scripts/mail/Outblaze.mail?compose=1&did=1&a=1");
+
+        mlink.addQueryItem("to", mailto.toEncoded(QUrl::RemoveQuery | QUrl::RemoveScheme));
+
+        typedef QPair<QString, QString> QueryItem;
+        foreach(QueryItem item, mailto.queryItems()) {
+            mlink.addQueryItem(item.first, item.second);
+        }
+        MailHandle_Reply* reply = new MailHandle_Reply(request);
+        reply->setUrl(mlink);
+        return reply;
+        break;
+    }
     }
 }
 
