@@ -146,6 +146,24 @@
             <normaloff>:/mailhandle/data/myopera.png</normaloff>:/mailhandle/data/myopera.png</iconset>
           </property>
          </item>
+         <item>
+          <property name="text">
+           <string>FastMail</string>
+          </property>
+          <property name="icon">
+           <iconset resource="mailhandle_res.qrc">
+            <normaloff>:/mailhandle/data/fastmail.png</normaloff>:/mailhandle/data/fastmail.png</iconset>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>T-Online</string>
+          </property>
+          <property name="icon">
+           <iconset resource="mailhandle_res.qrc">
+            <normaloff>:/mailhandle/data/tonline.png</normaloff>:/mailhandle/data/tonline.png</iconset>
+          </property>
+         </item>
         </widget>
        </item>
       </layout>

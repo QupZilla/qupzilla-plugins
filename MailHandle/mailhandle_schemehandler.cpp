@@ -152,7 +152,35 @@ QNetworkReply* MailHandle_SchemeHandler::createRequest(QNetworkAccessManager::Op
         break;
     }
     case 5: {
-        QUrl mlink("http://mymail.operamail.com/scripts/mail/Outblaze.mail?compose=1&did=1&a=1");
+        QUrl mlink("https://mail.opera.com/action/compose/?");
+
+        mlink.addQueryItem("to", mailto.toEncoded(QUrl::RemoveQuery | QUrl::RemoveScheme));
+
+        typedef QPair<QString, QString> QueryItem;
+        foreach(QueryItem item, mailto.queryItems()) {
+            mlink.addQueryItem(item.first, item.second);
+        }
+        MailHandle_Reply* reply = new MailHandle_Reply(request);
+        reply->setUrl(mlink);
+        return reply;
+        break;
+    }
+    case 6: {
+        QUrl mlink("https://fastmail.fm/action/compose/?");
+
+        mlink.addQueryItem("to", mailto.toEncoded(QUrl::RemoveQuery | QUrl::RemoveScheme));
+
+        typedef QPair<QString, QString> QueryItem;
+        foreach(QueryItem item, mailto.queryItems()) {
+            mlink.addQueryItem(item.first, item.second);
+        }
+        MailHandle_Reply* reply = new MailHandle_Reply(request);
+        reply->setUrl(mlink);
+        return reply;
+        break;
+    }
+    case 7: {
+        QUrl mlink("https://email.t-online.de/?service=writemail");
 
         mlink.addQueryItem("to", mailto.toEncoded(QUrl::RemoveQuery | QUrl::RemoveScheme));
 

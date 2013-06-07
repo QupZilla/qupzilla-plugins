@@ -35,5 +35,17 @@
         <source>Yahoo!</source>
         <translation>Јаху!</translation>
     </message>
+    <message>
+        <source>My Opera</source>
+        <translation>Моја Опера</translation>
+    </message>
+    <message>
+        <source>FastMail</source>
+        <translation>Фастмејл</translation>
+    </message>
+    <message>
+        <source>T-Online</source>
+        <translation>Т-онлајн</translation>
+    </message>
 </context>
 </TS>

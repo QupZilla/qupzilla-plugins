@@ -1,5 +1,4 @@
 MailHandle TODO
  * fix not loading link correctly when using QupZilla's internal "Send via mail" menu actions
- * load links in new tab
- * add support for more services (http://code.google.com/p/mailto-chromeextension/wiki/AddCustomUrl)
+ * load links in new tab (Do we really need this?)
  * optimize code in schemehandler.cpp and make it less ugly

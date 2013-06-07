@@ -38,7 +38,7 @@ PluginSpec MailHandle_Plugin::pluginSpec()
     spec.name = "MailHandle";
     spec.info = "Mailto links handler";
     spec.description = "Makes QupZilla handle mailto links in online services";
-    spec.version = "0.0.2";
+    spec.version = "0.0.5";
     spec.author = QString::fromUtf8("Mladen Pejaković <pejakm@gmail.com>");
     spec.icon = QPixmap(":/mailhandle/data/mailhandle.png");
     spec.hasSettings = true;

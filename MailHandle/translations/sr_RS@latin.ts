@@ -35,5 +35,17 @@
         <source>Yahoo!</source>
         <translation>Yahoo!</translation>
     </message>
+    <message>
+        <source>My Opera</source>
+        <translation>My Opera</translation>
+    </message>
+    <message>
+        <source>FastMail</source>
+        <translation>FastMail</translation>
+    </message>
+    <message>
+        <source>T-Online</source>
+        <translation>T-Online</translation>
+    </message>
 </context>
 </TS>
