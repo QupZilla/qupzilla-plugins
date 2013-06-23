@@ -38,6 +38,8 @@ public:
 
 private slots:
     void dialogAccepted();
+    void mhserviceChanged(int value);
+    void webservicepathChanged(int value);
 
 private:
     Ui::MailHandle_Settings* ui;

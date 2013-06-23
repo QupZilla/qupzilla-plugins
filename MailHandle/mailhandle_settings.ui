@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>304</width>
-    <height>118</height>
+    <width>378</width>
+    <height>174</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -164,6 +164,55 @@
             <normaloff>:/mailhandle/data/tonline.png</normaloff>:/mailhandle/data/tonline.png</iconset>
           </property>
          </item>
+         <item>
+          <property name="text">
+           <string>RoundCube</string>
+          </property>
+          <property name="icon">
+           <iconset resource="mailhandle_res.qrc">
+            <normaloff>:/mailhandle/data/roundcube.png</normaloff>:/mailhandle/data/roundcube.png</iconset>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="2" column="2" colspan="3" alignment="Qt::AlignVCenter">
+        <widget class="QFrame" name="webservicepath">
+         <property name="minimumSize">
+          <size>
+           <width>310</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="toolTip">
+          <string>Enter URL of your webmail service provider. For example:
+https://somewebsite/roundcube</string>
+         </property>
+         <widget class="QLineEdit" name="mhwspath">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>20</y>
+            <width>291</width>
+            <height>22</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string notr="true"/>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_4">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>0</y>
+            <width>271</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>URL of the webmail service provider:</string>
+          </property>
+         </widget>
         </widget>
        </item>
       </layout>

@@ -35,8 +35,12 @@ MailHandle_Settings::MailHandle_Settings(MailHandle_SchemeHandler* schemehandler
     QSettings settings(m_settingsFile, QSettings::IniFormat);
     settings.beginGroup("MailHandle");
     ui->mhservice->setCurrentIndex(settings.value("webservice", 0).toInt());
+    ui->mhwspath->setText(settings.value("webservicepath", QString()).toString());
     settings.endGroup();
 
+    mhserviceChanged(ui->mhservice->currentIndex());
+    connect(ui->mhservice, SIGNAL(currentIndexChanged(int)), this, SLOT(mhserviceChanged(int)));
+    connect(ui->webservicepath, SIGNAL(currentIndexChanged(int)), this, SLOT(webservicepathChanged(int)));
     connect(this, SIGNAL(accepted()), this, SLOT(dialogAccepted()));
 }
 
@@ -45,10 +49,22 @@ void MailHandle_Settings::dialogAccepted()
     QSettings settings(m_settingsFile, QSettings::IniFormat);
     settings.beginGroup("MailHandle");
     settings.setValue("webservice", ui->mhservice->currentIndex());
+    settings.setValue("webservicepath", ui->mhwspath->text());
     settings.endGroup();
 
     m_schemehandler->loadSettings();
 }
+
+void MailHandle_Settings::webservicepathChanged(int value)
+{
+    ui->webservicepath->setVisible(value == 8);
+}
+
+void MailHandle_Settings::mhserviceChanged(int value)
+{
+    ui->webservicepath->setEnabled(value == 8);
+}
+
 
 MailHandle_Settings::~MailHandle_Settings()
 {

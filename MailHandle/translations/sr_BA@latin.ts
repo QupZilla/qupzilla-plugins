@@ -47,5 +47,19 @@
         <source>T-Online</source>
         <translation>T-Online</translation>
     </message>
+    <message>
+        <source>RoundCube</source>
+        <translation>RoundCube</translation>
+    </message>
+    <message>
+        <source>Enter URL of your webmail service provider. For example:
+https://somewebsite/roundcube</source>
+        <translation>Unesite URL davaoca usluge veb pošte. Na primjer:
+https://nekivebsajt/roundcube</translation>
+    </message>
+    <message>
+        <source>URL of the webmail service provider:</source>
+        <translation>URL davaoca usluge veb pošte:</translation>
+    </message>
 </context>
 </TS>

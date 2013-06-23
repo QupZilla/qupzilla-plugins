@@ -38,6 +38,7 @@ public:
 private:
     bool m_enabled;
     int m_wservice;
+    QString m_wspath;
     QString m_settingsFile;
 };
 

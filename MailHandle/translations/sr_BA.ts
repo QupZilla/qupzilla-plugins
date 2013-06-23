@@ -47,5 +47,19 @@
         <source>T-Online</source>
         <translation>Т-онлајн</translation>
     </message>
+    <message>
+        <source>RoundCube</source>
+        <translation>РаундКјуб</translation>
+    </message>
+    <message>
+        <source>Enter URL of your webmail service provider. For example:
+https://somewebsite/roundcube</source>
+        <translation>Унесите УРЛ даваоца услуге веб поште. На примјер:
+https://nekivebsajt/roundcube</translation>
+    </message>
+    <message>
+        <source>URL of the webmail service provider:</source>
+        <translation>УРЛ даваоца услуге веб поште:</translation>
+    </message>
 </context>
 </TS>

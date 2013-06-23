@@ -47,5 +47,18 @@
         <source>T-Online</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>RoundCube</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter URL of your webmail service provider. For example:
+https://somewebsite/roundcube</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>URL of the webmail service provider:</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

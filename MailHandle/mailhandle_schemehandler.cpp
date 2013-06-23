@@ -42,6 +42,7 @@ void MailHandle_SchemeHandler::loadSettings()
 
     settings.beginGroup("MailHandle");
     m_wservice = settings.value("webservice", 0).toInt();
+    m_wspath = settings.value("webservicepath", QString()).toString();
     settings.endGroup();
 }
 
@@ -181,6 +182,20 @@ QNetworkReply* MailHandle_SchemeHandler::createRequest(QNetworkAccessManager::Op
     }
     case 7: {
         QUrl mlink("https://email.t-online.de/?service=writemail");
+
+        mlink.addQueryItem("to", mailto.toEncoded(QUrl::RemoveQuery | QUrl::RemoveScheme));
+
+        typedef QPair<QString, QString> QueryItem;
+        foreach(QueryItem item, mailto.queryItems()) {
+            mlink.addQueryItem(item.first, item.second);
+        }
+        MailHandle_Reply* reply = new MailHandle_Reply(request);
+        reply->setUrl(mlink);
+        return reply;
+        break;
+    }
+    case 8: {
+        QUrl mlink(m_wspath + "/?_task=mail&_action=compose");
 
         mlink.addQueryItem("to", mailto.toEncoded(QUrl::RemoveQuery | QUrl::RemoveScheme));
 
