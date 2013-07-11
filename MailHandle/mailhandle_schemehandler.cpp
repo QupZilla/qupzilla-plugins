@@ -25,7 +25,7 @@
 #include <QTimer>
 #include <QSettings>
 
-MailHandle_SchemeHandler::MailHandle_SchemeHandler(const QString &settingsPath, QObject* parent)
+MailHandle_SchemeHandler::MailHandle_SchemeHandler(const QString &settingsPath)
     : m_settingsFile(settingsPath + "extensions.ini")
 {
     loadSettings();
@@ -60,7 +60,7 @@ QNetworkReply* MailHandle_SchemeHandler::createRequest(QNetworkAccessManager::Op
         mlink.addQueryItem("to", mailto.toEncoded(QUrl::RemoveQuery | QUrl::RemoveScheme));
 
         typedef QPair<QString, QString> QueryItem;
-        foreach(QueryItem item, mailto.queryItems()) {
+        foreach (QueryItem item, mailto.queryItems()) {
             if (item.first == "subject") {
                 mlink.addQueryItem("su", item.second);
             }
@@ -79,7 +79,7 @@ QNetworkReply* MailHandle_SchemeHandler::createRequest(QNetworkAccessManager::Op
         mlink.addQueryItem("To", mailto.toEncoded(QUrl::RemoveQuery | QUrl::RemoveScheme));
 
         typedef QPair<QString, QString> QueryItem;
-        foreach(QueryItem item, mailto.queryItems()) {
+        foreach (QueryItem item, mailto.queryItems()) {
             if (item.first == "subject") {
                 mlink.addQueryItem("Subject", item.second);
             }
@@ -116,7 +116,7 @@ QNetworkReply* MailHandle_SchemeHandler::createRequest(QNetworkAccessManager::Op
         mlink.addQueryItem("to", mailto.toEncoded(QUrl::RemoveQuery | QUrl::RemoveScheme));
 
         typedef QPair<QString, QString> QueryItem;
-        foreach(QueryItem item, mailto.queryItems()) {
+        foreach (QueryItem item, mailto.queryItems()) {
             mlink.addQueryItem(item.first, item.second);
         }
         MailHandle_Reply* reply = new MailHandle_Reply(request);
@@ -130,7 +130,7 @@ QNetworkReply* MailHandle_SchemeHandler::createRequest(QNetworkAccessManager::Op
         mlink.addQueryItem("To", mailto.toEncoded(QUrl::RemoveQuery | QUrl::RemoveScheme));
 
         typedef QPair<QString, QString> QueryItem;
-        foreach(QueryItem item, mailto.queryItems()) {
+        foreach (QueryItem item, mailto.queryItems()) {
             if (item.first == "subject") {
                 mlink.addQueryItem("Subj", item.second);
             }
@@ -158,7 +158,7 @@ QNetworkReply* MailHandle_SchemeHandler::createRequest(QNetworkAccessManager::Op
         mlink.addQueryItem("to", mailto.toEncoded(QUrl::RemoveQuery | QUrl::RemoveScheme));
 
         typedef QPair<QString, QString> QueryItem;
-        foreach(QueryItem item, mailto.queryItems()) {
+        foreach (QueryItem item, mailto.queryItems()) {
             mlink.addQueryItem(item.first, item.second);
         }
         MailHandle_Reply* reply = new MailHandle_Reply(request);
@@ -172,7 +172,7 @@ QNetworkReply* MailHandle_SchemeHandler::createRequest(QNetworkAccessManager::Op
         mlink.addQueryItem("to", mailto.toEncoded(QUrl::RemoveQuery | QUrl::RemoveScheme));
 
         typedef QPair<QString, QString> QueryItem;
-        foreach(QueryItem item, mailto.queryItems()) {
+        foreach (QueryItem item, mailto.queryItems()) {
             mlink.addQueryItem(item.first, item.second);
         }
         MailHandle_Reply* reply = new MailHandle_Reply(request);
@@ -186,7 +186,7 @@ QNetworkReply* MailHandle_SchemeHandler::createRequest(QNetworkAccessManager::Op
         mlink.addQueryItem("to", mailto.toEncoded(QUrl::RemoveQuery | QUrl::RemoveScheme));
 
         typedef QPair<QString, QString> QueryItem;
-        foreach(QueryItem item, mailto.queryItems()) {
+        foreach (QueryItem item, mailto.queryItems()) {
             mlink.addQueryItem(item.first, item.second);
         }
         MailHandle_Reply* reply = new MailHandle_Reply(request);
@@ -200,7 +200,7 @@ QNetworkReply* MailHandle_SchemeHandler::createRequest(QNetworkAccessManager::Op
         mlink.addQueryItem("to", mailto.toEncoded(QUrl::RemoveQuery | QUrl::RemoveScheme));
 
         typedef QPair<QString, QString> QueryItem;
-        foreach(QueryItem item, mailto.queryItems()) {
+        foreach (QueryItem item, mailto.queryItems()) {
             mlink.addQueryItem(item.first, item.second);
         }
         MailHandle_Reply* reply = new MailHandle_Reply(request);
@@ -208,7 +208,12 @@ QNetworkReply* MailHandle_SchemeHandler::createRequest(QNetworkAccessManager::Op
         return reply;
         break;
     }
+
+    default:
+        break;
     }
+
+    return 0;
 }
 
 MailHandle_Reply::MailHandle_Reply(const QNetworkRequest &req, QObject* parent)

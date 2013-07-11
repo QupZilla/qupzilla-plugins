@@ -28,7 +28,7 @@
 class MailHandle_SchemeHandler : public SchemeHandler
 {
 public:
-    MailHandle_SchemeHandler(const QString &settingsPath, QObject* parent = 0);
+    MailHandle_SchemeHandler(const QString &settingsPath);
 
     QString settingsFile();
     void loadSettings();

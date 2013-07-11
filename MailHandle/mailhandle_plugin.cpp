@@ -49,7 +49,7 @@ PluginSpec MailHandle_Plugin::pluginSpec()
 void MailHandle_Plugin::init(InitState state, const QString &settingsPath)
 {
     Q_UNUSED(state);
-    m_schemehandler = new MailHandle_SchemeHandler(settingsPath, this);
+    m_schemehandler = new MailHandle_SchemeHandler(settingsPath);
 
     QZ_REGISTER_SCHEME_HANDLER("mailto", m_schemehandler);
 }
