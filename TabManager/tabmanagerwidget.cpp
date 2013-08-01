@@ -363,6 +363,10 @@ void TabManagerWidget::detachSelectedTabs(const QHash<QupZilla *, WebTab *> &tab
             newWindow->tabWidget()->addView(webTab);
         }
     }
+
+    if (newWindow->navigationContainer()) {
+        newWindow->tabWidget()->showNavigationBar(newWindow->navigationContainer());
+    }
 }
 
 void TabManagerWidget::bookmarkSelectedTabs(const QHash<QupZilla *, WebTab *> &tabsHash)
