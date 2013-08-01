@@ -185,7 +185,13 @@ void TabManagerWidgetController::toggleDefaultTabManagerView()
 {
     if (defaultTabManager()) {
         defaultTabManager()->activateWindow();
-        defaultTabManager()->setVisible(!defaultTabManager()->isVisible());
+        bool show = !defaultTabManager()->isVisible();
+        if (defaultTabManager()->isMinimized()) {
+            defaultTabManager()->showNormal();
+        }
+        else {
+            defaultTabManager()->setVisible(show);
+        }
     }
 }
 
@@ -204,7 +210,7 @@ void TabManagerWidgetController::showSideBySide()
 
     defaultTabManager()->setGeometry(managerRect);
     mApp->getWindow()->setGeometry(qupzillaRect);
-    mApp->getWindow()->show();
+    mApp->getWindow()->showNormal();
     mApp->getWindow()->raise();
 
     defaultTabManager()->show();

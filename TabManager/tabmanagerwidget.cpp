@@ -203,7 +203,12 @@ void TabManagerWidget::itemDoubleClick(QTreeWidgetItem* item, int)
         return;
     }
 
-    mainWindow->show();
+    if (mainWindow->isMinimized()) {
+        mainWindow->showNormal();
+    }
+    else {
+        mainWindow->show();
+    }
     mainWindow->activateWindow();
     mainWindow->raise();
     mainWindow->weView()->setFocus();
