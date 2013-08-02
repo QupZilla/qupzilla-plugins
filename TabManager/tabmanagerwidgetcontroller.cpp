@@ -138,7 +138,7 @@ TabManagerWidget* TabManagerWidgetController::createTabManagerWidget(QupZilla* m
     return tabManagerWidget;
 }
 
-TabManagerWidget *TabManagerWidgetController::defaultTabManager()
+TabManagerWidget* TabManagerWidgetController::defaultTabManager()
 {
     return m_defaultTabManager;
 }
@@ -150,7 +150,7 @@ void TabManagerWidgetController::addStatusBarIcon(QupZilla* window)
     }
 }
 
-void TabManagerWidgetController::removeStatusBarIcon(QupZilla *window)
+void TabManagerWidgetController::removeStatusBarIcon(QupZilla* window)
 {
     if (window) {
         window->statusBar()->removeWidget(m_statusBarIcons.value(window));
@@ -174,7 +174,7 @@ void TabManagerWidgetController::mainWindowCreated(QupZilla* window, bool refres
     }
 }
 
-void TabManagerWidgetController::mainWindowDeleted(QupZilla *window)
+void TabManagerWidgetController::mainWindowDeleted(QupZilla* window)
 {
     removeStatusBarIcon(window);
 

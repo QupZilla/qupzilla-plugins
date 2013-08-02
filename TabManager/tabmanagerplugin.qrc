@@ -7,5 +7,6 @@
         <file>data/tab-loading.png</file>
         <file>data/tab-pinned.png</file>
         <file>data/side-by-side.png</file>
+        <file>locale/fa_IR.qm</file>
     </qresource>
 </RCC>

@@ -15,6 +15,9 @@ RESOURCES += tabmanagerplugin.qrc
 FORMS += \
     tabmanagerwidget.ui
 
+TRANSLATIONS = \
+    translations/fa_IR.ts
+
 srcdir = $$(QUPZILLA_SRCDIR)
 equals(srcdir, "") {
     include(../../plugins.pri)

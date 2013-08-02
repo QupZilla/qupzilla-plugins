@@ -46,9 +46,9 @@ public:
     explicit TabManagerWidget(QupZilla* mainClass, QWidget* parent = 0, bool defaultWidget = false);
     ~TabManagerWidget();
 
-    void closeSelectedTabs(const QHash<QupZilla *, WebTab *> &tabsHash);
-    void detachSelectedTabs(const QHash<QupZilla *, WebTab *> &tabsHash);
-    void bookmarkSelectedTabs(const QHash<QupZilla *, WebTab *> &tabsHash);
+    void closeSelectedTabs(const QHash<QupZilla*, WebTab*> &tabsHash);
+    void detachSelectedTabs(const QHash<QupZilla*, WebTab*> &tabsHash);
+    void bookmarkSelectedTabs(const QHash<QupZilla*, WebTab*> &tabsHash);
 
     void setGroupType(GroupType type);
 

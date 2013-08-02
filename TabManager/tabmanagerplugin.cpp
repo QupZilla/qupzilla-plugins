@@ -39,9 +39,9 @@ PluginSpec TabManagerPlugin::pluginSpec()
 {
     PluginSpec spec;
     spec.name = "Tab Manager";
-    spec.info = "Tab Manager plugins for QupZilla";
+    spec.info = "Tab Manager plugin for QupZilla";
     spec.description = "Adds ability to managing tabs and windows";
-    spec.version = "0.1";
+    spec.version = "0.1.1";
     spec.author = "Razi Alavizadeh <s.r.alavizadeh@gmail.com>";
     spec.icon = QPixmap(":tabmanager/data/tabmanager.png");
     spec.hasSettings = true;
@@ -101,11 +101,11 @@ QTranslator* TabManagerPlugin::getTranslator(const QString &locale)
 void TabManagerPlugin::showSettings(QWidget* parent)
 {
     bool ok;
-    QString viewType = QInputDialog::getItem(parent, tr("TabManager View Type"),
-                                             tr("<p>Please select widget type for view:<br />"
-                                                "<b>Note:</b> Recommended option for managing lots of windows with lots of tabs is <i>Window</i>")
-                                             , QStringList() << tr("SideBar") << tr("Window")
-                                             , m_controller->viewType(), false, &ok, Qt::WindowStaysOnTopHint);
+    QString viewType = QInputDialog::getItem(parent, tr("Tab Manager View Type"),
+                       tr("<p>Please select view type:<br />"
+                          "<b>Note:</b> The \"<i>Window</i>\" type is recommended for managing lots of windows/tabs")
+                       , QStringList() << tr("SideBar") << tr("Window")
+                       , m_controller->viewType(), false, &ok, Qt::WindowStaysOnTopHint);
     TabManagerWidgetController::ViewType type;
     if (viewType == tr("SideBar")) {
         type = TabManagerWidgetController::ShowAsSideBar;

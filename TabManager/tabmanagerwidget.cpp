@@ -308,7 +308,7 @@ void TabManagerWidget::changeGroupType(int type)
     }
 }
 
-void TabManagerWidget::closeSelectedTabs(const QHash<QupZilla *, WebTab *> &tabsHash)
+void TabManagerWidget::closeSelectedTabs(const QHash<QupZilla*, WebTab*> &tabsHash)
 {
     if (tabsHash.isEmpty()) {
         return;
@@ -335,7 +335,7 @@ void TabManagerWidget::closeSelectedTabs(const QHash<QupZilla *, WebTab *> &tabs
     }
 }
 
-void TabManagerWidget::detachSelectedTabs(const QHash<QupZilla *, WebTab *> &tabsHash)
+void TabManagerWidget::detachSelectedTabs(const QHash<QupZilla*, WebTab*> &tabsHash)
 {
     // TODO: use TabWidget::detachTab()
     if (tabsHash.isEmpty() ||
@@ -371,7 +371,7 @@ void TabManagerWidget::detachSelectedTabs(const QHash<QupZilla *, WebTab *> &tab
     }
 }
 
-void TabManagerWidget::bookmarkSelectedTabs(const QHash<QupZilla *, WebTab *> &tabsHash)
+void TabManagerWidget::bookmarkSelectedTabs(const QHash<QupZilla*, WebTab*> &tabsHash)
 {
     QDialog* dialog = new QDialog(getQupZilla());
     QBoxLayout* layout = new QBoxLayout(QBoxLayout::TopToBottom, dialog);
@@ -547,7 +547,12 @@ void TabManagerWidget::groupByWindow()
                 tabItem->setFont(0, font);
             }
             if (!webTab->isLoading()) {
-                tabItem->setIcon(0, webTab->icon());
+                if (!webTab->isPinned()) {
+                    tabItem->setIcon(0, webTab->icon());
+                }
+                else {
+                    tabItem->setIcon(0, QIcon(":tabmanager/data/tab-pinned.png"));
+                }
             }
             else {
                 tabItem->setIcon(0, QIcon(":tabmanager/data/tab-loading.png"));
