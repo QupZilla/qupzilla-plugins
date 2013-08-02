@@ -200,13 +200,14 @@ void TabManagerWidgetController::showSideBySide()
     if (!defaultTabManager()) {
         return;
     }
-
-    const QRect &availableGeometry = mApp->desktop()->availableGeometry();
+    const QRect &availableGeometry = mApp->desktop()->availableGeometry(defaultTabManager());
     static int frameWidth = (defaultTabManager()->frameGeometry().width() - defaultTabManager()->geometry().width()) / 2;
     static int titleBarHeight = defaultTabManager()->style()->pixelMetric(QStyle::PM_TitleBarHeight);
 
-    QRect managerRect(frameWidth, titleBarHeight, qMin(400, availableGeometry.width() / 4), availableGeometry.height() - titleBarHeight - frameWidth);
-    QRect qupzillaRect(managerRect.topRight().x() + 2 * frameWidth, titleBarHeight, availableGeometry.width() - managerRect.width() - 4 * frameWidth, managerRect.height());
+    QRect managerRect(availableGeometry.left() + frameWidth, availableGeometry.top() + titleBarHeight,
+                      defaultTabManager()->width(), availableGeometry.height() - titleBarHeight - frameWidth);
+    QRect qupzillaRect(managerRect.topRight().x() + 2 * frameWidth, managerRect.top(),
+                       availableGeometry.width() - managerRect.width() - 4 * frameWidth, managerRect.height());
 
     defaultTabManager()->setGeometry(managerRect);
     mApp->getWindow()->setGeometry(qupzillaRect);

@@ -28,6 +28,7 @@
 #include "browsinglibrary.h"
 #include "locationbar.h"
 
+#include <QDesktopWidget>
 #include <QDialogButtonBox>
 #include <QStackedWidget>
 #include <QDialog>
@@ -344,6 +345,7 @@ void TabManagerWidget::detachSelectedTabs(const QHash<QupZilla *, WebTab *> &tab
     }
 
     QupZilla* newWindow = mApp->makeNewWindow(Qz::BW_OtherRestoredWindow);;
+    newWindow->move(mApp->desktop()->availableGeometry(this).topLeft() + QPoint(30, 30));
 
     const QList<QupZilla*> &windows = tabsHash.uniqueKeys();
     foreach (QupZilla* mainWindow, windows) {
