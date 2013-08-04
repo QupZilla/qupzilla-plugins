@@ -27,11 +27,13 @@
 #include <QTranslator>
 #include <QSettings>
 #include <QAction>
+#include <QTimer>
 
 TabManagerPlugin::TabManagerPlugin()
     : QObject()
     , m_controller(0)
     , m_tabManagerWidget(0)
+    , m_initState(false)
 {
 }
 
@@ -51,6 +53,8 @@ PluginSpec TabManagerPlugin::pluginSpec()
 
 void TabManagerPlugin::init(InitState state, const QString &settingsPath)
 {
+    Q_UNUSED(state)
+
     m_controller = new TabManagerWidgetController(this);
     connect(mApp->plugins(), SIGNAL(mainWindowCreated(QupZilla*)), m_controller, SLOT(mainWindowCreated(QupZilla*)));
     connect(mApp->plugins(), SIGNAL(mainWindowDeleted(QupZilla*)), m_controller, SLOT(mainWindowDeleted(QupZilla*)));
@@ -58,18 +62,16 @@ void TabManagerPlugin::init(InitState state, const QString &settingsPath)
     connect(mApp->plugins(), SIGNAL(webPageDeleted(WebPage*)), m_controller, SIGNAL(requestRefreshTree(WebPage*)));
 
     m_settingsPath = settingsPath;
+    m_initState = true;
+
     // load settings
     QSettings settings(m_settingsPath + "extensions.ini", QSettings::IniFormat);
     settings.beginGroup("TabManager");
     m_controller->setGroupType(TabManagerWidget::GroupType(settings.value("GroupType", TabManagerWidget::GroupByWindow).toInt()));
-    insertManagerWidget(TabManagerWidgetController::ViewType(settings.value("ViewType", TabManagerWidgetController::ShowAsWindow).toInt()));
+    m_controller->setViewType(TabManagerWidgetController::ViewType(settings.value("ViewType", TabManagerWidgetController::ShowAsWindow).toInt()));
     settings.endGroup();
 
-    if (state == LateInitState) {
-        foreach (QupZilla* window, mApp->mainWindows()) {
-            m_controller->mainWindowCreated(window, false);
-        }
-    }
+    QTimer::singleShot(0, this, SLOT(insertManagerWidget()));
 }
 
 void TabManagerPlugin::unload()
@@ -116,7 +118,8 @@ void TabManagerPlugin::showSettings(QWidget* parent)
 
     if (ok && type != m_controller->viewType()) {
         removeManagerWidget();
-        insertManagerWidget(type);
+        m_controller->setViewType(type);
+        insertManagerWidget();
 
         if (type == TabManagerWidgetController::ShowAsSideBar) {
             mApp->getWindow()->sideBarManager()->showSideBar("TabManager");
@@ -130,18 +133,25 @@ void TabManagerPlugin::showSettings(QWidget* parent)
     }
 }
 
-void TabManagerPlugin::insertManagerWidget(TabManagerWidgetController::ViewType type)
+void TabManagerPlugin::insertManagerWidget()
 {
-    m_controller->setViewType(type);
-    if (type == TabManagerWidgetController::ShowAsSideBar) {
+    if (m_controller->viewType() == TabManagerWidgetController::ShowAsSideBar) {
         SideBarManager::addSidebar("TabManager", m_controller);
     }
-    else if (type == TabManagerWidgetController::ShowAsWindow) {
+    else if (m_controller->viewType() == TabManagerWidgetController::ShowAsWindow) {
         if (!m_tabManagerWidget) {
             m_tabManagerWidget = m_controller->createTabManagerWidget(mApp->getWindow(), 0, true);
             m_tabManagerWidget->setWindowFlags(Qt::Window);
         }
         m_tabManagerWidget->show();
+    }
+
+    if (m_initState) {
+        foreach (QupZilla* window, mApp->mainWindows()) {
+            m_controller->mainWindowCreated(window, false);
+        }
+
+        m_initState = false;
     }
 }
 

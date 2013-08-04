@@ -51,14 +51,17 @@ public:
     QTranslator* getTranslator(const QString &locale);
     void showSettings(QWidget* parent = 0);
 
-    void insertManagerWidget(TabManagerWidgetController::ViewType type);
     void removeManagerWidget();
+
+public slots:
+    void insertManagerWidget();
 
 private:
     TabManagerWidgetController* m_controller;
     TabManagerWidget* m_tabManagerWidget;
     QString m_settingsPath;
     QString m_viewType;
+    bool m_initState;
 };
 
 #endif // TESTPLUGIN_H
