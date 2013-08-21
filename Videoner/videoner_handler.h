@@ -26,7 +26,7 @@
 #include <QRegExp>
 #include <QWebHitTestResult>
 #include <QMenu>
-#include <QWeakPointer>
+#include <QPointer>
 
 class QMouseEvent;
 class QWebElement;
@@ -50,7 +50,7 @@ private slots:
     void startExternalHandler();
 
 private:
-    QWeakPointer<WebView> m_view;
+    QPointer<WebView> m_view;
 
     bool m_pageyt;
     bool m_pagevm;
