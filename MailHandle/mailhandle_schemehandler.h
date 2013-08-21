@@ -36,6 +36,10 @@ public:
     QNetworkReply* createRequest(QNetworkAccessManager::Operation op, const QNetworkRequest &request, QIODevice* outgoingData);
 
 private:
+    typedef QPair<QString, QString> QueryItem;
+    void addQueryItem(QUrl &url, const QString &key, const QString &value);
+    QList<QueryItem> getQueryItems(const QUrl &url);
+
     bool m_enabled;
     int m_wservice;
     QString m_wspath;

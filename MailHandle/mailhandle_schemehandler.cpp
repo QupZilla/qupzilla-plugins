@@ -24,6 +24,9 @@
 #include <QNetworkRequest>
 #include <QTimer>
 #include <QSettings>
+#if QT_VERSION >= 0x050000
+#include <QUrlQuery>
+#endif
 
 MailHandle_SchemeHandler::MailHandle_SchemeHandler(const QString &settingsPath)
     : m_settingsFile(settingsPath + "extensions.ini")
@@ -46,6 +49,27 @@ void MailHandle_SchemeHandler::loadSettings()
     settings.endGroup();
 }
 
+void MailHandle_SchemeHandler::addQueryItem(QUrl &url, const QString &key, const QString &value)
+{
+#if QT_VERSION >= 0x050000
+    QUrlQuery query(url);
+    query.addQueryItem(key, value);
+    url.setQuery(query);
+#else
+    url.addQueryItem(key, value);
+#endif
+}
+
+QList<MailHandle_SchemeHandler::QueryItem> MailHandle_SchemeHandler::getQueryItems(const QUrl &url)
+{
+#if QT_VERSION >= 0x050000
+    QUrlQuery query(url);
+    return query.queryItems();
+#else
+    return url.queryItems();
+#endif
+}
+
 QNetworkReply* MailHandle_SchemeHandler::createRequest(QNetworkAccessManager::Operation op, const QNetworkRequest &request, QIODevice* outgoingData)
 {
     Q_UNUSED(op)
@@ -57,15 +81,14 @@ QNetworkReply* MailHandle_SchemeHandler::createRequest(QNetworkAccessManager::Op
     case 0: {
         QUrl mlink("https://mail.google.com/mail/?view=cm&fs=1&tf=1&source=mailto");
 
-        mlink.addQueryItem("to", mailto.toEncoded(QUrl::RemoveQuery | QUrl::RemoveScheme));
+        addQueryItem(mlink, "to", mailto.toEncoded(QUrl::RemoveQuery | QUrl::RemoveScheme));
 
-        typedef QPair<QString, QString> QueryItem;
-        foreach (QueryItem item, mailto.queryItems()) {
+        foreach (QueryItem item, getQueryItems(mailto)) {
             if (item.first == "subject") {
-                mlink.addQueryItem("su", item.second);
+                addQueryItem(mlink, "su", item.second);
             }
             else {
-                mlink.addQueryItem(item.first, item.second);
+                addQueryItem(mlink, item.first, item.second);
             }
         }
         MailHandle_Reply* reply = new MailHandle_Reply(request);
@@ -76,26 +99,26 @@ QNetworkReply* MailHandle_SchemeHandler::createRequest(QNetworkAccessManager::Op
     case 1: {
         QUrl mlink("http://win.mail.ru/cgi-bin/sentmsg?mailto=");
 
-        mlink.addQueryItem("To", mailto.toEncoded(QUrl::RemoveQuery | QUrl::RemoveScheme));
+        addQueryItem(mlink, "To", mailto.toEncoded(QUrl::RemoveQuery | QUrl::RemoveScheme));
 
-        typedef QPair<QString, QString> QueryItem;
-        foreach (QueryItem item, mailto.queryItems()) {
+        foreach (QueryItem item, getQueryItems(mailto)) {
             if (item.first == "subject") {
-                mlink.addQueryItem("Subject", item.second);
+                addQueryItem(mlink, "Subject", item.second);
             }
             if (item.first == "cc") {
-                mlink.addQueryItem("CC", item.second);
+                addQueryItem(mlink, "CC", item.second);
             }
             if (item.first == "bcc") {
-                mlink.addQueryItem("BCC", item.second);
+                addQueryItem(mlink, "BCC", item.second);
             }
             if (item.first == "body") {
-                mlink.addQueryItem("Body", item.second);
+                addQueryItem(mlink, "Body", item.second);
             }
             else {
-                mlink.addQueryItem(item.first, item.second);
+                addQueryItem(mlink, item.first, item.second);
             }
         }
+
         MailHandle_Reply* reply = new MailHandle_Reply(request);
         reply->setUrl(mlink);
         return reply;
@@ -113,12 +136,12 @@ QNetworkReply* MailHandle_SchemeHandler::createRequest(QNetworkAccessManager::Op
     case 3: {
         QUrl mlink("https://mail.live.com/default.aspx?rru=compose");
 
-        mlink.addQueryItem("to", mailto.toEncoded(QUrl::RemoveQuery | QUrl::RemoveScheme));
+        addQueryItem(mlink, "to", mailto.toEncoded(QUrl::RemoveQuery | QUrl::RemoveScheme));
 
-        typedef QPair<QString, QString> QueryItem;
-        foreach (QueryItem item, mailto.queryItems()) {
-            mlink.addQueryItem(item.first, item.second);
+        foreach (QueryItem item, getQueryItems(mailto)) {
+            addQueryItem(mlink, item.first, item.second);
         }
+
         MailHandle_Reply* reply = new MailHandle_Reply(request);
         reply->setUrl(mlink);
         return reply;
@@ -127,26 +150,26 @@ QNetworkReply* MailHandle_SchemeHandler::createRequest(QNetworkAccessManager::Op
     case 4: {
         QUrl mlink("http://compose.mail.yahoo.com/?");
 
-        mlink.addQueryItem("To", mailto.toEncoded(QUrl::RemoveQuery | QUrl::RemoveScheme));
+        addQueryItem(mlink, "To", mailto.toEncoded(QUrl::RemoveQuery | QUrl::RemoveScheme));
 
-        typedef QPair<QString, QString> QueryItem;
-        foreach (QueryItem item, mailto.queryItems()) {
+        foreach (QueryItem item, getQueryItems(mailto)) {
             if (item.first == "subject") {
-                mlink.addQueryItem("Subj", item.second);
+                addQueryItem(mlink, "Subj", item.second);
             }
             if (item.first == "cc") {
-                mlink.addQueryItem("Cc", item.second);
+                addQueryItem(mlink, "Cc", item.second);
             }
             if (item.first == "bcc") {
-                mlink.addQueryItem("Bcc", item.second);
+                addQueryItem(mlink, "Bcc", item.second);
             }
             if (item.first == "body") {
-                mlink.addQueryItem("Body", item.second);
+                addQueryItem(mlink, "Body", item.second);
             }
             else {
-                mlink.addQueryItem(item.first, item.second);
+                addQueryItem(mlink, item.first, item.second);
             }
         }
+
         MailHandle_Reply* reply = new MailHandle_Reply(request);
         reply->setUrl(mlink);
         return reply;
@@ -155,12 +178,12 @@ QNetworkReply* MailHandle_SchemeHandler::createRequest(QNetworkAccessManager::Op
     case 5: {
         QUrl mlink("https://mail.opera.com/action/compose/?");
 
-        mlink.addQueryItem("to", mailto.toEncoded(QUrl::RemoveQuery | QUrl::RemoveScheme));
+        addQueryItem(mlink, "to", mailto.toEncoded(QUrl::RemoveQuery | QUrl::RemoveScheme));
 
-        typedef QPair<QString, QString> QueryItem;
-        foreach (QueryItem item, mailto.queryItems()) {
-            mlink.addQueryItem(item.first, item.second);
+        foreach (QueryItem item, getQueryItems(mailto)) {
+            addQueryItem(mlink, item.first, item.second);
         }
+
         MailHandle_Reply* reply = new MailHandle_Reply(request);
         reply->setUrl(mlink);
         return reply;
@@ -169,12 +192,12 @@ QNetworkReply* MailHandle_SchemeHandler::createRequest(QNetworkAccessManager::Op
     case 6: {
         QUrl mlink("https://fastmail.fm/action/compose/?");
 
-        mlink.addQueryItem("to", mailto.toEncoded(QUrl::RemoveQuery | QUrl::RemoveScheme));
+        addQueryItem(mlink, "to", mailto.toEncoded(QUrl::RemoveQuery | QUrl::RemoveScheme));
 
-        typedef QPair<QString, QString> QueryItem;
-        foreach (QueryItem item, mailto.queryItems()) {
-            mlink.addQueryItem(item.first, item.second);
+        foreach (QueryItem item, getQueryItems(mailto)) {
+            addQueryItem(mlink, item.first, item.second);
         }
+
         MailHandle_Reply* reply = new MailHandle_Reply(request);
         reply->setUrl(mlink);
         return reply;
@@ -183,12 +206,12 @@ QNetworkReply* MailHandle_SchemeHandler::createRequest(QNetworkAccessManager::Op
     case 7: {
         QUrl mlink("https://email.t-online.de/?service=writemail");
 
-        mlink.addQueryItem("to", mailto.toEncoded(QUrl::RemoveQuery | QUrl::RemoveScheme));
+        addQueryItem(mlink, "to", mailto.toEncoded(QUrl::RemoveQuery | QUrl::RemoveScheme));
 
-        typedef QPair<QString, QString> QueryItem;
-        foreach (QueryItem item, mailto.queryItems()) {
-            mlink.addQueryItem(item.first, item.second);
+        foreach (QueryItem item, getQueryItems(mailto)) {
+            addQueryItem(mlink, item.first, item.second);
         }
+
         MailHandle_Reply* reply = new MailHandle_Reply(request);
         reply->setUrl(mlink);
         return reply;
@@ -197,12 +220,12 @@ QNetworkReply* MailHandle_SchemeHandler::createRequest(QNetworkAccessManager::Op
     case 8: {
         QUrl mlink(m_wspath + "/?_task=mail&_action=compose");
 
-        mlink.addQueryItem("to", mailto.toEncoded(QUrl::RemoveQuery | QUrl::RemoveScheme));
+        addQueryItem(mlink, "to", mailto.toEncoded(QUrl::RemoveQuery | QUrl::RemoveScheme));
 
-        typedef QPair<QString, QString> QueryItem;
-        foreach (QueryItem item, mailto.queryItems()) {
-            mlink.addQueryItem(item.first, item.second);
+        foreach (QueryItem item, getQueryItems(mailto)) {
+            addQueryItem(mlink, item.first, item.second);
         }
+
         MailHandle_Reply* reply = new MailHandle_Reply(request);
         reply->setUrl(mlink);
         return reply;
