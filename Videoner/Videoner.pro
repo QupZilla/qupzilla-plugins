@@ -17,6 +17,7 @@ FORMS += \
 RESOURCES = videoner_res.qrc
 
 TRANSLATIONS = \
+    <file>locale/sr_BA.qm</file>
     translations/cs_CZ.ts \
     translations/de_DE.ts \
     translations/it_IT.ts \

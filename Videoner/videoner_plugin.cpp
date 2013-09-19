@@ -1,7 +1,7 @@
 /* ============================================================
 * Videoner plugin for QupZilla
 * Copyright (C) 2012-2013  David Rosca <nowrep@gmail.com>
-* Copyright (C) 2012-2013  Mladen Pejaković <pejakm@gmail.com>
+* Copyright (C) 2012-2013  Mladen Pejaković <pejakm@autistici.org>
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -38,7 +38,7 @@ PluginSpec Videoner_Plugin::pluginSpec()
     spec.info = "Video links handler";
     spec.description = "Open video links from video sharing services in external program";
     spec.version = "0.0.2";
-    spec.author = QString::fromUtf8("Mladen Pejaković <pejakm@gmail.com>");
+    spec.author = QString::fromUtf8("Mladen Pejaković <pejakm@autistici.org>");
     spec.icon = QPixmap(":/videoner/data/videoner.png");
     spec.hasSettings = true;
 

@@ -17,6 +17,7 @@ FORMS += \
 RESOURCES = mailhandle_res.qrc
 
 TRANSLATIONS = \
+    translations/ar.ts \
     translations/sr_BA.ts \
     translations/sr_BA@latin.ts \
     translations/sr_RS.ts \

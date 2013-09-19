@@ -1,7 +1,7 @@
 /* ============================================================
 * MailHandle plugin for QupZilla
 * Copyright (C) 2012-2013  David Rosca <nowrep@gmail.com>
-* Copyright (C) 2012-2013  Mladen Pejaković <pejakm@gmail.com>
+* Copyright (C) 2012-2013  Mladen Pejaković <pejakm@autistici.org>
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -39,7 +39,7 @@ PluginSpec MailHandle_Plugin::pluginSpec()
     spec.info = "Mailto links handler";
     spec.description = "Makes QupZilla handle mailto links in online services";
     spec.version = "0.1.0";
-    spec.author = QString::fromUtf8("Mladen Pejaković <pejakm@gmail.com>");
+    spec.author = QString::fromUtf8("Mladen Pejaković <pejakm@autistici.org>");
     spec.icon = QPixmap(":/mailhandle/data/mailhandle.png");
     spec.hasSettings = true;
 
