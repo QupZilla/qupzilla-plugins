@@ -16,5 +16,5 @@ both pointing to the correct directory.
 
     echo $QUPZILLA_PLUGINS_SRCDIR $QUPZILLA_SRCDIR
     
-    /home/david/Programming/Qt-C++/QupZilla-plugins
+    /home/david/Programming/Qt-C++/QupZilla-plugins/plugins
     /home/david/Programming/Qt-C++/QupZilla

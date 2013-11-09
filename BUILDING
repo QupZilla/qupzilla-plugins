@@ -3,7 +3,7 @@ General
 
   Building plugins has the same dependencies as application.
 
-  However, there is possibility to build plugins out of main source directory 
+  However, there is possibility to build plugins out of main source directory
       (src/plugins)
 
   In order to build plugins this way, you need to specify 2 env variables:
@@ -12,13 +12,13 @@ General
         QUPZILLA_PLUGINS_SRCDIR="Full path to plugins source"
 
 
-  QUPZILLA_SRCDIR must point to top source directory 
-        (eg. where src/ or translations/ ... directories are located) 
+  QUPZILLA_SRCDIR must point to top source directory
+        (eg. where src/ or translations/ ... directories are located)
 
   QUPZILLA_PLUGINS_SRCDIR must point to top plugins directory
-        (eg. where YouTuber/ or PIM/ ... directories are located)
+        (eg. where CopyTitle/ or Videoner/ ... directories are located)
 
-  
+
   Note: If you are using Qt Creator for building, you need to specify these
   variables in Projects/Build Environment section
 
