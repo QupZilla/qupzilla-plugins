@@ -1,7 +1,7 @@
 /* ============================================================
 * QupZilla - WebKit based browser
-* Copyright (C) 2010-2013  David Rosca <nowrep@gmail.com>
-* Copyright (C) 2012-2013  Mladen Pejaković <pejakm@autistici.org>
+* Copyright (C) 2010-2014  David Rosca <nowrep@gmail.com>
+* Copyright (C) 2012-2014  Mladen Pejaković <pejakm@autistici.org>
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -61,7 +61,7 @@ void CopyTitle::unload()
 
 bool CopyTitle::testPlugin()
 {
-    return (QupZilla::VERSION == QLatin1String("1.5.0"));
+    return (QupZilla::VERSION == QLatin1String("1.6.0"));
 }
 
 QTranslator* CopyTitle::getTranslator(const QString &locale)

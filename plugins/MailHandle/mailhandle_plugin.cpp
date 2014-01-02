@@ -1,7 +1,7 @@
 /* ============================================================
 * MailHandle plugin for QupZilla
-* Copyright (C) 2012-2013  David Rosca <nowrep@gmail.com>
-* Copyright (C) 2012-2013  Mladen Pejaković <pejakm@autistici.org>
+* Copyright (C) 2012-2014  David Rosca <nowrep@gmail.com>
+* Copyright (C) 2012-2014  Mladen Pejaković <pejakm@autistici.org>
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -66,7 +66,7 @@ bool MailHandle_Plugin::testPlugin()
 {
     // Let's be sure, require latest version of QupZilla
 
-    return (QupZilla::VERSION == QLatin1String("1.5.0"));
+    return (QupZilla::VERSION == QLatin1String("1.6.0"));
 }
 
 QTranslator* MailHandle_Plugin::getTranslator(const QString &locale)
