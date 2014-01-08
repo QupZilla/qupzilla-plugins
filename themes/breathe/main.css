@@ -123,6 +123,8 @@ IconProvider
 /*LocationBar*/
 #locationbar
 {
+    background: transparent;
+    border-image: url(images/lineedit-bg.png);
     border-width:3;
     padding-right: -4px;
     padding-left: -4px;
@@ -152,13 +154,23 @@ IconProvider
 #locationbar-siteicon
 {
     border-image: url(images/siteicon-bg.png);
-    qproperty-fixedsize: 30px 22px;
+    qproperty-fixedsize: 32px 22px;
     padding-left: 0px;
+}
+
+#locationbar-siteicon:hover
+{
+    border-image: url(images/siteicon-bg-a.png);
 }
 
 #locationbar-siteicon[secured="true"]
 {
     border-image: url(images/siteicon-secure-bg.png);
+}
+
+#locationbar-siteicon[secured="true"]:hover
+{
+    border-image: url(images/siteicon-secure-bg-a.png);
 }
 
 #locationbar-rss-icon
@@ -169,7 +181,7 @@ IconProvider
 
 #locationbar-goicon
 {
-    qproperty-icon: url(images/gotoaddress.png);
+    qproperty-pixmap: url(images/gotoaddress.png);
     qproperty-fixedsize: 16px 16px;
 }
 
@@ -206,6 +218,8 @@ IconProvider
 /*WebSearchBar*/
 #websearchbar
 {
+    background: transparent;
+    border-image: url(images/lineedit-bg.png);
     border-width:3;
     padding-right: -4px;
     padding-top: 2px;
