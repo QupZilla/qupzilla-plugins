@@ -130,7 +130,7 @@ IconProvider
     padding-left: -4px;
     padding-top: 2px;
     qproperty-fixedheight: 22;
-    qproperty-leftMargin: 30;
+    qproperty-leftMargin: 34;
 }
 
 /*#locationbar[secured="true"]
@@ -237,7 +237,12 @@ IconProvider
 {
     border-image: url(images/websearch-bg.png);
     padding-left:-8px;
-    qproperty-fixedsize: 30px 20px;
+    qproperty-fixedsize: 32px 22px;
+}
+
+#websearchbar-searchprovider-comobobox:hover
+{
+    border-image: url(images/websearch-bg-a.png);
 }
 
 #websearchbar-searchprovider-comobobox::menu-indicator
