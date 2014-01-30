@@ -61,7 +61,7 @@ void CopyTitle::unload()
 
 bool CopyTitle::testPlugin()
 {
-    return (QupZilla::VERSION == QLatin1String("1.6.0"));
+    return (QupZilla::VERSION == QLatin1String("1.6.1"));
 }
 
 QTranslator* CopyTitle::getTranslator(const QString &locale)
