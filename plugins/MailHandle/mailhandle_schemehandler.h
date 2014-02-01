@@ -40,7 +40,6 @@ private:
     void addQueryItem(QUrl &url, const QString &key, const QString &value);
     QList<QueryItem> getQueryItems(const QUrl &url);
 
-    bool m_enabled;
     int m_wservice;
     QString m_wspath;
     QString m_settingsFile;

@@ -56,10 +56,10 @@ void MailHandle_Plugin::init(InitState state, const QString &settingsPath)
 
 void MailHandle_Plugin::unload()
 {
+    QZ_UNREGISTER_SCHEME_HANDLER("mailto", m_schemehandler);
+
     delete m_settings.data();
     delete m_schemehandler;
-
-    QZ_UNREGISTER_SCHEME_HANDLER("mailto", m_schemehandler);
 }
 
 bool MailHandle_Plugin::testPlugin()
