@@ -21,7 +21,7 @@
 #include "videoner_settings.h"
 #include "mainapplication.h"
 #include "pluginproxy.h"
-#include "qupzilla.h"
+#include "browserwindow.h"
 
 #include <QTranslator>
 
@@ -62,7 +62,7 @@ bool Videoner_Plugin::testPlugin()
 {
     // Let's be sure, require latest version of QupZilla
 
-    return (QupZilla::VERSION == QLatin1String("1.6.1"));
+    return (Qz::VERSION == QLatin1String("1.7.0"));
 }
 
 QTranslator* Videoner_Plugin::getTranslator(const QString &locale)

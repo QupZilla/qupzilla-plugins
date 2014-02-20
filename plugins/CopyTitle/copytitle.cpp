@@ -17,7 +17,7 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 * ============================================================ */
 #include "copytitle.h"
-#include "qupzilla.h"
+#include "browserwindow.h"
 #include "webview.h"
 #include "pluginproxy.h"
 #include "mainapplication.h"
@@ -61,7 +61,7 @@ void CopyTitle::unload()
 
 bool CopyTitle::testPlugin()
 {
-    return (QupZilla::VERSION == QLatin1String("1.6.1"));
+    return (Qz::VERSION == QLatin1String("1.7.0"));
 }
 
 QTranslator* CopyTitle::getTranslator(const QString &locale)
