@@ -40,7 +40,6 @@ MailHandle_Settings::MailHandle_Settings(MailHandle_SchemeHandler* schemehandler
 
     mhserviceChanged(ui->mhservice->currentIndex());
     connect(ui->mhservice, SIGNAL(currentIndexChanged(int)), this, SLOT(mhserviceChanged(int)));
-    connect(ui->webservicepath, SIGNAL(currentIndexChanged(int)), this, SLOT(webservicepathChanged(int)));
     connect(this, SIGNAL(accepted()), this, SLOT(dialogAccepted()));
 }
 
@@ -53,11 +52,6 @@ void MailHandle_Settings::dialogAccepted()
     settings.endGroup();
 
     m_schemehandler->loadSettings();
-}
-
-void MailHandle_Settings::webservicepathChanged(int value)
-{
-    ui->webservicepath->setVisible(value == 8);
 }
 
 void MailHandle_Settings::mhserviceChanged(int value)
