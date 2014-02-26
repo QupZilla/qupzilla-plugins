@@ -35,22 +35,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Enable Vimeo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Enable Hulu</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Enable YouTube</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Enable DailyMotion</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Executable:</source>
         <translation>Program: </translation>
     </message>
@@ -59,16 +43,32 @@
         <translation>Argumenty: </translation>
     </message>
     <message>
-        <source>...</source>
-        <translation>...</translation>
+        <source>Choose executable location...</source>
+        <translation>Zvolte cestu k programu...</translation>
     </message>
     <message>
-        <source>Enable MetaCafe</source>
+        <source>General</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Choose executable location...</source>
-        <translation>Zvolte cestu k programu...</translation>
+        <source>YouTube</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable YouTube support</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use custom external application</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Media elements</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable media elements support</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

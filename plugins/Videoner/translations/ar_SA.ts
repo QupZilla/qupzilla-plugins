@@ -4,31 +4,38 @@
 <context>
     <name>Videoner_Handler</name>
     <message>
-        <location filename="../videoner_handler.cpp" line="83"/>
-        <location filename="../videoner_handler.cpp" line="111"/>
-        <location filename="../videoner_handler.cpp" line="138"/>
-        <location filename="../videoner_handler.cpp" line="165"/>
-        <location filename="../videoner_handler.cpp" line="192"/>
+        <location filename="../videoner_handler.cpp" line="91"/>
+        <location filename="../videoner_handler.cpp" line="117"/>
+        <location filename="../videoner_handler.cpp" line="143"/>
+        <location filename="../videoner_handler.cpp" line="169"/>
+        <location filename="../videoner_handler.cpp" line="195"/>
+        <location filename="../videoner_handler.cpp" line="221"/>
+        <location filename="../videoner_handler.cpp" line="247"/>
+        <location filename="../videoner_handler.cpp" line="254"/>
         <source>Videonize!</source>
         <translation>خلّها فيديو!</translation>
     </message>
     <message>
-        <location filename="../videoner_handler.cpp" line="206"/>
+        <location filename="../videoner_handler.cpp" line="268"/>
+        <location filename="../videoner_handler.cpp" line="282"/>
         <source>Executable: </source>
         <translation>التطبيق:</translation>
     </message>
     <message>
-        <location filename="../videoner_handler.cpp" line="206"/>
+        <location filename="../videoner_handler.cpp" line="268"/>
+        <location filename="../videoner_handler.cpp" line="282"/>
         <source>Arguments: </source>
         <translation>المُبادلات:</translation>
     </message>
     <message>
-        <location filename="../videoner_handler.cpp" line="207"/>
+        <location filename="../videoner_handler.cpp" line="269"/>
+        <location filename="../videoner_handler.cpp" line="283"/>
         <source>Cannot start external viewer</source>
         <translation>لا يمكن بدء العارض الخارجي</translation>
     </message>
     <message>
-        <location filename="../videoner_handler.cpp" line="207"/>
+        <location filename="../videoner_handler.cpp" line="269"/>
+        <location filename="../videoner_handler.cpp" line="283"/>
         <source>Cannot start external viewer! %1</source>
         <translation>لا يمكن بدء العارض الخارجي! %1</translation>
     </message>
@@ -41,52 +48,59 @@
         <translation>إعدادات فيديونَر</translation>
     </message>
     <message>
-        <location filename="../videoner_settings.ui" line="53"/>
+        <location filename="../videoner_settings.ui" line="34"/>
+        <source>General</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../videoner_settings.ui" line="138"/>
+        <source>YouTube</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../videoner_settings.ui" line="144"/>
+        <source>Enable YouTube support</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../videoner_settings.ui" line="153"/>
+        <location filename="../videoner_settings.ui" line="227"/>
+        <source>Use custom external application</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../videoner_settings.ui" line="214"/>
+        <source>Media elements</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../videoner_settings.ui" line="220"/>
+        <source>Enable media elements support</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../videoner_settings.ui" line="331"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:x-large; font-weight:600;&quot;&gt;Video links handler&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:x-large; font-weight:600;&quot;&gt;متولٍّ لروابط الفيديو&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../videoner_settings.ui" line="63"/>
-        <source>Enable Vimeo</source>
-        <translation>فعّل Vimeo</translation>
-    </message>
-    <message>
-        <location filename="../videoner_settings.ui" line="70"/>
-        <source>Enable Hulu</source>
-        <translation>فعّل Hulu</translation>
-    </message>
-    <message>
-        <location filename="../videoner_settings.ui" line="90"/>
-        <source>Enable YouTube</source>
-        <translation>فعّل YouTube</translation>
-    </message>
-    <message>
-        <location filename="../videoner_settings.ui" line="97"/>
-        <source>Enable DailyMotion</source>
-        <translation>فعّل DailyMotion</translation>
-    </message>
-    <message>
-        <location filename="../videoner_settings.ui" line="109"/>
+        <location filename="../videoner_settings.ui" line="69"/>
+        <location filename="../videoner_settings.ui" line="178"/>
+        <location filename="../videoner_settings.ui" line="252"/>
         <source>Executable:</source>
         <translation>البرنامج:</translation>
     </message>
     <message>
-        <location filename="../videoner_settings.ui" line="116"/>
+        <location filename="../videoner_settings.ui" line="45"/>
+        <location filename="../videoner_settings.ui" line="199"/>
+        <location filename="../videoner_settings.ui" line="273"/>
         <source>Arguments:</source>
         <translation>المُبادلات:</translation>
     </message>
     <message>
-        <location filename="../videoner_settings.ui" line="131"/>
-        <source>...</source>
-        <translation>...</translation>
-    </message>
-    <message>
-        <location filename="../videoner_settings.ui" line="168"/>
-        <source>Enable MetaCafe</source>
-        <translation>فعّل MetaCafe</translation>
-    </message>
-    <message>
-        <location filename="../videoner_settings.cpp" line="69"/>
+        <location filename="../videoner_settings.cpp" line="95"/>
+        <location filename="../videoner_settings.cpp" line="105"/>
+        <location filename="../videoner_settings.cpp" line="115"/>
         <source>Choose executable location...</source>
         <translation>اختر موقع البرنامج...</translation>
     </message>

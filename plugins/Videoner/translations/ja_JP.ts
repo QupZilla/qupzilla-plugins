@@ -35,22 +35,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Enable Vimeo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Enable Hulu</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Enable YouTube</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Enable DailyMotion</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Executable:</source>
         <translation>実行可能: </translation>
     </message>
@@ -59,15 +43,31 @@
         <translation>パラメーター: </translation>
     </message>
     <message>
-        <source>...</source>
-        <translation>...</translation>
-    </message>
-    <message>
-        <source>Enable MetaCafe</source>
+        <source>Choose executable location...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Choose executable location...</source>
+        <source>General</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>YouTube</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable YouTube support</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use custom external application</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Media elements</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable media elements support</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

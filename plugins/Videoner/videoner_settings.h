@@ -38,8 +38,12 @@ public:
 
 private slots:
     void chooseExternalApp();
+    void chooseExternalAppYt();
+    void chooseExternalAppMed();
     void dialogAccepted();
-
+    
+    void enableYouTubeChanged(bool state);
+    void enableMediaElChanged(bool state);
 private:
     Ui::Videoner_Settings* ui;
 

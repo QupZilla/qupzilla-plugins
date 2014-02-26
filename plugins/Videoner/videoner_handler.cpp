@@ -45,11 +45,20 @@ void Videoner_Handler::loadSettings()
     settings.beginGroup("Videoner");
     m_extExe = settings.value("videonerExtApp", QString()).toString();
     m_extArgs = settings.value("videonerExtArgs", QString()).toString();
+    m_extExeYt = settings.value("videonerExtAppYt", QString()).toString();
+    m_extArgsYt = settings.value("videonerExtArgsYt", QString()).toString();
+    m_extExeMed = settings.value("videonerExtAppMediaEl", QString()).toString();
+    m_extArgsMed = settings.value("videonerExtArgsMediaEl", QString()).toString();
     m_pageyt = settings.value("enableYouTube", true).toBool();
-    m_pagevm = settings.value("enableVimeo", true).toBool();
-    m_pagedm = settings.value("enableDailyMotion", false).toBool();
-    m_pagehu = settings.value("enableHulu", false).toBool();
+    m_sepyth = settings.value("enableSeparateYt", false).toBool();
+    m_pagevm = settings.value("enableVimeo", false).toBool();
+    m_pagell = settings.value("enableLiveLeak", false).toBool();
     m_pagemc = settings.value("enableMetaCafe", false).toBool();
+    m_pagedm = settings.value("enableDailyMotion", false).toBool();
+    m_pagebr = settings.value("enableBreak", false).toBool();
+    m_pagehu = settings.value("enableHulu", false).toBool();
+    m_medel = settings.value("enableMediaEl", true).toBool();
+    m_sepmedel = settings.value("enableSepMediaEl", false).toBool();
     settings.endGroup();
 }
 
@@ -58,16 +67,15 @@ void Videoner_Handler::populateWebViewMenu(QMenu* menu, WebView* view, const QWe
     m_view = view;
     if (m_pageyt) {
         QRegExp rx1("v=([^&]+)|youtu.be/([^&]+)|y2u.be/([^&]+)|youtube.com/embed/([^&]+)");
-        rx1.indexIn(r.linkUrl().toString());
-
         QString videoId1;
+
+        rx1.indexIn(r.linkUrl().toString());
         for (int i = 1; i < 4; ++i) {
             if (!rx1.cap(i).isEmpty()) {
                 videoId1 = rx1.cap(i);
                 break;
             }
         }
-
         if (videoId1.isEmpty()) {
             rx1.indexIn(view->url().toString());
             for (int i = 1; i < 4; ++i) {
@@ -80,22 +88,20 @@ void Videoner_Handler::populateWebViewMenu(QMenu* menu, WebView* view, const QWe
         if (!videoId1.isEmpty()) {
             QString videoPage1;
             videoPage1 = "http://www.youtube.com/watch?v=" + videoId1;
-            menu->addAction(QIcon(":/videoner/data/videoner.png"), tr("Videonize!"), this, SLOT(startExternalHandler()))->setData(videoPage1);
+            menu->addAction(QIcon(":/videoner/data/videoner.png"), tr("Videonize!"), this, (m_sepyth ? SLOT(startExternalHandlerYt()) : SLOT(startExternalHandler())))->setData(videoPage1);
         }
     }
-
     if (m_pagevm) {
         QRegExp rx2("vimeo.com/([^d]{8})");
-        rx2.indexIn(r.linkUrl().toString());
-
         QString videoId2;
+
+        rx2.indexIn(r.linkUrl().toString());
         for (int i = 1; i < 4; ++i) {
             if (!rx2.cap(i).isEmpty()) {
                 videoId2 = rx2.cap(i);
                 break;
             }
         }
-
         if (videoId2.isEmpty()) {
             rx2.indexIn(view->url().toString());
             for (int i = 1; i < 4; ++i) {
@@ -111,18 +117,17 @@ void Videoner_Handler::populateWebViewMenu(QMenu* menu, WebView* view, const QWe
             menu->addAction(QIcon(":/videoner/data/videoner.png"), tr("Videonize!"), this, SLOT(startExternalHandler()))->setData(videoPage2);
         }
     }
-    if (m_pagedm) {
-        QRegExp rx3("dailymotion.com/video/([^d]{6}_[^&]+)");
-        rx3.indexIn(r.linkUrl().toString());
-
+    if (m_pagell) {
+        QRegExp rx3("www.liveleak.com/view?i=([a-z0-9]{3})_([^&]+)");
         QString videoId3;
+
+        rx3.indexIn(r.linkUrl().toString());
         for (int i = 1; i < 4; ++i) {
             if (!rx3.cap(i).isEmpty()) {
                 videoId3 = rx3.cap(i);
                 break;
             }
         }
-
         if (videoId3.isEmpty()) {
             rx3.indexIn(view->url().toString());
             for (int i = 1; i < 4; ++i) {
@@ -134,22 +139,21 @@ void Videoner_Handler::populateWebViewMenu(QMenu* menu, WebView* view, const QWe
         }
         if (!videoId3.isEmpty()) {
             QString videoPage3;
-            videoPage3 = "http://www.dailymotion.com/video/" + videoId3;
+            videoPage3 = "http://www.liveleak.com/view?i=" + videoId3;
             menu->addAction(QIcon(":/videoner/data/videoner.png"), tr("Videonize!"), this, SLOT(startExternalHandler()))->setData(videoPage3);
         }
     }
-    if (m_pagehu) {
-        QRegExp rx4("http://www.hulu.com/watch/([^d]+)");
-        rx4.indexIn(r.linkUrl().toString());
-
+    if (m_pagemc) {
+        QRegExp rx4("www.metacafe.com/watch/([^d]+)/([^&]+)");
         QString videoId4;
+
+        rx4.indexIn(r.linkUrl().toString());
         for (int i = 1; i < 4; ++i) {
             if (!rx4.cap(i).isEmpty()) {
                 videoId4 = rx4.cap(i);
                 break;
             }
         }
-
         if (videoId4.isEmpty()) {
             rx4.indexIn(view->url().toString());
             for (int i = 1; i < 4; ++i) {
@@ -161,22 +165,21 @@ void Videoner_Handler::populateWebViewMenu(QMenu* menu, WebView* view, const QWe
         }
         if (!videoId4.isEmpty()) {
             QString videoPage4;
-            videoPage4 = "http://www.hulu.com/watch/" + videoId4;
+            videoPage4 = "http://www.metacafe.com/watch/" + videoId4;
             menu->addAction(QIcon(":/videoner/data/videoner.png"), tr("Videonize!"), this, SLOT(startExternalHandler()))->setData(videoPage4);
         }
     }
-    if (m_pagemc) {
-        QRegExp rx5("http://www.metacafe.com/watch/([^d]+)/([^&]+)");
-        rx5.indexIn(r.linkUrl().toString());
-
+    if (m_pagedm) {
+        QRegExp rx5("dailymotion.com/video/([a-z0-9]+_[^&]+)");
         QString videoId5;
+
+        rx5.indexIn(r.linkUrl().toString());
         for (int i = 1; i < 4; ++i) {
             if (!rx5.cap(i).isEmpty()) {
                 videoId5 = rx5.cap(i);
                 break;
             }
         }
-
         if (videoId5.isEmpty()) {
             rx5.indexIn(view->url().toString());
             for (int i = 1; i < 4; ++i) {
@@ -188,8 +191,67 @@ void Videoner_Handler::populateWebViewMenu(QMenu* menu, WebView* view, const QWe
         }
         if (!videoId5.isEmpty()) {
             QString videoPage5;
-            videoPage5 = "http://www.metacafe.com/watch/" + videoId5;
+            videoPage5 = "http://www.dailymotion.com/video/" + videoId5;
             menu->addAction(QIcon(":/videoner/data/videoner.png"), tr("Videonize!"), this, SLOT(startExternalHandler()))->setData(videoPage5);
+        }
+    }
+    if (m_pagebr) {
+        QRegExp rx6("www.break.com/video/([^&]+)");
+        QString videoId6;
+
+        rx6.indexIn(r.linkUrl().toString());
+        for (int i = 1; i < 4; ++i) {
+            if (!rx6.cap(i).isEmpty()) {
+                videoId6 = rx6.cap(i);
+                break;
+            }
+        }
+        if (videoId6.isEmpty()) {
+            rx6.indexIn(view->url().toString());
+            for (int i = 1; i < 4; ++i) {
+                if (!rx6.cap(i).isEmpty()) {
+                    videoId6 = rx6.cap(i);
+                    break;
+                }
+            }
+        }
+        if (!videoId6.isEmpty()) {
+            QString videoPage6;
+            videoPage6 = "www.break.com/video/" + videoId6;
+            menu->addAction(QIcon(":/videoner/data/videoner.png"), tr("Videonize!"), this, SLOT(startExternalHandler()))->setData(videoPage6);
+        }
+    }
+    if (m_pagehu) {
+        QRegExp rx7("www.hulu.com/watch/([^d]+)");
+        QString videoId7;
+
+        rx7.indexIn(r.linkUrl().toString());
+        for (int i = 1; i < 4; ++i) {
+            if (!rx7.cap(i).isEmpty()) {
+                videoId7 = rx7.cap(i);
+                break;
+            }
+        }
+        if (videoId7.isEmpty()) {
+            rx7.indexIn(view->url().toString());
+            for (int i = 1; i < 4; ++i) {
+                if (!rx7.cap(i).isEmpty()) {
+                    videoId7 = rx7.cap(i);
+                    break;
+                }
+            }
+        }
+        if (!videoId7.isEmpty()) {
+            QString videoPage7;
+            videoPage7 = "http://www.hulu.com/watch/" + videoId7;
+            menu->addAction(QIcon(":/videoner/data/videoner.png"), tr("Videonize!"), this, SLOT(startExternalHandler()))->setData(videoPage7);
+        }
+    }
+    if (m_medel) {
+        if (r.element().tagName().toLower() == QLatin1String("video")
+           || r.element().tagName().toLower() == QLatin1String("audio")) {
+            QUrl mediaLink = r.element().evaluateJavaScript("this.currentSrc").toUrl();
+            menu->addAction(QIcon(":/videoner/data/videoner.png"), tr("Videonize!"), this, (m_sepmedel ? SLOT(startExternalHandlerMed()) : SLOT(startExternalHandler())))->setData(mediaLink);
         }
     }
 }
@@ -204,6 +266,34 @@ void Videoner_Handler::startExternalHandler()
 
     if (!success) {
         QString info = "<ul><li><b>" + tr("Executable: ") + "</b>" + m_extExe + "</li><li><b>" + tr("Arguments: ") + "</b>" + arguments.join(" ") + "</li></ul>";
+        QMessageBox::critical(0, tr("Cannot start external viewer"), tr("Cannot start external viewer! %1").arg(info));
+    }
+}
+
+void Videoner_Handler::startExternalHandlerYt()
+{
+    const QUrl url = qobject_cast<QAction*>(sender())->data().toUrl();
+    QStringList arguments = m_extArgsYt.split(QLatin1Char(' '), QString::SkipEmptyParts);
+    arguments << url.toString();
+
+    bool success = QProcess::startDetached(m_extExeYt, arguments);
+
+    if (!success) {
+        QString info = "<ul><li><b>" + tr("Executable: ") + "</b>" + m_extExeYt + "</li><li><b>" + tr("Arguments: ") + "</b>" + arguments.join(" ") + "</li></ul>";
+        QMessageBox::critical(0, tr("Cannot start external viewer"), tr("Cannot start external viewer! %1").arg(info));
+    }
+}
+
+void Videoner_Handler::startExternalHandlerMed()
+{
+    const QUrl url = qobject_cast<QAction*>(sender())->data().toUrl();
+    QStringList arguments = m_extArgsMed.split(QLatin1Char(' '), QString::SkipEmptyParts);
+    arguments << url.toString();
+
+    bool success = QProcess::startDetached(m_extExeMed, arguments);
+
+    if (!success) {
+        QString info = "<ul><li><b>" + tr("Executable: ") + "</b>" + m_extExeMed + "</li><li><b>" + tr("Arguments: ") + "</b>" + arguments.join(" ") + "</li></ul>";
         QMessageBox::critical(0, tr("Cannot start external viewer"), tr("Cannot start external viewer! %1").arg(info));
     }
 }

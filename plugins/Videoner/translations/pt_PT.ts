@@ -35,22 +35,6 @@
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:x-large; font-weight:600;&quot;&gt;Gestor de ligações de vídeo&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <source>Enable Vimeo</source>
-        <translation>Ativar Vimeo</translation>
-    </message>
-    <message>
-        <source>Enable Hulu</source>
-        <translation>Ativar Hulu</translation>
-    </message>
-    <message>
-        <source>Enable YouTube</source>
-        <translation>Ativar YouTube</translation>
-    </message>
-    <message>
-        <source>Enable DailyMotion</source>
-        <translation>Ativar DailyMotion</translation>
-    </message>
-    <message>
         <source>Executable:</source>
         <translation>Executável: </translation>
     </message>
@@ -59,16 +43,32 @@
         <translation>Argumentos: </translation>
     </message>
     <message>
-        <source>...</source>
-        <translation>...</translation>
-    </message>
-    <message>
-        <source>Enable MetaCafe</source>
-        <translation>Ativar MetaCafe</translation>
-    </message>
-    <message>
         <source>Choose executable location...</source>
         <translation>Escolha a localização do executável...</translation>
+    </message>
+    <message>
+        <source>General</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>YouTube</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable YouTube support</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use custom external application</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Media elements</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable media elements support</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

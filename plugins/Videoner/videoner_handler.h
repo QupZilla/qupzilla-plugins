@@ -48,17 +48,29 @@ public slots:
 
 private slots:
     void startExternalHandler();
-
+    void startExternalHandlerYt();
+    void startExternalHandlerMed();
+    
 private:
     QPointer<WebView> m_view;
 
+    bool m_sepyth;
     bool m_pageyt;
     bool m_pagevm;
-    bool m_pagedm;
-    bool m_pagehu;
+    bool m_pagell;
     bool m_pagemc;
+    bool m_pagedm;
+    bool m_pagebr;
+    bool m_pagehu;
+    bool m_medel;
+    bool m_sepmedel;
+
     QString m_extExe;
     QString m_extArgs;
+    QString m_extExeYt;
+    QString m_extArgsYt;
+    QString m_extExeMed;
+    QString m_extArgsMed;
     QString m_settingsFile;
 };
 
