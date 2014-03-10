@@ -1,65 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="sr_RS">
+<TS version="2.0" language="sr@ijekavianlatin">
 <context>
     <name>MailHandle_Settings</name>
     <message>
         <source>MailHandle Settings</source>
-        <translation>Поставке Руковаоца поште</translation>
+        <translation>Postavke rukovaoca pošte</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:x-large; font-weight:600;&quot;&gt;Mailto links handler&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:x-large; font-weight:600;&quot;&gt;Руковалац везама е-поште&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:x-large; font-weight:600;&quot;&gt;Rukovalac vezama e-pošte&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Web service to use:</source>
-        <translation>Веб сервис е-поште:</translation>
+        <translation>Veb servis e-pošte:</translation>
     </message>
     <message>
         <source>Gmail</source>
-        <translation>ГМејл</translation>
+        <translation>Gmail</translation>
     </message>
     <message>
         <source>Mail.ru</source>
-        <translation>Мејл.ру</translation>
+        <translation>Mail.ru</translation>
     </message>
     <message utf8="true">
         <source>Яandex</source>
-        <translation>Јандекс</translation>
+        <translation>Яandex</translation>
     </message>
     <message>
         <source>Outlook</source>
-        <translation>Аутлук</translation>
+        <translation>Outlook</translation>
     </message>
     <message>
         <source>Yahoo!</source>
-        <translation>Јаху!</translation>
+        <translation>Yahoo!</translation>
     </message>
     <message>
         <source>My Opera</source>
-        <translation>Моја Опера</translation>
+        <translation>My Opera</translation>
     </message>
     <message>
         <source>FastMail</source>
-        <translation>Фастмејл</translation>
+        <translation>FastMail</translation>
     </message>
     <message>
         <source>T-Online</source>
-        <translation>Т-онлајн</translation>
+        <translation>T-Online</translation>
     </message>
     <message>
         <source>RoundCube</source>
-        <translation>РаундКјуб</translation>
+        <translation>RoundCube</translation>
     </message>
     <message>
         <source>Enter URL of your webmail service provider. For example:
 https://somewebsite/roundcube</source>
-        <translation>Унесите УРЛ даваоца услуге веб поште. На пример:
+        <translation>Unesite URL davaoca usluge veb pošte. Na primjer:
 https://nekivebsajt/roundcube</translation>
     </message>
     <message>
         <source>URL of the webmail service provider:</source>
-        <translation>УРЛ даваоца услуге веб поште:</translation>
+        <translation>URL davaoca usluge veb pošte:</translation>
     </message>
 </context>
 </TS>

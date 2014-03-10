@@ -1,74 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="sr_RS">
+<TS version="2.0" language="sr@latin">
 <context>
     <name>Videoner_Handler</name>
     <message>
         <source>Videonize!</source>
-        <translation>Видеонизирај!</translation>
+        <translation>Videoniziraj!</translation>
     </message>
     <message>
         <source>Executable: </source>
-        <translation>Извршна: </translation>
+        <translation>Izvršna: </translation>
     </message>
     <message>
         <source>Arguments: </source>
-        <translation>Аргументи: </translation>
+        <translation>Argumenti: </translation>
     </message>
     <message>
         <source>Cannot start external viewer</source>
-        <translation>Не могу да покренем спољашњи прегледач</translation>
+        <translation>Ne mogu da pokrenem spoljašnji pregledač</translation>
     </message>
     <message>
         <source>Cannot start external viewer! %1</source>
-        <translation>Не могу да покренем спољашњи прегледач! %1</translation>
+        <translation>Ne mogu da pokrenem spoljašnji pregledač! %1</translation>
     </message>
 </context>
 <context>
     <name>Videoner_Settings</name>
     <message>
         <source>Videoner Settings</source>
-        <translation>Поставке Видеонера</translation>
+        <translation>Postavke Videonera</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:x-large; font-weight:600;&quot;&gt;Video links handler&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:x-large; font-weight:600;&quot;&gt;Руковалац видео веза&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:x-large; font-weight:600;&quot;&gt;Rukovalac video veza&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Executable:</source>
-        <translation>Извршна:</translation>
+        <translation>Izvršna:</translation>
     </message>
     <message>
         <source>Arguments:</source>
-        <translation>Аргументи:</translation>
+        <translation>Argumenti:</translation>
     </message>
     <message>
         <source>Choose executable location...</source>
-        <translation>Локација извршног фајла...</translation>
+        <translation>Lokacija izvršnog fajla...</translation>
     </message>
     <message>
         <source>General</source>
-        <translation>Опште</translation>
+        <translation>Opšte</translation>
     </message>
     <message>
         <source>YouTube</source>
-        <translation>Јутјуб</translation>
+        <translation>Jutjub</translation>
     </message>
     <message>
         <source>Enable YouTube support</source>
-        <translation>Укључи подршку за Јутјуб</translation>
+        <translation>Uključi podršku za Jutjub</translation>
     </message>
     <message>
         <source>Use custom external application</source>
-        <translation>Посебни спољашњи прегледач</translation>
+        <translation>Posebni spoljašnji pregledač</translation>
     </message>
     <message>
         <source>Media elements</source>
-        <translation>Медија елементи</translation>
+        <translation>Medija elementi</translation>
     </message>
     <message>
         <source>Enable media elements support</source>
-        <translation>Укључи подршку за медија елементе</translation>
+        <translation>Uključi podršku za medija elemente</translation>
     </message>
 </context>
 </TS>

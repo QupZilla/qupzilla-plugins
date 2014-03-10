@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="sr_BA@latin">
+<TS version="2.0" language="sr@ijekavianlatin">
 <context>
     <name>Videoner_Handler</name>
     <message>

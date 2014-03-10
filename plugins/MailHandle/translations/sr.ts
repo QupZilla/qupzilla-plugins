@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="sr_BA">
+<TS version="2.0" language="sr">
 <context>
     <name>MailHandle_Settings</name>
     <message>
@@ -54,7 +54,7 @@
     <message>
         <source>Enter URL of your webmail service provider. For example:
 https://somewebsite/roundcube</source>
-        <translation>Унесите УРЛ даваоца услуге веб поште. На примјер:
+        <translation>Унесите УРЛ даваоца услуге веб поште. На пример:
 https://nekivebsajt/roundcube</translation>
     </message>
     <message>
