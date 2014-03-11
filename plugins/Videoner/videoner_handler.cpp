@@ -92,7 +92,7 @@ void Videoner_Handler::populateWebViewMenu(QMenu* menu, WebView* view, const QWe
         }
     }
     if (m_pagevm) {
-        QRegExp rx2("^(http|https)://vimeo.com/([^d]{8})");
+        QRegExp rx2("://vimeo.com/([^d]{8})");
         QString videoId2;
 
         rx2.indexIn(r.linkUrl().toString());
