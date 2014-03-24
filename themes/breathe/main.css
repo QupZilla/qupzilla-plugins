@@ -142,19 +142,10 @@ IconProvider
 {
     background: transparent;
     border-image: url(images/lineedit-bg.png);
-    border-width:3;
-    padding-right: -4px;
-    padding-left: -4px;
-    padding-top: 2px;
+    border-width: 3;
     qproperty-fixedheight: 22;
-    qproperty-leftMargin: 34;
+    qproperty-leftMargin: 30;
 }
-
-/*#locationbar[secured="true"]
-{
-    color: black;
-    background-color: #ffffbc;
-}*/
 
 #locationbar-bookmarkicon
 {
@@ -237,9 +228,7 @@ IconProvider
 {
     background: transparent;
     border-image: url(images/lineedit-bg.png);
-    border-width:3;
-    padding-right: -4px;
-    padding-top: 2px;
+    border-width: 3;
     qproperty-fixedheight: 22;
     qproperty-leftMargin: 30;
 }
