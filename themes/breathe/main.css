@@ -65,7 +65,7 @@
 
 #navigation-button-supermenu
 {
-    qproperty-icon: url(images/preferences-desktop.png);
+    qproperty-icon: url(images/menu.png);
     qproperty-fixedsize: 27px 27px;
 }
 
@@ -168,6 +168,11 @@ IconProvider
 
 #locationbar-siteicon:hover
 {
+    border-image: url(images/siteicon-bg-h.png);
+}
+
+#locationbar-siteicon:pressed
+{
     border-image: url(images/siteicon-bg-a.png);
 }
 
@@ -177,6 +182,11 @@ IconProvider
 }
 
 #locationbar-siteicon[secured="true"]:hover
+{
+    border-image: url(images/siteicon-secure-bg-h.png);
+}
+
+#locationbar-siteicon[secured="true"]:pressed
 {
     border-image: url(images/siteicon-secure-bg-a.png);
 }
@@ -247,6 +257,11 @@ IconProvider
 }
 
 #websearchbar-searchprovider-comobobox:hover
+{
+    border-image: url(images/websearch-bg-h.png);
+}
+
+#websearchbar-searchprovider-comobobox:pressed
 {
     border-image: url(images/websearch-bg-a.png);
 }
