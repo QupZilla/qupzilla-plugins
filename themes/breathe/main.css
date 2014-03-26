@@ -19,8 +19,7 @@
 /*NavigationBar*/
 #navigation-button-back
 {
-    qproperty-icon: url(images/go-previous.png);
-    qproperty-fixedsize: 27px 27px;
+    qproperty-icon: url(images/previous.png);
 }
 
 #navigation-button-back::menu-indicator
@@ -30,8 +29,7 @@
 
 #navigation-button-next
 {
-    qproperty-icon: url(images/go-next.png);
-    qproperty-fixedsize: 27px 27px;
+    qproperty-icon: url(images/next.png);
 }
 
 #navigation-button-next::menu-indicator
@@ -41,37 +39,32 @@
 
 #navigation-button-stop
 {
-    qproperty-icon: url(images/process-stop.png);
-    qproperty-fixedsize: 27px 27px;
+    qproperty-icon: url(images/stop.png);
 }
 
 #navigation-button-reload
 {
-    qproperty-icon: url(images/view-refresh.png);
-    qproperty-fixedsize: 27px 27px;
+    qproperty-icon: url(images/reload.png);
 }
 
 #navigation-button-home
 {
-    qproperty-icon: url(images/go-home.png);
-    qproperty-fixedsize: 27px 27px;
+    qproperty-icon: url(images/home.png);
 }
 
 #navigation-button-addtab
 {
-    qproperty-icon: url(images/list-add.png);
-    qproperty-fixedsize: 27px 27px;
+    qproperty-icon: url(images/add.png);
 }
 
 #navigation-button-supermenu
 {
     qproperty-icon: url(images/menu.png);
-    qproperty-fixedsize: 27px 27px;
 }
 
 #navigation-button-exitfullscreen
 {
-    qproperty-themeIcon: "view-restore";
+    qproperty-icon: url(images/restore);
 }
 
 #navigation-button-supermenu::menu-indicator
@@ -92,26 +85,30 @@
 
 #tabbar-button-right
 {
-    qproperty-icon: url(images/tab-right-arrow.png);
+    qproperty-icon: url(images/tab-right.png);
     qproperty-fixedsize: 15px 22px;
 }
 
 #tabbar-button-left
 {
-    qproperty-icon: url(images/tab-left-arrow.png);
+    qproperty-icon: url(images/tab-left.png);
     qproperty-fixedsize: 15px 22px;
 }
 
 #tabwidget-button-opentabs
 {
-    qproperty-icon: url(images/tabs-list-button.png);
+    qproperty-icon: url(images/tabs-list.png);
     qproperty-fixedsize: 18px 22px;
+}
+
+#tabwidget-button-opentabs::menu-indicator
+{
+    image: none;
 }
 
 #tabwidget-button-closedtabs
 {
-    qproperty-themeIcon: "user-trash-full";
-    qproperty-fallbackIcon: url(images/user-trash-full.png);
+    qproperty-icon: url(images/trash.png);
     qproperty-fixedsize: 22px 22px;
 }
 
@@ -122,13 +119,8 @@
 
 #tabwidget-button-addtab
 {
-    qproperty-icon: url(images/list-add.png);
+    qproperty-icon: url(images/add.png);
     qproperty-fixedsize: 22px 22px;
-}
-
-#tabwidget-button-opentabs::menu-indicator
-{
-    image: none;
 }
 
 /*IconProvider*/
@@ -150,13 +142,11 @@ IconProvider
 #locationbar-bookmarkicon
 {
     qproperty-pixmap: url(images/star.png);
-    qproperty-fixedsize: 16px 16px;
 }
 
 #locationbar-bookmarkicon[bookmarked="true"]
 {
     qproperty-pixmap: url(images/star-a.png);
-    qproperty-fixedsize: 16px 16px;
 }
 
 #locationbar-siteicon
@@ -194,13 +184,11 @@ IconProvider
 #locationbar-rss-icon
 {
     qproperty-pixmap: url(images/rss.png);
-    qproperty-fixedsize: 16px 16px;
 }
 
 #locationbar-goicon
 {
-    qproperty-pixmap: url(images/gotoaddress.png);
-    qproperty-fixedsize: 16px 16px;
+    qproperty-pixmap: url(images/goto.png);
 }
 
 #locationbar-down-icon
@@ -211,7 +199,6 @@ IconProvider
 #locationbar-autofillicon
 {
     qproperty-pixmap: url(images/login.png);
-    qproperty-fixedsize: 16px 16px;
 }
 
 /*BookmarksToolbar*/
@@ -245,7 +232,7 @@ IconProvider
 
 #websearchbar-searchbutton
 {
-    qproperty-pixmap: url(images/edit-find.png);
+    qproperty-pixmap: url(images/find.png);
     qproperty-fixedsize: 20px 16px;
 }
 
