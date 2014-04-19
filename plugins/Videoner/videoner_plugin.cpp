@@ -60,9 +60,8 @@ void Videoner_Plugin::unload()
 
 bool Videoner_Plugin::testPlugin()
 {
-    // Let's be sure, require latest version of QupZilla
-
-    return (Qz::VERSION == QLatin1String("1.7.0"));
+    // Require the version that the plugin was built with
+    return (Qz::VERSION == QLatin1String(QUPZILLA_VERSION));
 }
 
 QTranslator* Videoner_Plugin::getTranslator(const QString &locale)
