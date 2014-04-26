@@ -24,20 +24,10 @@
     qproperty-multiIcon: url(images/go-previous.png);
 }
 
-#navigation-button-back::menu-indicator
-{
-    image: none;
-}
-
 #navigation-button-next
 {
     qproperty-themeIcon: "go-next";
     qproperty-multiIcon: url(images/go-next.png);
-}
-
-#navigation-button-next::menu-indicator
-{
-    image: none;
 }
 
 #navigation-button-stop
@@ -72,11 +62,6 @@
     qproperty-iconSize: 24px 24px;
 }
 
-#navigation-button-supermenu::menu-indicator 
-{
-    image: none;
-}
-
 /*TabWidget*/
 #tabbar::tab
 {
@@ -98,11 +83,6 @@
 {
     qproperty-themeIcon: "list-add";
     qproperty-multiIcon: url(images/list-add-small.png);
-}
-
-#tabwidget-button-opentabs::menu-indicator
-{
-    image: none;
 }
 
 /*IconProvider*/
@@ -179,11 +159,6 @@ IconProvider
     height: 15px;
 }
 
-#bookmarksbar QToolButton::menu-indicator
-{
-    image: none;
-}
-
 /*SideBar*/
 #sidebar
 {
@@ -214,11 +189,6 @@ IconProvider
     border-image: url(images/websearch-bg.gif);
     padding-left:-8px;
     qproperty-fixedsize: 37px 27px;
-}
-
-#websearchbar-searchprovider-comobobox::menu-indicator
-{
-    image: none;
 }
 
 /*SourceViewer*/
