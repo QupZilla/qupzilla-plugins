@@ -1,0 +1,17 @@
+[main]
+host = https://www.transifex.com
+
+[qupzilla.copytitle-plugin]
+file_filter = plugins/CopyTitle/translations/<lang>.ts
+source_lang = en
+minimum_perc = 60
+
+[qupzilla.mailhandle-plugin]
+file_filter = plugins/MailHandle/translations/<lang>.ts
+source_lang = en
+minimum_perc = 60
+
+[qupzilla.videoner-plugin]
+file_filter = plugins/Videoner/translations/<lang>.ts
+source_lang = en
+minimum_perc = 60
