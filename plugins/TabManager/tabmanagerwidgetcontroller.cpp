@@ -18,7 +18,7 @@
 #include "tabmanagerwidgetcontroller.h"
 #include "tabmanagerwidget.h"
 #include "clickablelabel.h"
-#include "qupzilla.h"
+#include "browserwindow.h"
 #include "tabwidget.h"
 #include "mainapplication.h"
 
@@ -57,12 +57,12 @@ QAction* TabManagerWidgetController::createMenuAction()
     return act;
 }
 
-QWidget* TabManagerWidgetController::createSideBarWidget(QupZilla* mainWindow)
+QWidget* TabManagerWidgetController::createSideBarWidget(BrowserWindow* mainWindow)
 {
     return createTabManagerWidget(mainWindow, mainWindow);
 }
 
-QWidget* TabManagerWidgetController::createStatusBarIcon(QupZilla* mainWindow)
+QWidget* TabManagerWidgetController::createStatusBarIcon(BrowserWindow* mainWindow)
 {
     if (!defaultTabManager()) {
         return 0;
@@ -112,7 +112,7 @@ void TabManagerWidgetController::setGroupType(TabManagerWidget::GroupType type)
     m_groupType = type;
 }
 
-TabManagerWidget* TabManagerWidgetController::createTabManagerWidget(QupZilla* mainClass, QWidget* parent, bool defaultWidget)
+TabManagerWidget* TabManagerWidgetController::createTabManagerWidget(BrowserWindow* mainClass, QWidget* parent, bool defaultWidget)
 {
     TabManagerWidget* tabManagerWidget = new TabManagerWidget(mainClass, parent, defaultWidget);
     tabManagerWidget->setGroupType(m_groupType);
@@ -143,14 +143,14 @@ TabManagerWidget* TabManagerWidgetController::defaultTabManager()
     return m_defaultTabManager;
 }
 
-void TabManagerWidgetController::addStatusBarIcon(QupZilla* window)
+void TabManagerWidgetController::addStatusBarIcon(BrowserWindow* window)
 {
     if (window) {
         window->statusBar()->addPermanentWidget(createStatusBarIcon(window));
     }
 }
 
-void TabManagerWidgetController::removeStatusBarIcon(QupZilla* window)
+void TabManagerWidgetController::removeStatusBarIcon(BrowserWindow* window)
 {
     if (window) {
         window->statusBar()->removeWidget(m_statusBarIcons.value(window));
@@ -162,7 +162,7 @@ void TabManagerWidgetController::removeStatusBarIcon(QupZilla* window)
     }
 }
 
-void TabManagerWidgetController::mainWindowCreated(QupZilla* window, bool refresh)
+void TabManagerWidgetController::mainWindowCreated(BrowserWindow* window, bool refresh)
 {
     if (window) {
         addStatusBarIcon(window);
@@ -174,7 +174,7 @@ void TabManagerWidgetController::mainWindowCreated(QupZilla* window, bool refres
     }
 }
 
-void TabManagerWidgetController::mainWindowDeleted(QupZilla* window)
+void TabManagerWidgetController::mainWindowDeleted(BrowserWindow* window)
 {
     removeStatusBarIcon(window);
 

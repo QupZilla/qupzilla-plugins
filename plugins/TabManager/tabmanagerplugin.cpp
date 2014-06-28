@@ -18,7 +18,7 @@
 #include "tabmanagerplugin.h"
 #include "tabmanagerwidgetcontroller.h"
 #include "tabmanagerwidget.h"
-#include "qupzilla.h"
+#include "browserwindow.h"
 #include "pluginproxy.h"
 #include "mainapplication.h"
 #include "sidebar.h"
@@ -41,9 +41,9 @@ PluginSpec TabManagerPlugin::pluginSpec()
 {
     PluginSpec spec;
     spec.name = "Tab Manager";
-    spec.info = "Tab Manager plugin for QupZilla";
+    spec.info = "Simple yet powerful tab manager for QupZilla";
     spec.description = "Adds ability to managing tabs and windows";
-    spec.version = "0.1.1";
+    spec.version = "0.2.0";
     spec.author = "Razi Alavizadeh <s.r.alavizadeh@gmail.com>";
     spec.icon = QPixmap(":tabmanager/data/tabmanager.png");
     spec.hasSettings = true;
@@ -56,8 +56,8 @@ void TabManagerPlugin::init(InitState state, const QString &settingsPath)
     Q_UNUSED(state)
 
     m_controller = new TabManagerWidgetController(this);
-    connect(mApp->plugins(), SIGNAL(mainWindowCreated(QupZilla*)), m_controller, SLOT(mainWindowCreated(QupZilla*)));
-    connect(mApp->plugins(), SIGNAL(mainWindowDeleted(QupZilla*)), m_controller, SLOT(mainWindowDeleted(QupZilla*)));
+    connect(mApp->plugins(), SIGNAL(mainWindowCreated(BrowserWindow*)), m_controller, SLOT(mainWindowCreated(BrowserWindow*)));
+    connect(mApp->plugins(), SIGNAL(mainWindowDeleted(BrowserWindow*)), m_controller, SLOT(mainWindowDeleted(BrowserWindow*)));
     connect(mApp->plugins(), SIGNAL(webPageCreated(WebPage*)), m_controller, SIGNAL(requestRefreshTree()));
     connect(mApp->plugins(), SIGNAL(webPageDeleted(WebPage*)), m_controller, SIGNAL(requestRefreshTree(WebPage*)));
 
@@ -90,7 +90,7 @@ void TabManagerPlugin::unload()
 
 bool TabManagerPlugin::testPlugin()
 {
-    return (QupZilla::VERSION == QLatin1String("1.5.0"));
+    return (Qz::VERSION == QLatin1String(QUPZILLA_VERSION));
 }
 
 QTranslator* TabManagerPlugin::getTranslator(const QString &locale)
@@ -126,7 +126,7 @@ void TabManagerPlugin::showSettings(QWidget* parent)
         }
         else if (type == TabManagerWidgetController::ShowAsWindow) {
             // add statusbar icon
-            foreach (QupZilla* window, mApp->mainWindows()) {
+            foreach (BrowserWindow* window, mApp->windows()) {
                 m_controller->addStatusBarIcon(window);
             }
         }
@@ -147,7 +147,7 @@ void TabManagerPlugin::insertManagerWidget()
     }
 
     if (m_initState) {
-        foreach (QupZilla* window, mApp->mainWindows()) {
+        foreach (BrowserWindow* window, mApp->windows()) {
             m_controller->mainWindowCreated(window, false);
         }
 
@@ -162,7 +162,7 @@ void TabManagerPlugin::removeManagerWidget()
     }
     else if (m_controller->viewType() == TabManagerWidgetController::ShowAsWindow) {
         // remove statusbar icon
-        foreach (QupZilla* window, mApp->mainWindows()) {
+        foreach (BrowserWindow* window, mApp->windows()) {
             m_controller->removeStatusBarIcon(window);
         }
 

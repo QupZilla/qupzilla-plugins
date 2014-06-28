@@ -28,7 +28,7 @@ class TabManagerWidget;
 }
 class QUrl;
 class QTreeWidgetItem;
-class QupZilla;
+class BrowserWindow;
 class WebPage;
 class WebTab;
 
@@ -43,12 +43,12 @@ public:
         GroupByHost = 2
     };
 
-    explicit TabManagerWidget(QupZilla* mainClass, QWidget* parent = 0, bool defaultWidget = false);
+    explicit TabManagerWidget(BrowserWindow* mainClass, QWidget* parent = 0, bool defaultWidget = false);
     ~TabManagerWidget();
 
-    void closeSelectedTabs(const QHash<QupZilla*, WebTab*> &tabsHash);
-    void detachSelectedTabs(const QHash<QupZilla*, WebTab*> &tabsHash);
-    void bookmarkSelectedTabs(const QHash<QupZilla*, WebTab*> &tabsHash);
+    void closeSelectedTabs(const QHash<BrowserWindow*, WebTab*> &tabsHash);
+    void detachSelectedTabs(const QHash<BrowserWindow*, WebTab*> &tabsHash);
+    bool bookmarkSelectedTabs(const QHash<BrowserWindow*, WebTab*> &tabsHash);
 
     void setGroupType(GroupType type);
 
@@ -62,10 +62,10 @@ private:
     QTreeWidgetItem* createEmptyItem(QTreeWidgetItem* parent = 0, bool addToTree = true);
     void groupByDomainName(bool useHostName = false);
     void groupByWindow();
-    QupZilla* getQupZilla();
+    BrowserWindow* getQupZilla();
 
     Ui::TabManagerWidget* ui;
-    QPointer<QupZilla> p_QupZilla;
+    QPointer<BrowserWindow> p_QupZilla;
     WebPage* m_webPage;
 
     bool m_isRefreshing;

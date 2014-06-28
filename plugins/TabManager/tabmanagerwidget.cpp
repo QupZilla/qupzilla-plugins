@@ -18,15 +18,15 @@
 #include "tabmanagerwidget.h"
 #include "ui_tabmanagerwidget.h"
 #include "mainapplication.h"
-#include "qupzilla.h"
+#include "browserwindow.h"
 #include "webtab.h"
 #include "webpage.h"
 #include "tabbedwebview.h"
 #include "tabwidget.h"
-#include "bookmarkstree.h"
-#include "bookmarksmanager.h"
-#include "browsinglibrary.h"
 #include "locationbar.h"
+#include "bookmarkstools.h"
+#include "bookmarkitem.h"
+#include "bookmarks.h"
 
 #include <QDesktopWidget>
 #include <QDialogButtonBox>
@@ -38,7 +38,7 @@
 #define QupZillaPointerRole Qt::UserRole + 20
 
 
-TabManagerWidget::TabManagerWidget(QupZilla* mainClass, QWidget* parent, bool defaultWidget)
+TabManagerWidget::TabManagerWidget(BrowserWindow* mainClass, QWidget* parent, bool defaultWidget)
     : QWidget(parent)
     , p_QupZilla(mainClass)
     , ui(new Ui::TabManagerWidget)
@@ -197,7 +197,7 @@ void TabManagerWidget::itemDoubleClick(QTreeWidgetItem* item, int)
         return;
     }
 
-    QupZilla* mainWindow = qobject_cast<QupZilla*>(qvariant_cast<QWidget*>(item->data(0, QupZillaPointerRole)));
+    BrowserWindow* mainWindow = qobject_cast<BrowserWindow*>(qvariant_cast<QWidget*>(item->data(0, QupZillaPointerRole)));
     QWidget* tabWidget = qvariant_cast<QWidget*>(item->data(0, WebTabPointerRole));
 
     if (!mainWindow) {
@@ -243,7 +243,7 @@ void TabManagerWidget::processActions()
 
     m_refreshBlocked = true;
 
-    QHash<QupZilla*, WebTab*> selectedTabs;
+    QHash<BrowserWindow*, WebTab*> selectedTabs;
 
     const QString &command = sender()->objectName();
 
@@ -259,7 +259,7 @@ void TabManagerWidget::processActions()
                 continue;
             }
 
-            QupZilla* mainWindow = qobject_cast<QupZilla*>(qvariant_cast<QWidget*>(tabItem->data(0, QupZillaPointerRole)));
+            BrowserWindow* mainWindow = qobject_cast<BrowserWindow*>(qvariant_cast<QWidget*>(tabItem->data(0, QupZillaPointerRole)));
             WebTab* webTab = qobject_cast<WebTab*>(qvariant_cast<QWidget*>(tabItem->data(0, WebTabPointerRole)));
 
             // current supported actions are not applied to pinned tabs
@@ -308,14 +308,14 @@ void TabManagerWidget::changeGroupType(int type)
     }
 }
 
-void TabManagerWidget::closeSelectedTabs(const QHash<QupZilla*, WebTab*> &tabsHash)
+void TabManagerWidget::closeSelectedTabs(const QHash<BrowserWindow*, WebTab*> &tabsHash)
 {
     if (tabsHash.isEmpty()) {
         return;
     }
 
-    const QList<QupZilla*> &windows = tabsHash.uniqueKeys();
-    foreach (QupZilla* mainWindow, windows) {
+    const QList<BrowserWindow*> &windows = tabsHash.uniqueKeys();
+    foreach (BrowserWindow* mainWindow, windows) {
         QList<WebTab*> tabs = tabsHash.values(mainWindow);
 
         // TabWidget::closeTab() issue: TabWidget::count() is not updated when closing several tabs
@@ -335,7 +335,7 @@ void TabManagerWidget::closeSelectedTabs(const QHash<QupZilla*, WebTab*> &tabsHa
     }
 }
 
-void TabManagerWidget::detachSelectedTabs(const QHash<QupZilla*, WebTab*> &tabsHash)
+void TabManagerWidget::detachSelectedTabs(const QHash<BrowserWindow*, WebTab*> &tabsHash)
 {
     // TODO: use TabWidget::detachTab()
     if (tabsHash.isEmpty() ||
@@ -344,20 +344,21 @@ void TabManagerWidget::detachSelectedTabs(const QHash<QupZilla*, WebTab*> &tabsH
         return;
     }
 
-    QupZilla* newWindow = mApp->makeNewWindow(Qz::BW_OtherRestoredWindow);;
+    BrowserWindow* newWindow = mApp->createWindow(Qz::BW_OtherRestoredWindow);;
     newWindow->move(mApp->desktop()->availableGeometry(this).topLeft() + QPoint(30, 30));
 
-    const QList<QupZilla*> &windows = tabsHash.uniqueKeys();
-    foreach (QupZilla* mainWindow, windows) {
+    const QList<BrowserWindow*> &windows = tabsHash.uniqueKeys();
+    foreach (BrowserWindow* mainWindow, windows) {
         const QList<WebTab*> &tabs = tabsHash.values(mainWindow);
         foreach (WebTab* webTab, tabs) {
             mainWindow->tabWidget()->locationBars()->removeWidget(webTab->locationBar());
-            disconnect(webTab->view(), SIGNAL(wantsCloseTab(int)), mainWindow->tabWidget(), SLOT(closeTab(int)));
-            disconnect(webTab->view(), SIGNAL(changed()), mApp, SLOT(setStateChanged()));
-            disconnect(webTab->view(), SIGNAL(ipChanged(QString)), mainWindow->ipLabel(), SLOT(setText(QString)));
-            webTab->moveToWindow(newWindow);
 
-            if (mainWindow && mainWindow->tabWidget()->count() == 1) {
+            disconnect(webTab->webView(), SIGNAL(wantsCloseTab(int)), mainWindow->tabWidget(), SLOT(closeTab(int)));
+            disconnect(webTab->webView(), SIGNAL(changed()), mainWindow->tabWidget(), SIGNAL(changed()));
+            disconnect(webTab->webView(), SIGNAL(ipChanged(QString)), mainWindow->ipLabel(), SLOT(setText(QString)));
+
+            webTab->detach();
+            if (mainWindow && mainWindow->tabWidget()->count() == 0) {
                 mainWindow->close();
                 mainWindow = 0;
             }
@@ -365,49 +366,24 @@ void TabManagerWidget::detachSelectedTabs(const QHash<QupZilla*, WebTab*> &tabsH
             newWindow->tabWidget()->addView(webTab);
         }
     }
-
-    if (newWindow->navigationContainer()) {
-        newWindow->tabWidget()->showNavigationBar(newWindow->navigationContainer());
-    }
 }
 
-void TabManagerWidget::bookmarkSelectedTabs(const QHash<QupZilla*, WebTab*> &tabsHash)
+bool TabManagerWidget::bookmarkSelectedTabs(const QHash<BrowserWindow*, WebTab*> &tabsHash)
 {
-    QDialog* dialog = new QDialog(getQupZilla());
+    QDialog* dialog = new QDialog(getQupZilla(), Qt::WindowStaysOnTopHint | Qt::MSWindowsFixedSizeDialogHint);
     QBoxLayout* layout = new QBoxLayout(QBoxLayout::TopToBottom, dialog);
     QLabel* label = new QLabel(dialog);
-    QComboBox* combo = new QComboBox(dialog);
-    BookmarksTree* bookmarksTree = new BookmarksTree(dialog);
-    connect(bookmarksTree, SIGNAL(requestNewFolder(QWidget*,QString*,bool,QString,WebView*)),
-            mApp->browsingLibrary()->bookmarksManager(), SLOT(addFolder(QWidget*,QString*,bool,QString,WebView*)));
-    bookmarksTree->setViewType(BookmarksTree::ComboFolderView);
-    bookmarksTree->header()->hide();
-    bookmarksTree->setColumnCount(1);
-    combo->setModel(bookmarksTree->model());
-    combo->setView(bookmarksTree);
+    BookmarksFoldersButton* folderButton = new BookmarksFoldersButton(dialog);
+
     QDialogButtonBox* box = new QDialogButtonBox(dialog);
     box->addButton(QDialogButtonBox::Ok);
     box->addButton(QDialogButtonBox::Cancel);
-    connect(box, SIGNAL(rejected()), dialog, SLOT(reject()));
-    connect(box, SIGNAL(accepted()), dialog, SLOT(accept()));
-    layout->addWidget(label);
-    layout->addWidget(combo);
-    layout->addWidget(box);
-    bookmarksTree->refreshTree();
+    QObject::connect(box, SIGNAL(rejected()), dialog, SLOT(reject()));
+    QObject::connect(box, SIGNAL(accepted()), dialog, SLOT(accept()));
 
-    int index = combo->findText(BookmarksModel::toTranslatedFolder(mApp->bookmarksModel()->lastFolder()));
-    // QComboBox::find() returns index related to the item's parent
-    if (index == -1) { // subfolder
-        QModelIndex rootIndex = combo->rootModelIndex();
-        combo->setRootModelIndex(combo->model()->index(combo->findText(_bookmarksToolbar), 0));
-        index = combo->findText(BookmarksModel::toTranslatedFolder(mApp->bookmarksModel()->lastFolder()));
-        combo->setCurrentIndex(index);
-        combo->setRootModelIndex(rootIndex);
-    }
-    else {
-        combo->setCurrentIndex(index);
-    }
-    connect(combo, SIGNAL(currentIndexChanged(int)), bookmarksTree, SLOT(activeItemChange(int)));
+    layout->addWidget(label);
+    layout->addWidget(folderButton);
+    layout->addWidget(box);
 
     label->setText(tr("Choose folder for bookmarks:"));
     dialog->setWindowTitle(tr("Bookmark Selected Tabs"));
@@ -416,19 +392,22 @@ void TabManagerWidget::bookmarkSelectedTabs(const QHash<QupZilla*, WebTab*> &tab
     size.setWidth(350);
     dialog->resize(size);
     dialog->exec();
+
     if (dialog->result() == QDialog::Rejected) {
-        return;
+        return false;
     }
 
     foreach (WebTab* tab, tabsHash) {
-        if (tab->url().isEmpty()) {
-            continue;
+        if (!tab->url().isEmpty()) {
+            BookmarkItem* bookmark = new BookmarkItem(BookmarkItem::Url);
+            bookmark->setTitle(tab->title());
+            bookmark->setUrl(tab->url());
+            mApp->bookmarks()->addBookmark(folderButton->selectedFolder(), bookmark);
         }
-
-        mApp->bookmarksModel()->saveBookmark(tab->url(), tab->title(), tab->icon(), BookmarksModel::fromTranslatedFolder(combo->currentText()));
     }
 
     delete dialog;
+    return true;
 }
 
 QTreeWidgetItem* TabManagerWidget::createEmptyItem(QTreeWidgetItem* parent, bool addToTree)
@@ -442,7 +421,7 @@ QTreeWidgetItem* TabManagerWidget::createEmptyItem(QTreeWidgetItem* parent, bool
 
 void TabManagerWidget::groupByDomainName(bool useHostName)
 {
-    QList<QupZilla*> windows = mApp->mainWindows();
+    QList<BrowserWindow*> windows = mApp->windows();
     int currentWindowIdx = windows.indexOf(getQupZilla());
     if (currentWindowIdx == -1) {
         // getQupZilla() instance is closing
@@ -453,13 +432,13 @@ void TabManagerWidget::groupByDomainName(bool useHostName)
     QMap<QString, QTreeWidgetItem*> tabsGroupedByDomain;
 
     for (int win = 0; win < windows.count(); ++win) {
-        QupZilla* mainWin = windows.at(win);
+        BrowserWindow* mainWin = windows.at(win);
 
         QList<WebTab*> tabs = mainWin->tabWidget()->allTabs();
 
         for (int tab = 0; tab < tabs.count(); ++tab) {
             WebTab* webTab = tabs.at(tab);
-            if (webTab->view() && m_webPage == webTab->view()->page()) {
+            if (webTab->webView() && m_webPage == webTab->webView()->page()) {
                 m_webPage = 0;
                 continue;
             }
@@ -499,7 +478,7 @@ void TabManagerWidget::groupByDomainName(bool useHostName)
             tabItem->setData(0, WebTabPointerRole, QVariant::fromValue(qobject_cast<QWidget*>(webTab)));
             tabItem->setData(0, QupZillaPointerRole, QVariant::fromValue(qobject_cast<QWidget*>(mainWin)));
 
-            connect(webTab->view()->page(), SIGNAL(loadFinished(bool)), this, SLOT(delayedRefreshTree()));
+            connect(webTab->webView()->page(), SIGNAL(loadFinished(bool)), this, SLOT(delayedRefreshTree()));
         }
     }
 
@@ -508,7 +487,7 @@ void TabManagerWidget::groupByDomainName(bool useHostName)
 
 void TabManagerWidget::groupByWindow()
 {
-    QList<QupZilla*> windows = mApp->mainWindows();
+    QList<BrowserWindow*> windows = mApp->windows();
     int currentWindowIdx = windows.indexOf(getQupZilla());
     if (currentWindowIdx == -1) {
         return;
@@ -521,7 +500,7 @@ void TabManagerWidget::groupByWindow()
     }
 
     for (int win = 0; win < windows.count(); ++win) {
-        QupZilla* mainWin = windows.at(win);
+        BrowserWindow* mainWin = windows.at(win);
         QTreeWidgetItem* winItem = createEmptyItem();
         winItem->setText(0, tr("Window %1").arg(QString::number(win + 1)));
         winItem->setToolTip(0, tr("Double click to switch"));
@@ -536,7 +515,7 @@ void TabManagerWidget::groupByWindow()
 
         for (int tab = 0; tab < tabs.count(); ++tab) {
             WebTab* webTab = tabs.at(tab);
-            if (webTab->view() && m_webPage == webTab->view()->page()) {
+            if (webTab->webView() && m_webPage == webTab->webView()->page()) {
                 m_webPage = 0;
                 continue;
             }
@@ -563,12 +542,12 @@ void TabManagerWidget::groupByWindow()
             tabItem->setData(0, WebTabPointerRole, QVariant::fromValue(qobject_cast<QWidget*>(webTab)));
             tabItem->setData(0, QupZillaPointerRole, QVariant::fromValue(qobject_cast<QWidget*>(mainWin)));
 
-            connect(webTab->view()->page(), SIGNAL(loadFinished(bool)), this, SLOT(delayedRefreshTree()));
+            connect(webTab->webView()->page(), SIGNAL(loadFinished(bool)), this, SLOT(delayedRefreshTree()));
         }
     }
 }
 
-QupZilla* TabManagerWidget::getQupZilla()
+BrowserWindow* TabManagerWidget::getQupZilla()
 {
     if (m_isDefaultWidget || !p_QupZilla) {
         return mApp->getWindow();

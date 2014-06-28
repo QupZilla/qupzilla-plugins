@@ -37,25 +37,25 @@ public:
 
     QString title() const;
     QAction* createMenuAction();
-    QWidget* createSideBarWidget(QupZilla* mainWindow);
+    QWidget* createSideBarWidget(BrowserWindow* mainWindow);
 
-    QWidget* createStatusBarIcon(QupZilla* mainWindow);
+    QWidget* createStatusBarIcon(BrowserWindow* mainWindow);
 
     ViewType viewType();
     void setViewType(ViewType type);
 
     TabManagerWidget::GroupType groupType();
-    TabManagerWidget* createTabManagerWidget(QupZilla* mainClass, QWidget* parent = 0, bool defaultWidget = false);
+    TabManagerWidget* createTabManagerWidget(BrowserWindow* mainClass, QWidget* parent = 0, bool defaultWidget = false);
 
     TabManagerWidget* defaultTabManager();
 
-    void addStatusBarIcon(QupZilla* window);
-    void removeStatusBarIcon(QupZilla* window);
+    void addStatusBarIcon(BrowserWindow* window);
+    void removeStatusBarIcon(BrowserWindow* window);
 
 public slots:
     void setGroupType(TabManagerWidget::GroupType type);
-    void mainWindowCreated(QupZilla* window, bool refresh = true);
-    void mainWindowDeleted(QupZilla* window);
+    void mainWindowCreated(BrowserWindow* window, bool refresh = true);
+    void mainWindowDeleted(BrowserWindow* window);
     void toggleDefaultTabManagerView();
     void showSideBySide();
 
@@ -64,8 +64,8 @@ private:
     ViewType m_viewType;
     TabManagerWidget::GroupType m_groupType;
 
-    QHash<QupZilla*, QWidget*> m_statusBarIcons;
-    QHash<QupZilla*, QAction*> m_actions;
+    QHash<BrowserWindow*, QWidget*> m_statusBarIcons;
+    QHash<BrowserWindow*, QAction*> m_actions;
 
 signals:
     void requestRefreshTree(WebPage* p = 0);
