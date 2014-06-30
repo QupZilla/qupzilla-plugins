@@ -103,7 +103,7 @@ QString TabManagerWidget::domainFromUrl(const QUrl &url, bool useHostName)
         domain.remove(0, 4);
     }
 
-    if (useHostName) {
+    if (useHostName || domain.contains(QRegExp("^[0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]+$"))) {
         return domain.append(appendString).append(":");
     }
     else {
