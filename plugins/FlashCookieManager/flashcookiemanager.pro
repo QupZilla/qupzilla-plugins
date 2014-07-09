@@ -12,9 +12,9 @@ HEADERS += fcm_plugin.h \
 RESOURCES += flashcookiemanager.qrc
 
 TRANSLATIONS += \
-    translations/fa_IR.ts \
-#PLUGIN_DIR = $$PWD
+    translations/fa_IR.ts
 
+PLUGIN_DIR = $$PWD
 srcdir = $$(QUPZILLA_SRCDIR)
 equals(srcdir, "") {
     include(../../plugins.pri)

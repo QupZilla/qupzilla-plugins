@@ -18,6 +18,7 @@ FORMS += \
 TRANSLATIONS = \
     translations/fa_IR.ts
 
+PLUGIN_DIR = $$PWD
 srcdir = $$(QUPZILLA_SRCDIR)
 equals(srcdir, "") {
     include(../../plugins.pri)
