@@ -76,18 +76,18 @@ QWidget* TabManagerWidgetController::createStatusBarIcon(BrowserWindow* mainWind
     icon->setCursor(Qt::PointingHandCursor);
     QPixmap p(":tabmanager/data/tabmanager.png");
     icon->setPixmap(p.scaledToHeight(16));
-    icon->setToolTip(tr("Show/Hide Tab Manager"));
+    icon->setToolTip(tr("Show Tab Manager"));
 
-    QAction* toggleViewAction = createMenuAction();
-    toggleViewAction->setCheckable(false);
-    toggleViewAction->setParent(icon);
-    mainWindow->addAction(toggleViewAction);
-    connect(toggleViewAction, SIGNAL(triggered()), this, SLOT(toggleDefaultTabManagerView()));
+    QAction* showAction = createMenuAction();
+    showAction->setCheckable(false);
+    showAction->setParent(icon);
+    mainWindow->addAction(showAction);
+    connect(showAction, SIGNAL(triggered()), this, SLOT(raiseTabManager()));
 
-    connect(icon, SIGNAL(clicked(QPoint)), this, SLOT(toggleDefaultTabManagerView()));
+    connect(icon, SIGNAL(clicked(QPoint)), this, SLOT(raiseTabManager()));
 
     m_statusBarIcons.insert(mainWindow, icon);
-    m_actions.insert(mainWindow, toggleViewAction);
+    m_actions.insert(mainWindow, showAction);
 
     return icon;
 }
@@ -119,11 +119,11 @@ TabManagerWidget* TabManagerWidgetController::createTabManagerWidget(BrowserWind
 
     if (defaultWidget) {
         m_defaultTabManager = tabManagerWidget;
-        QAction* toggleViewAction = createMenuAction();
-        toggleViewAction->setCheckable(false);
-        toggleViewAction->setParent(m_defaultTabManager);
-        m_defaultTabManager->addAction(toggleViewAction);
-        connect(toggleViewAction, SIGNAL(triggered()), this, SLOT(toggleDefaultTabManagerView()));
+        QAction* showAction = createMenuAction();
+        showAction->setCheckable(false);
+        showAction->setParent(m_defaultTabManager);
+        m_defaultTabManager->addAction(showAction);
+        connect(showAction, SIGNAL(triggered()), this, SLOT(raiseTabManager()));
         connect(tabManagerWidget, SIGNAL(showSideBySide()), this, SLOT(showSideBySide()));
     }
     else {
@@ -181,18 +181,29 @@ void TabManagerWidgetController::mainWindowDeleted(BrowserWindow* window)
     emit requestRefreshTree();
 }
 
-void TabManagerWidgetController::toggleDefaultTabManagerView()
+void TabManagerWidgetController::raiseTabManager()
 {
-    if (defaultTabManager()) {
-        defaultTabManager()->activateWindow();
-        bool show = !defaultTabManager()->isVisible();
-        if (defaultTabManager()->isMinimized()) {
-            defaultTabManager()->showNormal();
-        }
-        else {
-            defaultTabManager()->setVisible(show);
-        }
+    if (!defaultTabManager()) {
+        return;
     }
+
+    ClickableLabel* icon = qobject_cast<ClickableLabel*>(sender());
+    if (icon) {
+        static int frameWidth = (defaultTabManager()->frameGeometry().width() - defaultTabManager()->geometry().width()) / 2;
+        static int titleBarHeight = defaultTabManager()->style()->pixelMetric(QStyle::PM_TitleBarHeight);
+
+        int y = qMax(0, icon->mapToGlobal(QPoint(0, 0)).y() - 1 - icon->window()->height() + titleBarHeight - frameWidth);
+        int x = icon->mapToGlobal(QPoint(0, 0)).x();
+        if (!mApp->isRightToLeft()) {
+            x -= defaultTabManager()->width();
+        }
+        QRect newGeo(x, y, defaultTabManager()->width(), icon->window()->height() - titleBarHeight - frameWidth);
+        defaultTabManager()->setGeometry(newGeo);
+    }
+
+    defaultTabManager()->activateWindow();
+    defaultTabManager()->showNormal();
+    defaultTabManager()->raise();
 }
 
 void TabManagerWidgetController::showSideBySide()

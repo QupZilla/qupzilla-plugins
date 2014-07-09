@@ -56,7 +56,7 @@ public slots:
     void setGroupType(TabManagerWidget::GroupType type);
     void mainWindowCreated(BrowserWindow* window, bool refresh = true);
     void mainWindowDeleted(BrowserWindow* window);
-    void toggleDefaultTabManagerView();
+    void raiseTabManager();
     void showSideBySide();
 
 private:
