@@ -168,7 +168,7 @@ QString FCM_Plugin::flashDataPathForOS()
     // ~/.gnash/SharedObjects/
 
     if (m_flashDataPathForOS.isEmpty()) {
-#if !defined(Q_OS_WIN) || defined(Q_OS_OS2)
+#if defined(Q_OS_WIN) || defined(Q_OS_OS2)
         QString appData = QProcessEnvironment::systemEnvironment().value("APPDATA");
         m_flashDataPathForOS = (appData + "/Macromedia/Flash Player");
 #elif defined(Q_OS_MAC)
