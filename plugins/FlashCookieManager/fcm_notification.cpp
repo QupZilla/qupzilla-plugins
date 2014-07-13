@@ -36,7 +36,7 @@ FCM_Notification::FCM_Notification(FCM_Plugin* manager, int newOriginsCount)
     else {
         ui->textLabel->setText(tr("%1 new flash cookies were detected").arg(newOriginsCount));
     }
-    connect(ui->buttonView, SIGNAL(clicked()), m_manager, SLOT(showHideCookieManager()));
+    connect(ui->buttonView, SIGNAL(clicked()), m_manager, SLOT(showFlashCookieManager()));
     connect(ui->buttonView, SIGNAL(clicked()), this, SLOT(hide()));
     connect(ui->close, SIGNAL(clicked()), this, SLOT(hide()));
 

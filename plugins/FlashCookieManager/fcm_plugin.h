@@ -75,7 +75,7 @@ public:
 
 private slots:
     void autoRefresh();
-    void showHideDialog();
+    void showFlashCookieManager();
     void mainWindowCreated(BrowserWindow* window);
     void mainWindowDeleted(BrowserWindow* window);
     void startStopTimer();

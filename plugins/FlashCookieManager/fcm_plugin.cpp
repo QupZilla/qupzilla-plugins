@@ -120,7 +120,7 @@ void FCM_Plugin::showSettings(QWidget* parent)
 {
     Q_UNUSED(parent)
 
-    showHideDialog();
+    showFlashCookieManager();
     m_fcmDialog->showPage(2);
 }
 
@@ -291,7 +291,7 @@ void FCM_Plugin::autoRefresh()
     }
 }
 
-void FCM_Plugin::showHideDialog()
+void FCM_Plugin::showFlashCookieManager()
 {
     if (!m_fcmDialog) {
         m_fcmDialog = new FCM_Dialog(this);
@@ -351,7 +351,7 @@ QWidget* FCM_Plugin::createStatusBarIcon(BrowserWindow* mainWindow)
     icon->setPixmap(p.scaledToHeight(16));
     icon->setToolTip(tr("Show/Hide Flash Cookie Manager"));
 
-    connect(icon, SIGNAL(clicked(QPoint)), this, SLOT(showHideDialog()));
+    connect(icon, SIGNAL(clicked(QPoint)), this, SLOT(showFlashCookieManager()));
 
     m_statusBarIcons.insert(mainWindow, icon);
 
