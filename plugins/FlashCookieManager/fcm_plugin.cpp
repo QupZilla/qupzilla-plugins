@@ -202,7 +202,7 @@ QVariantHash FCM_Plugin::readSettings()
         m_settingsHash.insert("flashCookiesBlacklist", QVariant());
         m_settingsHash.insert("flashDataPath", flashDataPathForOS());
 
-        QSettings settings(m_settingsPath + "extensions.ini", QSettings::IniFormat);
+        QSettings settings(m_settingsPath + QL1S("/extensions.ini"), QSettings::IniFormat);
         settings.beginGroup("FlashCookieManager");
         QVariantHash::iterator i = m_settingsHash.begin();
         while (i != m_settingsHash.end()) {
@@ -220,7 +220,7 @@ void FCM_Plugin::writeSettings(const QVariantHash &hashSettings)
 {
     m_settingsHash = hashSettings;
 
-    QSettings settings(m_settingsPath + "extensions.ini", QSettings::IniFormat);
+    QSettings settings(m_settingsPath + QL1S("/extensions.ini"), QSettings::IniFormat);
     settings.beginGroup("FlashCookieManager");
     QVariantHash::const_iterator i = m_settingsHash.constBegin();
     while (i != m_settingsHash.constEnd()) {

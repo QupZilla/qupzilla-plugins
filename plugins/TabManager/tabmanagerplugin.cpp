@@ -65,7 +65,7 @@ void TabManagerPlugin::init(InitState state, const QString &settingsPath)
     m_initState = true;
 
     // load settings
-    QSettings settings(m_settingsPath + "extensions.ini", QSettings::IniFormat);
+    QSettings settings(m_settingsPath + QL1S("/extensions.ini"), QSettings::IniFormat);
     settings.beginGroup("TabManager");
     m_controller->setGroupType(TabManagerWidget::GroupType(settings.value("GroupType", TabManagerWidget::GroupByWindow).toInt()));
     m_controller->setViewType(TabManagerWidgetController::ViewType(settings.value("ViewType", TabManagerWidgetController::ShowAsWindow).toInt()));
@@ -77,7 +77,7 @@ void TabManagerPlugin::init(InitState state, const QString &settingsPath)
 void TabManagerPlugin::unload()
 {
     // save settings
-    QSettings settings(m_settingsPath + "extensions.ini", QSettings::IniFormat);
+    QSettings settings(m_settingsPath + QL1S("/extensions.ini"), QSettings::IniFormat);
     settings.beginGroup("TabManager");
     settings.setValue("GroupType", m_controller->groupType());
     settings.setValue("ViewType", m_controller->viewType());
