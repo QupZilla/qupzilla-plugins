@@ -40,11 +40,11 @@
 
 TabManagerWidget::TabManagerWidget(BrowserWindow* mainClass, QWidget* parent, bool defaultWidget)
     : QWidget(parent)
-    , p_QupZilla(mainClass)
     , ui(new Ui::TabManagerWidget)
+    , p_QupZilla(mainClass)
+    , m_webPage(0)
     , m_isRefreshing(false)
     , m_refreshBlocked(false)
-    , m_webPage(0)
     , m_waitForRefresh(false)
     , m_isDefaultWidget(defaultWidget)
 
