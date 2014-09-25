@@ -71,7 +71,7 @@ void TabManagerPlugin::init(InitState state, const QString &settingsPath)
     m_controller->setViewType(TabManagerWidgetController::ViewType(settings.value("ViewType", TabManagerWidgetController::ShowAsWindow).toInt()));
     settings.endGroup();
 
-    QTimer::singleShot(0, this, SLOT(insertManagerWidget()));
+    insertManagerWidget();
 }
 
 void TabManagerPlugin::unload()
