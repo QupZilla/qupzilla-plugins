@@ -154,18 +154,19 @@ void FCM_Plugin::clearCache()
 
 QString FCM_Plugin::flashDataPathForOS()
 {
-    // On Microsoft Windows NT 5.x and 6.x, they are stored in:
-    //  %APPDATA%\Macromedia\Flash Player\#SharedObjects\
-    //  %APPDATA%\Macromedia\Flash Player\macromedia.com\support\flashplayer\sys\
-    // On Mac OS X, they are stored in:
-    // ~/Library/Preferences/Macromedia/Flash Player/#SharedObjects/
-    // ~/Library/Preferences/Macromedia/Flash Player/macromedia.com/support/flashplayer/sys/
-    // On Linux or Unix, they are stored in:
-    // ~/.macromedia/Flash_Player/#SharedObjects/
-    // ~/.macromedia/Flash_Player/macromedia.com/support/flashplayer/sys/
-    // For Linux and Unix systems, if the open-source Gnash plugin is being used
-    //  instead of the official Adobe Flash, they will instead be found at:
-    // ~/.gnash/SharedObjects/
+    /* On Microsoft Windows NT 5.x and 6.x, they are stored in:
+     *  %APPDATA%\Macromedia\Flash Player\#SharedObjects\
+     *  %APPDATA%\Macromedia\Flash Player\macromedia.com\support\flashplayer\sys\
+     * On Mac OS X, they are stored in:
+     * ~/Library/Preferences/Macromedia/Flash Player/#SharedObjects/
+     * ~/Library/Preferences/Macromedia/Flash Player/macromedia.com/support/flashplayer/sys/
+     * On Linux or Unix, they are stored in:
+     * ~/.macromedia/Flash_Player/#SharedObjects/
+     * ~/.macromedia/Flash_Player/macromedia.com/support/flashplayer/sys/
+     * For Linux and Unix systems, if the open-source Gnash plugin is being used
+     *  instead of the official Adobe Flash, they will instead be found at:
+     * ~/.gnash/SharedObjects/
+     */
 
     if (m_flashDataPathForOS.isEmpty()) {
 #if defined(Q_OS_WIN) || defined(Q_OS_OS2)
