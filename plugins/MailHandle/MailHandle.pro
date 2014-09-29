@@ -18,10 +18,24 @@ RESOURCES = mailhandle_res.qrc
 
 TRANSLATIONS = \
     translations/ar_SA.ts \
+    translations/de_DE.ts \
+    translations/es_ES.ts \
+    translations/es_MX.ts \
+    translations/eu_ES.ts \
+    translations/fr_FR.ts \
+    translations/hr_HR.ts \
+    translations/it_IT.ts \
+    translations/ja_JP.ts \
+    translations/lv_LV.ts \
+    translations/nl_NL.ts \
+    translations/pl_PL.ts \
+    translations/pt_PT.ts \
+    translations/ru_RU.ts \
     translations/sr.ts \
     translations/sr@ijekavian.ts \
     translations/sr@ijekavianlatin.ts \
-    translations/sr@latin.ts
+    translations/sr@latin.ts \
+    translations/zh_TW.ts \
 
 PLUGIN_DIR = $$PWD
 srcdir = $$(QUPZILLA_SRCDIR)
