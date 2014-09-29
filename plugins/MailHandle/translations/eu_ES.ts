@@ -1,17 +1,17 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="sr@latin" version="2.0">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="eu_ES" version="2.0">
 <context>
     <name>MailHandle_Settings</name>
     <message>
         <source>MailHandle Settings</source>
-        <translation>Postavke rukovaoca pošte</translation>
+        <translation>Posta-kudeaketa Ezarpenak</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:x-large; font-weight:600;&quot;&gt;Mailto links handler&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:x-large; font-weight:600;&quot;&gt;Rukovalac vezama e-pošte&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:x-large; font-weight:600;&quot;&gt;Post@ hona loturen kudeatzailea&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Web service to use:</source>
-        <translation>Veb servis e-pošte:</translation>
+        <translation>Erabiltzeko Web zerbitzua:</translation>
     </message>
     <message>
         <source>Gmail</source>
@@ -52,12 +52,12 @@
     <message>
         <source>Enter URL of your webmail service provider. For example:
 https://somewebsite/roundcube</source>
-        <translation>Unesite URL davaoca usluge veb pošte. Na primer:
-https://nekivebsajt/roundcube</translation>
+        <translation>Sartu zure webpost@ zerbitzu hornitzailearen URL-a. Adibidez:
+https://webgunerenbat/roundcube</translation>
     </message>
     <message>
         <source>URL of the webmail service provider:</source>
-        <translation>URL davaoca usluge veb pošte:</translation>
+        <translation>Webpost@ zerbitzu hornitzailearen URL-a.</translation>
     </message>
 </context>
 </TS>

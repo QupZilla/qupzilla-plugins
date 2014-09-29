@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="sr@ijekavian">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="sr@Ijekavian" version="2.0">
 <context>
     <name>CopyTitle</name>
     <message>
@@ -9,7 +7,7 @@
     </message>
     <message>
         <source>Copy Image Name</source>
-        <translation>Копирај назив слике</translation>
+        <translation>Копирај име слике</translation>
     </message>
 </context>
 </TS>

@@ -1,17 +1,17 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="sr@latin" version="2.0">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="ja_JP" version="2.0">
 <context>
     <name>MailHandle_Settings</name>
     <message>
         <source>MailHandle Settings</source>
-        <translation>Postavke rukovaoca pošte</translation>
+        <translation>MailHandle の設定</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:x-large; font-weight:600;&quot;&gt;Mailto links handler&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:x-large; font-weight:600;&quot;&gt;Rukovalac vezama e-pošte&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Web service to use:</source>
-        <translation>Veb servis e-pošte:</translation>
+        <translation>使用するWebサービス:</translation>
     </message>
     <message>
         <source>Gmail</source>
@@ -52,12 +52,11 @@
     <message>
         <source>Enter URL of your webmail service provider. For example:
 https://somewebsite/roundcube</source>
-        <translation>Unesite URL davaoca usluge veb pošte. Na primer:
-https://nekivebsajt/roundcube</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>URL of the webmail service provider:</source>
-        <translation>URL davaoca usluge veb pošte:</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

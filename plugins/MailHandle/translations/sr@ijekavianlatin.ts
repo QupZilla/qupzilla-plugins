@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="sr@ijekavianlatin">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="sr@ijekavianlatin" version="2.0">
 <context>
     <name>MailHandle_Settings</name>
     <message>

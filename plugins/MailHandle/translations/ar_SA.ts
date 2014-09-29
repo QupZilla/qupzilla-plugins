@@ -1,19 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="ar_SA">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="ar_SA" version="2.0">
 <context>
     <name>MailHandle_Settings</name>
     <message>
         <source>MailHandle Settings</source>
-        <translation>إعدادات متولِّ البريد الإلكتروني</translation>
+        <translation>إعدادات MailHandle</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:x-large; font-weight:600;&quot;&gt;Mailto links handler&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:x-large; font-weight:600;&quot;&gt;يتولى التعامل مع روابط mailto&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:x-large; font-weight:600;&quot;&gt;متولٍّ لروابط mailto&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Web service to use:</source>
-        <translation>استخدم خدمة الوِب:</translation>
+        <translation>خدمة الويب المُراد استخدامها:</translation>
     </message>
     <message>
         <source>Gmail</source>
@@ -54,12 +52,12 @@
     <message>
         <source>Enter URL of your webmail service provider. For example:
 https://somewebsite/roundcube</source>
-        <translation>أدخل رابط مزود خدمة البريد الإلكتروني على الوِب التي تودّ استخدامها. مثلاً:
+        <translation>أدخل عنوان مزوّد خدمة البريد الإلكتروني على الويب، مثلاً:
 https://somewebsite/roundcube</translation>
     </message>
     <message>
         <source>URL of the webmail service provider:</source>
-        <translation>رابط مزوّد خدمة البريد الإلكتروني على الوِب:</translation>
+        <translation>عنوان مزوّد خدمة البريد الإلكترونيّ على الويب:</translation>
     </message>
 </context>
 </TS>
