@@ -15,3 +15,13 @@ minimum_perc = 60
 file_filter = plugins/Videoner/translations/<lang>.ts
 source_lang = en
 minimum_perc = 60
+
+[qupzilla.flashcookiemanager-plugin]
+file_filter = plugins/FlashCookieManager/translations/<lang>.ts
+source_lang = en
+minimum_perc = 60
+
+[qupzilla.tabmanager-plugin]
+file_filter = plugins/TabManager/translations/<lang>.ts
+source_lang = en
+minimum_perc = 60
