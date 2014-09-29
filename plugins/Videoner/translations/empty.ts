@@ -18,24 +18,28 @@
     <message>
         <location filename="../videoner_handler.cpp" line="268"/>
         <location filename="../videoner_handler.cpp" line="282"/>
+        <location filename="../videoner_handler.cpp" line="296"/>
         <source>Executable: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../videoner_handler.cpp" line="268"/>
         <location filename="../videoner_handler.cpp" line="282"/>
+        <location filename="../videoner_handler.cpp" line="296"/>
         <source>Arguments: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../videoner_handler.cpp" line="269"/>
         <location filename="../videoner_handler.cpp" line="283"/>
+        <location filename="../videoner_handler.cpp" line="297"/>
         <source>Cannot start external viewer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../videoner_handler.cpp" line="269"/>
         <location filename="../videoner_handler.cpp" line="283"/>
+        <location filename="../videoner_handler.cpp" line="297"/>
         <source>Cannot start external viewer! %1</source>
         <translation type="unfinished"></translation>
     </message>
