@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd ../
+cd ../plugins
 
 for pluginPro in */*.pro
 do
