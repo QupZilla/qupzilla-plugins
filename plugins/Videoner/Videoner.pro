@@ -46,11 +46,11 @@ TRANSLATIONS = \
     translations/sr@ijekavian.ts \
     translations/sr@ijekavianlatin.ts \
     translations/sr@latin.ts \
-    translations/tr_TR.ts
-    translations/uk_UA.ts
-    translations/uz@Cyrl.ts
-    translations/uz@Latn.ts
-    translations/zh_TW.ts
+    translations/tr_TR.ts \
+    translations/uk_UA.ts \
+    translations/uz@Cyrl.ts \
+    translations/uz@Latn.ts \
+    translations/zh_TW.ts \
 
 PLUGIN_DIR = $$PWD
 srcdir = $$(QUPZILLA_SRCDIR)
