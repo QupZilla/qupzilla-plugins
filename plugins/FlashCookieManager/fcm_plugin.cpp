@@ -184,6 +184,8 @@ QString FCM_Plugin::flashDataPathForOS()
 #endif
     }
 
+    m_flashDataPathForOS.replace("\\", "/");
+
     return m_flashDataPathForOS;
 }
 
