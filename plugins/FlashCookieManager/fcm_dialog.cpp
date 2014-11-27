@@ -369,9 +369,11 @@ void FCM_Dialog::closeEvent(QCloseEvent* e)
     settingsHash.insert("notification", QVariant(ui->notification->isChecked()));
     settingsHash.insert("flashCookiesWhitelist", flashWhitelist);
     settingsHash.insert("flashCookiesBlacklist", flashBlacklist);
+
     QString path = ui->flashDataPath->text();
     path.replace("\\", "/");
-    settingsHash.insert("flashDataPath", path.split("/", QString::SkipEmptyParts).join("/"));
+
+    settingsHash.insert("flashDataPath", path);
 
     m_manager->writeSettings(settingsHash);
 

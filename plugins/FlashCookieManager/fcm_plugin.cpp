@@ -171,6 +171,8 @@ QString FCM_Plugin::flashDataPathForOS()
     if (m_flashDataPathForOS.isEmpty()) {
 #if defined(Q_OS_WIN) || defined(Q_OS_OS2)
         QString appData = QProcessEnvironment::systemEnvironment().value("APPDATA");
+        appData.replace("\\", "/");
+
         m_flashDataPathForOS = (appData + "/Macromedia/Flash Player");
 #elif defined(Q_OS_MAC)
         m_flashDataPathForOS = QDir::homePath() + QL1S("/Library/Preferences/Macromedia/Flash Player");
@@ -183,8 +185,6 @@ QString FCM_Plugin::flashDataPathForOS()
         }
 #endif
     }
-
-    m_flashDataPathForOS.replace("\\", "/");
 
     return m_flashDataPathForOS;
 }
