@@ -71,9 +71,8 @@ void FCM_Plugin::init(InitState state, const QString &settingsPath)
 
     if (state == StartupInitState && readSettings().value("deleteAllOnStartExit").toBool()) {
         loadFlashCookies();
-        foreach (const FlashCookie &flashCookie, m_flashCookies) {
-            removeCookie(flashCookie);
-        }
+
+        removeAllButWhitelisted();
     }
 
     if (state == LateInitState) {
@@ -90,9 +89,7 @@ void FCM_Plugin::unload()
     }
 
     if (mApp->isClosing() && readSettings().value("deleteAllOnStartExit").toBool()) {
-        foreach (const FlashCookie &flashCookie, m_flashCookies) {
-            removeCookie(flashCookie);
-        }
+        removeAllButWhitelisted();
     }
 
     foreach (BrowserWindow* window, mApp->windows()) {
@@ -189,6 +186,27 @@ QString FCM_Plugin::flashDataPathForOS()
     return m_flashDataPathForOS;
 }
 
+bool FCM_Plugin::isBlacklisted(const FlashCookie &flashCookie)
+{
+    return readSettings().value("flashCookiesBlacklist").toStringList().contains(flashCookie.origin);
+}
+
+bool FCM_Plugin::isWhitelisted(const FlashCookie &flashCookie)
+{
+    return readSettings().value("flashCookiesWhitelist").toStringList().contains(flashCookie.origin);
+}
+
+void FCM_Plugin::removeAllButWhitelisted()
+{
+    foreach (const FlashCookie &flashCookie, m_flashCookies) {
+        if (isWhitelisted(flashCookie)) {
+            continue;
+        }
+
+        removeCookie(flashCookie);
+    }
+}
+
 QString FCM_Plugin::flashPlayerDataPath()
 {
     return readSettings().value("flashDataPath").toString();
@@ -257,13 +275,15 @@ void FCM_Plugin::autoRefresh()
     QStringList newCookieList;
 
     foreach (const FlashCookie &flashCookie, m_flashCookies) {
-        if (readSettings().value("flashCookiesBlacklist").toStringList().contains(flashCookie.origin)) {
+        if (isBlacklisted(flashCookie)) {
             removeCookie(flashCookie);
             continue;
         }
-        if (readSettings().value("flashCookiesWhitelist").toStringList().contains(flashCookie.origin)) {
+
+        if (isWhitelisted(flashCookie)) {
             continue;
         }
+
         bool newCookie = true;
         foreach (const FlashCookie &oldFlashCookie, oldflashCookies) {
             if (QString(oldFlashCookie.path + oldFlashCookie.name) ==

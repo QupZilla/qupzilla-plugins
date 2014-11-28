@@ -87,6 +87,9 @@ private:
     void insertFlashCookie(QString path);
     QString extractOriginFrom(const QString &path);
     QString flashDataPathForOS();
+    bool isBlacklisted(const FlashCookie &flashCookie);
+    bool isWhitelisted(const FlashCookie &flashCookie);
+    void removeAllButWhitelisted();
 
     QHash<BrowserWindow*, QWidget*> m_statusBarIcons;
     QPointer<FCM_Dialog> m_fcmDialog;
