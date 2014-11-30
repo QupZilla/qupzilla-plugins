@@ -69,7 +69,7 @@ void FCM_Plugin::init(InitState state, const QString &settingsPath)
     // start timer if needed
     startStopTimer();
 
-    if (state == StartupInitState && readSettings().value("deleteAllOnStartExit").toBool()) {
+    if (state == StartupInitState && readSettings().value(QL1S("deleteAllOnStartExit")).toBool()) {
         loadFlashCookies();
 
         removeAllButWhitelisted();
@@ -88,7 +88,7 @@ void FCM_Plugin::unload()
         m_fcmDialog->close();
     }
 
-    if (mApp->isClosing() && readSettings().value("deleteAllOnStartExit").toBool()) {
+    if (mApp->isClosing() && readSettings().value(QL1S("deleteAllOnStartExit")).toBool()) {
         removeAllButWhitelisted();
     }
 
@@ -167,10 +167,10 @@ QString FCM_Plugin::flashDataPathForOS() const
 
     if (m_flashDataPathForOS.isEmpty()) {
 #if defined(Q_OS_WIN) || defined(Q_OS_OS2)
-        QString appData = QProcessEnvironment::systemEnvironment().value("APPDATA");
-        appData.replace("\\", "/");
+        QString appData = QProcessEnvironment::systemEnvironment().value(QL1S("APPDATA"));
+        appData.replace(QL1C('\\'), QL1C('/'));
 
-        m_flashDataPathForOS = (appData + "/Macromedia/Flash Player");
+        m_flashDataPathForOS = (appData + QL1S("/Macromedia/Flash Player"));
 #elif defined(Q_OS_MAC)
         m_flashDataPathForOS = QDir::homePath() + QL1S("/Library/Preferences/Macromedia/Flash Player");
 #else
@@ -188,12 +188,12 @@ QString FCM_Plugin::flashDataPathForOS() const
 
 bool FCM_Plugin::isBlacklisted(const FlashCookie &flashCookie)
 {
-    return readSettings().value("flashCookiesBlacklist").toStringList().contains(flashCookie.origin);
+    return readSettings().value(QL1S("flashCookiesBlacklist")).toStringList().contains(flashCookie.origin);
 }
 
 bool FCM_Plugin::isWhitelisted(const FlashCookie &flashCookie)
 {
-    return readSettings().value("flashCookiesWhitelist").toStringList().contains(flashCookie.origin);
+    return readSettings().value(QL1S("flashCookiesWhitelist")).toStringList().contains(flashCookie.origin);
 }
 
 void FCM_Plugin::removeAllButWhitelisted()
@@ -209,32 +209,32 @@ void FCM_Plugin::removeAllButWhitelisted()
 
 QString FCM_Plugin::sharedObjectDirName() const
 {
-    if (flashPlayerDataPath().contains("macromedia", Qt::CaseInsensitive) ||
-            !flashPlayerDataPath().contains("/.gnash", Qt::CaseInsensitive)) {
-        return QLatin1String("/#SharedObjects/");
+    if (flashPlayerDataPath().contains(QL1S("macromedia"), Qt::CaseInsensitive) ||
+            !flashPlayerDataPath().contains(QL1S("/.gnash"), Qt::CaseInsensitive)) {
+        return QLatin1String(QL1S("/#SharedObjects/"));
     }
     else {
-        return QLatin1String("/SharedObjects/");
+        return QLatin1String(QL1S("/SharedObjects/"));
     }
 }
 
 QString FCM_Plugin::flashPlayerDataPath() const
 {
-    return readSettings().value("flashDataPath").toString();
+    return readSettings().value(QL1S("flashDataPath")).toString();
 }
 
 QVariantHash FCM_Plugin::readSettings() const
 {
     if (m_settingsHash.isEmpty()) {
-        m_settingsHash.insert("autoMode", QVariant(false));
-        m_settingsHash.insert("deleteAllOnStartExit", QVariant(false));
-        m_settingsHash.insert("notification", QVariant(false));
-        m_settingsHash.insert("flashCookiesWhitelist", QVariant());
-        m_settingsHash.insert("flashCookiesBlacklist", QVariant());
-        m_settingsHash.insert("flashDataPath", flashDataPathForOS());
+        m_settingsHash.insert(QL1S("autoMode"), QVariant(false));
+        m_settingsHash.insert(QL1S("deleteAllOnStartExit"), QVariant(false));
+        m_settingsHash.insert(QL1S("notification"), QVariant(false));
+        m_settingsHash.insert(QL1S("flashCookiesWhitelist"), QVariant());
+        m_settingsHash.insert(QL1S("flashCookiesBlacklist"), QVariant());
+        m_settingsHash.insert(QL1S("flashDataPath"), flashDataPathForOS());
 
         QSettings settings(m_settingsPath + QL1S("/extensions.ini"), QSettings::IniFormat);
-        settings.beginGroup("FlashCookieManager");
+        settings.beginGroup(QL1S("FlashCookieManager"));
         QVariantHash::iterator i = m_settingsHash.begin();
         while (i != m_settingsHash.end()) {
             *i = settings.value(i.key(), i.value());
@@ -251,8 +251,8 @@ void FCM_Plugin::writeSettings(const QVariantHash &hashSettings)
 {
     m_settingsHash = hashSettings;
 
-    QSettings settings(m_settingsPath + QL1S("/extensions.ini"), QSettings::IniFormat);
-    settings.beginGroup("FlashCookieManager");
+    QSettings settings(m_settingsPath + QL1S(QL1S("/extensions.ini")), QSettings::IniFormat);
+    settings.beginGroup(QL1S("FlashCookieManager"));
     QVariantHash::const_iterator i = m_settingsHash.constBegin();
     while (i != m_settingsHash.constEnd()) {
         settings.setValue(i.key(), i.value());
@@ -268,7 +268,7 @@ void FCM_Plugin::removeCookie(const FlashCookie &flashCookie)
 {
     if (m_flashCookies.contains(flashCookie)) {
         m_flashCookies.removeOne(flashCookie);
-        if (QFile(flashCookie.path + "/" + flashCookie.name).remove()) {
+        if (QFile(flashCookie.path + QL1C('/') + flashCookie.name).remove()) {
             QDir dir(flashCookie.path);
             dir.rmpath(flashCookie.path);
         }
@@ -305,11 +305,11 @@ void FCM_Plugin::autoRefresh()
         }
 
         if (newCookie) {
-            newCookieList << flashCookie.path + "/" + flashCookie.name;
+            newCookieList << flashCookie.path + QL1C('/') + flashCookie.name;
         }
     }
 
-    if (!newCookieList.isEmpty() && readSettings().value("notification").toBool()) {
+    if (!newCookieList.isEmpty() && readSettings().value(QL1S("notification")).toBool()) {
         m_newCookiesList << newCookieList;
         BrowserWindow* window = mApp->getWindow();
         if (!window) {
@@ -359,7 +359,7 @@ void FCM_Plugin::mainWindowDeleted(BrowserWindow *window)
 
 void FCM_Plugin::startStopTimer()
 {
-    if (readSettings().value("autoMode").toBool()) {
+    if (readSettings().value(QL1S("autoMode")).toBool()) {
         if (!m_timer->isActive()) {
             if (m_flashCookies.isEmpty()) {
                 loadFlashCookies();
@@ -402,22 +402,21 @@ void FCM_Plugin::loadFlashCookies(QString path)
 {
     QDir solDir(path);
     QStringList entryList = solDir.entryList();
-    entryList.removeAll(".");
-    entryList.removeAll("..");
+    entryList.removeAll(QL1S("."));
+    entryList.removeAll(QL1S(".."));
 
     foreach(QString entry, entryList) {
-        if (path.endsWith("#SharedObjects") && entry == "#AppContainer") {
-            // TODO: used just by IE?
+        if (path.endsWith(QL1S("#SharedObjects")) && entry == QL1S("#AppContainer")) {
+            // specific to IE and Windows
             continue;
         }
 
-        path.replace("\\", "/");
-        QFileInfo entryInfo(path + "/" + entry);
+        path.replace(QL1C('\\'), QL1C('/'));
+        QFileInfo entryInfo(path + QL1C('/') + entry);
         if (entryInfo.isDir()) {
             loadFlashCookies(entryInfo.filePath());
         }
-        else if (entryInfo.isFile() && entryInfo.suffix() == "sol") {
-            // TODO: Should do we care about other suffices?
+        else if (entryInfo.isFile() && entryInfo.suffix() == QL1S("sol")) {
             insertFlashCookie(entryInfo.filePath());
         }
     }
@@ -430,9 +429,6 @@ void FCM_Plugin::insertFlashCookie(QString path)
         return;
     }
 
-    int index = path.indexOf("/#SharedObjects/");
-    index = index == -1 ? -1 : path.indexOf("/", index + 16);
-
     QByteArray file = solFile.readAll();
     for (int i = 0; i < file.size(); ++i) {
         if (!((file.at(i) >= 'a' && file.at(i) <= 'z') || (file.at(i) >= 'A' && file.at(i) <= 'Z') ||
@@ -442,7 +438,7 @@ void FCM_Plugin::insertFlashCookie(QString path)
     }
 
     QString fileStr = QString(file);
-    fileStr = fileStr.split(" ", QString::SkipEmptyParts).join("\n");
+    fileStr = fileStr.split(QL1C('.'), QString::SkipEmptyParts).join(QL1S("\n"));
 
     QFileInfo solFileInfo(solFile);
 
@@ -462,16 +458,16 @@ QString FCM_Plugin::extractOriginFrom(const QString &path)
     QString origin = path;
     if (path.startsWith(flashPlayerDataPath() + sharedObjectDirName())) {
         origin.remove(flashPlayerDataPath() + sharedObjectDirName());
-        if (origin.indexOf("/") != -1) {
-            origin.remove(0, origin.indexOf("/") + 1);
+        if (origin.indexOf(QL1C('/')) != -1) {
+            origin.remove(0, origin.indexOf(QL1C('/')) + 1);
         }
     }
-    else if (path.startsWith(flashPlayerDataPath() + "/macromedia.com/support/flashplayer/sys/")) {
-        origin.remove(flashPlayerDataPath() + "/macromedia.com/support/flashplayer/sys/");
-        if (origin == "settings.sol") {
+    else if (path.startsWith(flashPlayerDataPath() + QL1S("/macromedia.com/support/flashplayer/sys/"))) {
+        origin.remove(flashPlayerDataPath() + QL1S("/macromedia.com/support/flashplayer/sys/"));
+        if (origin == QL1S("settings.sol")) {
             return tr("!default");
         }
-        else if (origin.startsWith("#")) {
+        else if (origin.startsWith(QL1C('#'))) {
             origin.remove(0, 1);
         }
     }
@@ -479,13 +475,13 @@ QString FCM_Plugin::extractOriginFrom(const QString &path)
         origin.clear();
     }
 
-    int index = origin.indexOf("/");
+    int index = origin.indexOf(QL1C('/'));
     if (index == -1) {
         return tr("!other");
     }
     origin = origin.remove(index, origin.size());
-    if (origin == "localhost" || origin == "local") {
-        origin = "!localhost";
+    if (origin == QL1S("localhost") || origin == QL1S("local")) {
+        origin = QL1S("!localhost");
     }
 
     return origin;

@@ -66,10 +66,10 @@ FCM_Dialog::FCM_Dialog(FCM_Plugin* manager, QWidget* parent)
     connect(ui->autoMode, SIGNAL(toggled(bool)), ui->labelNotification, SLOT(setEnabled(bool)));
     connect(ui->browseFlashDataPath, SIGNAL(clicked()), this, SLOT(selectFlashDataPath()));
 
-    ui->autoMode->setChecked(m_manager->readSettings().value("autoMode").toBool());
-    ui->notification->setEnabled(m_manager->readSettings().value("autoMode").toBool());
-    ui->notification->setChecked(m_manager->readSettings().value("notification").toBool());
-    ui->deleteAllOnStartExit->setChecked(m_manager->readSettings().value("deleteAllOnStartExit").toBool());
+    ui->autoMode->setChecked(m_manager->readSettings().value(QL1S("autoMode")).toBool());
+    ui->notification->setEnabled(m_manager->readSettings().value(QL1S("autoMode")).toBool());
+    ui->notification->setChecked(m_manager->readSettings().value(QL1S("notification")).toBool());
+    ui->deleteAllOnStartExit->setChecked(m_manager->readSettings().value(QL1S("deleteAllOnStartExit")).toBool());
     ui->flashDataPath->setText(m_manager->flashPlayerDataPath());
 
     ui->labelNotification->setEnabled(ui->autoMode->isChecked());
@@ -160,7 +160,7 @@ void FCM_Dialog::currentItemChanged(QTreeWidgetItem* current, QTreeWidgetItem* p
     const FlashCookie flashCookie = qvariant_cast<FlashCookie>(data);
 
     QString suffix;
-    if (flashCookie.path.startsWith(m_manager->flashPlayerDataPath() + "/macromedia.com/support/flashplayer/sys")) {
+    if (flashCookie.path.startsWith(m_manager->flashPlayerDataPath() + QL1S("/macromedia.com/support/flashplayer/sys"))) {
         suffix = tr(" (settings)");
     }
     ui->name->setText(flashCookie.name + suffix);
@@ -231,11 +231,11 @@ void FCM_Dialog::refreshFlashCookiesTree()
         }
 
         QString suffix;
-        if (flashCookie.path.startsWith(m_manager->flashPlayerDataPath() + "/macromedia.com/support/flashplayer/sys")) {
+        if (flashCookie.path.startsWith(m_manager->flashPlayerDataPath() + QL1S("/macromedia.com/support/flashplayer/sys"))) {
             suffix = tr(" (settings)");
         }
 
-        if (m_manager->newCookiesList().contains(flashCookie.path + "/" + flashCookie.name)) {
+        if (m_manager->newCookiesList().contains(flashCookie.path + QL1C('/') + flashCookie.name)) {
             suffix += tr(" [new]");
             QFont font = item->font(0);
             font.setBold(true);
@@ -266,8 +266,8 @@ void FCM_Dialog::refreshFilters()
     ui->whiteList->clear();
     ui->blackList->clear();
 
-    ui->whiteList->addItems(m_manager->readSettings().value("flashCookiesWhitelist").toStringList());
-    ui->blackList->addItems(m_manager->readSettings().value("flashCookiesBlacklist").toStringList());
+    ui->whiteList->addItems(m_manager->readSettings().value(QL1S("flashCookiesWhitelist")).toStringList());
+    ui->blackList->addItems(m_manager->readSettings().value(QL1S("flashCookiesBlacklist")).toStringList());
 }
 
 void FCM_Dialog::addWhitelist()
@@ -328,7 +328,7 @@ void FCM_Dialog::filterString(const QString &string)
     }
     else {
         for (int i = 0; i < ui->flashCookieTree->topLevelItemCount(); ++i) {
-            QString text = "." + ui->flashCookieTree->topLevelItem(i)->text(0);
+            QString text = QL1C('.') + ui->flashCookieTree->topLevelItem(i)->text(0);
             ui->flashCookieTree->topLevelItem(i)->setHidden(!text.contains(string, Qt::CaseInsensitive));
             ui->flashCookieTree->topLevelItem(i)->setExpanded(true);
         }
@@ -342,7 +342,7 @@ void FCM_Dialog::reloadFromDisk()
 
 void FCM_Dialog::selectFlashDataPath()
 {
-    QString path = QzTools::getExistingDirectory("FCM_Plugin_FlashDataPath", this, tr("Select Flash Data Path"), ui->flashDataPath->text());
+    QString path = QzTools::getExistingDirectory(QL1S("FCM_Plugin_FlashDataPath"), this, tr("Select Flash Data Path"), ui->flashDataPath->text());
     if (!path.isEmpty()) {
         ui->flashDataPath->setText(path);
     }
@@ -363,17 +363,17 @@ void FCM_Dialog::closeEvent(QCloseEvent* e)
         flashBlacklist.append(ui->blackList->item(i)->text());
     }
 
-    QVariantHash settingsHash = m_manager->readSettings();
-    settingsHash.insert("autoMode", QVariant(ui->autoMode->isChecked()));
-    settingsHash.insert("deleteAllOnStartExit", QVariant(ui->deleteAllOnStartExit->isChecked()));
-    settingsHash.insert("notification", QVariant(ui->notification->isChecked()));
-    settingsHash.insert("flashCookiesWhitelist", flashWhitelist);
-    settingsHash.insert("flashCookiesBlacklist", flashBlacklist);
+    QVariantHash settingsHash;
+    settingsHash.insert(QL1S("autoMode"), QVariant(ui->autoMode->isChecked()));
+    settingsHash.insert(QL1S("deleteAllOnStartExit"), QVariant(ui->deleteAllOnStartExit->isChecked()));
+    settingsHash.insert(QL1S("notification"), QVariant(ui->notification->isChecked()));
+    settingsHash.insert(QL1S("flashCookiesWhitelist"), flashWhitelist);
+    settingsHash.insert(QL1S("flashCookiesBlacklist"), flashBlacklist);
 
     QString path = ui->flashDataPath->text();
-    path.replace("\\", "/");
+    path.replace(QL1C('\\'), QL1C('/'));
 
-    settingsHash.insert("flashDataPath", path);
+    settingsHash.insert(QL1S("flashDataPath"), path);
 
     m_manager->writeSettings(settingsHash);
 
