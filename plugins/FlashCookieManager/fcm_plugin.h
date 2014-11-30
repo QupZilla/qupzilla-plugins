@@ -67,8 +67,8 @@ public:
     QStringList newCookiesList();
     void clearNewOrigins();
     void clearCache();
-    QString flashPlayerDataPath();
-    QVariantHash readSettings();
+    QString flashPlayerDataPath() const;
+    QVariantHash readSettings() const;
     void writeSettings(const QVariantHash &hashSettings);
 
     void removeCookie(const FlashCookie &flashCookie);
@@ -86,10 +86,11 @@ private:
     void loadFlashCookies(QString path);
     void insertFlashCookie(QString path);
     QString extractOriginFrom(const QString &path);
-    QString flashDataPathForOS();
+    QString flashDataPathForOS() const;
     bool isBlacklisted(const FlashCookie &flashCookie);
     bool isWhitelisted(const FlashCookie &flashCookie);
     void removeAllButWhitelisted();
+    QString sharedObjectDirName() const;
 
     QHash<BrowserWindow*, QWidget*> m_statusBarIcons;
     QPointer<FCM_Dialog> m_fcmDialog;
@@ -98,14 +99,14 @@ private:
     QList<FlashCookie> m_flashCookies;
     QTimer* m_timer;
 
-    QVariantHash m_settingsHash;
+    mutable QVariantHash m_settingsHash;
     bool m_autoMode;
     bool m_deleteOnClose;
     bool m_enableNotification;
     QStringList m_blaklist;
     QStringList m_whitelist;
     QStringList m_newCookiesList;
-    QString m_flashDataPathForOS;
+    mutable QString m_flashDataPathForOS;
 };
 
 Q_DECLARE_METATYPE(FlashCookie);

@@ -47,7 +47,7 @@ PluginSpec FCM_Plugin::pluginSpec()
     spec.name = "Flash Cookie Manager";
     spec.info = "A plugin to manage flash cookies.";
     spec.description = "You can easily view/delete flash cookies stored on your computer. This is a solution for having more privacy.";
-    spec.version = "0.1.0";
+    spec.version = "0.2.0";
     spec.author = "Razi Alavizadeh <s.r.alavizadeh@gmail.com>";
     spec.icon = QPixmap(":/flashcookiemanager/data/flash-cookie-manager.png");
     spec.hasSettings = true;
@@ -149,7 +149,7 @@ void FCM_Plugin::clearCache()
     m_flashCookies.clear();
 }
 
-QString FCM_Plugin::flashDataPathForOS()
+QString FCM_Plugin::flashDataPathForOS() const
 {
     /* On Microsoft Windows NT 5.x and 6.x, they are stored in:
      *  %APPDATA%\Macromedia\Flash Player\#SharedObjects\
@@ -207,12 +207,23 @@ void FCM_Plugin::removeAllButWhitelisted()
     }
 }
 
-QString FCM_Plugin::flashPlayerDataPath()
+QString FCM_Plugin::sharedObjectDirName() const
+{
+    if (flashPlayerDataPath().contains("macromedia", Qt::CaseInsensitive) ||
+            !flashPlayerDataPath().contains("/.gnash", Qt::CaseInsensitive)) {
+        return QLatin1String("/#SharedObjects/");
+    }
+    else {
+        return QLatin1String("/SharedObjects/");
+    }
+}
+
+QString FCM_Plugin::flashPlayerDataPath() const
 {
     return readSettings().value("flashDataPath").toString();
 }
 
-QVariantHash FCM_Plugin::readSettings()
+QVariantHash FCM_Plugin::readSettings() const
 {
     if (m_settingsHash.isEmpty()) {
         m_settingsHash.insert("autoMode", QVariant(false));
@@ -449,8 +460,8 @@ void FCM_Plugin::insertFlashCookie(QString path)
 QString FCM_Plugin::extractOriginFrom(const QString &path)
 {
     QString origin = path;
-    if (path.startsWith(flashPlayerDataPath() + "/#SharedObjects/")) {
-        origin.remove(flashPlayerDataPath() + "/#SharedObjects/");
+    if (path.startsWith(flashPlayerDataPath() + sharedObjectDirName())) {
+        origin.remove(flashPlayerDataPath() + sharedObjectDirName());
         if (origin.indexOf("/") != -1) {
             origin.remove(0, origin.indexOf("/") + 1);
         }
