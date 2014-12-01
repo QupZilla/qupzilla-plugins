@@ -47,7 +47,7 @@ PluginSpec FCM_Plugin::pluginSpec()
     spec.name = "Flash Cookie Manager";
     spec.info = "A plugin to manage flash cookies.";
     spec.description = "You can easily view/delete flash cookies stored on your computer. This is a solution for having more privacy.";
-    spec.version = "0.2.0";
+    spec.version = "0.3.0";
     spec.author = "Razi Alavizadeh <s.r.alavizadeh@gmail.com>";
     spec.icon = QPixmap(":/flashcookiemanager/data/flash-cookie-manager.png");
     spec.hasSettings = true;

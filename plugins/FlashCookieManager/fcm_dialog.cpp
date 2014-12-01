@@ -29,6 +29,7 @@
 #include <QTimer>
 #include <QInputDialog>
 #include <QCloseEvent>
+#include <QMenu>
 
 FCM_Dialog::FCM_Dialog(FCM_Plugin* manager, QWidget* parent)
     : QDialog(parent, Qt::WindowStaysOnTopHint)
@@ -79,6 +80,9 @@ FCM_Dialog::FCM_Dialog(FCM_Plugin* manager, QWidget* parent)
     ui->flashCookieTree->sortItems(0, Qt::AscendingOrder);
     ui->flashCookieTree->header()->setDefaultSectionSize(220);
     ui->flashCookieTree->setFocus();
+
+    ui->flashCookieTree->setContextMenuPolicy(Qt::CustomContextMenu);
+    connect(ui->flashCookieTree, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(cookieTreeContextMenuRequested(QPoint)));
 
     QShortcut* removeShortcut = new QShortcut(QKeySequence("Del"), this);
     connect(removeShortcut, SIGNAL(activated()), this, SLOT(deletePressed()));
@@ -274,6 +278,11 @@ void FCM_Dialog::addWhitelist()
 {
     const QString origin = QInputDialog::getText(this, tr("Add to whitelist"), tr("Origin:"));
 
+    addWhitelist(origin);
+}
+
+void FCM_Dialog::addWhitelist(const QString &origin)
+{
     if (origin.isEmpty()) {
         return;
     }
@@ -297,6 +306,11 @@ void FCM_Dialog::addBlacklist()
 {
     const QString origin = QInputDialog::getText(this, tr("Add to blacklist"), tr("Origin:"));
 
+    addBlacklist(origin);
+}
+
+void FCM_Dialog::addBlacklist(const QString &origin)
+{
     if (origin.isEmpty()) {
         return;
     }
@@ -361,6 +375,33 @@ void FCM_Dialog::selectFlashDataPath()
     QString path = QzTools::getExistingDirectory(QL1S("FCM_Plugin_FlashDataPath"), this, tr("Select Flash Data Path"), ui->flashDataPath->text());
     if (!path.isEmpty()) {
         ui->flashDataPath->setText(path);
+    }
+}
+
+void FCM_Dialog::cookieTreeContextMenuRequested(const QPoint &pos)
+{
+    QMenu menu;
+    QAction* actAddBlacklist = menu.addAction(tr("Add to blacklist"));
+    QAction* actAddWhitelist = menu.addAction(tr("Add to whitelist"));
+
+    QTreeWidgetItem* item = ui->flashCookieTree->itemAt(pos);
+
+    if (!item) {
+        return;
+    }
+
+    ui->flashCookieTree->setCurrentItem(item);
+
+    QAction* activatedAction = menu.exec(ui->flashCookieTree->viewport()->mapToGlobal(pos));
+
+    const QString origin = item->childCount() > 0 ? item->text(0)
+                                                  : item->data(0, Qt::UserRole + 10).value<FlashCookie>().origin;
+
+    if (activatedAction == actAddBlacklist) {
+        addBlacklist(origin);
+    }
+    else if (activatedAction == actAddWhitelist) {
+        addWhitelist(origin);
     }
 }
 

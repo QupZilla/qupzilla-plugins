@@ -54,8 +54,10 @@ private slots:
     void refreshFilters();
 
     void addWhitelist();
+    void addWhitelist(const QString &origin);
     void removeWhitelist();
     void addBlacklist();
+    void addBlacklist(const QString &origin);
     void removeBlacklist();
 
     void deletePressed();
@@ -65,6 +67,7 @@ private slots:
 
     void reloadFromDisk();
     void selectFlashDataPath();
+    void cookieTreeContextMenuRequested(const QPoint &pos);
 
 private:
     void closeEvent(QCloseEvent* e);
