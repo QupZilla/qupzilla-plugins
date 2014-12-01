@@ -273,11 +273,19 @@ void FCM_Dialog::refreshFilters()
 void FCM_Dialog::addWhitelist()
 {
     const QString origin = QInputDialog::getText(this, tr("Add to whitelist"), tr("Origin:"));
+
     if (origin.isEmpty()) {
         return;
     }
 
-    ui->whiteList->addItem(origin);
+    if (!ui->blackList->findItems(origin, Qt::MatchFixedString).isEmpty()) {
+        QMessageBox::information(this, tr("Already whitelisted!"), tr("The server \"%1\" is already in blacklist, please remove it first.").arg(origin));
+        return;
+    }
+
+    if (ui->whiteList->findItems(origin, Qt::MatchFixedString).isEmpty()) {
+        ui->whiteList->addItem(origin);
+    }
 }
 
 void FCM_Dialog::removeWhitelist()
@@ -288,11 +296,19 @@ void FCM_Dialog::removeWhitelist()
 void FCM_Dialog::addBlacklist()
 {
     const QString origin = QInputDialog::getText(this, tr("Add to blacklist"), tr("Origin:"));
+
     if (origin.isEmpty()) {
         return;
     }
 
-    ui->blackList->addItem(origin);
+    if (!ui->whiteList->findItems(origin, Qt::MatchFixedString).isEmpty()) {
+        QMessageBox::information(this, tr("Already whitelisted!"), tr("The origin \"%1\" is already in whitelist, please remove it first.").arg(origin));
+        return;
+    }
+
+    if (ui->blackList->findItems(origin, Qt::MatchFixedString).isEmpty()) {
+        ui->blackList->addItem(origin);
+    }
 }
 
 void FCM_Dialog::removeBlacklist()
