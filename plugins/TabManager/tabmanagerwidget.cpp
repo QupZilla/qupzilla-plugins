@@ -33,6 +33,7 @@
 #include <QStackedWidget>
 #include <QDialog>
 #include <QTimer>
+#include <QLabel>
 
 #define WebTabPointerRole Qt::UserRole + 10
 #define QupZillaPointerRole Qt::UserRole + 20
@@ -51,21 +52,10 @@ TabManagerWidget::TabManagerWidget(BrowserWindow* mainClass, QWidget* parent, bo
 {
     ui->setupUi(this);
     ui->treeWidget->setExpandsOnDoubleClick(false);
-    ui->groupTypeComboBox->addItems(QStringList() << tr("Window") << tr("Domain") << tr("Host"));
+    ui->treeWidget->setContextMenuPolicy(Qt::CustomContextMenu);
 
-    ui->sideBySide->setVisible(m_isDefaultWidget);
-
-    ui->closeSelection->setEnabled(false);
-    ui->detachSelection->setEnabled(false);
-    ui->bookmarkSelection->setEnabled(false);
-
-    connect(ui->closeSelection, SIGNAL(clicked()), this, SLOT(processActions()));
-    connect(ui->detachSelection, SIGNAL(clicked()), this, SLOT(processActions()));
-    connect(ui->bookmarkSelection, SIGNAL(clicked()), this, SLOT(processActions()));
     connect(ui->treeWidget, SIGNAL(itemDoubleClicked(QTreeWidgetItem*,int)), this, SLOT(itemDoubleClick(QTreeWidgetItem*,int)));
-    connect(ui->treeWidget, SIGNAL(itemChanged(QTreeWidgetItem*,int)), this, SLOT(treeWidgetChanged()));
-    connect(ui->sideBySide, SIGNAL(clicked()), this, SIGNAL(showSideBySide()));
-    connect(ui->groupTypeComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(changeGroupType(int)));
+    connect(ui->treeWidget, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(customContextMenuRequested(QPoint)));
 }
 
 TabManagerWidget::~TabManagerWidget()
@@ -76,7 +66,6 @@ TabManagerWidget::~TabManagerWidget()
 void TabManagerWidget::setGroupType(GroupType type)
 {
     m_groupType = type;
-    ui->groupTypeComboBox->setCurrentIndex(type);
 }
 
 QString TabManagerWidget::domainFromUrl(const QUrl &url, bool useHostName)
@@ -219,20 +208,55 @@ void TabManagerWidget::itemDoubleClick(QTreeWidgetItem* item, int)
     }
 }
 
-void TabManagerWidget::treeWidgetChanged()
+bool TabManagerWidget::isTabSelected()
 {
-    bool enabled = false;
+    bool selected = false;
     for (int i = 0; i < ui->treeWidget->topLevelItemCount(); ++i) {
         QTreeWidgetItem* parentItem = ui->treeWidget->topLevelItem(i);
         if (parentItem->checkState(0) != Qt::Unchecked) {
-            enabled = true;
+            selected = true;
             break;
         }
     }
 
-    ui->closeSelection->setEnabled(enabled);
-    ui->detachSelection->setEnabled(enabled);
-    ui->bookmarkSelection->setEnabled(enabled);
+    return selected;
+}
+
+void TabManagerWidget::customContextMenuRequested(const QPoint &pos)
+{
+    QMenu menu;
+    QAction* action;
+    QMenu groupTypeSubmenu(tr("Group by"));
+    action = groupTypeSubmenu.addAction(tr("&Window"), this, SLOT(changeGroupType()));
+    action->setData(GroupByWindow);
+    action->setCheckable(true);
+    action->setChecked(m_groupType == GroupByWindow);
+
+    action = groupTypeSubmenu.addAction(tr("&Domain"), this, SLOT(changeGroupType()));
+    action->setData(GroupByDomain);
+    action->setCheckable(true);
+    action->setChecked(m_groupType == GroupByDomain);
+
+    action = groupTypeSubmenu.addAction(tr("&Host"), this, SLOT(changeGroupType()));
+    action->setData(GroupByHost);
+    action->setCheckable(true);
+    action->setChecked(m_groupType == GroupByHost);
+
+    menu.addMenu(&groupTypeSubmenu);
+
+    if (m_isDefaultWidget) {
+        menu.addAction(QIcon(":/tabmanager/data/side-by-side.png"), tr("&Show side by side"), this, SIGNAL(showSideBySide()))->setObjectName("sideBySide");
+    }
+
+    menu.addSeparator();
+
+    if (isTabSelected()) {
+        menu.addAction(QIcon(":/tabmanager/data/tab-detach.png"), tr("&Detach checked tabs"), this, SLOT(processActions()))->setObjectName("detachSelection");
+        menu.addAction(QIcon(":/tabmanager/data/tab-bookmark.png"), tr("Book&mark checked tabs"), this, SLOT(processActions()))->setObjectName("bookmarkSelection");
+        menu.addAction(QIcon(":/tabmanager/data/tab-close.png"), tr("&Close checked tabs"), this, SLOT(processActions()))->setObjectName("closeSelection");
+    }
+
+    menu.exec(ui->treeWidget->viewport()->mapToGlobal(pos));
 }
 
 void TabManagerWidget::processActions()
@@ -297,14 +321,20 @@ void TabManagerWidget::processActions()
     delayedRefreshTree();
 }
 
-void TabManagerWidget::changeGroupType(int type)
+void TabManagerWidget::changeGroupType()
 {
-    if (m_groupType != GroupType(type)) {
-        m_groupType = GroupType(type);
+    QAction* action = qobject_cast<QAction*>(sender());
 
-        delayedRefreshTree();
+    if (action) {
+        int type = action->data().toInt();
 
-        emit groupTypeChanged(GroupType(type));
+        if (m_groupType != GroupType(type)) {
+            m_groupType = GroupType(type);
+
+            delayedRefreshTree();
+
+            emit groupTypeChanged(m_groupType);
+        }
     }
 }
 

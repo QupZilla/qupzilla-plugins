@@ -56,7 +56,7 @@ public:
 
 public slots:
     void delayedRefreshTree(WebPage* p = 0);
-    void changeGroupType(int type);
+    void changeGroupType();
 
 private:
     QTreeWidgetItem* createEmptyItem(QTreeWidgetItem* parent = 0, bool addToTree = true);
@@ -78,7 +78,8 @@ private slots:
     void refreshTree();
     void processActions();
     void itemDoubleClick(QTreeWidgetItem* item, int);
-    void treeWidgetChanged();
+    bool isTabSelected();
+    void customContextMenuRequested(const QPoint &pos);
 
 signals:
     void showSideBySide();
