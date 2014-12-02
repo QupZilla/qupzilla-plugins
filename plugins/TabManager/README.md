@@ -2,8 +2,6 @@ TabManager plugin for QupZilla
 -------------------------------------------------
 **Known Issues**
 
-* TabManagerWidget::closeSelectedTabs() doesn't respect to "m_dontQuitWithOneTab" option.
-
 * SideBySide doesn't use the last activated window, because MainApplication::getWindow() doesn't return it.
 
 * Group By Domain doesn't support multi-part TLDs.

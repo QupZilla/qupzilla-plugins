@@ -348,17 +348,6 @@ void TabManagerWidget::closeSelectedTabs(const QHash<BrowserWindow*, WebTab*> &t
     foreach (BrowserWindow* mainWindow, windows) {
         QList<WebTab*> tabs = tabsHash.values(mainWindow);
 
-        // TabWidget::closeTab() issue: TabWidget::count() is not updated when closing several tabs
-        // unfortunately this workaround doesn't respect to "m_dontQuitWithOneTab"
-        if (mainWindow->tabWidget()->count() == tabs.size()) {
-            if (mApp->windowCount() == 1) {
-                mApp->quitApplication();
-                return;
-            }
-            mainWindow->close();
-            continue;
-        }
-
         foreach (WebTab* webTab, tabs) {
             mainWindow->tabWidget()->closeTab(webTab->tabIndex());
         }
