@@ -69,6 +69,7 @@ private:
 
 signals:
     void requestRefreshTree(WebPage* p = 0);
+    void pinStateChanged(int index, bool pinned);
 };
 
 #endif // TABMANAGERWIDGETCONTROLLER_H

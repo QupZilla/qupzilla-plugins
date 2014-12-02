@@ -132,6 +132,7 @@ TabManagerWidget* TabManagerWidgetController::createTabManagerWidget(BrowserWind
 
     connect(tabManagerWidget, SIGNAL(groupTypeChanged(TabManagerWidget::GroupType)), this, SLOT(setGroupType(TabManagerWidget::GroupType)));
     connect(this, SIGNAL(requestRefreshTree(WebPage*)), tabManagerWidget, SLOT(delayedRefreshTree(WebPage*)));
+    connect(this, SIGNAL(pinStateChanged(int,bool)), tabManagerWidget, SLOT(delayedRefreshTree()));
 
     emit requestRefreshTree();
 
@@ -167,6 +168,7 @@ void TabManagerWidgetController::mainWindowCreated(BrowserWindow* window, bool r
     if (window) {
         addStatusBarIcon(window);
         connect(window->tabWidget(), SIGNAL(currentChanged(int)), this, SIGNAL(requestRefreshTree()));
+        connect(window->tabWidget(), SIGNAL(pinStateChanged(int,bool)), this, SIGNAL(pinStateChanged(int,bool)));
     }
 
     if (refresh) {

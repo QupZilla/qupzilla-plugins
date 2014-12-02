@@ -10,8 +10,6 @@ You will find more information about the configuration and usage of this extensi
 
 * SideBySide doesn't use the last activated window, because MainApplication::getWindow() doesn't return it.
 
-* TabManager doesn't detect changing in pinned tabs, because there is not a related signal in QupZilla code.
-
 **TODOs**
 
 * Modifying `refresh` algorithm for updating changed items and not all items.
