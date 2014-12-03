@@ -29,6 +29,8 @@
 #include <QAction>
 #include <QTimer>
 
+QString TabManagerPlugin::s_settingsPath;
+
 TabManagerPlugin::TabManagerPlugin()
     : QObject()
     , m_controller(0)
@@ -43,7 +45,7 @@ PluginSpec TabManagerPlugin::pluginSpec()
     spec.name = "Tab Manager";
     spec.info = "Simple yet powerful tab manager for QupZilla";
     spec.description = "Adds ability to managing tabs and windows";
-    spec.version = "0.2.4";
+    spec.version = "0.3.0";
     spec.author = "Razi Alavizadeh <s.r.alavizadeh@gmail.com>";
     spec.icon = QPixmap(":tabmanager/data/tabmanager.png");
     spec.hasSettings = true;
@@ -61,12 +63,12 @@ void TabManagerPlugin::init(InitState state, const QString &settingsPath)
     connect(mApp->plugins(), SIGNAL(webPageCreated(WebPage*)), m_controller, SIGNAL(requestRefreshTree()));
     connect(mApp->plugins(), SIGNAL(webPageDeleted(WebPage*)), m_controller, SIGNAL(requestRefreshTree(WebPage*)));
 
-    m_settingsPath = settingsPath;
+    s_settingsPath = settingsPath + QL1S("/TabManager");
     m_initState = true;
 
     // load settings
-    QSettings settings(m_settingsPath + QL1S("/extensions.ini"), QSettings::IniFormat);
-    settings.beginGroup("TabManager");
+    QSettings settings(s_settingsPath + QL1S("/tabmanager.ini"), QSettings::IniFormat);
+    settings.beginGroup("View");
     m_controller->setGroupType(TabManagerWidget::GroupType(settings.value("GroupType", TabManagerWidget::GroupByWindow).toInt()));
     m_controller->setViewType(TabManagerWidgetController::ViewType(settings.value("ViewType", TabManagerWidgetController::ShowAsWindow).toInt()));
     settings.endGroup();
@@ -77,8 +79,8 @@ void TabManagerPlugin::init(InitState state, const QString &settingsPath)
 void TabManagerPlugin::unload()
 {
     // save settings
-    QSettings settings(m_settingsPath + QL1S("/extensions.ini"), QSettings::IniFormat);
-    settings.beginGroup("TabManager");
+    QSettings settings(s_settingsPath + QL1S("/tabmanager.ini"), QSettings::IniFormat);
+    settings.beginGroup("View");
     settings.setValue("GroupType", m_controller->groupType());
     settings.setValue("ViewType", m_controller->viewType());
     settings.endGroup();
@@ -169,6 +171,11 @@ void TabManagerPlugin::removeManagerWidget()
         delete m_tabManagerWidget;
         m_tabManagerWidget = 0;
     }
+}
+
+QString TabManagerPlugin::settingsPath()
+{
+    return s_settingsPath;
 }
 
 #if QT_VERSION < 0x050000

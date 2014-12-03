@@ -53,13 +53,15 @@ public:
 
     void removeManagerWidget();
 
+    static QString settingsPath();
+
 public slots:
     void insertManagerWidget();
 
 private:
     TabManagerWidgetController* m_controller;
     TabManagerWidget* m_tabManagerWidget;
-    QString m_settingsPath;
+    static QString s_settingsPath;
     QString m_viewType;
     bool m_initState;
 };
