@@ -497,7 +497,7 @@ void TabManagerWidget::groupByDomainName(bool useHostName)
             tabItem->setData(0, WebTabPointerRole, QVariant::fromValue(qobject_cast<QWidget*>(webTab)));
             tabItem->setData(0, QupZillaPointerRole, QVariant::fromValue(qobject_cast<QWidget*>(mainWin)));
 
-            connect(webTab->webView()->page(), SIGNAL(loadFinished(bool)), this, SLOT(delayedRefreshTree()));
+            makeWebViewConnections(webTab->webView());
         }
     }
 
@@ -561,7 +561,7 @@ void TabManagerWidget::groupByWindow()
             tabItem->setData(0, WebTabPointerRole, QVariant::fromValue(qobject_cast<QWidget*>(webTab)));
             tabItem->setData(0, QupZillaPointerRole, QVariant::fromValue(qobject_cast<QWidget*>(mainWin)));
 
-            connect(webTab->webView()->page(), SIGNAL(loadFinished(bool)), this, SLOT(delayedRefreshTree()));
+            makeWebViewConnections(webTab->webView());
         }
     }
 }
@@ -573,5 +573,15 @@ BrowserWindow* TabManagerWidget::getQupZilla()
     }
     else {
         return p_QupZilla.data();
+    }
+}
+
+void TabManagerWidget::makeWebViewConnections(QWebView* view)
+{
+    if (view) {
+        connect(view->page(), SIGNAL(loadFinished(bool)), this, SLOT(delayedRefreshTree()));
+        connect(view->page(), SIGNAL(loadStarted()), this, SLOT(delayedRefreshTree()));
+        connect(view, SIGNAL(titleChanged(QString)), this, SLOT(delayedRefreshTree()));
+        connect(view, SIGNAL(iconChanged()), this, SLOT(delayedRefreshTree()));
     }
 }

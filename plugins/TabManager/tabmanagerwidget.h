@@ -31,6 +31,7 @@ class QTreeWidgetItem;
 class BrowserWindow;
 class WebPage;
 class WebTab;
+class QWebView;
 
 class TabManagerWidget : public QWidget
 {
@@ -63,6 +64,8 @@ private:
     void groupByDomainName(bool useHostName = false);
     void groupByWindow();
     BrowserWindow* getQupZilla();
+
+    void makeWebViewConnections(QWebView* view);
 
     Ui::TabManagerWidget* ui;
     QPointer<BrowserWindow> p_QupZilla;
