@@ -32,6 +32,7 @@ class BrowserWindow;
 class WebPage;
 class WebTab;
 class QWebView;
+class TLDExtractor;
 
 class TabManagerWidget : public QWidget
 {
@@ -76,6 +77,8 @@ private:
     bool m_waitForRefresh;
     bool m_isDefaultWidget;
     GroupType m_groupType;
+
+    static TLDExtractor* s_tldExtractor;
 
 private slots:
     void refreshTree();

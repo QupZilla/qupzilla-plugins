@@ -27,6 +27,9 @@
 #include "bookmarkstools.h"
 #include "bookmarkitem.h"
 #include "bookmarks.h"
+#include "tabmanagerplugin.h"
+#include "tldextractor/tldextractor.h"
+
 
 #include <QDesktopWidget>
 #include <QDialogButtonBox>
@@ -38,6 +41,7 @@
 #define WebTabPointerRole Qt::UserRole + 10
 #define QupZillaPointerRole Qt::UserRole + 20
 
+TLDExtractor* TabManagerWidget::s_tldExtractor = 0;
 
 TabManagerWidget::TabManagerWidget(BrowserWindow* mainClass, QWidget* parent, bool defaultWidget)
     : QWidget(parent)
@@ -48,8 +52,13 @@ TabManagerWidget::TabManagerWidget(BrowserWindow* mainClass, QWidget* parent, bo
     , m_refreshBlocked(false)
     , m_waitForRefresh(false)
     , m_isDefaultWidget(defaultWidget)
-
 {
+    if(s_tldExtractor == 0)
+    {
+        s_tldExtractor = TLDExtractor::instance();
+        s_tldExtractor->setDataSearchPaths(QStringList() << TabManagerPlugin::settingsPath());
+    }
+
     ui->setupUi(this);
     ui->treeWidget->setExpandsOnDoubleClick(false);
     ui->treeWidget->setContextMenuPolicy(Qt::CustomContextMenu);
@@ -70,7 +79,7 @@ void TabManagerWidget::setGroupType(GroupType type)
 
 QString TabManagerWidget::domainFromUrl(const QUrl &url, bool useHostName)
 {
-    QString appendString;
+    QString appendString = QL1S(":");
     QString urlString = url.toString();
 
     if (url.scheme() == "file") {
@@ -80,30 +89,29 @@ QString TabManagerWidget::domainFromUrl(const QUrl &url, bool useHostName)
         return tr("QupZilla:");
     }
     else if (url.scheme() == "ftp") {
-        appendString = tr(" [FTP]");
+        appendString.prepend(tr(" [FTP]"));
     }
 
-    QString domain = url.host();
-    if (domain.isEmpty()) {
-        return urlString;
+    QString host = url.host();
+    if (host.isEmpty()) {
+        return urlString.append(appendString);
     }
 
-    if (domain.startsWith("www.", Qt::CaseInsensitive)) {
-        domain.remove(0, 4);
-    }
+    if (useHostName || host.contains(QRegExp("^[0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]+$"))) {
+        if (host.startsWith("www.", Qt::CaseInsensitive)) {
+            host.remove(0, 4);
+        }
 
-    if (useHostName || domain.contains(QRegExp("^[0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]+$"))) {
-        return domain.append(appendString).append(":");
+        return host.append(appendString);
     }
     else {
-        QStringList parts = domain.split(".");
-        if (parts.size() >= 3) {
-            parts.removeFirst();
-            return parts.join(".").append(appendString).append(":");
+        const QString registeredDomain = s_tldExtractor->registrableDomain(host);
+
+        if (!registeredDomain.isEmpty()) {
+            host = registeredDomain;
         }
-        else {
-            return domain.append(appendString).append(":");
-        }
+
+        return host.append(appendString);
     }
 }
 

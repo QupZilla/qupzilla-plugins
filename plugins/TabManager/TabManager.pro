@@ -18,6 +18,8 @@ FORMS += \
 TRANSLATIONS = \
     translations/fa_IR.ts
 
+include(tldextractor/tldextractor.pri)
+
 PLUGIN_DIR = $$PWD
 srcdir = $$(QUPZILLA_SRCDIR)
 equals(srcdir, "") {

@@ -66,4 +66,4 @@ private:
     bool m_initState;
 };
 
-#endif // TESTPLUGIN_H
+#endif // TABMANAGERPLUGIN_H
