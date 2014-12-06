@@ -13,6 +13,7 @@ To configure the plugin please select it and press `Settings`.
 You will have to choose between two configuration options:
 
 (1) SideBar: Will display the TabManager in the sidebar like the history or the bookmarks.
+
 (2) Window: Will open the TabManager in a separate window. This mode is intended to use for managing a lot of windows or tabs.
 
 ![tbm3](http://i.imgur.com/uvVqEAi.png)
