@@ -1,6 +1,10 @@
-FlashCookieManager plugin for QupZilla
+FlashCookieManager extension for QupZilla
 -------------------------------------------------
-A plugin to manage flash cookies.
+An extension to manage flash cookies.
+
+![conf2](http://i.imgur.com/TGCG5ok.png)
+
+You will find more information about the configuration and usage of this extension in the [wiki](https://github.com/QupZilla/qupzilla-plugins/wiki/Flash-Cookie-Manager).
 
 **Links about flash cookie**
  - [Local shared object] (http://en.wikipedia.org/wiki/Local_shared_object)
