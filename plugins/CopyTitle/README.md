@@ -1,6 +1,6 @@
 Copy title extension for QupZilla
 -------------------------------------------------
-A extension, that will copy the window title into the clipboard.
+An extension, that will copy the window title into the clipboard.
 
 ![context](http://i.imgur.com/3ewZIZU.png)
 
