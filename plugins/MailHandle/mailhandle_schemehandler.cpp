@@ -29,7 +29,7 @@
 #endif
 
 MailHandle_SchemeHandler::MailHandle_SchemeHandler(const QString &settingsPath)
-    : m_settingsFile(settingsPath + "extensions.ini")
+    : m_settingsFile(settingsPath + QL1S("/extensions.ini"))
 {
     loadSettings();
 }
