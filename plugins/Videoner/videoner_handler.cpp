@@ -87,12 +87,12 @@ void Videoner_Handler::populateWebViewMenu(QMenu* menu, WebView* view, const QWe
         }
         if (!videoId1.isEmpty()) {
             QString videoPage1;
-            videoPage1 = "http://www.youtube.com/watch?v=" + videoId1;
+            videoPage1 = "https://www.youtube.com/watch?v=" + videoId1;
             menu->addAction(QIcon(":/videoner/data/videoner.png"), tr("Videonize!"), this, (m_sepyth ? SLOT(startExternalHandlerYt()) : SLOT(startExternalHandler())))->setData(videoPage1);
         }
     }
     if (m_pagevm) {
-        QRegExp rx2("://vimeo.com/([^d]{8})");
+        QRegExp rx2("vimeo.com/([^d]+)");
         QString videoId2;
 
         rx2.indexIn(r.linkUrl().toString());
@@ -139,7 +139,7 @@ void Videoner_Handler::populateWebViewMenu(QMenu* menu, WebView* view, const QWe
         }
         if (!videoId3.isEmpty()) {
             QString videoPage3;
-            videoPage3 = "http://www.liveleak.com/view?i=" + videoId3;
+            videoPage3 = "www.liveleak.com/view?i=" + videoId3;
             menu->addAction(QIcon(":/videoner/data/videoner.png"), tr("Videonize!"), this, SLOT(startExternalHandler()))->setData(videoPage3);
         }
     }
@@ -165,7 +165,7 @@ void Videoner_Handler::populateWebViewMenu(QMenu* menu, WebView* view, const QWe
         }
         if (!videoId4.isEmpty()) {
             QString videoPage4;
-            videoPage4 = "http://www.metacafe.com/watch/" + videoId4;
+            videoPage4 = "www.metacafe.com/watch/" + videoId4;
             menu->addAction(QIcon(":/videoner/data/videoner.png"), tr("Videonize!"), this, SLOT(startExternalHandler()))->setData(videoPage4);
         }
     }
@@ -191,7 +191,7 @@ void Videoner_Handler::populateWebViewMenu(QMenu* menu, WebView* view, const QWe
         }
         if (!videoId5.isEmpty()) {
             QString videoPage5;
-            videoPage5 = "http://www.dailymotion.com/video/" + videoId5;
+            videoPage5 = "www.dailymotion.com/video/" + videoId5;
             menu->addAction(QIcon(":/videoner/data/videoner.png"), tr("Videonize!"), this, SLOT(startExternalHandler()))->setData(videoPage5);
         }
     }
@@ -243,7 +243,7 @@ void Videoner_Handler::populateWebViewMenu(QMenu* menu, WebView* view, const QWe
         }
         if (!videoId7.isEmpty()) {
             QString videoPage7;
-            videoPage7 = "http://www.hulu.com/watch/" + videoId7;
+            videoPage7 = "www.hulu.com/watch/" + videoId7;
             menu->addAction(QIcon(":/videoner/data/videoner.png"), tr("Videonize!"), this, SLOT(startExternalHandler()))->setData(videoPage7);
         }
     }
