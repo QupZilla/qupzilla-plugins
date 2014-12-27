@@ -118,7 +118,7 @@ void Videoner_Handler::populateWebViewMenu(QMenu* menu, WebView* view, const QWe
         }
     }
     if (m_pagell) {
-        QRegExp rx3("www.liveleak.com/view?i=([a-z0-9]{3})_([^&]+)");
+        QRegExp rx3("www.liveleak.com/view\\?i=([a-zA-Z0-9_]{4}[^d]+)");
         QString videoId3;
 
         rx3.indexIn(r.linkUrl().toString());
@@ -139,7 +139,7 @@ void Videoner_Handler::populateWebViewMenu(QMenu* menu, WebView* view, const QWe
         }
         if (!videoId3.isEmpty()) {
             QString videoPage3;
-            videoPage3 = "www.liveleak.com/view?i=" + videoId3;
+            videoPage3 = "http://www.liveleak.com/view?i=" + videoId3;
             menu->addAction(QIcon(":/videoner/data/videoner.png"), tr("Videonize!"), this, SLOT(startExternalHandler()))->setData(videoPage3);
         }
     }
