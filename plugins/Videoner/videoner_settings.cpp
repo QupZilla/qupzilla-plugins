@@ -47,6 +47,7 @@ Videoner_Settings::Videoner_Settings(Videoner_Handler* handler, QWidget* parent)
     ui->enableLl->setChecked(settings.value("enableLiveLeak", false).toBool());
     ui->enableMc->setChecked(settings.value("enableMetaCafe", false).toBool());
     ui->enableDm->setChecked(settings.value("enableDailyMotion", false).toBool());
+    ui->enableFa->setChecked(settings.value("enableFacebook", false).toBool());
     ui->enableBr->setChecked(settings.value("enableBreak", false).toBool());
     ui->enableHu->setChecked(settings.value("enableHulu", false).toBool());
     ui->enableMed->setChecked(settings.value("enableMediaEl", true).toBool());
@@ -81,6 +82,7 @@ void Videoner_Settings::dialogAccepted()
     settings.setValue("enableLiveLeak", ui->enableLl->isChecked());
     settings.setValue("enableMetaCafe", ui->enableMc->isChecked());
     settings.setValue("enableDailyMotion", ui->enableDm->isChecked());
+    settings.setValue("enableFacebook", ui->enableFa->isChecked());
     settings.setValue("enableBreak", ui->enableBr->isChecked());
     settings.setValue("enableHulu", ui->enableHu->isChecked());
     settings.setValue("enableMediaEl", ui->enableMed->isChecked());

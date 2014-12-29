@@ -55,6 +55,7 @@ void Videoner_Handler::loadSettings()
     m_pagell = settings.value("enableLiveLeak", false).toBool();
     m_pagemc = settings.value("enableMetaCafe", false).toBool();
     m_pagedm = settings.value("enableDailyMotion", false).toBool();
+    m_pagefa = settings.value("enableFacebook", false).toBool();
     m_pagebr = settings.value("enableBreak", false).toBool();
     m_pagehu = settings.value("enableHulu", false).toBool();
     m_medel = settings.value("enableMediaEl", true).toBool();
@@ -66,7 +67,7 @@ void Videoner_Handler::populateWebViewMenu(QMenu* menu, WebView* view, const QWe
 {
     m_view = view;
     if (m_pageyt) {
-        QRegExp rx1("v=([^&]+)|youtu.be/([^&]+)|y2u.be/([^&]+)|youtube.com/embed/([^&]+)");
+        QRegExp rx1("youtube.com/watch\\?.*v=([^&]+)|youtu.be/([^&]+)|y2u.be/([^&]+)|youtube.com/embed/([^&]+)");
         QString videoId1;
 
         rx1.indexIn(r.linkUrl().toString());
@@ -195,8 +196,8 @@ void Videoner_Handler::populateWebViewMenu(QMenu* menu, WebView* view, const QWe
             menu->addAction(QIcon(":/videoner/data/videoner.png"), tr("Videonize!"), this, SLOT(startExternalHandler()))->setData(videoPage5);
         }
     }
-    if (m_pagebr) {
-        QRegExp rx6("www.break.com/video/([^&]+)");
+    if (m_pagefa) {
+        QRegExp rx6("www.facebook.com/video.php\\?v=([^&]+)");
         QString videoId6;
 
         rx6.indexIn(r.linkUrl().toString());
@@ -217,12 +218,12 @@ void Videoner_Handler::populateWebViewMenu(QMenu* menu, WebView* view, const QWe
         }
         if (!videoId6.isEmpty()) {
             QString videoPage6;
-            videoPage6 = "www.break.com/video/" + videoId6;
+            videoPage6 = "www.facebook.com/video.php?v=" + videoId6;
             menu->addAction(QIcon(":/videoner/data/videoner.png"), tr("Videonize!"), this, SLOT(startExternalHandler()))->setData(videoPage6);
         }
     }
-    if (m_pagehu) {
-        QRegExp rx7("www.hulu.com/watch/([^d]+)");
+    if (m_pagebr) {
+        QRegExp rx7("www.break.com/video/([^&]+)");
         QString videoId7;
 
         rx7.indexIn(r.linkUrl().toString());
@@ -243,8 +244,34 @@ void Videoner_Handler::populateWebViewMenu(QMenu* menu, WebView* view, const QWe
         }
         if (!videoId7.isEmpty()) {
             QString videoPage7;
-            videoPage7 = "www.hulu.com/watch/" + videoId7;
+            videoPage7 = "www.break.com/video/" + videoId7;
             menu->addAction(QIcon(":/videoner/data/videoner.png"), tr("Videonize!"), this, SLOT(startExternalHandler()))->setData(videoPage7);
+        }
+    }
+    if (m_pagehu) {
+        QRegExp rx8("www.hulu.com/watch/([^d]+)");
+        QString videoId8;
+
+        rx8.indexIn(r.linkUrl().toString());
+        for (int i = 1; i < 4; ++i) {
+            if (!rx8.cap(i).isEmpty()) {
+                videoId8 = rx8.cap(i);
+                break;
+            }
+        }
+        if (videoId8.isEmpty()) {
+            rx8.indexIn(view->url().toString());
+            for (int i = 1; i < 4; ++i) {
+                if (!rx8.cap(i).isEmpty()) {
+                    videoId8 = rx8.cap(i);
+                    break;
+                }
+            }
+        }
+        if (!videoId8.isEmpty()) {
+            QString videoPage8;
+            videoPage8 = "www.hulu.com/watch/" + videoId8;
+            menu->addAction(QIcon(":/videoner/data/videoner.png"), tr("Videonize!"), this, SLOT(startExternalHandler()))->setData(videoPage8);
         }
     }
     if (m_medel) {

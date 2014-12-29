@@ -60,6 +60,7 @@ private:
     bool m_pagell;
     bool m_pagemc;
     bool m_pagedm;
+    bool m_pagefa;
     bool m_pagebr;
     bool m_pagehu;
     bool m_medel;

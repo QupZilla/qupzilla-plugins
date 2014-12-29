@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>280</width>
-    <height>352</height>
+    <height>376</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -103,13 +103,20 @@
               </widget>
              </item>
              <item row="4" column="0">
+              <widget class="QCheckBox" name="enableFa">
+               <property name="text">
+                <string notr="true">facebook.com</string>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="0">
               <widget class="QCheckBox" name="enableBr">
                <property name="text">
                 <string notr="true">break.com</string>
                </property>
               </widget>
              </item>
-             <item row="5" column="0">
+             <item row="6" column="0">
               <widget class="QCheckBox" name="enableHu">
                <property name="text">
                 <string notr="true">hulu.com</string>
