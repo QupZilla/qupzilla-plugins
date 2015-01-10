@@ -1,0 +1,41 @@
+#navigation-button-next
+{
+    qproperty-multiIcon: url(images/navigation-back.png);
+}
+
+#navigation-button-back
+{
+    qproperty-multiIcon: url(images/navigation-forward.png);
+}
+#tabbar-button-right
+{
+    qproperty-multiIcon: url(images/onglets-gauche.png);
+/*    qproperty-fixedsize: 15px 25px;*/
+}
+
+#tabbar-button-left
+{
+    qproperty-multiIcon: url(images/onglets-droit.png);
+/*    qproperty-fixedsize: 15px 25px;*/
+}
+
+#tabwidget-button-opentabs
+{
+    qproperty-multiIcon: url(images/onglets-list-interv.png);
+}
+
+#tabwidget-button-closedtabs
+{
+    qproperty-multiIcon: url(images/onglets-renouv-interv.png);
+/*    qproperty-themeIcon: "user-trash-full";*/
+/*    qproperty-fixedsize: 22px 25px;*/
+}
+
+#tabwidget-button-addtab
+{
+    qproperty-multiIcon: url(images/onglet-plus-interv.png);
+/*    qproperty-themeIcon: "list-add";*/
+/*    qproperty-fixedsize: 22px 25px;*/
+}
+
+

@@ -1,0 +1,578 @@
+/*			     ┌─────────────────────────────────┐      
+			     │   * Fergris Theme               │
+                             │   * Author: Okvardz Votim       │
+		             │   * Based on: Mac Theme         │
+                             │   * Using own Qt style          │
+                             │   * Last update: Jan 08 2015    │
+			     └─────────────────────────────────┘
+*/
+
+*[html-link-look="true"]
+{
+    color: palette(link);
+    text-decoration: underline;
+}
+
+/*MainWindow*/
+#mainwindow
+{
+    background-color: #c7c7c7;
+}
+
+
+#mainwindow-menubar
+{
+    font-family: "DexterC", "Free Serif", "DejaVu Serif", "Droid Serif", "Open Serif";
+/*    src: url(fonts/Dexter.ttf); It seems this does not works on Qt! */
+    background-image:url(images/bgmenu.png) repeat-x;
+     border-bottom: 1px solid #f6f6f6;
+}
+
+#mainwindow-menubar:item
+{
+    color: #666666;
+    spacing: 5px;
+    padding: 2px 4px;
+    background: transparent;
+}
+
+#mainwindow-menubar::item:pressed
+{
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,stop:0 #8c8c8c, stop:1 #d6d6d6);
+    border: 1px solid #373737;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom: none;
+}
+
+#mainwindow-statusbar
+{
+    background-color: #a7a7a7;
+}
+
+#statusbar-ip-label
+{
+    padding-right: 5px;
+}
+
+#tabbarwidget
+{
+    background-image: url(images/tabs-bg.png);
+    background-repeat: repeat-x;
+}
+
+#tabbar::tab
+{
+     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 rgb(255, 255, 255, 100), stop: 0.4 rgb(244, 244, 244, 120),
+                                 stop: 0.5 rgb(222, 222, 222, 130), stop: 1.0 rgb(210, 210, 210, 140));
+     border: 2px solid #969696;
+    border-bottom: none;
+    min-height: 26px;
+    max-height: 28px;
+     margin-left: -2px;
+}
+
+#tabbar::tab:hover, #tabbar::tab:selected:hover {
+     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 rgb(160, 160, 160, 160), stop: 0.4 rgb(190, 190, 190, 190),
+                                 stop: 0.5 rgb(210, 210, 210, 210), stop: 1.0 rgb(240, 240, 240, 200));  
+ }
+
+#tabbar::tab:selected
+{   
+     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 rgb(240, 240, 240, 200),stop: 0.4 rgb(210, 210, 210, 210),
+                                 stop: 0.5 rgb(190, 190, 190, 190), stop: 1.0 rgb(160, 160, 160, 160));  
+     margin-left: -2px;
+     margin-right: -2px;
+ }
+
+#tabbar::tab:!selected {
+     margin-top: 2px; /* make non-selected tabs look smaller */
+ }
+
+#tabbar::tab:first:selected {
+     margin-left: 0; /* the first selected tab has nothing to overlap with on the left */
+ }
+
+#tabbar::tab:last:selected {
+     margin-right: 0; /* the last selected tab has nothing to overlap with on the right */
+ }
+
+#tabbar::tab:only-one {
+     margin: 0; /* if there is only one tab, we don't want overlapping margins */
+ }
+
+#tabbar-button-left
+{
+    qproperty-multiIcon: url(images/onglets-gauche.png);
+}
+
+#tabbar-button-right
+{
+    qproperty-multiIcon: url(images/onglets-droit.png);
+}
+
+#tabwidget-button-opentabs
+{
+    qproperty-multiIcon: url(images/onglets-list.png);
+}
+
+#tabwidget-button-closedtabs
+{
+    qproperty-multiIcon: url(images/onglets-renouv.png);
+}
+
+#tabwidget-button-addtab
+{
+    qproperty-multiIcon: url(images/onglet-plus.png);
+/*    qproperty-themeIcon: "list-add";*/
+/*    qproperty-fixedsize: 22px 25px;*/
+}
+
+#navigationbar
+{
+    qproperty-layoutMargin: 4;
+    qproperty-layoutSpacing: 3;
+}
+
+#navigationbar QSplitter::handle
+{
+    height: 8px;
+    image: url(images/splitter.png);
+}
+
+#navigation-button-back
+{
+    qproperty-multiIcon: url(images/navigation-back.png);
+}
+
+#navigation-button-next
+{
+    qproperty-multiIcon: url(images/navigation-forward.png);
+}
+
+#navigation-button-stop
+{
+    qproperty-multiIcon: url(images/navigation-stop.png);
+}
+
+#navigation-button-reload
+{
+    qproperty-multiIcon: url(images/navigation-reload.png);
+}
+
+#navigation-button-home
+{
+    qproperty-multiIcon: url(images/navigation-home.png);
+}
+
+#navigation-button-addtab
+{
+    qproperty-multiIcon: url(images/navigation-addtab.png);
+}
+
+#navigation-button-supermenu
+{
+    qproperty-multiIcon: url(images/navigation-supermenu.png);
+}
+
+#navigation-button-exitfullscreen
+{
+    qproperty-themeIcon: "view-restore";
+}
+
+
+/*IconProvider*/
+IconProvider
+{
+    qproperty-bookmarkIcon: url(images/star-a.png);
+}
+
+/*LocationBar*/
+#locationbar
+{
+    background: transparent;
+    border-image: url(images/lineedit-bg.png);
+    border-width: 4px;
+    color:black;
+    padding-right: -5px;
+    padding-left: -5px;
+    padding-top: -1px;
+    padding-bottom: -1px;
+    qproperty-fixedheight: 23;
+    qproperty-leftMargin: 40;
+}
+
+#locationbar[secured="true"]
+{
+    background: transparent;
+    border-image: url(images/secured-bg.png);
+    border-width: 4px;
+    color:green;
+    padding-right: -5px;
+    padding-left: -5px;
+    padding-top: -1px;
+    padding-bottom: -1px;
+    qproperty-fixedheight: 23;
+    qproperty-leftMargin: 40;
+}
+
+#locationbar-bookmarkicon
+{
+    margin-left: 2px;
+    qproperty-pixmap: url(images/star.png);
+}
+
+#locationbar-bookmarkicon[bookmarked="true"]
+{
+    qproperty-pixmap: url(images/star-a.png);
+}
+
+#locationbar-siteicon
+{
+    border-image: url(images/siteicon-bg.png);
+    qproperty-fixedsize:42px 23px;
+    padding-left: -3px;
+}
+
+#locationbar-siteicon:hover
+{
+    border-image: url(images/siteicon-hover.png);
+    qproperty-fixedsize:42px 23px;
+    padding-left: -3px;
+}
+
+#locationbar-siteicon:pressed
+{
+    border-image: url(images/siteicon-bgpressed.png);
+    qproperty-fixedsize:42px 23px;
+    padding-left: -3px;
+}
+
+#locationbar-siteicon[secured="true"]
+{
+    border-image: url(images/siteicon-secure-bg.png);
+}
+
+#locationbar-siteicon[secured="true"]:hover
+{
+    border-image: url(images/siteicon-secure-hover.png);
+}
+
+#locationbar-siteicon[secured="true"]:pressed
+{
+    border-image: url(images/siteicon-secure-bgpressed.png);
+}
+
+#locationbar-rss-icon
+{
+    margin-left: 2px;
+    qproperty-pixmap: url(images/feed-icon.png);
+}
+
+#locationbar-goicon
+{
+    qproperty-pixmap: url(images/gotoaddress.png);
+}
+
+#locationbar-down-icon
+{
+    margin-left: 2px;
+    margin-right: 4px;
+    qproperty-pixmap: url(images/navigation-dropdown.png);
+}
+
+#locationbar-autofillicon
+{
+    margin-bottom: 1px;
+    qproperty-pixmap: url(images/key.png);
+}
+
+/*BookmarksToolbar*/
+
+#bookmarksbar QToolButton
+{
+    border-image: url(images/transp.png);
+    border-width: 0px;
+    height: 15px;
+}
+
+/*SideBar*/
+#sidebar
+{
+    background: transparent;
+}
+
+#sidebar-splitter::handle
+{
+    background-color:transparent;
+}
+
+/*WebSearchBar*/
+#websearchbar
+{
+    background: transparent;
+    border-image: url(images/lineedit-bg.png);
+    border-width: 4px;
+    padding-right: -4px;
+    padding-top: -2px;
+    padding-bottom: -2px;
+    color:black;
+    qproperty-fixedheight: 23;
+    qproperty-leftMargin: 35;
+}
+
+#websearchbar-searchbutton
+{
+    margin-bottom: -1px;
+    qproperty-pixmap: url(images/search-icon.png);
+}
+
+#websearchbar-searchprovider-comobobox
+{
+    border-image: url(images/search-bar-provider-bg.png);
+    padding-left:-11px;
+    qproperty-fixedsize: 42px 23px;
+}
+
+/*SourceViewer*/
+#sourceviewer-textedit
+{
+    border:none;
+}
+
+/*SourceViewerSearch*/
+SourceViewerSearch #lineEdit[notfound="true"]
+{
+    background:#ff6666;
+}
+
+/*SearchToolbar*/
+SearchToolBar #lineEdit[notfound="true"]
+{
+    background:#ff6666;
+}
+
+/*Click2Flash*/
+#click2flash-frame
+{
+    border: 1px solid #e8e8e8;
+}
+
+#click2flash-toolbutton
+{
+    background: url(images/flash.png) no-repeat;
+    background-position: center;
+    border: none;
+}
+
+#click2flash-toolbutton:hover
+{
+    background: url(images/flashstart.png) no-repeat;
+    background-position: center;
+    border:none;
+}
+
+/*RSSManager*/
+#rssmanager-frame
+{
+    background: white;
+}
+
+RSSManager QTabBar::tab
+{
+    max-width:100px;
+}
+
+/*AboutDialog*/
+AboutDialog #label
+{
+    background:white;
+}
+
+AboutDialog #textBrowser
+{
+    border:none;
+    margin-top: -2px; /* Workarounding rounded border on KDE */
+}
+
+/*DesktopNotification*/
+DesktopNotification
+{
+    background: transparent;
+}
+DesktopNotification #frame
+{
+    border: 2px solid darkblue;
+    border-radius: 20px;
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,stop:0 #e4ecf1, stop:1 #d3e5f1);
+}
+
+DesktopNotification #heading
+{
+    font: bold;
+    font-size: 13pt;
+}
+
+/*BrowsingLibrary*/
+BrowsingLibrary #tabs
+{
+    qproperty-bgPixmap: url(images/library-bg-left.png);
+}
+
+BrowsingLibrary #frame
+{
+    background: url(images/library-bg-top.png) no-repeat;
+}
+
+BrowsingLibrary #frame_2
+{
+    background: url(images/library-bg-top-right.png);
+}
+
+BrowsingLibrary #searchLine
+{
+    background: transparent;
+    border-image: url(images/library-search-bg.png);
+    border-width:4;
+    color:black;
+}
+
+/*Downloads*/
+DownloadItem #fileName
+{
+    font-size: 13pt;
+}
+
+DownloadManager #list
+{
+    border: none;
+}
+
+/*JavaScript Dialogs*/
+#jsFrame
+{
+    background: url(images/semi-transp.png);
+}
+
+QFrame[js-frame="true"]
+{
+    border: 1px solid  black;
+    border-bottom: 0px;
+    background-color: white;
+}
+
+QFrame[js-frame2="true"]
+{
+    border: 1px solid  black;
+    border-top: 0px;
+    background-color: #f3f3f3;
+}
+
+QListView, QTreeWidget, QTextEdit, QMenu
+{
+     background-color: #999999;
+     background-image: url(images/brushed_metal-l.png);
+     background-attachment: scroll;
+     font-family: "Free Sans", "DejaVu Sans", "Droid Sans", "Open Sans";
+     color: #595959;
+}
+
+QMenu::item:selected
+{
+     background-color: #5a6171;
+     color: #e5e5e5;
+}
+
+QDialog
+{
+     background-image: url(images/brushed_metal.png);
+     background-color: #dbdbdb;
+     background-attachment: scroll;
+}
+
+QStackedWidget {
+     background-image: url(images/brushed_metal-l.png);
+/*    background: #c7c7c7;*/
+ }
+
+
+Preferences QLineEdit
+{
+    background: white;
+    border-image: url(images/lineedit-lib.png);
+    border-width: 4px;
+    color:black;
+    selection-background-color: darkgray;
+}
+
+Preferences QTabWidget::tab-bar {
+     left: 12px; /* move to the right by 12px */
+ }
+Preferences QTabBar::tab {
+     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #E1E1E1, stop: 0.4 #DDDDDD,
+                                 stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);
+     border: 1px solid #636363;
+     border-bottom: none; 
+     min-width: 12ex;
+     padding: 2px;
+ }
+
+Preferences QTabBar::tab:selected, Preferences QTabBar::tab:hover {
+     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #9a9a9a, stop: 0.4 #bbbbbb,
+                                 stop: 0.5 #cccccc, stop: 1.0 #eeeeee);
+     margin-left: -1px;
+     margin-right: -1px;
+ }
+
+Preferences QTabBar::tab:first:selected {
+     margin-left: 0; 
+ }
+
+Preferences QTabBar::tab:last:selected {
+     margin-right: 0; 
+ }
+
+Preferences QTabBar::tab:only-one {
+     margin: 0; 
+ }
+
+
+Preferences QTabBar::tab:!selected {
+     margin-top: 2px; 
+ }
+
+QComboBox
+{
+    background: white;
+    border-image: url(images/combob.png);
+    border-width: 4px;
+}
+
+ QComboBox::drop-down {
+     width: 15px;
+     image: url(images/arrow-down.png);
+     border-left-width: 1px;
+     border-left-color: darkgray;
+     border-left-style: solid; /* just a single line */
+ }
+
+QComboBox QListView, QTableWidget
+{
+    background: #e5e5e5;
+    color: #595959
+}
+
+QPushButton, MacToolButton {     background: transparent;
+    border-image: url(images/button-normal.png);
+    border-width: 4px; }
+QPushButton:hover, MacToolButton:hover  {     background: transparent;
+    border-image: url(images/button-hover.png);
+    border-width: 4px; }
+QPushButton:pressed, MacToolButton:pressed  {     background: transparent;
+    border-image: url(images/button-pressed.png);
+    border-width: 4px; }
