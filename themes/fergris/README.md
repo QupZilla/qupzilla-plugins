@@ -1,7 +1,7 @@
 Fergris theme for QupZilla
 ========================
 
-Full theme for QupZilla with own Qt style., created by [cranes-bill](https://github.com/cranes-bill).
+Full theme for QupZilla with own Qt style, created by [cranes-bill](https://github.com/cranes-bill).
 
 *Please note: To make this theme work as intended, you will have to download the true-type font DexterC.ttf. Since the licensing of this font is not clear, we will not provide it with this theme. Please download the font DexterC.ttf [here](http://www.azfonts.net/load_font/dexterc.html) save it to the fonts directory.*
 
