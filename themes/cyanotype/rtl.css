@@ -1,0 +1,27 @@
+#navigation-button-next
+{
+    qproperty-multiIcon: url(images/nb-prvs.png);
+}
+
+#navigation-button-back
+{
+    qproperty-multiIcon: url(images/nb-nxt.png);
+}
+
+#tabbar-button-right
+{
+    qproperty-multiIcon: url(images/tabbar-button-left.png);
+}
+
+#tabbar-button-left
+{
+    qproperty-multiIcon: url(images/tabbar-button-right.png);
+}
+
+#tabwidget-button-addtab
+{
+    qproperty-multiIcon: url(images/tabbar-addtab-rtl.png);
+}
+
+
+
