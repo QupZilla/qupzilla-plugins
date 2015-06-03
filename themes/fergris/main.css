@@ -3,7 +3,7 @@
  *       Author: Okvardz Votim       *
  *       Based on: Mac Theme         *
  *       Using own Qt style          *
- *       Last update: Jan 25 2015    *
+ *       Last update: Jun 03 2015    *
  *************************************/
 
 
@@ -12,6 +12,13 @@
     color: palette(link);
     text-decoration: underline;
 }
+
+/* The following is because i hate default sucks big line spacing font in Gtk3 */
+*[font] {
+    font-family: "FreeSans", "Sans", "DejaVu Sans", "Open Sans";
+    font-size: 10pt;
+}
+
 
 /*MainWindow*/
 #mainwindow
@@ -797,5 +804,4 @@ QProgressBar::chunk {
      background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
                                  stop: 0 #FAFBFE, stop: 1 #bfbfbf);
  }
-
 
