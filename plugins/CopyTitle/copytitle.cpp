@@ -21,9 +21,9 @@
 #include "webview.h"
 #include "pluginproxy.h"
 #include "mainapplication.h"
+#include "webhittestresult.h"
 
 #include <QTranslator>
-#include <QWebHitTestResult>
 #include <QClipboard>
 #include <QMenu>
 
@@ -39,7 +39,7 @@ PluginSpec CopyTitle::pluginSpec()
     spec.name = "Copy Title";
     spec.info = "Copy page title or image name";
     spec.description = "Menu action to copy page title or image name";
-    spec.version = "0.1";
+    spec.version = "0.2";
     spec.author = QString::fromUtf8("Mladen Pejaković <pejakm@autistici.org>");
     spec.icon = QPixmap(":/copytitle/data/copytitle.png");
     spec.hasSettings = false;
@@ -72,7 +72,7 @@ QTranslator* CopyTitle::getTranslator(const QString &locale)
     return translator;
 }
 
-void CopyTitle::populateWebViewMenu(QMenu* menu, WebView* view, const QWebHitTestResult &r)
+void CopyTitle::populateWebViewMenu(QMenu* menu, WebView* view, const WebHitTestResult &r)
 {
     m_view = view;
 

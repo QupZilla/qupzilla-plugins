@@ -20,18 +20,17 @@
 #define VIDEONER_HANDLER_H
 
 #include <QObject>
-#include <QWebElement>
 #include <QMessageBox>
 #include <QProcess>
 #include <QRegExp>
-#include <QWebHitTestResult>
 #include <QMenu>
 #include <QPointer>
 
 class QMouseEvent;
-class QWebElement;
 class QLabel;
 class WebView;
+class WebHitTestResult;
+
 class Videoner_Handler : public QObject
 {
     Q_OBJECT
@@ -40,7 +39,7 @@ public:
 
     QString settingsFile();
     void loadSettings();
-    void populateWebViewMenu(QMenu* menu, WebView* view, const QWebHitTestResult &r);
+    void populateWebViewMenu(QMenu* menu, WebView* view, const WebHitTestResult &r);
 
 signals:
 
@@ -50,7 +49,7 @@ private slots:
     void startExternalHandler();
     void startExternalHandlerYt();
     void startExternalHandlerMed();
-    
+
 private:
     QPointer<WebView> m_view;
 

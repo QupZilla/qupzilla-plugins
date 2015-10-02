@@ -21,7 +21,6 @@
 
 #include "plugininterface.h"
 
-#include <QWebElement>
 #include <QPointer>
 
 class CopyTitle : public QObject, public PluginInterface
@@ -43,7 +42,7 @@ public:
 
     QTranslator* getTranslator(const QString &locale);
 
-    void populateWebViewMenu(QMenu* menu, WebView* view, const QWebHitTestResult &r);
+    void populateWebViewMenu(QMenu* menu, WebView* view, const WebHitTestResult &r);
 
     bool mousePress(const Qz::ObjectName &type, QObject* obj, QMouseEvent* event);
 

@@ -18,11 +18,10 @@
 * ============================================================ */
 #include "videoner_handler.h"
 #include "webview.h"
+#include "webhittestresult.h"
 
 #include <QApplication>
 #include <QSettings>
-#include <QWebPage>
-#include <QWebFrame>
 #include <QLabel>
 #include <QToolTip>
 
@@ -63,7 +62,7 @@ void Videoner_Handler::loadSettings()
     settings.endGroup();
 }
 
-void Videoner_Handler::populateWebViewMenu(QMenu* menu, WebView* view, const QWebHitTestResult &r)
+void Videoner_Handler::populateWebViewMenu(QMenu* menu, WebView* view, const WebHitTestResult &r)
 {
     m_view = view;
     if (m_pageyt) {
@@ -275,9 +274,8 @@ void Videoner_Handler::populateWebViewMenu(QMenu* menu, WebView* view, const QWe
         }
     }
     if (m_medel) {
-        if (r.element().tagName().toLower() == QLatin1String("video")
-           || r.element().tagName().toLower() == QLatin1String("audio")) {
-            QUrl mediaLink = r.element().evaluateJavaScript("this.currentSrc").toUrl();
+        if (r.tagName() == QLatin1String("video") || r.tagName() == QLatin1String("audio")) {
+            QUrl mediaLink = r.mediaUrl();
             menu->addAction(QIcon(":/videoner/data/videoner.png"), tr("Videonize!"), this, (m_sepmedel ? SLOT(startExternalHandlerMed()) : SLOT(startExternalHandler())))->setData(mediaLink);
         }
     }

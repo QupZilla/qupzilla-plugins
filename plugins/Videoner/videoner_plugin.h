@@ -46,7 +46,7 @@ public:
     QTranslator* getTranslator(const QString &locale);
     void showSettings(QWidget* parent = 0);
 
-    void populateWebViewMenu(QMenu* menu, WebView* view, const QWebHitTestResult &r);
+    void populateWebViewMenu(QMenu* menu, WebView* view, const WebHitTestResult &r);
 
 private:
     QPointer<Videoner_Settings> m_settings;

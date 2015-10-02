@@ -37,7 +37,7 @@ PluginSpec Videoner_Plugin::pluginSpec()
     spec.name = "Videoner";
     spec.info = "Video links handler";
     spec.description = "Open video links from video sharing services in external program";
-    spec.version = "0.1.2";
+    spec.version = "0.2.0";
     spec.author = QString::fromUtf8("Mladen Pejaković <pejakm@autistici.org>");
     spec.icon = QPixmap(":/videoner/data/videoner.png");
     spec.hasSettings = true;
@@ -81,7 +81,7 @@ void Videoner_Plugin::showSettings(QWidget* parent)
     m_settings.data()->raise();
 }
 
-void Videoner_Plugin::populateWebViewMenu(QMenu* menu, WebView* view, const QWebHitTestResult &r)
+void Videoner_Plugin::populateWebViewMenu(QMenu* menu, WebView* view, const WebHitTestResult &r)
 {
     m_handler->populateWebViewMenu(menu, view, r);
 }
