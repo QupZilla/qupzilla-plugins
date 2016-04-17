@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/readability">
+        <file>data/Readability.js</file>
+        <file>data/Call.js</file>
+        <file>data/style.css</file>
+    </qresource>
+</RCC>
