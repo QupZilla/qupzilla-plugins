@@ -1,4 +1,3 @@
-
 TARGET = $$qtLibraryTarget(ReadabilityPlugin)
 
 SOURCES += readability.cpp 

@@ -3,5 +3,6 @@
         <file>data/Readability.js</file>
         <file>data/Call.js</file>
         <file>data/style.css</file>
+        <file>data/icon.png</file>
     </qresource>
 </RCC>

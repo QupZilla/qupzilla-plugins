@@ -42,7 +42,7 @@ PluginSpec ReadabilityPlugin::pluginSpec()
     spec.description = "Transform webpage to easy reading.";
     spec.version = "0.1";
     spec.author = "Jaroslav Bambas <jar.bambas@gmail.com>";
-    spec.icon = QPixmap(":qupzilla.png");
+    spec.icon = QPixmap(":/readability/data/icon.png");
     spec.hasSettings = false;
 
     return spec;
