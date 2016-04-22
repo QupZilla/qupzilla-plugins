@@ -1,6 +1,9 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this file,
+ * You can obtain one at http://mozilla.org/MPL/2.0/. */
+
 body {
   padding: 64px 0;
-  max-width: 660px;
   margin: 0 auto;
 }
 
@@ -15,6 +18,11 @@ body {
 
 body.loaded {
   transition: color 0.4s, background-color 0.4s;
+}
+
+#container {
+    max-width: 40em;
+    margin: 0 auto;
 }
 
 .light,
@@ -336,7 +344,7 @@ body.loaded {
   left: -16px;
   width: 24px;
   height: 24px;
-  background-image: url("chrome://global/skin/reader/RM-Type-Controls-Arrow.svg");
+  background-image: url("qrc:/readability/data/RM-Type-Controls-Arrow.svg");
   display: block;
 }
 
@@ -476,11 +484,57 @@ body.loaded {
   background-color: #dedad4;
 }
 
+.remove-button {
+  background-image: url("qrc:/readability/data/RM-Delete-24x24.svg");
+  margin: 0 auto;
+  border: 1px solid #c1c1c1;
+  background-position: 10px 7px;
+  padding-left: 42px;
+  padding-right: 10px;
+  border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  font-size: 18px;
+}
+
+
+/*======= Toolbar icons =======*/
+
 /* Android-only controls */
 .share-button {
   display: none;
 }
 
+.close-button {
+  background-image: url("qrc:/readability/data/RM-close.png");
+  height: 68px;
+  background-position: center 8px;
+}
+
+.close-button:hover {
+  background-image: url("qrc:/readability/data/RM-close-hover.png");
+  background-color: #d94141;
+  border-bottom: 1px solid #d94141;
+  border-right: 1px solid #d94141;
+}
+
+.close-button:hover:active {
+  background-image: url("qrc:/readability/data/data/RM-close-hover.png");
+  background-color: #AE2325;
+  border-bottom: 1px solid #AE2325;
+  border-right: 1px solid #AE2325;
+}
+
+.style-button {
+  background-image: url("qrc:/readability/data/RM-Type-Controls-24x24.svg");
+}
+
+.minus-button {
+  background-image: url("qrc:/readability/data/RM-Minus-24x24.svg");
+}
+
+.plus-button {
+  background-image: url("qrc:/readability/data/RM-Plus-24x24.svg");
+}
 
 @media print {
   .toolbar {
@@ -489,4 +543,12 @@ body.loaded {
   .footer {
     display: none;
   }
+}
+
+#close-hover {
+    fill: #fff;
+}
+
+#close {
+    fill: #808080;
 }

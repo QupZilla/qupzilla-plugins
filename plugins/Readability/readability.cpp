@@ -85,6 +85,7 @@ void ReadabilityPlugin::makeReadability()
 {
     QString javascript = QzTools::readAllFileContents(":/readability/data/Readability.js");
     QString call = QzTools::readAllFileContents(":/readability/data/Call.js").arg(javascript);
+    QString toolbar = QzTools::readAllFileContents(":/readability/data/Toolbar.js").arg(call);
 
-    m_view->page()->runJavaScript(call);
+    m_view->page()->runJavaScript(toolbar);
 }
