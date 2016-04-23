@@ -84,7 +84,7 @@ function readablilityBody(article){
 
 function renderPage(article){
 	var element = document.documentElement;
-	if(element && !!article){
+	if(element && !!article && !!article.content){
 		element.removeChild(document.body);
 		element.removeChild(document.head);
 
@@ -98,6 +98,3 @@ function renderPage(article){
 }
 
 callReadability();
-
-
-//todo: nejde renderovani u githubu

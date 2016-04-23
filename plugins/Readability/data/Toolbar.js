@@ -1,10 +1,18 @@
 %1
 
 function readablilityToolbar(){
-	var div = document.createElement('div');
-	document.getElementById('container').appendChild(div);
-	div.innerHTML = '<ul visible="true" id="reader-toolbar" class="toolbar">   <li><button id="close-button" class="button close-button"></button></li>    <ul id="style-dropdown" class="dropdown">      <li><button id="style-button" class="dropdown-toggle button style-button"></button></li>      <li style="top: 48px;" id="reader-popup" class="dropdown-popup">        <div id="font-type-buttons"><button id="sans-serif-button" class="sans-serif-button selected"><div class="name">Aa</div><div class="description">Sans-serif</div></button><button id="serif-button" class="serif-button"><div class="name">Aa</div><div class="description">Serif</div></button></div>        <hr>        <div id="font-size-buttons">          <button id="font-size-minus" class="minus-button">          </button><button id="font-size-sample">Aa</button><button id="font-size-plus" class="plus-button">        </button></div>        <hr>        <div id="color-scheme-buttons"><button id="light-button" class="light-button"><div class="name">Light</div></button><button id="dark-button" class="dark-button"><div class="name">Dark</div></button><button id="sepia-button" class="sepia-button selected"><div class="name">Sepia</div></button></div>        <div class="dropdown-arrow">      </div></li>    </ul>    </ul>';
+	renderToolbar();
+	addListeners();
+}
 
+function renderToolbar(){
+	var toolbar = document.createElement('div');
+	document.getElementById('container').appendChild(toolbar);
+
+	toolbar.innerHTML = '<ul visible="true" id="reader-toolbar" class="toolbar"><li><button id="close-button" class="button close-button"></button></li><ul id="style-dropdown" class="dropdown"><li><button id="style-button" class="dropdown-toggle button style-button"></button></li><li style="top: 48px;" id="reader-popup" class="dropdown-popup"><div id="font-type-buttons"><button id="sans-serif-button" class="sans-serif-button selected"><div class="name">Aa</div><div class="description">Sans-serif</div></button><button id="serif-button" class="serif-button"><div class="name">Aa</div><div class="description">Serif</div></button></div><hr><div id="font-size-buttons"><button id="font-size-minus" class="minus-button"></button><button id="font-size-sample">Aa</button><button id="font-size-plus" class="plus-button"></button></div><hr><div id="color-scheme-buttons"><button id="light-button" class="light-button"><div class="name">Light</div></button><button id="dark-button" class="dark-button"><div class="name">Dark</div></button><button id="sepia-button" class="sepia-button selected"><div class="name">Sepia</div></button></div><div class="dropdown-arrow"></div></li></ul></ul>';
+}
+
+function addListeners(){
 	document.getElementById('close-button').addEventListener("click", closeReadability);
 	document.getElementById('style-button').addEventListener("click", toolbarService);
 
@@ -101,7 +109,7 @@ function fontSizePlus(){
 				incrementedSize = parseInt(size) + 1;
 			} else return;
 			container.classList.remove(container.classList[i]);
-			container.classList.add('font-size'+incrementedSize);
+			container.classList.add('font-size' + incrementedSize);
 			return;
 		}
 	}
@@ -117,7 +125,7 @@ function fontSizeMinus(){
 				incrementedSize = parseInt(size) - 1;
 			} else return;
 			container.classList.remove(container.classList[i]);
-			container.classList.add('font-size'+incrementedSize);
+			container.classList.add('font-size' + incrementedSize);
 			return;
 		}
 	}
