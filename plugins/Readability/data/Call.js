@@ -1,5 +1,7 @@
 %1
 
+%2
+
 function callReadability(){
 	var loc = document.location;
 	var uri = {
@@ -18,14 +20,12 @@ function readabilityHead(article){
 	document.documentElement.appendChild(head);
 
 	var title = document.createElement('title');
-	title.innerHTML=article.title;
+	title.innerHTML = article.title;
 	head.appendChild(title);
 
-	var css = document.createElement('link');
-	css.rel = 'stylesheet';
-    css.type = 'text/css';
-    css.href = 'qrc:/readability/data/style.css';
-    head.appendChild(css);
+    var css = document.createElement('style');
+    css.innerHTML = '%3';
+	head.appendChild(css);
 
    	var meta  = document.createElement('meta');
     meta.content = "text/html; charset=UTF-8";

@@ -1,5 +1,3 @@
-%1
-
 function readablilityToolbar(){
 	renderToolbar();
 	addListeners();
@@ -50,8 +48,7 @@ function toolbarService(){
 }
 
 function switchToLight(item){
-	document.body.classList.remove('sepia');
-	document.body.classList.remove('dark');
+	document.body.classList.remove('sepia', 'dark');
 	document.body.classList.add('light');
 
 	var items = document.getElementById('color-scheme-buttons').children;
@@ -62,8 +59,7 @@ function switchToLight(item){
 }
 
 function switchToSepia(item){
-	document.body.classList.remove('light');
-	document.body.classList.remove('dark');
+	document.body.classList.remove('light', 'dark');
 	document.body.classList.add('sepia');
 
 	var items = document.getElementById('color-scheme-buttons').children;
@@ -74,8 +70,7 @@ function switchToSepia(item){
 }
 
 function switchToDark(item){
-	document.body.classList.remove('sepia');
-	document.body.classList.remove('light');
+	document.body.classList.remove('sepia', 'light');
 	document.body.classList.add('dark');
 
 	var items = document.getElementById('color-scheme-buttons').children;

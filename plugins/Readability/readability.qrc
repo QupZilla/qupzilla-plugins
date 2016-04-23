@@ -7,10 +7,11 @@
         <file>data/icon.png</file>
         <file>data/RM-close.png</file>
         <file>data/RM-close-hover.png</file>
-        <file>data/RM-Minus-24x24.svg</file>
-        <file>data/RM-Plus-24x24.svg</file>
-        <file>data/RM-Type-Controls-24x24.svg</file>
+        <file>data/RM-Minus-24x24.png</file>
+        <file>data/RM-Plus-24x24.png</file>
+        <file>data/RM-Type-Controls-24x24.png</file>
+        <file>data/RM-Type-Controls-Arrow.png</file>
+        <file>data/RM-Delete-24x24.png</file>
         <file>data/RM-Type-Controls-Arrow.svg</file>
-        <file>data/RM-Delete-24x24.svg</file>
     </qresource>
 </RCC>

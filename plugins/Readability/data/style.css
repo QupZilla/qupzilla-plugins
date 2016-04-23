@@ -344,7 +344,7 @@ body.loaded {
   left: -16px;
   width: 24px;
   height: 24px;
-  background-image: url("qrc:/readability/data/RM-Type-Controls-Arrow.svg");
+  background-image: url(%6);
   display: block;
 }
 
@@ -485,7 +485,7 @@ body.loaded {
 }
 
 .remove-button {
-  background-image: url("qrc:/readability/data/RM-Delete-24x24.svg");
+  background-image: url(%3);
   margin: 0 auto;
   border: 1px solid #c1c1c1;
   background-position: 10px 7px;
@@ -496,7 +496,6 @@ body.loaded {
   font-size: 18px;
 }
 
-
 /*======= Toolbar icons =======*/
 
 /* Android-only controls */
@@ -505,35 +504,35 @@ body.loaded {
 }
 
 .close-button {
-  background-image: url("qrc:/readability/data/RM-close.png");
+  background-image: url(%1);
   height: 68px;
   background-position: center 8px;
 }
 
 .close-button:hover {
-  background-image: url("qrc:/readability/data/RM-close-hover.png");
+  background-image: url(%2);
   background-color: #d94141;
   border-bottom: 1px solid #d94141;
   border-right: 1px solid #d94141;
 }
 
 .close-button:hover:active {
-  background-image: url("qrc:/readability/data/data/RM-close-hover.png");
+  background-image: url(%2);
   background-color: #AE2325;
   border-bottom: 1px solid #AE2325;
   border-right: 1px solid #AE2325;
 }
 
 .style-button {
-  background-image: url("qrc:/readability/data/RM-Type-Controls-24x24.svg");
+  background-image: url(%7);
 }
 
 .minus-button {
-  background-image: url("qrc:/readability/data/RM-Minus-24x24.svg");
+  background-image: url(%5);
 }
 
 .plus-button {
-  background-image: url("qrc:/readability/data/RM-Plus-24x24.svg");
+  background-image: url(%4);
 }
 
 @media print {

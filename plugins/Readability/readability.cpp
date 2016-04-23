@@ -83,9 +83,21 @@ void ReadabilityPlugin::populateWebViewMenu(QMenu* menu, WebView* view, const We
 
 void ReadabilityPlugin::makeReadability()
 {
-    QString javascript = QzTools::readAllFileContents(":/readability/data/Readability.js");
-    QString call = QzTools::readAllFileContents(":/readability/data/Call.js").arg(javascript);
-    QString toolbar = QzTools::readAllFileContents(":/readability/data/Toolbar.js").arg(call);
+    QString m_close = QzTools::pixmapToDataUrl(QPixmap(":/readability/data/RM-close.png")).toString();
+    QString m_close_hover = QzTools::pixmapToDataUrl(QPixmap(":/readability/data/RM-close-hover.png")).toString();
+    QString m_delete = QzTools::pixmapToDataUrl(QPixmap(":/readability/data/RM-Delete-24x24.png")).toString();
+    QString m_plus = QzTools::pixmapToDataUrl(QPixmap(":/readability/data/RM-Plus-24x24.png")).toString();
+    QString m_minus = QzTools::pixmapToDataUrl(QPixmap(":/readability/data/RM-Minus-24x24.png")).toString();
+    QString m_arrow = QzTools::readAllFileContents(":/readability/data/RM-Type-Controls-Arrow.png");
+    QString m_controls = QzTools::pixmapToDataUrl(QPixmap(":/readability/data/RM-Type-Controls-24x24.png")).toString();
+    
+    QString css = QzTools::readAllFileContents(":/readability/data/style.css").arg(m_close, m_close_hover, m_delete, m_plus, m_minus, m_arrow, m_controls);
+    QStringList list = css.split(QRegExp("[\r\n]"), QString::SkipEmptyParts);
+    css = list.join(" ");
 
-    m_view->page()->runJavaScript(toolbar);
+    QString javascript = QzTools::readAllFileContents(":/readability/data/Readability.js");
+    QString toolbar = QzTools::readAllFileContents(":/readability/data/Toolbar.js");
+    QString call = QzTools::readAllFileContents(":/readability/data/Call.js").arg(javascript, toolbar, css);
+
+    m_view->page()->runJavaScript(call);
 }
