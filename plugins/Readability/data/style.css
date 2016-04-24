@@ -454,11 +454,6 @@ body.loaded {
     background-color: #dadada;
 }
 
-/* Only used on Android */
-#font-size-sample {
-    display: none;
-}
-
 .minus-button,
 .plus-button {
     background-color: transparent;
@@ -497,11 +492,6 @@ body.loaded {
 }
 
 /*======= Toolbar icons =======*/
-
-/* Android-only controls */
-.share-button {
-    display: none;
-}
 
 .close-button {
     background-image: url(%1);

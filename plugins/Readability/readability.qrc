@@ -12,6 +12,5 @@
         <file>data/RM-Type-Controls-24x24.png</file>
         <file>data/RM-Type-Controls-Arrow.png</file>
         <file>data/RM-Delete-24x24.png</file>
-        <file>data/RM-Type-Controls-Arrow.svg</file>
     </qresource>
 </RCC>
