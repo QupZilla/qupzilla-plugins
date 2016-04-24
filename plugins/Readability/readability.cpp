@@ -29,8 +29,8 @@
 #include <QPushButton>
 
 ReadabilityPlugin::ReadabilityPlugin()
-    : QObject(),
-    m_view(0)
+    : QObject()
+    , m_view(0)
 {
 }
 
@@ -55,7 +55,8 @@ void ReadabilityPlugin::init(InitState state, const QString &settingsPath)
 }
 
 void ReadabilityPlugin::unload()
-{}
+{
+}
 
 bool ReadabilityPlugin::testPlugin()
 {
@@ -75,7 +76,7 @@ void ReadabilityPlugin::showSettings(QWidget* parent)
 
 void ReadabilityPlugin::populateWebViewMenu(QMenu* menu, WebView* view, const WebHitTestResult &r)
 {
-    m_view=view;
+    m_view = view;
     if (r.imageUrl().isEmpty() && r.linkUrl().isEmpty() && r.mediaUrl().isEmpty() && !r.isContentEditable() && !r.isContentSelected()) {
         menu->addAction(tr("Readability"), this, &ReadabilityPlugin::makeReadability);
     }
@@ -91,9 +92,7 @@ void ReadabilityPlugin::makeReadability()
     QString m_arrow = QzTools::readAllFileContents(":/readability/data/RM-Type-Controls-Arrow.png");
     QString m_controls = QzTools::pixmapToDataUrl(QPixmap(":/readability/data/RM-Type-Controls-24x24.png")).toString();
     
-    QString css = QzTools::readAllFileContents(":/readability/data/style.css").arg(m_close, m_close_hover, m_delete, m_plus, m_minus, m_arrow, m_controls);
-    QStringList list = css.split(QRegExp("[\r\n]"), QString::SkipEmptyParts);
-    css = list.join(" ");
+    QString css = QzTools::readAllFileContents(":/readability/data/style.css").arg(m_close, m_close_hover, m_delete, m_plus, m_minus, m_arrow, m_controls).remove(QLatin1Char('\n'));
 
     QString javascript = QzTools::readAllFileContents(":/readability/data/Readability.js");
     QString toolbar = QzTools::readAllFileContents(":/readability/data/Toolbar.js");
