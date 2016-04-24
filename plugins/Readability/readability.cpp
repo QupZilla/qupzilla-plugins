@@ -70,10 +70,6 @@ QTranslator* ReadabilityPlugin::getTranslator(const QString &locale)
     return translator;
 }
 
-void ReadabilityPlugin::showSettings(QWidget* parent)
-{
-}
-
 void ReadabilityPlugin::populateWebViewMenu(QMenu* menu, WebView* view, const WebHitTestResult &r)
 {
     m_view = view;
