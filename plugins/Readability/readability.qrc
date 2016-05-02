@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/readability">
+        <file>data/Readability.js</file>
+        <file>data/Call.js</file>
+        <file>data/Toolbar.js</file>
+        <file>data/style.css</file>
+        <file>data/icon.png</file>
+        <file>data/RM-close.png</file>
+        <file>data/RM-close-hover.png</file>
+        <file>data/RM-Minus-24x24.png</file>
+        <file>data/RM-Plus-24x24.png</file>
+        <file>data/RM-Type-Controls-24x24.png</file>
+        <file>data/RM-Type-Controls-Arrow.png</file>
+        <file>data/RM-Delete-24x24.png</file>
+    </qresource>
+</RCC>
