@@ -1,0 +1,23 @@
+#navigation-button-next
+{
+    qproperty-icon: url(images/retour.svg);
+    qproperty-fixedsize: 50px 36px;
+}
+
+#navigation-button-back
+{
+    qproperty-icon: url(images/precedent.svg);
+    qproperty-fixedsize: 50px 36px;
+}
+
+#tabbar-button-right
+{
+    qproperty-icon: url(images/a-gauche.svg);
+/*    qproperty-fallbackIcon: url(images/tab-left-arrow.svg);*/
+}
+
+#tabbar-button-left
+{
+    qproperty-icon: url(images/aller.svg);
+/*    qproperty-fallbackIcon: url(images/tab-right-arrow.svg);*/
+}
