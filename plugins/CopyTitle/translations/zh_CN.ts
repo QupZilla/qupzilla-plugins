@@ -1,17 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="zh_CN">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="zh_CN" version="2.0">
 <context>
     <name>CopyTitle</name>
     <message>
-        <location filename="../copytitle.cpp" line="96"/>
         <source>Copy Page Title</source>
-        <translation type="unfinished"></translation>
+        <translation>复制页面标题</translation>
     </message>
     <message>
-        <location filename="../copytitle.cpp" line="96"/>
         <source>Copy Image Name</source>
-        <translation type="unfinished"></translation>
+        <translation>复制图像名称</translation>
     </message>
 </context>
 </TS>

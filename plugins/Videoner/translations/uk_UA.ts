@@ -16,24 +16,28 @@
     <message>
         <location filename="../videoner_handler.cpp" line="268"/>
         <location filename="../videoner_handler.cpp" line="282"/>
+        <location filename="../videoner_handler.cpp" line="296"/>
         <source>Executable: </source>
         <translation>Виконуваний файл: </translation>
     </message>
     <message>
         <location filename="../videoner_handler.cpp" line="268"/>
         <location filename="../videoner_handler.cpp" line="282"/>
+        <location filename="../videoner_handler.cpp" line="296"/>
         <source>Arguments: </source>
         <translation>Параметри запуску: </translation>
     </message>
     <message>
         <location filename="../videoner_handler.cpp" line="269"/>
         <location filename="../videoner_handler.cpp" line="283"/>
+        <location filename="../videoner_handler.cpp" line="297"/>
         <source>Cannot start external viewer</source>
         <translation>Неможливо запустити зовнішній переглядач</translation>
     </message>
     <message>
         <location filename="../videoner_handler.cpp" line="269"/>
         <location filename="../videoner_handler.cpp" line="283"/>
+        <location filename="../videoner_handler.cpp" line="297"/>
         <source>Cannot start external viewer! %1</source>
         <translation>Неможливо запустити зовнішній переглядач! %1</translation>
     </message>
@@ -48,33 +52,33 @@
     <message>
         <location filename="../videoner_settings.ui" line="34"/>
         <source>General</source>
-        <translation type="unfinished"/>
+        <translation>Загальне</translation>
     </message>
     <message>
         <location filename="../videoner_settings.ui" line="138"/>
         <source>YouTube</source>
-        <translation type="unfinished"/>
+        <translation>YouTube</translation>
     </message>
     <message>
         <location filename="../videoner_settings.ui" line="144"/>
         <source>Enable YouTube support</source>
-        <translation type="unfinished"/>
+        <translation>Увімкнути підтримку YouTube</translation>
     </message>
     <message>
         <location filename="../videoner_settings.ui" line="153"/>
         <location filename="../videoner_settings.ui" line="227"/>
         <source>Use custom external application</source>
-        <translation type="unfinished"/>
+        <translation>Використовувати зовнішню програму</translation>
     </message>
     <message>
         <location filename="../videoner_settings.ui" line="214"/>
         <source>Media elements</source>
-        <translation type="unfinished"/>
+        <translation>Медіа-елементи</translation>
     </message>
     <message>
         <location filename="../videoner_settings.ui" line="220"/>
         <source>Enable media elements support</source>
-        <translation type="unfinished"/>
+        <translation>Увімкнути підтримку медіа-елементів</translation>
     </message>
     <message>
         <location filename="../videoner_settings.ui" line="331"/>

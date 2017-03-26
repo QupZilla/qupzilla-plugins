@@ -11,29 +11,33 @@
         <location filename="../videoner_handler.cpp" line="247"/>
         <location filename="../videoner_handler.cpp" line="254"/>
         <source>Videonize!</source>
-        <translation type="unfinished"/>
+        <translation>וידאו!</translation>
     </message>
     <message>
         <location filename="../videoner_handler.cpp" line="268"/>
         <location filename="../videoner_handler.cpp" line="282"/>
+        <location filename="../videoner_handler.cpp" line="296"/>
         <source>Executable: </source>
-        <translation>בר השמה: </translation>
+        <translation>נתון ליישום: </translation>
     </message>
     <message>
         <location filename="../videoner_handler.cpp" line="268"/>
         <location filename="../videoner_handler.cpp" line="282"/>
+        <location filename="../videoner_handler.cpp" line="296"/>
         <source>Arguments: </source>
         <translation>ארגומנטים: </translation>
     </message>
     <message>
         <location filename="../videoner_handler.cpp" line="269"/>
         <location filename="../videoner_handler.cpp" line="283"/>
+        <location filename="../videoner_handler.cpp" line="297"/>
         <source>Cannot start external viewer</source>
         <translation>אין אפשרות להפעיל צופה חיצוני</translation>
     </message>
     <message>
         <location filename="../videoner_handler.cpp" line="269"/>
         <location filename="../videoner_handler.cpp" line="283"/>
+        <location filename="../videoner_handler.cpp" line="297"/>
         <source>Cannot start external viewer! %1</source>
         <translation>אין אפשרות להפעיל צופה חיצוני! %1</translation>
     </message>
@@ -86,7 +90,7 @@
         <location filename="../videoner_settings.ui" line="178"/>
         <location filename="../videoner_settings.ui" line="252"/>
         <source>Executable:</source>
-        <translation>בר השמה:</translation>
+        <translation>נתון ליישום:</translation>
     </message>
     <message>
         <location filename="../videoner_settings.ui" line="45"/>
@@ -100,7 +104,7 @@
         <location filename="../videoner_settings.cpp" line="105"/>
         <location filename="../videoner_settings.cpp" line="115"/>
         <source>Choose executable location...</source>
-        <translation>בחירת מיקום קובץ בר השמה...</translation>
+        <translation>בחירת מיקום קובץ נתון ליישום...</translation>
     </message>
 </context>
 </TS>

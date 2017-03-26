@@ -3,11 +3,11 @@
     <name>MailHandle_Settings</name>
     <message>
         <source>MailHandle Settings</source>
-        <translation>Mailbehandeling-instellingen</translation>
+        <translation>E-mailbehandeling-instellingen</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:x-large; font-weight:600;&quot;&gt;Mailto links handler&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:x-large; font-weight:600;&quot;&gt;Mailto-links-behandeling&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:x-large; font-weight:600;&quot;&gt;Mailto-links-behandelaar&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Web service to use:</source>
@@ -52,7 +52,8 @@
     <message>
         <source>Enter URL of your webmail service provider. For example:
 https://somewebsite/roundcube</source>
-        <translation>Voer de URL in van uw webmaildienst, bijv.: https://eenwebsite/roundcube</translation>
+        <translation>Voer de URL in van uw webmaildienst, bijv.:
+https://eenwebsite/roundcube</translation>
     </message>
     <message>
         <source>URL of the webmail service provider:</source>

@@ -57,7 +57,7 @@ https://sitioweb/roundcube</translation>
     </message>
     <message>
         <source>URL of the webmail service provider:</source>
-        <translation>URL del proveedor de servicio de webmail:</translation>
+        <translation>URL del proveedor de servicio de correo Web:</translation>
     </message>
 </context>
 </TS>

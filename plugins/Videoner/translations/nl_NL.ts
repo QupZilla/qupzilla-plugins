@@ -16,26 +16,30 @@
     <message>
         <location filename="../videoner_handler.cpp" line="268"/>
         <location filename="../videoner_handler.cpp" line="282"/>
+        <location filename="../videoner_handler.cpp" line="296"/>
         <source>Executable: </source>
-        <translation>Uitvoerbare bestand:</translation>
+        <translation>Uitvoerbaar bestand:</translation>
     </message>
     <message>
         <location filename="../videoner_handler.cpp" line="268"/>
         <location filename="../videoner_handler.cpp" line="282"/>
+        <location filename="../videoner_handler.cpp" line="296"/>
         <source>Arguments: </source>
         <translation>Parameters:</translation>
     </message>
     <message>
         <location filename="../videoner_handler.cpp" line="269"/>
         <location filename="../videoner_handler.cpp" line="283"/>
+        <location filename="../videoner_handler.cpp" line="297"/>
         <source>Cannot start external viewer</source>
-        <translation>Kan extern weergaveprogramma niet starten</translation>
+        <translation>Het externe weergaveprogramma kan niet worden geopend</translation>
     </message>
     <message>
         <location filename="../videoner_handler.cpp" line="269"/>
         <location filename="../videoner_handler.cpp" line="283"/>
+        <location filename="../videoner_handler.cpp" line="297"/>
         <source>Cannot start external viewer! %1</source>
-        <translation>Kan extern weergaveprogramma niet starten! %1</translation>
+        <translation>Het externe weergaveprogramma kan niet worden geopend! %1</translation>
     </message>
 </context>
 <context>
@@ -69,12 +73,12 @@
     <message>
         <location filename="../videoner_settings.ui" line="214"/>
         <source>Media elements</source>
-        <translation>Mediaelementen</translation>
+        <translation>Media-elementen</translation>
     </message>
     <message>
         <location filename="../videoner_settings.ui" line="220"/>
         <source>Enable media elements support</source>
-        <translation>Mediaelementen-ondersteuning inschakelen</translation>
+        <translation>Ondersteuning voor media-elementen inschakelen</translation>
     </message>
     <message>
         <location filename="../videoner_settings.ui" line="331"/>
@@ -100,7 +104,7 @@
         <location filename="../videoner_settings.cpp" line="105"/>
         <location filename="../videoner_settings.cpp" line="115"/>
         <source>Choose executable location...</source>
-        <translation>Kies locatie van uitvoerbaar bestand...</translation>
+        <translation>Kies de locatie van het uitvoerbare bestand...</translation>
     </message>
 </context>
 </TS>

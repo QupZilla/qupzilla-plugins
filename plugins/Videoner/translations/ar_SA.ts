@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="ar_SA">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="ar_SA" version="2.0">
 <context>
     <name>Videoner_Handler</name>
     <message>
@@ -18,24 +16,28 @@
     <message>
         <location filename="../videoner_handler.cpp" line="268"/>
         <location filename="../videoner_handler.cpp" line="282"/>
+        <location filename="../videoner_handler.cpp" line="296"/>
         <source>Executable: </source>
         <translation>التطبيق:</translation>
     </message>
     <message>
         <location filename="../videoner_handler.cpp" line="268"/>
         <location filename="../videoner_handler.cpp" line="282"/>
+        <location filename="../videoner_handler.cpp" line="296"/>
         <source>Arguments: </source>
         <translation>المُبادلات:</translation>
     </message>
     <message>
         <location filename="../videoner_handler.cpp" line="269"/>
         <location filename="../videoner_handler.cpp" line="283"/>
+        <location filename="../videoner_handler.cpp" line="297"/>
         <source>Cannot start external viewer</source>
         <translation>لا يمكن بدء العارض الخارجي</translation>
     </message>
     <message>
         <location filename="../videoner_handler.cpp" line="269"/>
         <location filename="../videoner_handler.cpp" line="283"/>
+        <location filename="../videoner_handler.cpp" line="297"/>
         <source>Cannot start external viewer! %1</source>
         <translation>لا يمكن بدء العارض الخارجي! %1</translation>
     </message>
@@ -50,33 +52,33 @@
     <message>
         <location filename="../videoner_settings.ui" line="34"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>عام</translation>
     </message>
     <message>
         <location filename="../videoner_settings.ui" line="138"/>
         <source>YouTube</source>
-        <translation type="unfinished"></translation>
+        <translation>YouTube</translation>
     </message>
     <message>
         <location filename="../videoner_settings.ui" line="144"/>
         <source>Enable YouTube support</source>
-        <translation type="unfinished"></translation>
+        <translation>مكِّن دعم YouTube</translation>
     </message>
     <message>
         <location filename="../videoner_settings.ui" line="153"/>
         <location filename="../videoner_settings.ui" line="227"/>
         <source>Use custom external application</source>
-        <translation type="unfinished"></translation>
+        <translation>استخدم تطبيقاً خارجياً مُخصّصاً</translation>
     </message>
     <message>
         <location filename="../videoner_settings.ui" line="214"/>
         <source>Media elements</source>
-        <translation type="unfinished"></translation>
+        <translation>عناصر الوسائط</translation>
     </message>
     <message>
         <location filename="../videoner_settings.ui" line="220"/>
         <source>Enable media elements support</source>
-        <translation type="unfinished"></translation>
+        <translation>مكّن دعم عناصر الوسائط</translation>
     </message>
     <message>
         <location filename="../videoner_settings.ui" line="331"/>

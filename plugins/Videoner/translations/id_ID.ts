@@ -16,24 +16,28 @@
     <message>
         <location filename="../videoner_handler.cpp" line="268"/>
         <location filename="../videoner_handler.cpp" line="282"/>
+        <location filename="../videoner_handler.cpp" line="296"/>
         <source>Executable: </source>
         <translation>Program:</translation>
     </message>
     <message>
         <location filename="../videoner_handler.cpp" line="268"/>
         <location filename="../videoner_handler.cpp" line="282"/>
+        <location filename="../videoner_handler.cpp" line="296"/>
         <source>Arguments: </source>
         <translation>Argumen:</translation>
     </message>
     <message>
         <location filename="../videoner_handler.cpp" line="269"/>
         <location filename="../videoner_handler.cpp" line="283"/>
+        <location filename="../videoner_handler.cpp" line="297"/>
         <source>Cannot start external viewer</source>
         <translation>Tidak dapat menjalankan pemutar eksternal</translation>
     </message>
     <message>
         <location filename="../videoner_handler.cpp" line="269"/>
         <location filename="../videoner_handler.cpp" line="283"/>
+        <location filename="../videoner_handler.cpp" line="297"/>
         <source>Cannot start external viewer! %1</source>
         <translation>Tidak dapat menjalankan pemutar eksternal! %1</translation>
     </message>
@@ -48,33 +52,33 @@
     <message>
         <location filename="../videoner_settings.ui" line="34"/>
         <source>General</source>
-        <translation type="unfinished"/>
+        <translation>Umum</translation>
     </message>
     <message>
         <location filename="../videoner_settings.ui" line="138"/>
         <source>YouTube</source>
-        <translation type="unfinished"/>
+        <translation>YouTube</translation>
     </message>
     <message>
         <location filename="../videoner_settings.ui" line="144"/>
         <source>Enable YouTube support</source>
-        <translation type="unfinished"/>
+        <translation>Aktifkan dukungan YouTube</translation>
     </message>
     <message>
         <location filename="../videoner_settings.ui" line="153"/>
         <location filename="../videoner_settings.ui" line="227"/>
         <source>Use custom external application</source>
-        <translation type="unfinished"/>
+        <translation>Gunakan aplikasi eksternal</translation>
     </message>
     <message>
         <location filename="../videoner_settings.ui" line="214"/>
         <source>Media elements</source>
-        <translation type="unfinished"/>
+        <translation>Elemen media</translation>
     </message>
     <message>
         <location filename="../videoner_settings.ui" line="220"/>
         <source>Enable media elements support</source>
-        <translation type="unfinished"/>
+        <translation>Aktifkan dukungan elemen media</translation>
     </message>
     <message>
         <location filename="../videoner_settings.ui" line="331"/>
