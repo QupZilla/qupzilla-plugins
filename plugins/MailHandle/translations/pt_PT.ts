@@ -53,7 +53,7 @@
         <source>Enter URL of your webmail service provider. For example:
 https://somewebsite/roundcube</source>
         <translation>Introduza o URL do serviço web. Por exemplo:
-https://sítio_web/roundcube</translation>
+https://website/roundcube</translation>
     </message>
     <message>
         <source>URL of the webmail service provider:</source>

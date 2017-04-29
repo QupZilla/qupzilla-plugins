@@ -16,24 +16,28 @@
     <message>
         <location filename="../videoner_handler.cpp" line="268"/>
         <location filename="../videoner_handler.cpp" line="282"/>
+        <location filename="../videoner_handler.cpp" line="296"/>
         <source>Executable: </source>
         <translation>Ejecutable: </translation>
     </message>
     <message>
         <location filename="../videoner_handler.cpp" line="268"/>
         <location filename="../videoner_handler.cpp" line="282"/>
+        <location filename="../videoner_handler.cpp" line="296"/>
         <source>Arguments: </source>
         <translation>Argumentos: </translation>
     </message>
     <message>
         <location filename="../videoner_handler.cpp" line="269"/>
         <location filename="../videoner_handler.cpp" line="283"/>
+        <location filename="../videoner_handler.cpp" line="297"/>
         <source>Cannot start external viewer</source>
         <translation>No se puede iniciar el reproductor externo</translation>
     </message>
     <message>
         <location filename="../videoner_handler.cpp" line="269"/>
         <location filename="../videoner_handler.cpp" line="283"/>
+        <location filename="../videoner_handler.cpp" line="297"/>
         <source>Cannot start external viewer! %1</source>
         <translation>¡No se puede iniciar el reproductor externo! %1</translation>
     </message>

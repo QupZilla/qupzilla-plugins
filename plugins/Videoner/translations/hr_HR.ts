@@ -16,24 +16,28 @@
     <message>
         <location filename="../videoner_handler.cpp" line="268"/>
         <location filename="../videoner_handler.cpp" line="282"/>
+        <location filename="../videoner_handler.cpp" line="296"/>
         <source>Executable: </source>
         <translation>Izvršna datoteka: </translation>
     </message>
     <message>
         <location filename="../videoner_handler.cpp" line="268"/>
         <location filename="../videoner_handler.cpp" line="282"/>
+        <location filename="../videoner_handler.cpp" line="296"/>
         <source>Arguments: </source>
         <translation>Argumenti: </translation>
     </message>
     <message>
         <location filename="../videoner_handler.cpp" line="269"/>
         <location filename="../videoner_handler.cpp" line="283"/>
+        <location filename="../videoner_handler.cpp" line="297"/>
         <source>Cannot start external viewer</source>
         <translation>Nemoguće pokretanje vanjskog preglednika</translation>
     </message>
     <message>
         <location filename="../videoner_handler.cpp" line="269"/>
         <location filename="../videoner_handler.cpp" line="283"/>
+        <location filename="../videoner_handler.cpp" line="297"/>
         <source>Cannot start external viewer! %1</source>
         <translation>Nemoguće pokretanje vanjskog preglednika! %1</translation>
     </message>

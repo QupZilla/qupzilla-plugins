@@ -16,24 +16,28 @@
     <message>
         <location filename="../videoner_handler.cpp" line="268"/>
         <location filename="../videoner_handler.cpp" line="282"/>
+        <location filename="../videoner_handler.cpp" line="296"/>
         <source>Executable: </source>
         <translation>Program:</translation>
     </message>
     <message>
         <location filename="../videoner_handler.cpp" line="268"/>
         <location filename="../videoner_handler.cpp" line="282"/>
+        <location filename="../videoner_handler.cpp" line="296"/>
         <source>Arguments: </source>
         <translation>Argumenty:</translation>
     </message>
     <message>
         <location filename="../videoner_handler.cpp" line="269"/>
         <location filename="../videoner_handler.cpp" line="283"/>
+        <location filename="../videoner_handler.cpp" line="297"/>
         <source>Cannot start external viewer</source>
         <translation>Nepodarilo sa spustiť externý prehliadač</translation>
     </message>
     <message>
         <location filename="../videoner_handler.cpp" line="269"/>
         <location filename="../videoner_handler.cpp" line="283"/>
+        <location filename="../videoner_handler.cpp" line="297"/>
         <source>Cannot start external viewer! %1</source>
         <translation>Nepodarilo sa spustiť externý prehliadač! %1</translation>
     </message>

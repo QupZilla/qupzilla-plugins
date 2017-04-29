@@ -18,6 +18,7 @@ RESOURCES = videoner_res.qrc
 
 TRANSLATIONS = \
     translations/ar_SA.ts \
+    translations/bg_BG.ts \
     translations/ca_ES.ts \
     translations/cs_CZ.ts \
     translations/de_DE.ts \
@@ -33,13 +34,16 @@ TRANSLATIONS = \
     translations/he_IL.ts \
     translations/hr_HR.ts \
     translations/id_ID.ts \
+    translations/is.ts \
     translations/it_IT.ts \
     translations/ja_JP.ts \
+    translations/lt.ts \
     translations/lv_LV.ts \
     translations/nl_NL.ts \
     translations/nqo.ts \
     translations/pl_PL.ts \
     translations/pt_PT.ts \
+    translations/ro_RO.ts \
     translations/ru_RU.ts \
     translations/sk_SK.ts \
     translations/sr.ts \
@@ -50,6 +54,8 @@ TRANSLATIONS = \
     translations/uk_UA.ts \
     translations/uz@Cyrl.ts \
     translations/uz@Latn.ts \
+    translations/zh_CN.ts \
+    translations/zh_HK.ts \
     translations/zh_TW.ts \
 
 PLUGIN_DIR = $$PWD
