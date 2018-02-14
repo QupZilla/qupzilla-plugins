@@ -44,8 +44,6 @@ public:
 
     void populateWebViewMenu(QMenu* menu, WebView* view, const WebHitTestResult &r);
 
-    bool mousePress(const Qz::ObjectName &type, QObject* obj, QMouseEvent* event);
-
 private slots:
     void copyPageTitle();
 

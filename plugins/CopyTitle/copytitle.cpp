@@ -51,8 +51,6 @@ void CopyTitle::init(InitState state, const QString &settingsPath)
 {
     Q_UNUSED(state)
     Q_UNUSED(settingsPath)
-
-    QZ_REGISTER_EVENT_HANDLER(PluginProxy::MousePressHandler);
 }
 
 void CopyTitle::unload()
@@ -98,15 +96,6 @@ void CopyTitle::populateWebViewMenu(QMenu* menu, WebView* view, const WebHitTest
     }
 
     menu->addAction(QIcon::fromTheme("edit-copy"), !r.imageUrl().isEmpty() ? tr("Copy Image Name") : tr("Copy Page Title"), this, SLOT(copyPageTitle()))->setData(title);
-}
-
-bool CopyTitle::mousePress(const Qz::ObjectName &type, QObject* obj, QMouseEvent* event)
-{
-    Q_UNUSED(type)
-    Q_UNUSED(obj)
-    Q_UNUSED(event)
-
-    return false;
 }
 
 void CopyTitle::copyPageTitle()
